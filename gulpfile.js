@@ -117,7 +117,6 @@ gulp.task('image:build', async function () {
             optipng({ optimizationLevel: 5 }),
         ]))
         .pipe(gulp.dest(path.build.img))
-        .pipe(gulp.dest(path.wp.img))
         .pipe(reload({ stream: true }));
 });
 
@@ -133,6 +132,7 @@ gulp.task('svg:build', async function () {
             }
         }))
         .pipe(gulp.dest(path.build.img))
+        .pipe(gulp.dest(path.wp.img))
         .pipe(reload({ stream: true }));
 
 });
