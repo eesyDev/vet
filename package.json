@@ -1,0 +1,34 @@
+{
+  "name": "say-meow",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "tactic.team",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.29.3",
+    "gulp": "^5.0.0",
+    "gulp-autoprefixer": "^8.0.0",
+    "gulp-cheerio": "^1.0.0",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-dart-sass": "^1.1.0",
+    "gulp-debug": "^4.0.0",
+    "gulp-imagemin": "^7.1.0",
+    "gulp-replace": "^1.1.3",
+    "gulp-rigger": "^0.5.8",
+    "gulp-sourcemaps": "^3.0.0",
+    "gulp-svg-sprite": "^1.5.0",
+    "gulp-svgmin": "^4.0.1",
+    "gulp-uglify": "^3.0.2",
+    "gulp-watch": "^5.0.1",
+    "imagemin-pngquant": "^10.0.0",
+    "sass": "^1.82.0"
+  },
+  "dependencies": {
+    "imagemin-mozjpeg": "^10.0.0",
+    "imagemin-optipng": "^8.0.0"
+  }
+}

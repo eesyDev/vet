@@ -1,0 +1,16 @@
+// buttons
+.button {
+	position: relative;
+
+	display: inline-flex;
+	flex-flow: row wrap;
+	justify-content: center;
+	align-items: center;
+
+	&:hover:not([disabled]) {}
+
+	&[disabled] {
+		filter: grayscale(100%);
+		cursor: default;
+	}
+}
