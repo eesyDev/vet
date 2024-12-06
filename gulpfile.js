@@ -30,7 +30,6 @@ const path = {
         img: 'build/assets/img/',
         svg: 'build/assets/img/',
         fonts: 'build/assets/fonts/',
-        sass: 'build/assets/scss/',
         lib: 'build/assets/lib/',
         php: 'build/assets/php/',
         video: 'build/assets/video/',
@@ -40,7 +39,6 @@ const path = {
         css: wp_path + 'assets/css/',
         img: wp_path + 'assets/img/',
         fonts: wp_path + 'assets/fonts/',
-        sass: wp_path + 'assets/scss/',
         lib: wp_path + 'assets/lib/',
         php: wp_path + 'assets/php/',
         video: wp_path + 'assets/video/',
@@ -52,7 +50,6 @@ const path = {
         img: 'src/img/**/*.*',
         svg: 'src/img/svg/**/*.svg',
         fonts: 'src/fonts/**/*.*',
-        sass: 'src/scss/**/*.*',
         lib: 'src/lib/**/*.*',
         php: 'src/php/**/*.*',
         video: 'src/video/**/*.*',
@@ -64,7 +61,6 @@ const path = {
         img: 'src/img/**/*.*',
         svg: 'src/img/svg/**/*.svg',
         fonts: 'src/fonts/**/*.*',
-        sass: 'src/scss/**/*.*',
         lib: 'src/lib/**/*.*',
         php: 'src/php/**/*.*',
         video: 'src/video/**/*.*',
@@ -144,12 +140,6 @@ gulp.task('fonts:build', async function () {
         .pipe(reload({ stream: true }));
 });
 
-gulp.task('sass:build', async function () {
-    return gulp.src(path.src.sass)
-        .pipe(gulp.dest(path.build.sass))
-        .pipe(gulp.dest(path.wp.sass));
-});
-
 gulp.task('lib:build', async function () {
     return gulp.src(path.src.lib)
         .pipe(gulp.dest(path.build.lib))
@@ -177,7 +167,6 @@ gulp.task('build', gulp.series(
     'fonts:build',
     'image:build',
     'svg:build',
-    'sass:build',
     'lib:build',
     'php:build',
     'video:build'
@@ -190,7 +179,6 @@ gulp.task('watch', async function () {
     gulp.watch([path.watch.img], gulp.series('image:build'));
     gulp.watch([path.watch.svg], gulp.series('svg:build'));
     gulp.watch([path.watch.fonts], gulp.series('fonts:build'));
-    gulp.watch([path.watch.sass], gulp.series('sass:build'));
     gulp.watch([path.watch.lib], gulp.series('lib:build'));
     gulp.watch([path.watch.php], gulp.series('php:build'));
     gulp.watch([path.watch.video], gulp.series('video:build'));
