@@ -1,7 +1,6 @@
 'use strict';
 
 import gulp from 'gulp';
-import watch from 'gulp-watch';
 import prefixer from 'gulp-autoprefixer';
 import uglify from 'gulp-uglify';
 import dartSass from 'gulp-dart-sass';
@@ -13,11 +12,11 @@ import mozjpeg from 'imagemin-mozjpeg';
 import optipng from 'imagemin-optipng';
 import svgSprite from 'gulp-svg-sprite';
 import svgmin from 'gulp-svgmin';
-import cheerio from 'gulp-cheerio';
 import replace from 'gulp-replace';
 import browserSync from 'browser-sync';
 import debug from 'gulp-debug';
 import { promises as fs } from 'fs';
+import { parse } from 'node-html-parser';
 
 const reload = browserSync.reload;
 const wp_path = 'wordpress/wp-content/themes/say-meow/';
@@ -71,7 +70,6 @@ const path = {
 
 // Задача очистки директорий
 gulp.task('clean', async function () {
-    // Удаление директорий build и WordPress assets
     await Promise.all([
         fs.rm(path.clean, { recursive: true, force: true }),
         fs.rm(path.cleanwp, { recursive: true, force: true }),
@@ -89,6 +87,9 @@ gulp.task('html:build', async function () {
 
 gulp.task('js:build', async function () {
     return gulp.src(path.src.js)
+        .pipe(sourcemaps.init())
+        .pipe(uglify())
+        .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest(path.build.js))
         .pipe(gulp.dest(path.wp.js))
         .pipe(reload({ stream: true }));
@@ -108,29 +109,41 @@ gulp.task('style:build', async function () {
 
 gulp.task('image:build', async function () {
     return gulp.src(path.src.img)
+        //.pipe(debug({ title: 'Found image:' }))
         .pipe(imagemin([
             mozjpeg({ quality: 75, progressive: true }),
             optipng({ optimizationLevel: 5 }),
         ]))
         .pipe(gulp.dest(path.build.img))
+        .pipe(gulp.dest(path.wp.img))
         .pipe(reload({ stream: true }));
 });
 
 gulp.task('svg:build', async function () {
     return gulp.src(path.src.svg)
         .pipe(svgmin({ js2svg: { pretty: true } }))
+        //.pipe(debug({ title: 'Before DOM manipulation:' }))
+        .on('data', (file) => {
+            if (file.isBuffer()) {
+                const content = file.contents.toString();
+                const root = parse(content);
+                root.querySelectorAll('[fill]').forEach((el) => el.removeAttribute('fill'));
+                root.querySelectorAll('[stroke]').forEach((el) => el.removeAttribute('stroke'));
+                root.querySelectorAll('[style]').forEach((el) => el.removeAttribute('style'));
+                file.contents = Buffer.from(root.toString());
+            }
+        })
         .pipe(replace('&gt;', '>'))
         .pipe(svgSprite({
             mode: {
                 symbol: {
-                    sprite: '../sprite.svg'
-                }
-            }
+                    sprite: '../sprite.svg',
+                },
+            },
         }))
         .pipe(gulp.dest(path.build.img))
         .pipe(gulp.dest(path.wp.img))
         .pipe(reload({ stream: true }));
-
 });
 
 gulp.task('fonts:build', async function () {

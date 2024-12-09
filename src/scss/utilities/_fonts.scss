@@ -1,16 +1,28 @@
-/* inter-regular - cyrillic_latin */
 @font-face {
-  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 400;
-  src: url('../fonts/inter-v18-cyrillic_latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+	font-display: swap;
+	font-family: 'Inter-Regular';
+	src: url('../../fonts/Inter-Regular.woff2') format('woff2'),
+	url('../../fonts/Inter-Regular.ttf') format('truetype'),
+	url('../../fonts/Inter-Regular.otf') format('opentype');
+	font-weight: normal;
+	font-style: normal;
 }
-/* inter-900 - cyrillic_latin */
+
 @font-face {
-  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 900;
-  src: url('../fonts/inter-v18-cyrillic_latin-900.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+	font-display: swap;
+	font-family: 'Inter-SemiBold';
+	src: url('../../fonts/Inter-SemiBold.woff2') format('woff2'),
+	url('../../fonts/Inter-SemiBold.ttf') format('truetype'),
+	url('../../fonts/Inter-SemiBold.otf') format('opentype');
+	font-weight: 600;
+	font-style: normal;
 }
+
+@font-face {
+	font-display: swap;
+	font-family: 'Caveat-Bold';
+	src: url('../../fonts/Caveat-SemiBold.ttf') format('truetype');
+	font-weight: bold;
+	font-style: normal;
+}
+

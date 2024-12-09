@@ -1,140 +1,181 @@
-// @media viewport width
+@use "../utilities/variables" as var;
+
+// --- MEDIA QUERIES ---
 @mixin minw($min-width) {
-    @media (min-width: $min-width) {
-        @content;
-    }
+	@media (min-width: $min-width) {
+		@content;
+	}
 }
+
 @mixin maxw($max-width) {
-    @media (max-width: $max-width) {
-        @content;
-    }
+	@media (max-width: $max-width) {
+		@content;
+	}
 }
+
 @mixin minh($min-height) {
-    @media (min-height: $min-height) {
-        @content;
-    }
+	@media (min-height: $min-height) {
+		@content;
+	}
 }
+
 @mixin maxh($max-height) {
-    @media (max-height: $max-height) {
-        @content;
-    }
+	@media (max-height: $max-height) {
+		@content;
+	}
 }
 
-
-// calc font-size in VW units
-@function getVW($size) {
-	@return $size / 1920 * 100vw; // 1920 is design layout width
-}
-
-
-// calc columns with gutters
-// @function col($col) {
-// 	@return calc( (var(--column) * #{$col}) + ((#{$col} - 1) * var(--gutter)) );
-// }
-
-
-// ie grid fix
-@mixin ie_grid_fix($cols) {
+// --- GRID & LAYOUT ---
+@mixin ie-grid-fix($cols) {
 	@for $i from 1 through $cols {
-		&:nth-child( #{$i} ),
-		&:nth-child( #{$cols}n + #{$i} ) {
+		&:nth-child(#{$i}),
+		&:nth-child(#{$cols}n + #{$i}) {
 			-ms-grid-column: $i;
 		}
 	}
 	@for $i from 1 through 100 {
 		&:nth-child(#{$i}) {
-			-ms-grid-row: ceil($i/$cols);
+			-ms-grid-row: ceil($i / $cols);
 		}
 	}
 }
 
-// placeholders
-@mixin placeholder($color, $weight, $size){
+// --- FONT-SIZE & SPACING ---
+@function getVW($size) {
+	@return $size / 1920 * 100vw;
+}
+
+// --- PLACEHOLDER STYLES ---
+@mixin placeholder($color, $weight: normal, $size: inherit) {
 	&::-webkit-input-placeholder {
-	    color: $color;
-	    font-family: var(--font-family);
-	    font-weight: $weight;
-	    font-size: $size;
+		color: $color;
+		font-family: var(--font-family);
+		font-weight: $weight;
+		font-size: $size;
 	}
 	&:-moz-placeholder {
-	    color: $color;
-	    font-family: var(--font-family);
-	    font-weight: $weight;
-	    font-size: $size;
+		color: $color;
+		font-family: var(--font-family);
+		font-weight: $weight;
+		font-size: $size;
 	}
 	&::-moz-placeholder {
-	    color: $color;
-	    font-family: var(--font-family);
-	    font-weight: $weight;
-	    font-size: $size;
+		color: $color;
+		font-family: var(--font-family);
+		font-weight: $weight;
+		font-size: $size;
 	}
 	&:-ms-input-placeholder {
-	    color: $color;
-	    font-family: var(--font-family);
-	    font-weight: $weight;
-	    font-size: $size;
+		color: $color;
+		font-family: var(--font-family);
+		font-weight: $weight;
+		font-size: $size;
 	}
 }
 
-
-// transition animations
-
+// --- TRANSITIONS & ANIMATIONS ---
 @mixin sweep-to-right($color) {
-	transform: perspective(1px) translateZ(0);
 	position: relative;
-	-webkit-transition-property: color;
-	transition-property: color;
-	-webkit-transition-duration: 0.3s;
-	transition-duration: 0.3s;
+	transform: perspective(1px) translateZ(0);
+	transition: color 0.3s;
+
 	&:before {
-	  content: '';
-	  position: absolute;
-	  z-index: -1;
-	  top: 0;
-	  left: 0;
-	  right: 0;
-	  bottom: 0;
-	  background: $color;
-	  transform: scaleX(0);
-	  transform-origin: 0 50%;
-	  transition-property: transform;
-	  transition-duration: 0.3s;
-	  transition-timing-function: ease-out;
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: $color;
+		transform: scaleX(0);
+		transform-origin: 0 50%;
+		transition: transform 0.3s ease-out;
 	}
+
+	&:hover:before,
 	&:focus:before,
-	&:hover:before, 
 	&:active:before {
-	  transform: scaleX(1);
+		transform: scaleX(1);
 	}
 }
 
-@mixin hover-line-from-left ($color-of-hover, $height-of-line){
-	transform: translateZ(0);
-	box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-	-webkit-backface-visibility: hidden;
-	backface-visibility: hidden;
-	-moz-osx-font-smoothing: grayscale;
+@mixin hover-line-from-left($color-of-hover, $height-of-line) {
 	position: relative;
 	overflow: hidden;
+	box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+	transform: translateZ(0);
+	backface-visibility: hidden;
+
 	&:before {
-		content: "";
-	  	position: absolute;
-	  	z-index: 1;
-	  	left: 0;
-	  	right: 100%;
-	  	bottom: 0;
-	  	background: $color-of-hover;
-	  	height: $height-of-line;
-	  	-webkit-transition-property: right;
-	  	transition-property: right;
-	  	-webkit-transition-duration: 0.2s;
-	  	transition-duration: 0.2s;
-	  	-webkit-transition-timing-function: ease-out;
-	  	transition-timing-function: ease-out;
+		content: '';
+		position: absolute;
+		left: 0;
+		right: 100%;
+		bottom: 0;
+		background: $color-of-hover;
+		height: $height-of-line;
+		transition: right 0.2s ease-out;
 	}
+
 	&:hover:before,
 	&:focus:before,
 	&:active:before {
 		right: 0;
 	}
+}
+
+@mixin hide-on($from: null, $to: null) {
+	@if $from and $to {
+		@media (min-width: $from) and (max-width: $to) {
+			display: none !important;
+		}
+	} @else if $from {
+		@media (min-width: $from) {
+			display: none !important;
+		}
+	} @else if $to {
+		@media (max-width: $to) {
+			display: none !important;
+		}
+	}
+}
+
+@mixin wrapper($max-width: var(--w-content), $default-padding: var(--c-padding), $mobile-padding: 20px) {
+	max-width: $max-width;
+	margin: 0 auto;
+	padding: $default-padding;
+	box-sizing: border-box;
+	z-index: 2;
+
+	@include maxw(var.$w-mob-s) {
+		padding: $mobile-padding;
+	}
+
+	@include maxw(var.$w-mob) {
+		padding: $mobile-padding;
+	}
+
+	@include maxw(var.$w-tab) {
+		padding: $default-padding;
+	}
+
+	@include maxw(var.$w-laptop) {
+		padding: $default-padding;
+	}
+
+	@include minw(var.$w-min) {
+		width: 100%;
+		padding: $mobile-padding;
+	}
+
+	@include maxw(var.$w-max) {
+		width: 100%;
+		padding: $default-padding;
+	}
+}
+
+@mixin flex-justify($alignment: center, $align: center) {
+	display: flex;
+	justify-content: $alignment;
+	align-items: $align;
 }

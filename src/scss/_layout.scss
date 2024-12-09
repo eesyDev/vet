@@ -1,118 +1,146 @@
-@use "utilities/variables" as vars;
+@use "utilities/variables" as var;
+@use "utilities/mixins" as mix;
+
 .overflow {
 	overflow: hidden;
 }
-.hide, .hidden {
+
+.hidden {
 	display: none !important;
+
+	&--mob {
+		@include mix.hide-on($to: var.$w-mob);
+	}
+	&--tab {
+		@include mix.hide-on($from: var.$w-mob, $to: var.$w-tab);
+	}
+	&--desktop {
+		@include mix.hide-on($from: var.$w-tab);
+	}
 }
-.container {
+
+.section {
+	width: 100%;
 	max-width: 100%;
-	min-width: 320px;
+	min-width: var.$w-min;
 	margin: 0 auto;
-    position: relative;
-}
-section, .section, article, header, footer {
-	width: 100%;
-	clear: both;
 	position: relative;
-	z-index: 2;
-}
-.content, .wrap {
-	width: 100%;
-	max-width: var(--w-content); 
-	margin: 0 auto;
-	padding: 0 var(--doc-padding); 
-	position: relative; 
-	z-index: 2;
-	box-sizing: border-box;
+
+	&__ui {
+		padding: 40px 0;
+	}
+
+	&__wrapper {
+		@include mix.wrapper;
+	}
+
+	&__header-mt {
+		margin-top: var(--h-header);
+	}
+
+	h1, h2,
+	.t-h1_h2 {
+		font-weight: 600;
+		font-size: 52px;
+		line-height: 116%;
+		letter-spacing: -0.01em;
+	}
+
+	h3,
+	.t-h3 {
+		font-weight: 600;
+		font-size: 32px;
+		line-height: 112%;
+		letter-spacing: -0.01em;
+	}
+
+	h4,
+	.t-m {
+		font-weight: 600;
+		font-size: 22px;
+		line-height: 127%;
+	}
+
+	h5,
+	.t-s {
+		font-weight: 600;
+		font-size: 13px;
+		line-height: 140%;
+	}
+
+	p {
+		font-weight: 400;
+		font-size: 13px;
+		line-height: 120%;
+	}
+
+	ol, ul {
+		margin-left: 30px;
+		li {
+			font-weight: 600;
+			font-size: 13px;
+			line-height: 140%;
+		}
+	}
+
 }
 
 .flex {
 	display: flex;
-	flex-flow: row wrap;
+	flex-wrap: wrap;
 
 	&.row {
-		flex-flow: row wrap;
-
-		& > * {
-			margin-top: 0;
-			flex: 1 1 auto;
-		}
+		flex-direction: row;
 	}
-	&.col {
-		flex-flow: column wrap;
 
-		& > * {
-			margin-top: 0;
-			flex: 1 1 auto;
-		}
+	&.col {
+		flex-direction: column;
+	}
+
+	& > * {
+		flex: 1 1 auto;
+		margin-top: 0;
 	}
 }
 
-.img {
+.media {
 	display: flex;
 	overflow: hidden;
 	position: relative;
-	background: var(--bg-light-2);
-}
 
-.bg {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	z-index: 1;
-	background: var(--bg-light);
-	overflow: hidden;
-
-	img, video, iframe {
-		display: block;
+	&--bg {
+		background: var(--bg-light);
+		position: absolute;
+		top: 0;
+		left: 0;
 		width: 100%;
 		height: 100%;
-		object-fit: cover;
-		position: relative;
 		z-index: 1;
+
+		img, video, iframe {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+	}
+
+	&--img {
+		background: var(--bg-light-2);
 	}
 }
 
-
-// disable element on some resolutions by class
-.mob-only {
-	@media (min-width: calc( #{vars.$w_mob} + 1px) ) {
+.mobile-only {
+	@include mix.minw(var.$w-mob) {
 		display: none !important;
 	}
 }
-.tab-only {
-	@media (max-width: #{vars.$w_mob} ) {
-		display: none !important;
-	}
-	@media (min-width: calc( #{vars.$w_tab} + 1px) ) {
+.mobile-plus-tablet {
+	@include mix.minw(var.$w-tab) {
 		display: none !important;
 	}
 }
-.mob-and-tab-only {
-	@media (min-width: calc( #{vars.$w_tab} + 1px) ) {
-		display: none !important;
-	}
-}
-.tab-and-desktop-only {
-	@media (max-width: #{vars.$w_mob} ) {
-		display: none !important;
-	}
-}
-.desktop-only {
-	@media (max-width: #{vars.$w_tab} ) {
-		display: none !important;
-	}
-}
-.before-uhd-only {
-	@media (min-width: 1921px ) {
-		display: none !important;
-	}
-}
-.uhd-only {
-	@media (max-width: 1920px ) {
+.desktop-plus-tablet {
+	@include mix.maxw(var.$w-mob) {
 		display: none !important;
 	}
 }

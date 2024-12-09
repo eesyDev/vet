@@ -64,13 +64,56 @@ $.fn.isInViewport = function() {
             p.ELbottom_to_VPtop > 0;
 };
 
+$(function() {
 
-$(document).ready(function(){
-    
-    // opening and closing sandwich menu
-	// $('header .sandwich').on('click touch', function(){
-	// 	$('header').toggleClass('is-menu-open');
-	// }); 
+    // sandwich menu toggle
+    $('.sandwich').on('click touch', function () {
+        $(this).toggleClass('active');
+        $('.header__navigation').slideToggle();
+
+        let navigationWrapper = $(".header__wrapper--navigation");
+        if (navigationWrapper.css("padding-bottom") === "40px") {
+            navigationWrapper.removeAttr("style");
+        } else {
+            navigationWrapper.css({
+                "padding-bottom": "40px",
+            });
+        }
+
+    });
+
+
+    // header language link
+    $(".language-link--toggle").on("click", function (event) {
+        event.preventDefault();
+
+        let $link = $(this);
+        let $icon = $link.find(".language-link__icon");
+        let $dropdown = $(".language-link__dropdown");
+
+        $dropdown.toggle();
+        $icon.toggleClass("is-active");
+
+        let offset = $link.offset();
+        let linkHeight = $link.outerHeight();
+
+        $dropdown.css({
+            position: "fixed",
+            top: offset.top + linkHeight - $(window).scrollTop() + "px",
+            left: offset.left + "px",
+        });
+    });
+
+    $(document).on("click", function (event) {
+        let $target = $(event.target);
+        if (
+            !$target.closest(".language-link--toggle").length &&
+            !$target.closest(".language-link__dropdown").length
+        ) {
+            $(".language-link__dropdown").hide();
+            $(".language-link__icon").removeClass("is-active");
+        }
+    });
 
     // smooth scrolling to anchor
     $('a.smooth, nav > ul li a').on('click touch', function(){
@@ -131,7 +174,7 @@ $(document).ready(function(){
     //         type: 'bullets',
     //     },
     // });
-});	
+});
 
 
 $(window).on('load scroll', function(){

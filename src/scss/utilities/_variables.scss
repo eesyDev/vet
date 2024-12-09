@@ -1,53 +1,85 @@
-// PATH TO IMAGES
-$imgpath : "../img";
+// --- PATHS ---
+$imgpath: "../img";
 
-// responsive breackpoints
-$w_mob_s:  450px;
-$w_mob:    640px;
-$w_tab:    1200px;
-$w_laptop: 1500px;
+// --- BREAKPOINTS ---
+$w-mob-s:      450px;  // Small mobile
+$w-mob:        640px;  // Mobile
+$w-tab:        1200px; // Tablet
+$w-laptop:     1500px; // Laptop
+$w-min:        320px;  // Min screen
+$w-max:        2560px; // Max screen
 
-$w_min:    320px;
-$w_max:    2560px;
+// --- COLORS ---
+$white:                #fff;
+$black:                #282827;
+$gray:                 #747473;
+$gray-2:               #929292;
+$gray-3:               #d4d4d4;
+$line-light:           #f5f5f5;
+$bg-light:             #fafafa;
+$bg-light-2:           #f9f9f9;
+$yellow-main:          #f8ca02;
+$yellow-secondary:     #ffdf65;
+$orange:               #ffc165;
+$orange-2:             #f1711c;
+$green:                #56e264;
+$pro-grey-pro:         #a8a8a8;
+$pro-pro-lines:        #232322;
+$pro-lines-bg-pro:     #151515;
+$successful:           #49aa53;
+$violet:               #7165ff;
+$toner:                rgba(0, 0, 0, 0.25);
+$toner-160:            rgba(0, 0, 0, 0.16);
 
+// --- DOCUMENT SETTINGS ---
+$c-padding:         0;
+$c-font-size:    14px;
+$cols:             12;     // Grid columns
+$gutter:           20px;   // Grid gutter
+$column-width:     calc((100% - (#{$gutter} * (#{$cols} - 1))) / #{$cols});
 
+$w-content: 960px;
+$h-header: 48px;
+
+// CSS Variables
 html {
+    --c-padding: #{$c-padding};
+    --c-font-size: #{$c-font-size};
+    --cols: #{$cols};
+    --gutter: #{$gutter};
+    --column: #{$column-width};
+    --w-content: #{$w-content};
+    --h-header: #{$h-header};
 
-    --doc-padding: 40px;
-    --doc-font-size: 14px;
-
-    --cols      : 12;
-    --gutter    : 20px;
-    --column    : calc( ( 100% - ( var(--gutter) * (var(--cols) - 1) ) ) / 12 );
-    --w-content : calc(1420px + var(--doc-padding)*2);
-
-    --font-family: "Inter", sans-serif;
-
-    // colors of project
-
-    --white: #fff;
-    --black: #282827;
-    --gray: #747473;
-    --gray-2: #929292;
-    --gray-3: #d4d4d4;
-    --line-light: #f5f5f5;
-    --bg-light: #fafafa;
-    --bg-light-2: #f9f9f9;
-    --yellow-main: #f8ca02;
-    --yellow-secondary: #ffdf65;
-    --orange: #ffc165;
-    --orange-2: #f1711c;
-    --green: #56e264;
-    --toner: rgba(0, 0, 0, 0.25);
-    --toner-160: rgba(0, 0, 0, 0.16);
-    --pro-grey-pro: #a8a8a8;
-    --pro-pro-lines: #232322;
-    --pro-lines-bg-pro: #151515;
-    --successful: #49aa53;
+    // --- FONTS ---
+    --font-family: 'Inter-Regular', sans-serif;
+    --font-family-b: 'Inter-SemiBold', sans-serif;
+    --font-family-c: 'Caveat-Bold', sans-serif;
 
 
-    @media (max-width: $w_mob) {
-        --doc-padding: 20px;
+    // --- COLORS ---
+    --white: #{$white};
+    --black: #{$black};
+    --gray: #{$gray};
+    --gray-2: #{$gray-2};
+    --gray-3: #{$gray-3};
+    --line-light: #{$line-light};
+    --bg-light: #{$bg-light};
+    --bg-light-2: #{$bg-light-2};
+    --yellow-main: #{$yellow-main};
+    --yellow-secondary: #{$yellow-secondary};
+    --orange: #{$orange};
+    --orange-2: #{$orange-2};
+    --green: #{$green};
+    --pro-grey-pro: #{$pro-grey-pro};
+    --pro-pro-lines: #{$pro-pro-lines};
+    --pro-lines-bg-pro: #{$pro-lines-bg-pro};
+    --successful: #{$successful};
+    --violet: #{$violet};
+    --toner: #{$toner};
+    --toner-160: #{$toner-160};
+
+    @media (max-width: #{$w-mob}) {
+        --c-padding: 20px;
     }
-
 }

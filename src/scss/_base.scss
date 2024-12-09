@@ -1,9 +1,11 @@
+@use "utilities/fonts";
+
 body, html {
 	background: var(--white);
 	color: var(--black);
 
 	font-family: var(--font-family);
-	font-size: var(--doc-font-size);
+	font-size: var(--c-font-size);
 	line-height: 1.4;
 	font-weight: 400;
 
@@ -12,9 +14,13 @@ body, html {
 	-webkit-text-size-adjust: 100%;
 }
 body {
-	font-size: var(--doc-font-size);
+	font-size: var(--c-font-size);
+	letter-spacing: .45px;
 }
+
 * {
+	margin: 0;
+	padding: 0;
 	box-sizing: border-box;
 }
 h1,h2,h3,h4,h5,h6,p,ul,ol,li,blockquote,tt,mark,
@@ -25,4 +31,9 @@ form,table,a,.button {
 	&:last-child {
 		margin-bottom: 0 !important;
 	}
+}
+
+a {
+	text-decoration: none;
+	transition: all ease-in-out .2s;
 }
