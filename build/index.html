@@ -24,7 +24,7 @@
 				<li><a href="#">EN</a></li>
 				<li><a href="#">RU</a></li>
 			</ul>
-			<a href="#call" class="button button--white flex header__call">
+			<a href="#call" class="button button--white flex header__call open-form">
 				<span class="desktop-plus-tablet">Зателефонувати</span>
 				<svg class="ico-phone mobile-only">
 					<use xlink:href="/assets/img/sprite.svg#phone"></use>
@@ -201,17 +201,36 @@
 			</div>
 		</div>
 	</footer>
-	<div class="dialogs" style="display:none">
-		<div class="close-bg">
-		</div>
-		<div class="flex">
-			<div class="popup" id="popup_name">
+	<div class="dialogs">
+		<div class="close-bg"></div>
+		<div class="flex-popup">
+			<div class="popup" id="call">
 	            <svg class="close ico">
-	                <use xlink:href="assets/img/sprite.svg#ico-close"></use>
+	                <use xlink:href="/assets/img/sprite.svg#ico-close"></use>
 	            </svg>
 				<!-- popup content -->
+				<div class="popup__wrapper">
+					<div class="popup__content">
+						<h3 class="h3">Зворотнiй дзвiнок</h3>
+						<form method="POST" class="popup__form">
+							<label class="popup__item">
+								<input type="text" name="name[name]" placeholder="Iм’я *" data-required="true">
+							</label>
+							<label class="popup__item">
+								<input type="tel" name="phone[phone]" placeholder="Телефон *" data-required="true">
+							</label>
+							<div class="popup__item">
+								<p>Натискаючи на цю кнопку, Ви даєте згоду на обробку персональних даних та погоджуєтесь з нашою <a href="#policy">політикою конфіденційності</a></p>
+							</div>
+							<div class="popup__item align-right">
+								<button class="button button--yellow button--big">Вiдправити</button>
+							</div>
+							<input type="hidden" name="action" value="order_products_one_click">
+						</form>
+					</div>
+				</div>
 			</div>
-			<div class="popup text" id="policy">
+			<div class="popup text" id="policy" style="display:none">
 	            <svg class="close ico">
 	                <use xlink:href="assets/img/sprite.svg#ico-close"></use>
 	            </svg>
@@ -225,7 +244,7 @@
 		</div>
 		<div class="thanks-popup" id="thanks-popup">
 			<div class="close-bg"></div>
-			<div class="flex">
+			<div class="flex-popup">
 	            <div class="popup">
 	                <svg class="close ico">
 	                    <use xlink:href="assets/img/sprite.svg#ico-close"></use>

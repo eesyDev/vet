@@ -26,8 +26,13 @@
 	margin: 0 auto;
 	position: relative;
 
+	// UI Kit - Example
 	&__ui {
 		padding: 40px 0;
+
+		input {
+			margin-bottom: 20px;
+		}
 	}
 
 	&__wrapper {
@@ -37,52 +42,6 @@
 	&__header-mt {
 		margin-top: var(--h-header);
 	}
-
-	h1, h2,
-	.t-h1_h2 {
-		font-weight: 600;
-		font-size: 52px;
-		line-height: 116%;
-		letter-spacing: -0.01em;
-	}
-
-	h3,
-	.t-h3 {
-		font-weight: 600;
-		font-size: 32px;
-		line-height: 112%;
-		letter-spacing: -0.01em;
-	}
-
-	h4,
-	.t-m {
-		font-weight: 600;
-		font-size: 22px;
-		line-height: 127%;
-	}
-
-	h5,
-	.t-s {
-		font-weight: 600;
-		font-size: 13px;
-		line-height: 140%;
-	}
-
-	p {
-		font-weight: 400;
-		font-size: 13px;
-		line-height: 120%;
-	}
-
-	ol, ul {
-		margin-left: 30px;
-		li {
-			font-weight: 600;
-			font-size: 13px;
-			line-height: 140%;
-		}
-	}
-
 }
 
 .flex {
@@ -127,6 +86,10 @@
 	&--img {
 		background: var(--bg-light-2);
 	}
+}
+
+.align-right {
+	@include mix.flex-justify('flex-end');
 }
 
 .mobile-only {
