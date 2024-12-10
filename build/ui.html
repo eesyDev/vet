@@ -12,7 +12,7 @@
 
 	<header class="header">
 		<div class="header__wrapper"><!-- .header__wrapper--full -->
-			<a href="#" class="header__logo flex"><img src="/assets/img/logo-header.svg" alt="logo"></a>
+			<a href="#" class="header__logo flex"><img src="assets/img/logo-header.svg" alt="logo"></a>
 			<div class="sandwich flex">
 				<span></span>
 				<span></span>
@@ -30,7 +30,7 @@
 					<use xlink:href="/assets/img/sprite.svg#phone"></use>
 				</svg>
 			</a>
-			<a href="#catalog" class="button button--yellow flex header__catalog">Купити</a>
+			<a href="#policy" class="button button--yellow flex header__catalog open-form">Купити</a>
 			<a href="#" class="header__cart desktop-plus-tablet flex">
 				<svg class="ico-cart">
 					<use xlink:href="/assets/img/sprite.svg#ico-cart"></use>
@@ -274,24 +274,63 @@
 		<div class="close-bg"></div>
 		<div class="flex-popup">
 			<div class="popup" id="call">
-	            <svg class="close ico">
-	                <use xlink:href="/assets/img/sprite.svg#ico-close"></use>
-	            </svg>
 				<!-- popup content -->
 				<div class="popup__wrapper">
+					<div class="close">
+						<svg class="ico">
+							<use xlink:href="assets/img/sprite.svg#ico-close"></use>
+						</svg>
+					</div>
 					<div class="popup__content">
 						<h3 class="h3">Зворотнiй дзвiнок</h3>
 						<form method="POST" class="popup__form">
-							<label class="popup__item">
-								<input type="text" name="name[name]" placeholder="Iм’я *" data-required="true">
+							<label class="inp-wrp">
+								<input type="text" name="name[Iм’я]" placeholder="Iм’я *" data-required="true" data-error="Please fill this Iм’я">
 							</label>
-							<label class="popup__item">
-								<input type="tel" name="phone[phone]" placeholder="Телефон *" data-required="true">
+							<label class="inp-wrp">
+								<input type="tel" name="phone[Телефон]" placeholder="Телефон *" class="inp-phone" data-required="true" data-error="Please fill this Телефон">
 							</label>
-							<div class="popup__item">
-								<p>Натискаючи на цю кнопку, Ви даєте згоду на обробку персональних даних та погоджуєтесь з нашою <a href="#policy">політикою конфіденційності</a></p>
+							<label class="inp-wrp">
+								<input type="email" name="email[E-mail]" placeholder="E-mail *" class="inp-email" data-required="true" data-error="Please fill this E-mail">
+							</label>
+							<label class="inp-wrp">
+								<input type="text" name="text[Комментарий]" placeholder="Комментарий *" disabled data-error="Please fill this Комментарий">
+							</label>
+							<label class="inp-wrp">
+								<textarea name="text[Чому Say Meow]" placeholder="Чому Say Meow?" data-error="Please fill this text"></textarea>
+							</label>
+	
+							<div class="form-radio">
+								<label class="form-radio__item">
+									<input type="radio" name="delivery[Доставка]" value="Вiддiлення Нової Пошти" checked="">
+									<span>Вiддiлення Нової Пошти</span>
+								</label>
+								<label class="form-radio__item">
+									<input type="radio" name="delivery[Доставка]" value="Кур’ером">
+									<span>Кур’ером</span>
+								</label>
+								<label class="form-radio__item">
+									<input type="radio" name="payment[Оплата]" value="Онлайн">
+									<span>Онлайн</span>
+								</label>
+								<label class="form-radio__item">
+									<input type="radio" name="payment[Оплата]" value="Оплата після отримання" checked="">
+									<span>Оплата після отримання</span>
+								</label>
 							</div>
-							<div class="popup__item align-right">
+	
+							<div class="inp-wrp">
+								<p class="form-description">Натискаючи на цю кнопку, Ви даєте згоду на обробку персональних даних та погоджуєтесь з нашою <a href="#policy">політикою конфіденційності</a></p>
+							</div>
+	
+							<div class="inp-wrp">
+								<label class="flex row" for="check-policy">
+									<input id="check-policy" type="checkbox" name="checkpolicy[Не передзвонювати мені]" value="Не передзвонювати мені" data-required="true" data-error="Please fill this Не передзвонювати мені">
+									<span class="body-s-sb">Не передзвонювати мені для підтвердження замовлення</span>
+								</label>
+							</div>
+	
+							<div class="align-right">
 								<button class="button button--yellow button--big">Вiдправити</button>
 							</div>
 							<input type="hidden" name="action" value="order_products_one_click">
@@ -299,15 +338,18 @@
 					</div>
 				</div>
 			</div>
-			<div class="popup text" id="policy" style="display:none">
-	            <svg class="close ico">
-	                <use xlink:href="assets/img/sprite.svg#ico-close"></use>
-	            </svg>
-	            <div class="form-box">
-	                <div class="text-wrp">
-	                    <h3>Privacy policy</h3>
-	                    <p>Privacy policy text</p>
-	                </div>
+			<div class="popup" id="policy">
+				<div class="popup__wrapper">
+					<div class="close">
+						<svg class="ico">
+							<use xlink:href="assets/img/sprite.svg#ico-close"></use>
+						</svg>
+					</div>
+					<div class="popup__content">
+						<h3 class="h3">Зворотнiй дзвiнок</h3>
+		                    <p>Privacy policy text</p>
+		                </div>
+		            </div>
 	            </div>
 	        </div>
 		</div>
@@ -329,6 +371,7 @@
 	<!-- <script defer src="assets/lib/swiper/swiper-bundle.min.js"></script> -->
 	<script defer src="assets/lib/svgxuse.min.js"></script>
 	<!-- project's js -->
+	<script defer src="assets/lib/jquery.maskedinput.js"></script>
 	<script defer src="assets/js/main.js?v=1.0.0"></script>
 	<script defer src="assets/js/form.js?v=1.0.0"></script>
 	

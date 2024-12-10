@@ -46,7 +46,10 @@
 
 .flex {
 	display: flex;
-	flex-wrap: wrap;
+
+	&.wrap {
+		flex-wrap: wrap;
+	}
 
 	&.row {
 		flex-direction: row;

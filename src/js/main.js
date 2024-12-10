@@ -82,6 +82,7 @@ $(function() {
 
     });
 
+    $('.inp-phone').mask('+38 (999) 999-99-99');
 
     // header language link
     $(".language-link--toggle").on("click", function (event) {

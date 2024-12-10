@@ -46,28 +46,28 @@
 }
 
 // --- PLACEHOLDER STYLES ---
-@mixin placeholder($color, $weight: normal, $size: inherit) {
+@mixin placeholder($color, $font, $weight, $size){
 	&::-webkit-input-placeholder {
 		color: $color;
-		font-family: var(--font-family);
+		font-family: $font;
 		font-weight: $weight;
 		font-size: $size;
 	}
 	&:-moz-placeholder {
 		color: $color;
-		font-family: var(--font-family);
+		font-family: $font;
 		font-weight: $weight;
 		font-size: $size;
 	}
 	&::-moz-placeholder {
 		color: $color;
-		font-family: var(--font-family);
+		font-family: $font;
 		font-weight: $weight;
 		font-size: $size;
 	}
 	&:-ms-input-placeholder {
 		color: $color;
-		font-family: var(--font-family);
+		font-family: $font;
 		font-weight: $weight;
 		font-size: $size;
 	}

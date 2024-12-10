@@ -1,90 +1,78 @@
-$(document).ready(function(){
-    $("form").submit(function() {
-        var form = $(this);
-        // var buttoncontent = form.find('button').html();
-        // form.find('button').text('Sending...');
-        var msg = form.serialize();
-        var emailaprove = 0;
-        form.find('input[data-required], input[required]').closest('.inp-wrp').append('<div class="error">Please fill this field</div>');
-        function emailtest() {
-            var ouremail = form.find('input.inp-email');
-            if (ouremail.length) {
-                if(ouremail.val() != '') {
-                var pattern = /^([a-z0-9_\.-])+@[a-z0-9-]+\.([a-z]{2,4}\.)?[a-z]{2,4}$/i;
-                if(pattern.test(ouremail.val())){
-                    emailaprove = 1;
-                } else {
-                    ouremail.addClass('required');
-                    emailaprove = 0;
+(function ($) {
+    $("form").on('submit', function () {
+        let form = $(this),
+            emailApprove = 0;
+
+        // Удаляем предыдущие ошибки
+        form.find('.error').remove();
+        form.find('.required').removeClass('required');
+
+        // Проверка полей
+        form.find('input[data-required], textarea[data-required]').each(function () {
+            let errorText = $(this).attr('data-error') || 'This field is required';
+
+            if ($(this).is(':checkbox')) {
+                // Проверка чекбоксов
+                if (!$(this).is(':checked')) {
+                    $(this).closest('.inp-wrp').append(`<div class="error">${errorText}</div>`);
+                    $(this).addClass('required');
                 }
-                } else {
-                    ouremail.addClass('required');
-                    emailaprove = 0;
+            } else {
+                // Проверка текстовых полей и textarea
+                if (!$(this).val().trim()) {
+                    $(this).closest('.inp-wrp').append(`<div class="error">${errorText}</div>`);
+                    $(this).addClass('required');
                 }
-            }else{
-                emailaprove = 1;
-            }; 
-        };
-        emailtest();
-        var faults = form.find('input').filter(function() {
-        return $(this).data('required') && $(this).val() === "";
-        }).addClass('required');
-        if ((faults.length) || (emailaprove < 1)) {
-            // form.find('button').html(buttoncontent);
+            }
+        });
+
+        // Проверка email (если присутствует)
+        form.find('input.inp-email').each(function () {
+            let emailInput = $(this),
+                pattern = /^([a-z0-9_\.-])+@[a-z0-9-]+\.([a-z]{2,4}\.)?[a-z]{2,4}$/i;
+            if (emailInput.val().trim() && !pattern.test(emailInput.val())) {
+                emailInput.closest('.inp-wrp').append(`<div class="error">Invalid email address</div>`);
+                emailInput.addClass('required');
+                emailApprove = 0;
+            } else {
+                emailApprove = 1;
+            }
+        });
+
+        // Если есть ошибки, отменяем отправку
+        if (form.find('.required').length || emailApprove === 0) {
             return false;
         }
-        else {
-            try {  
-                var formdata = false;
-                if (window.FormData){
-                    formdata = new FormData(form[0]); 
-                }
-            } catch (err) { }
-            $('input[type=file]',form).each(function() {
-                var files = $(this).prop('files');
-                if ( files != undefined && files.length <= 0 ) {
-                    formdata.delete($(this).attr('name'));              
-                }
-            });
-            $.ajax({
-                type: "POST",
-                url: "/mailer/mail.php",
-                data: msg,
-                data: formdata ? formdata : msg,
-                cache: false,
-                contentType: false,
-                processData: false,
-                success: function(data) {
-                    // form.find('button').html(buttoncontent);
-                    $('#thanks-popup').show();
-                    $(".dialogs").show();
-                    $(".dialogs").animate({"opacity":1}, 200, function() {
-                        $('#thanks-popup').addClass('active');
-                    }); 
-                    // ym(XXXXXXXX,'reachGoal','order');
-                    // gtag('event', 'sendform', {
-                    //   'event_category': 'form',
-                    //   'event_action': 'order',
-                    // });
-                    // fbq('track', 'Lead');
-                    form[0].reset();
-                },
-                error:  function(data) {
-                    alert('Error');
-                    // form.find('button').html(buttoncontent);
-                }
-            });
-        }
-        return false;
+
+        // Ваш AJAX-запрос
+        $.ajax({
+            type: "POST",
+            url: "/mailer/mail.php",
+            data: form.serialize(),
+            cache: false,
+            success: function () {
+                $('#thanks-popup').show();
+                form[0].reset(); // Сбрасываем форму
+            },
+            error: function () {
+                alert('Error occurred while submitting the form.');
+            }
+        });
+
+        return false; // Предотвращаем стандартную отправку формы
     });
-    $('input, textarea').on('click focus', function(){
+
+    // Удаление ошибок при фокусе/изменении
+    $('input, textarea').on('click focus change', function () {
         $(this).removeClass('required');
+        $(this).closest('.inp-wrp').find('.error').remove();
     });
-    $('input[type="checkbox"][name="checkpolicy"]').on('change', function(){
+
+    // Удаление ошибки для чекбокса при изменении
+    $('input[type="checkbox"][data-required]').on('change', function () {
         if ($(this).is(':checked')) {
-            $(this).closest('form').find('button').removeAttr('disabled');
-        } else {
-            $(this).closest('form').find('button').attr('disabled','');
+            $(this).removeClass('required');
+            $(this).closest('label').find('.error').remove();
         }
     });
-});
+})(jQuery);
