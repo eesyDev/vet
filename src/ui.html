@@ -1,92 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
 //= utilities/head.html
+<style>
+	.uikit {
+        padding: 40px 0;
+	}
+    .uikit .inputs input {
+        margin-top: 5px;
+        margin-bottom: 20px;
+        padding: 5px;
+        border: 1px solid var(--gray-3);
+        width: auto;
+    }
+</style>
 <body>
 
 	//= sections/header.html
 
 	<section class="section section__header-mt">
 		<div class="section__wrapper">
-			<div class="section__ui">
+			<div class="uikit">
 
 				<h1 class="h1h2" style="text-align: center">Типографика</h1>
 				<hr><br>
+				<div class="inputs">
 
-				<h2 class="h1h2">Заголовок .h1h2</h2>
-				<label>
-					<input type="text" value=".h1h2" onclick="this.select()">
-				</label>
+					<h2 class="h1h2">Заголовок (header)</h2>
+					<label>
+						<input type="text" value="h2.h1h2{текст}" onclick="copyToClipboard(this)">
+					</label>
 
-				<h3 class="h3">Заголовок .h3</h3>
-				<label>
-					<input type="text" value=".h3" onclick="this.select()">
-				</label>
+					<h3 class="h3">Заголовок (header)</h3>
+					<label>
+						<input type="text" value="h3.h3{текст}" onclick="copyToClipboard(this)">
+					</label>
 
-				<p class="body-s-sb">Текст .body-s-sb</p>
-				<label>
-					<input type="text" value=".body-s-sb" onclick="this.select()">
-				</label>
+					<p class="body-s-sb">Параграф (paragraph)</p>
+					<label>
+						<input type="text" value="p.body-s-sb{текст}" onclick="copyToClipboard(this)">
+					</label>
 
-				<p class="body-s-reg">Текст .body-s-reg</p>
-				<label>
-					<input type="text" value=".body-s-reg" onclick="this.select()">
-				</label>
+					<p class="body-s-reg">Параграф (paragraph)</p>
+					<label>
+						<input type="text" value="p.body-s-reg{текст}" onclick="copyToClipboard(this)">
+					</label>
 
-				<p class="body-m-sb">Текст .body-m-sb</p>
-				<label>
-					<input type="text" value=".body-m-sb" onclick="this.select()">
-				</label>
+					<p class="body-m-sb">Параграф (paragraph)</p>
+					<label>
+						<input type="text" value="p.body-m-sb{текст}" onclick="copyToClipboard(this)">
+					</label>
 
-				<p class="body-l-sb">Текст .body-l-sb</p>
-				<label>
-					<input type="text" value=".body-l-sb" onclick="this.select()">
-				</label>
+					<p class="body-l-sb">Параграф (paragraph)</p>
+					<label>
+						<input type="text" value="p.body-l-sb{текст}" onclick="copyToClipboard(this)">
+					</label>
 
-				<span class="cta-s">Текст .cta-s</span>
-				<label>
-					<input type="text" value=".cta-s" onclick="this.select()">
-				</label>
+					<span class="cta-s">Текст (text)</span>
+					<label>
+						<input type="text" value="span.cta-s{текст}" onclick="copyToClipboard(this)">
+					</label>
 
-				<a href="#" class="cta-s-link">Текст .cta-s-link</a>
-				<label>
-					<input type="text" value=".cta-s-link" onclick="this.select()">
-				</label>
+					<a href="#" class="cta-s-link">Ссылка (link)</a>
+					<label>
+						<input type="text" value="a.cta-s-link[href='#']{текст}" onclick="copyToClipboard(this)">
+					</label>
 
-				<p class="sta-m">Текст .sta-m</p>
-				<label>
-					<input type="text" value=".sta-m" onclick="this.select()">
-				</label>
+					<p class="sta-m">Параграф (paragraph)</p>
+					<label>
+						<input type="text" value="p.sta-m{текст}" onclick="copyToClipboard(this)">
+					</label>
 
-				<a href="#" class="cta-m-link">Текст .cta-m-link</a>
-				<label>
-					<input type="text" value=".cta-m-link" onclick="this.select()">
-				</label>
+					<a href="#" class="cta-m-link">Ссылка (link)</a>
+					<label>
+						<input type="text" value="a.cta-m-link[href='#']{текст}" onclick="copyToClipboard(this)">
+					</label>
 
-				<span class="textaccedent">Текст .textaccedent</span>
-				<label>
-					<input type="text" value=".textaccedent" onclick="this.select()">
-				</label>
+					<span class="textaccedent">Акцент (accent)</span>
+					<label>
+						<input type="text" value="span.textaccedent{текст}" onclick="copyToClipboard(this)">
+					</label>
 
-				<ul class="list">
-					<li>ul.li.list текст 1</li>
-					<li>ul.li.list текст 2</li>
-					<li>ul.li.list текст 3</li>
-				</ul>
-				<label>
-					<input type="text" value=".list" onclick="this.select()">
-				</label>
+					<ul class="list">
+						<li>Элемент списка 1</li>
+						<li>Элемент списка 2</li>
+						<li>Элемент списка 3</li>
+					</ul>
+					<label>
+						<input type="text" value="ul.list>(li{Элемент $})*3" onclick="copyToClipboard(this)">
+					</label>
 
-				<ol class="list">
-					<li>ol.li.list текст 1</li>
-					<li>ol.li.list текст 2</li>
-					<li>ol.li.list текст 3</li>
-				</ol>
-				<label>
-					<input type="text" value=".list" onclick="this.select()">
-				</label>
+					<ol class="list">
+						<li>Элемент списка 1</li>
+						<li>Элемент списка 2</li>
+						<li>Элемент списка 3</li>
+					</ol>
 
-				<h2 class="h1h2" style="text-align: center">Форма</h2>
-				<hr><br>
+					<label>
+						<input type="text" value="ol.list>(li{Элемент $})*3" onclick="copyToClipboard(this)">
+					</label>
+
+					<h2 class="h1h2" style="text-align: center">Форма</h2>
+					<hr><br>
+				</div>
 
 				<form method="POST" class="popup__form">
 					<label class="inp-wrp">
@@ -105,9 +120,40 @@
 						<textarea name="text[Чому Say Meow]" placeholder="Чому Say Meow?" data-error="Please fill this text"></textarea>
 					</label>
 
+					<div class="select-wrapper">
+						<label>
+							<select class="select">
+								<option value="1">№ Відділення Нової Пошти *</option>
+								<option value="2">№ Відділення Нової Пошти 2</option>
+								<option value="3">№ Відділення Нової Пошти 3</option>
+							</select>
+						</label>
+					</div>
+
+					<div class="inp-wrp form-switch">
+						<input type="checkbox" name="switch[0]" id="switch-toggle" class="form-switch__input">
+						<label for="switch-toggle" class="form-switch__label">
+							<span class="switch__slider"></span>
+						</label>
+					</div>
+
+					<div class="inp-wrp form-switch">
+						<input type="checkbox" name="switch[1]" id="switch-toggle-2" class="form-switch__input" checked>
+						<label for="switch-toggle-2" class="form-switch__label">
+							<span class="switch__slider"></span>
+						</label>
+					</div>
+
+					<div class="inp-wrp form-switch">
+						<input type="checkbox" name="switch[3]" id="switch-toggle-3" class="form-switch__input" disabled>
+						<label for="switch-toggle-3" class="form-switch__label">
+							<span class="switch__slider"></span>
+						</label>
+					</div>
+
 					<div class="form-radio">
 						<label class="form-radio__item">
-							<input type="radio" name="delivery[Доставка]" value="Вiддiлення Нової Пошти" checked="">
+							<input type="radio" name="delivery[Доставка]" value="Вiддiлення Нової Пошти" checked>
 							<span>Вiддiлення Нової Пошти</span>
 						</label>
 						<label class="form-radio__item">
@@ -119,8 +165,12 @@
 							<span>Онлайн</span>
 						</label>
 						<label class="form-radio__item">
-							<input type="radio" name="payment[Оплата]" value="Оплата після отримання" checked="">
+							<input type="radio" name="payment[Оплата]" value="Оплата після отримання" checked>
 							<span>Оплата після отримання</span>
+						</label>
+						<label class="form-radio__item">
+							<input type="radio" name="disabled[true]" value="" disabled>
+							<span>disabled</span>
 						</label>
 					</div>
 
@@ -129,8 +179,8 @@
 					</div>
 
 					<div class="inp-wrp">
-						<label class="flex row" for="check-policy">
-							<input id="check-policy" type="checkbox" name="checkpolicy[Не передзвонювати мені]" value="Не передзвонювати мені" data-required="true" data-error="Please fill this Не передзвонювати мені">
+						<label class="flex row" for="check-policy-ui">
+							<input id="check-policy-ui" type="checkbox" name="checkpolicy[Не передзвонювати мені]" value="Не передзвонювати мені" data-required="true" data-error="Please fill this Не передзвонювати мені">
 							<span class="body-s-sb">Не передзвонювати мені для підтвердження замовлення</span>
 						</label>
 					</div>
@@ -140,6 +190,28 @@
 					</div>
 					<input type="hidden" name="action" value="order_products_one_click">
 				</form>
+
+				<h2 class="h1h2" style="text-align: center">Теги</h2>
+				<hr><br>
+
+				<div class="inputs">
+					<span class="tag tag--discount">-30%</span>
+					<input type="text" value="span.tag.tag--discount{текст}" onclick="copyToClipboard(this)">
+					<br>
+
+					<span class="tag tag--gift">Мышка у подарунок</span>
+					<input type="text" value="span.tag.tag--gift{текст}" onclick="copyToClipboard(this)">
+					<br>
+
+					<span class="tag tag--soon">Скоро</span>
+					<input type="text" value="span.tag.tag--soon{текст}" onclick="copyToClipboard(this)">
+					<br>
+
+					<span class="tag tag--new">Новинка</span>
+					<input type="text" value="span.tag.tag--new{текст}" onclick="copyToClipboard(this)">
+
+					<br><hr>
+				</div>
 			</div>
 		</div>
 	</section>
@@ -148,5 +220,11 @@
 	//= sections/dialogs.html
 	//= utilities/scripts.html
 
+	<script>
+        function copyToClipboard(input) {
+            input.select();
+            navigator.clipboard.writeText(input.value)
+        }
+	</script>
 </body>
 </html>

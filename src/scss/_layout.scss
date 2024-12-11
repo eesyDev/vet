@@ -26,15 +26,6 @@
 	margin: 0 auto;
 	position: relative;
 
-	// UI Kit - Example
-	&__ui {
-		padding: 40px 0;
-
-		input {
-			margin-bottom: 20px;
-		}
-	}
-
 	&__wrapper {
 		@include mix.wrapper;
 	}

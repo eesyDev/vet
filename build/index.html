@@ -221,44 +221,9 @@
 							<label class="inp-wrp">
 								<input type="tel" name="phone[Телефон]" placeholder="Телефон *" class="inp-phone" data-required="true" data-error="Please fill this Телефон">
 							</label>
-							<label class="inp-wrp">
-								<input type="email" name="email[E-mail]" placeholder="E-mail *" class="inp-email" data-required="true" data-error="Please fill this E-mail">
-							</label>
-							<label class="inp-wrp">
-								<input type="text" name="text[Комментарий]" placeholder="Комментарий *" disabled data-error="Please fill this Комментарий">
-							</label>
-							<label class="inp-wrp">
-								<textarea name="text[Чому Say Meow]" placeholder="Чому Say Meow?" data-error="Please fill this text"></textarea>
-							</label>
-	
-							<div class="form-radio">
-								<label class="form-radio__item">
-									<input type="radio" name="delivery[Доставка]" value="Вiддiлення Нової Пошти" checked="">
-									<span>Вiддiлення Нової Пошти</span>
-								</label>
-								<label class="form-radio__item">
-									<input type="radio" name="delivery[Доставка]" value="Кур’ером">
-									<span>Кур’ером</span>
-								</label>
-								<label class="form-radio__item">
-									<input type="radio" name="payment[Оплата]" value="Онлайн">
-									<span>Онлайн</span>
-								</label>
-								<label class="form-radio__item">
-									<input type="radio" name="payment[Оплата]" value="Оплата після отримання" checked="">
-									<span>Оплата після отримання</span>
-								</label>
-							</div>
 	
 							<div class="inp-wrp">
 								<p class="form-description">Натискаючи на цю кнопку, Ви даєте згоду на обробку персональних даних та погоджуєтесь з нашою <a href="#policy">політикою конфіденційності</a></p>
-							</div>
-	
-							<div class="inp-wrp">
-								<label class="flex row" for="check-policy">
-									<input id="check-policy" type="checkbox" name="checkpolicy[Не передзвонювати мені]" value="Не передзвонювати мені" data-required="true" data-error="Please fill this Не передзвонювати мені">
-									<span class="body-s-sb">Не передзвонювати мені для підтвердження замовлення</span>
-								</label>
 							</div>
 	
 							<div class="align-right">
@@ -284,16 +249,15 @@
 	            </div>
 	        </div>
 		</div>
-		<div class="thanks-popup" id="thanks-popup" style="display: none">
-			<div class="close-bg"></div>
-			<div class="flex-popup">
-	            <div class="popup">
-	                <svg class="close ico">
-	                    <use xlink:href="assets/img/sprite.svg#ico-close"></use>
-	                </svg>
-					<h3>Thanks for request!</h3>
-	                <p>We'll contaact you soon</p>
-				</div>
+	<div class="thanks-popup" id="thanks-popup" style="display: none">
+		<div class="close-bg"></div>
+		<div class="flex-popup">
+	        <div class="popup">
+	            <svg class="close ico">
+	                <use xlink:href="assets/img/sprite.svg#ico-close"></use>
+	            </svg>
+				<h3>Thanks for request!</h3>
+	            <p>We'll contaact you soon</p>
 			</div>
 		</div>
 	</div>
