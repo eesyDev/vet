@@ -2,7 +2,7 @@
 @use "../utilities/mixins" as mix;
 .footer {
 	width: 100%;
-	padding: 64px 0 12px;
+	padding: 56px 0 12px;
 	background: #0f0f0f;
 
 	&__wrapper {
@@ -28,10 +28,12 @@
 			line-height: 129%;
 			background: linear-gradient(90deg, var(--gray) 0%, var(--orange) 100%);
 			background-clip: text;
+			letter-spacing: .14px;
 			-webkit-background-clip: text;
 			-webkit-text-fill-color: transparent;
 		}
 		&__button {
+			letter-spacing: .8px;
 			.button {
 				@include mix.maxw(var.$w-mob) {
 					font-size: 15px;
@@ -82,11 +84,11 @@
 
 		span {
 			@include mix.flex-justify;
-			margin: 0 16px;
-			width: 13.29px;
+			margin: 0 10px;
+			width: 15px;
 			height: 1px;
 			background-color: var(--pro-pro-lines);
-			transform: rotate(120deg);
+			transform: rotate(107deg);
 		}
 	}
 

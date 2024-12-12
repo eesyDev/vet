@@ -1,0 +1,25 @@
+.delivery {
+	margin-top: 25px;
+	width: 640px;
+
+	h2 {
+		padding-bottom: 40px;
+		padding-top: 40px;
+
+	}
+
+	.list {
+		margin-top: 16px;
+		margin-bottom: 40px;
+
+		li {
+			color: var(--gray);
+
+			strong, b {
+				font-weight: 600;
+				line-height: 140%;
+				color: var(--black);
+			}
+		}
+	}
+}

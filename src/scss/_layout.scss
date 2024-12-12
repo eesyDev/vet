@@ -26,13 +26,14 @@
 	margin: 0 auto;
 	position: relative;
 
+	&--first {
+		padding-top: calc(52px + var(--h-header));
+	}
+
 	&__wrapper {
 		@include mix.wrapper;
 	}
 
-	&__header-mt {
-		margin-top: var(--h-header);
-	}
 }
 
 .flex {

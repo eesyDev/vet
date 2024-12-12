@@ -133,7 +133,7 @@
 			list-style: none;
 
 			li {
-				margin-bottom: 8px;
+				margin-bottom: 6px;
 				a {
 					@include mix.flex-justify('flex-start', 'center');
 					color: var(--white);
@@ -298,11 +298,12 @@ h3,
 }
 
 .list {
-	margin-left: 30px;
+	margin-left: 22px;
 	li {
 		font-size: var(--desctop-list-font-size);
 		line-height: var(--desctop-list-line-height);
 		font-weight: var(--desctop-list-font-weight);
+		margin-bottom: 9px;
 	}
 }
 
@@ -568,4 +569,16 @@ textarea {
 		border-color: rgba(212, 212, 212, 0.32);
 		resize: none;
 	}
+}
+
+.title {
+	text-align: center;
+
+	&__description {
+
+	}
+}
+
+.spacer {
+	@include mix.spacer(40, 120);
 }
