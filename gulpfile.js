@@ -108,7 +108,7 @@ gulp.task('style:build', async function () {
 });
 
 gulp.task('image:build', async function () {
-    return gulp.src(path.src.img)
+    return gulp.src(path.src.img, { encoding: false })
         //.pipe(debug({ title: 'Found image:' }))
         .pipe(imagemin([
             mozjpeg({ quality: 75, progressive: true }),
