@@ -1,0 +1,14 @@
+.main-description {
+	padding-top: 120px;
+
+	&__content {
+		color: var(--gray);
+		text-align: left;
+		font-size: 10px;
+		line-height: 120%;
+		font-weight: 400;
+		height: auto;
+		max-height: 420px;
+		overflow-x: auto;
+	}
+}

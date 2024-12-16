@@ -7,8 +7,8 @@
 	width: 100%;
 	height: var(--h-header);
 	backdrop-filter: blur(20px);
-	//background: rgba(24, 24, 24, 0.85);
-	background: #181818;
+	background: rgba(24, 24, 24, 0.85);
+	//background: #181818;
 	z-index: 3;
 
 	&__wrapper {
@@ -130,20 +130,24 @@
 
 		&--count {
 			@include mix.flex-justify;
+			text-wrap-mode: nowrap;
 			position: absolute;
 			top: 0;
 			right: 0;
-			padding-top: .6px;
+			padding: 1px 2px 1px 3px;
 			min-width: 13px;
+			height: 13px;
 			max-height: 13px;
-			font-weight: 700;
-			font-size: 9px;
-			font-family: var(--font-family-b);
-			border-radius: 100%;
-			color: var(--black);
 			background-color: var(--yellow-secondary);
+			border-radius: 50%;
 			z-index: 2;
 
+			.count {
+				font-weight: 700;
+				font-size: 8px;
+				color: var(--black);
+				font-family: var(--font-family-b);
+			}
 		}
 	}
 

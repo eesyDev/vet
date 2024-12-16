@@ -23,18 +23,30 @@
 		opacity: 0.25;
 	}
 
-	&--white {
+	&--white, &--black {
 		border-width: 1px;
 		border-style: solid;
+		background: rgba(0, 0, 0, 0);
+	}
+
+	&--white {
 		border-color: var(--white);
 		color: var(--white);
-		background: rgba(0, 0, 0, 0);
 
 		&:hover {
 			color: var(--yellow-main);
 			border: 1px solid var(--yellow-main);
 		}
+	}
 
+	&--black {
+		border-color: var(--black);
+		color: var(--black);
+
+		&:hover {
+			color: var(--yellow-main);
+			border: 1px solid var(--yellow-main);
+		}
 	}
 
 	&--yellow {
@@ -48,7 +60,7 @@
 
 	&--big {
 		border-radius: 24px;
-		padding: 15px 24px 15px 24px;
+		padding: 15px 24px;
 		@extend .sta-m;
 	}
 }

@@ -22,12 +22,12 @@
     "gulp-svg-sprite": "^1.5.0",
     "gulp-svgmin": "^4.0.1",
     "gulp-uglify": "^3.0.2",
+    "imagemin-mozjpeg": "^10.0.0",
+    "imagemin-optipng": "^8.0.0",
     "imagemin-pngquant": "^10.0.0",
     "sass": "^1.82.0"
   },
   "dependencies": {
-    "imagemin-mozjpeg": "^10.0.0",
-    "imagemin-optipng": "^8.0.0",
     "node-html-parser": "^6.1.13"
   },
   "type": "module"
