@@ -587,7 +587,6 @@ textarea {
 .dropdown {
 	position: absolute;
 	top: calc(100% + 8px);
-	right: 0;
 	width: max-content;
 	padding: 24px;
 	background: var(--black);
@@ -599,12 +598,6 @@ textarea {
 	transform: translateY(-10px);
 	transition: all ease-in-out 0.2s;
 	cursor: default;
-
-	&__wrapper {
-		position: relative;
-		width: auto;
-		height: auto;
-	}
 
 	&.active {
 		opacity: 1;
@@ -649,5 +642,15 @@ textarea {
 				background-color: #FFCB05;
 			}
 		}
+	}
+
+	&--left {
+		right: auto;
+		left: 0;
+	}
+
+	&--right {
+		right: 0;
+		left: auto;
 	}
 }
