@@ -1,6 +1,6 @@
 @use "../utilities/mixins" as mix;
 .catalog {
-
+	$this: &;
 	&__header {
 		@include mix.flex-justify(space-between, center);
 		padding-bottom: 16px;
@@ -127,20 +127,24 @@
 			padding-top: 16px;
 			gap: 6px;
 
+			.catalog__item {
+				height: 316px;
+			}
+
 			&--two {
 				grid-template-columns: repeat(2, 1fr);
+				gap: 8px;
+
+				.catalog__item {
+					height: 476px;
+				}
 			}
 		}
 	}
 
 	&__item {
+		position: relative;
 		width: 100%;
-		height: 316px;
-		background: var(--bg-light, #f9f9f9);
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		text-align: center;
-		font-size: 16px;
+		background: var(--bg-light);
 	}
 }

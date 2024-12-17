@@ -214,6 +214,20 @@ $(function() {
 
     viewGridSwitcher('.catalog-view a');
 
+    $(document).on('click', '.mini-card__option--link', function (e) {
+        e.preventDefault();
+        const $this = $(this);
+        const optionValue = $this.data('mini-card-option');
+        const $card = $this.closest('.mini-card');
+        const $images = $card.find('.mini-card-img');
+        $card.find('.mini-card__option--link').removeClass('active');
+        $this.addClass('active');
+
+        $images.removeClass('active').hide();
+        $card.find(`.mini-card-img.img-${optionValue}`).addClass('active').fadeIn();
+    });
+
+
     // all sliders
     // const swiper = new Swiper('.swiper', {
     //     slidesPerView: 'auto',

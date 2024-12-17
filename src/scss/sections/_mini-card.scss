@@ -1,0 +1,108 @@
+.mini-card {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	padding: 24px;
+
+	&__tag {
+		position: absolute;
+		top: 24px;
+		left: 24px;
+		display: flex;
+		gap: 4px;
+	}
+
+	&__img {
+		position: relative;
+		flex-grow: 1;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+
+		img {
+			max-width: 100%;
+			max-height: 100%;
+			object-fit: contain;
+		}
+	}
+
+	&__title {
+		display: flex;
+		white-space: nowrap;
+		align-items: center;
+		justify-content: flex-start;
+		color: var(--dark);
+		width: 100%;
+	}
+
+	&__price {
+		display: flex;
+		white-space: nowrap;
+		align-items: center;
+		justify-content: flex-start;
+		margin-top: 4px;
+		width: 100%;
+		color: var(--gray);
+	}
+
+	&__option {
+		position: absolute;
+		right: 24px;
+		bottom: 22px;
+		display: flex;
+		gap: 6px;
+		$this: &;
+
+		&--link	{
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			align-content: center;
+			width: 20px;
+			height: 20px;
+			border-radius: 50%;
+			border-style: solid;
+			border-width: 1px;
+			border-color: transparent;
+
+			&.active {
+				border-color: var(--yellow-secondary);
+			}
+
+			span {
+				display: flex;
+				width: 16px;
+				height: 16px;
+				border-radius: 50%;
+
+				&#{$this}--white {
+					background-color: var(--white);
+					box-shadow: inset 0 0 4px 0 rgba(0, 0, 0, 0.15);
+				}
+
+				&#{$this}--black {
+					background-color: var(--black);
+				}
+			}
+
+			&:hover {
+				span {
+					&#{$this}--white {
+
+					}
+
+					&#{$this}--black {
+
+					}
+				}
+			}
+		}
+	}
+}
