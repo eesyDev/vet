@@ -114,7 +114,7 @@
 	flex-direction: row;
 	width: 100%;
 	gap: 16px;
-	margin-top: 32px;
+	padding-top: 32px;
 
 	&__item {
 		@include mix.flex-justify('flex-start', 'flex-start');
@@ -135,6 +135,10 @@
 				a {
 					@include mix.flex-justify('flex-start', 'center');
 					color: var(--white);
+
+					.tag {
+						margin-left: 5px;
+					}
 
 					&:hover {
 						color: var(--yellow-secondary);

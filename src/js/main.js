@@ -192,20 +192,16 @@ $(function() {
 
     // Универсальный переключатель с поддержкой любых количеств видов сеток
     function viewGridSwitcher(btnSelector) {
-
         const $btnSelector = $(btnSelector);
         $btnSelector.on('click', function (e) {
             e.preventDefault();
-            const $this = $(this);
-            const view = $this.data('view');
-
+            const view = $(this).data('view');
             $btnSelector.removeClass('active');
-            $this.addClass('active');
+            $(this).addClass('active');
             const $wrapper = $('.view__wrapper');
             $wrapper.removeClass(function (index, className) {
                 return (className.match(/view__wrapper--\S+/g) || []).join(' ');
             });
-
             if (view && view !== 'default') {
                 $wrapper.addClass(`view__wrapper--${view}`);
             }
@@ -216,17 +212,15 @@ $(function() {
 
     $(document).on('click', '.mini-card__option--link', function (e) {
         e.preventDefault();
-        const $this = $(this);
-        const optionValue = $this.data('mini-card-option');
-        const $card = $this.closest('.mini-card');
+        const optionValue = $(this).data('mini-card-option');
+        if (!optionValue) return;
+        const $card = $(this).closest('.mini-card');
         const $images = $card.find('.mini-card-img');
         $card.find('.mini-card__option--link').removeClass('active');
-        $this.addClass('active');
-
+        $(this).addClass('active');
         $images.removeClass('active').hide();
         $card.find(`.mini-card-img.img-${optionValue}`).addClass('active').fadeIn();
     });
-
 
     // all sliders
     // const swiper = new Swiper('.swiper', {
