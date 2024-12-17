@@ -1,0 +1,146 @@
+@use "../utilities/mixins" as mix;
+.catalog {
+
+	&__header {
+		@include mix.flex-justify(space-between, center);
+		padding-bottom: 16px;
+		border-bottom-style: solid;
+		border-bottom-width: 1px;
+		border-bottom-color: var(--line-light);
+	}
+
+	&__category {
+		$this: &;
+		@include mix.flex-justify(center, center);
+		position: relative;
+		width: max-content;
+
+		&--title{
+			@include mix.flex-justify(center, center);
+			position: relative;
+			width: max-content;
+			color: var(--black);
+
+			&:hover,
+			&:focus {
+				#{$this}--icon {
+					&::after {
+						top: 39%;
+						left: 26%;
+						transform: rotate(90deg);
+					}
+				}
+			}
+		}
+
+		&--icon {
+			position: relative;
+			width: 16px;
+			height: 16px;
+			margin-left: 6px;
+			background-color: var(--yellow-secondary);
+			border-radius: 50%;
+
+			&::after {
+				content: '';
+				position: absolute;
+				top: 54%;
+				left: 49%;
+				transform: translate(-50%, -50%);
+				width: 6px;
+				height: 4px;
+				background-image: url("data:image/svg+xml,%3Csvg width='6' height='4' viewBox='0 0 6 4' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3.4 3.46667C3.2 3.73333 2.8 3.73333 2.6 3.46667L0.6 0.799999C0.352787 0.470381 0.587978 0 1 0H5C5.41202 0 5.64721 0.470382 5.4 0.8L3.4 3.46667Z' fill='%23282827'/%3E%3C/svg%3E");
+				background-repeat: no-repeat;
+				background-size: contain;
+			}
+		}
+	}
+
+	&__module {
+		@include mix.flex-justify(space-between, center);
+		width: max-content;
+		gap: 24px;
+
+		&--view {
+			@include mix.flex-justify(space-between, center);
+			border-right: 1px solid var(--line-light);
+			gap: 16px;
+			padding-right: 24px;
+
+			a {
+				display: flex;
+
+				svg {
+					width: 16px;
+					height: 16px;
+					fill: var(--gray-3);
+					transition: all ease-in-out .2s;
+				}
+
+				&:hover,
+				&.active {
+					svg {
+						fill: var(--black);
+					}
+				}
+			}
+		}
+
+		&--sort {
+			$this: &;
+			position: relative;
+			width: max-content;
+
+			&-link {
+				@include mix.flex-justify(center, center);
+				color: var(--black);
+
+				&:hover,
+				&:focus {
+					#{$this}-icon {
+						transform: rotate(90deg);
+					}
+				}
+			}
+
+			&-icon {
+				width: 6px;
+				height: 4px;
+				margin-top: -2px;
+				margin-left: 4px;
+				background-image: url("data:image/svg+xml,%3Csvg width='6' height='4' viewBox='0 0 6 4' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3.4 3.46667C3.2 3.73333 2.8 3.73333 2.6 3.46667L0.6 0.799999C0.352787 0.470381 0.587978 0 1 0H5C5.41202 0 5.64721 0.470382 5.4 0.8L3.4 3.46667Z' fill='%23282827'/%3E%3C/svg%3E");
+				background-repeat: no-repeat;
+				background-size: contain;
+			}
+		}
+	}
+
+	&__title {
+		padding-top: 16px;
+		color: var(--gray);
+	}
+
+	.view {
+		&__wrapper {
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			padding-top: 16px;
+			gap: 6px;
+
+			&--two {
+				grid-template-columns: repeat(2, 1fr);
+			}
+		}
+	}
+
+	&__item {
+		width: 100%;
+		height: 316px;
+		background: var(--bg-light, #f9f9f9);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+		font-size: 16px;
+	}
+}

@@ -133,15 +133,18 @@ $(function() {
 
     function initDropdownToggle(btnSelectors) {
         const selectors = btnSelectors.join(',');
+
         $(document).on('click touch', selectors, function (e) {
-            e.stopPropagation();
             const $filter = $(this).next(DROPDOWN_CLASS);
             if ($filter.hasClass('active')) {
                 $filter.removeClass('active');
                 return;
             }
+
             $(DROPDOWN_CLASS).removeClass('active');
             $filter.addClass('active');
+            e.stopPropagation();
+            return false;
         });
 
         $(document).on('click touch', function (e) {
@@ -186,6 +189,30 @@ $(function() {
             $items.show();
         }
     });
+
+    // Универсальный переключатель с поддержкой любых количеств видов сеток
+    function viewGridSwitcher(btnSelector) {
+
+        const $btnSelector = $(btnSelector);
+        $btnSelector.on('click', function (e) {
+            e.preventDefault();
+            const $this = $(this);
+            const view = $this.data('view');
+
+            $btnSelector.removeClass('active');
+            $this.addClass('active');
+            const $wrapper = $('.view__wrapper');
+            $wrapper.removeClass(function (index, className) {
+                return (className.match(/view__wrapper--\S+/g) || []).join(' ');
+            });
+
+            if (view && view !== 'default') {
+                $wrapper.addClass(`view__wrapper--${view}`);
+            }
+        });
+    }
+
+    viewGridSwitcher('.catalog-view a');
 
     // all sliders
     // const swiper = new Swiper('.swiper', {

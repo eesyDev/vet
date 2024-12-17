@@ -30,6 +30,10 @@
 		padding-top: calc(52px + var(--h-header));
 	}
 
+	&--shop {
+		padding-top: calc(var(--h-header)*2);
+	}
+
 	&__wrapper {
 		@include mix.wrapper;
 	}
