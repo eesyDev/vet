@@ -28,12 +28,10 @@
 			line-height: 129%;
 			background: linear-gradient(90deg, var(--gray) 0%, var(--orange) 100%);
 			background-clip: text;
-			letter-spacing: .14px;
 			-webkit-background-clip: text;
 			-webkit-text-fill-color: transparent;
 		}
 		&__button {
-			letter-spacing: .8px;
 			.button {
 				@include mix.maxw(var.$w-mob) {
 					font-size: 15px;

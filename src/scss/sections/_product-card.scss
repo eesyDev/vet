@@ -24,10 +24,34 @@
 	}
 
 	&__title {
-		letter-spacing: normal;
 		.body-s-sb {
 			margin-top: 16px;
 			color: var(--gray);
+		}
+	}
+
+	&__gift {
+		@include mix.flex-justify(flex-start, flex-start);
+		flex-direction: row;
+		width: max-content;
+		gap: 12px;
+		border-radius: 8px;
+		margin-top: 24px;
+		padding: 12px 16px;
+		background: rgba(255, 223, 101, 0.16);
+
+		span, input {
+			cursor: pointer;
+		}
+
+		a {
+			padding-left: 2px;
+			color: var(--black);
+			text-decoration: underline;
+
+			&:hover {
+				color: var(--yellow-main);
+			}
 		}
 	}
 }
