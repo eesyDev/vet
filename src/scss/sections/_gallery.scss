@@ -1,0 +1,60 @@
+@use "../utilities/mixins" as mix;
+.gallery {
+	&__preview {
+		position: relative;
+		width: 64px;
+		height: 100%;
+		overflow-y: auto;
+
+		.swiper-container {
+			width: 100%;
+			height: 100%;
+		}
+
+		.swiper-slide {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 80px !important;
+			cursor: pointer;
+			opacity: 16%;
+			transition: all ease-in-out .2s;
+
+			&.swiper-slide-thumb-active {
+				opacity: 1;
+				&:hover {
+					opacity: 1;
+				}
+
+				img {
+					object-fit: contain; // по макету cover
+				}
+			}
+
+			&:hover {
+				opacity: 70%;
+			}
+		}
+
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: contain;
+		}
+
+	}
+
+	&__photo {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: calc(100% - 64px);
+		height: 100%;
+
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: contain;
+		}
+	}
+}

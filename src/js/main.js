@@ -1,70 +1,69 @@
-// lazyload for images
-function img_loader() {
-    setTimeout(function(){
-        $('body').find('img[data-src]').each(function(){
-            var src = $(this).attr('data-src');
-            var srcset = $(this).attr('data-srcset');
-            var classes = $(this).attr('class');
-            var alt = $(this).attr('alt');
-            var title = $(this).attr('title');
-            if (src) {
-              var img = new Image();
-              $(img).hide();
-              $(img).on('load', function(){
-                $(this).fadeIn(400);
-                setTimeout(function(){
-                    $(img).addClass('transition');
-                },400);
-              });
-              $(img).attr('srcset', srcset );  
-              $(img).attr('src', src );
-              $(img).attr('alt', alt);
-              $(img).attr('title', title);
-              $(img).addClass(classes);
-              $(this).replaceWith(img);
-            }
-        });
-    }, 150);
-}
-
-
-// calc block position in viewport
-$.fn.percentOfViewport = function() {
-    var viewportHeight = $(window).height();
-
-    var elementTop = $(this).offset().top;
-    var elementBottom = elementTop + $(this).height();
-
-    
-    var viewportTop = $(window).scrollTop();
-    var viewportBottom = viewportTop + viewportHeight;
-    var viewportCenter = viewportTop + (viewportHeight/2);
-
-    var top_to_top_percent = (elementTop - viewportTop) / viewportHeight * 100;
-    var bottom_to_top_percent = (elementBottom - viewportTop) / viewportHeight * 100;
-
-    var top_to_bottom_percent = (viewportBottom - elementTop) / viewportHeight * 100;
-    var bottom_to_bottom_percent = (viewportBottom - elementBottom) / viewportHeight * 100;
-
-    return {
-        ELtop_to_VPtop:     top_to_top_percent,
-        ELbottom_to_VPtop:  bottom_to_top_percent,
-        ELtop_to_VPbottom:  top_to_bottom_percent,
-        ELbottom_to_VPbottom:  bottom_to_bottom_percent,
-        viewportHeight: viewportHeight
-    };
-};
-
-
-// check is block is in viewport
-$.fn.isInViewport = function() {
-    var p = $(this).percentOfViewport();
-
-    return  p.ELtop_to_VPtop < 100 && 
-            p.ELbottom_to_VPtop > 0;
-};
-
 $(function() {
+
+    // lazyload for images
+    function img_loader() {
+        setTimeout(function(){
+            $('body').find('img[data-src]').each(function(){
+                var src = $(this).attr('data-src');
+                var srcset = $(this).attr('data-srcset');
+                var classes = $(this).attr('class');
+                var alt = $(this).attr('alt');
+                var title = $(this).attr('title');
+                if (src) {
+                    var img = new Image();
+                    $(img).hide();
+                    $(img).on('load', function(){
+                        $(this).fadeIn(400);
+                        setTimeout(function(){
+                            $(img).addClass('transition');
+                        },400);
+                    });
+                    $(img).attr('srcset', srcset );
+                    $(img).attr('src', src );
+                    $(img).attr('alt', alt);
+                    $(img).attr('title', title);
+                    $(img).addClass(classes);
+                    $(this).replaceWith(img);
+                }
+            });
+        }, 150);
+    }
+
+    // calc block position in viewport
+    $.fn.percentOfViewport = function() {
+        var viewportHeight = $(window).height();
+
+        var elementTop = $(this).offset().top;
+        var elementBottom = elementTop + $(this).height();
+
+
+        var viewportTop = $(window).scrollTop();
+        var viewportBottom = viewportTop + viewportHeight;
+        var viewportCenter = viewportTop + (viewportHeight/2);
+
+        var top_to_top_percent = (elementTop - viewportTop) / viewportHeight * 100;
+        var bottom_to_top_percent = (elementBottom - viewportTop) / viewportHeight * 100;
+
+        var top_to_bottom_percent = (viewportBottom - elementTop) / viewportHeight * 100;
+        var bottom_to_bottom_percent = (viewportBottom - elementBottom) / viewportHeight * 100;
+
+        return {
+            ELtop_to_VPtop:     top_to_top_percent,
+            ELbottom_to_VPtop:  bottom_to_top_percent,
+            ELtop_to_VPbottom:  top_to_bottom_percent,
+            ELbottom_to_VPbottom:  bottom_to_bottom_percent,
+            viewportHeight: viewportHeight
+        };
+    };
+
+
+    // check is block is in viewport
+    $.fn.isInViewport = function() {
+        var p = $(this).percentOfViewport();
+
+        return  p.ELtop_to_VPtop < 100 &&
+            p.ELbottom_to_VPtop > 0;
+    };
 
     // sandwich menu toggle
     $('.sandwich').on('click touch', function () {
@@ -154,12 +153,6 @@ $(function() {
         });
     }
 
-    initDropdownToggle([
-        '.dropdown-language',
-        '.dropdown-filter',
-        '.dropdown-category'
-    ]);
-
 
     $(DROPDOWN_CLASS).on('click touch', DROPDOWN_CLASS + '__item', function (e) {
         $(this).toggleClass('active').trigger('filtered');
@@ -208,8 +201,6 @@ $(function() {
         });
     }
 
-    viewGridSwitcher('.catalog-view a');
-
     $(document).on('click', '.mini-card__option--link', function (e) {
         e.preventDefault();
         const optionValue = $(this).data('mini-card-option');
@@ -222,43 +213,57 @@ $(function() {
         $card.find(`.mini-card-img.img-${optionValue}`).addClass('active').fadeIn();
     });
 
-    // all sliders
-    // const swiper = new Swiper('.swiper', {
-    //     slidesPerView: 'auto',
-    //     speed: 400,
-    //     spaceBetween: 20,
-    //     navigation: {
-    //         nextEl: '.slider-next',
-    //         prevEl: '.slider-prev',
-    //     },
-    //     pagination: {
-    //         el: '.slider-pagination',
-    //         type: 'bullets',
-    //     },
-    // });
+    function addStickyBehavior() {
+        const $firstItem = $('.product-card__item:first-child');
+        const $photoGallery = $('.product-card__photo-gallery');
+        const $description = $('.product-card__description');
+        const photoGalleryHeight = $photoGallery.outerHeight();
+        const descriptionHeight = $description.outerHeight();
 
-});
+        if (descriptionHeight >= photoGalleryHeight) {
+            $photoGallery.css('position', 'sticky');
+            $firstItem.css('height', `${descriptionHeight}px`);
+        }
+    }
 
+    function waitAnimation() {
+        let scrollTop = $(window).scrollTop();
+        // start animations when it is in viewport but pause when out of it
+        // .out-of-viewport doing nothing if animation item can be runned only once
+        $('.js-wait-animation').each(function(){
+            if ( $(this).isInViewport() ) {
+                $(this).addClass('animate')
+                    .removeClass('out-of-viewport');
+            } else {
+                $(this).addClass('out-of-viewport');
+            }
+        });
+    }
 
-$(window).on('load scroll', function(){
-    var scrollTop = $(window).scrollTop();
+    $(window).on('load', function () {
+        addStickyBehavior();
+        initDropdownToggle([
+            '.dropdown-language',
+            '.dropdown-filter',
+            '.dropdown-category'
+        ]);
+        viewGridSwitcher('.catalog-view a');
+    });
 
+    $(window).on('load resize', img_loader);
+    $(window).on('load scroll', waitAnimation);
 
-    // start animations when it is in viewport but pause when out of it
-    // .out-of-viewport doing nothing if animation item can be runned only once
-    $('.js-wait-animation').each(function(){
-        if ( $(this).isInViewport() ) {
-            $(this).addClass('animate')
-                        .removeClass('out-of-viewport');
-        } else {
-            $(this).addClass('out-of-viewport');
+    const swiperPreview = new Swiper(".gallery__preview.swiper-container", {
+        direction: 'vertical',
+        slidesPerView: 'auto',
+        spaceBetween: 8,
+    });
+
+    const swiperPhoto = new Swiper(".gallery__photo.swiper-container", {
+        spaceBetween: 0,
+        thumbs: {
+            swiper: swiperPreview,
         }
     });
-});
 
-
-$(window).on('load', function(){
-
-    img_loader();
-    
 });

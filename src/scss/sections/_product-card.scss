@@ -1,0 +1,33 @@
+@use "../utilities/mixins" as mix;
+.product-card {
+	&__wrapper {
+		@include mix.flex-justify(flex-start, flex-start);
+		padding-left: 24px;
+		gap: 80px;
+	}
+
+	&__item {
+		display: flex;
+	}
+
+	&__photo-gallery {
+		@include mix.flex-justify(space-between, center);
+		top: calc(var(--h-header) + 24px);
+		width: 696px;
+		height: 608px;
+		gap: 32px;
+	}
+
+	&__description {
+		width: 400px;
+		height: auto;
+	}
+
+	&__title {
+		letter-spacing: normal;
+		.body-s-sb {
+			margin-top: 16px;
+			color: var(--gray);
+		}
+	}
+}
