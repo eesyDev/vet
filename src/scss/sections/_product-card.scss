@@ -1,5 +1,8 @@
 @use "../utilities/mixins" as mix;
 .product-card {
+	padding-bottom: 60px;
+	border-bottom: 1px solid var(--line-light);
+
 	&__wrapper {
 		@include mix.flex-justify(flex-start, flex-start);
 		padding-left: 24px;
@@ -30,13 +33,19 @@
 		}
 	}
 
+	&__form {
+		width: 100%;
+		margin-top: 24px;
+		padding-bottom: 24px;
+		border-bottom: 1px solid var(--line-light);
+	}
+
 	&__gift {
 		@include mix.flex-justify(flex-start, flex-start);
 		flex-direction: row;
 		width: max-content;
 		gap: 12px;
 		border-radius: 8px;
-		margin-top: 24px;
 		padding: 12px 16px;
 		background: rgba(255, 223, 101, 0.16);
 
@@ -52,6 +61,171 @@
 			&:hover {
 				color: var(--yellow-main);
 			}
+		}
+	}
+
+	&__responsive { // Блок для специфической адаптации элементов
+		position: relative;
+		margin-top: 16px;
+		width: 100%;
+		height: max-content;
+	}
+
+	&__option {
+		position: relative;
+		@include mix.flex-justify;
+		width: max-content;
+		gap: 5px;
+		$this: &;
+
+		&--link	{
+			@include mix.flex-justify;
+			width: 30px;
+			height: 30px;
+			border-radius: 50%;
+			border-style: solid;
+			border-width: 1px;
+			border-color: transparent;
+
+			&.active {
+				border-color: var(--yellow-secondary);
+			}
+
+			span {
+				display: flex;
+				width: 24px;
+				height: 24px;
+				border-radius: 50%;
+
+				&#{$this}--white {
+					background-color: var(--white);
+					box-shadow: inset 0 0 4px 0 rgba(0, 0, 0, 0.15);
+				}
+
+				&#{$this}--black {
+					background-color: var(--black);
+				}
+			}
+
+			&:hover {
+				span {
+					&#{$this}--white {
+
+					}
+
+					&#{$this}--black {
+
+					}
+				}
+			}
+		}
+
+		&--title {
+			margin-left: 2px;
+			color: var(--pro-grey-pro);
+		}
+	}
+
+	&__actions {
+		@include mix.flex-justify(flex-start);
+		width: max-content;
+		margin-top: 16px;
+		gap: 12px;
+	}
+
+	&__price {
+		width: 100%;
+		color: var(--black);
+	}
+
+	&__buttons {
+		@include mix.flex-justify;
+		width: 100%;
+		gap: 12px;
+	}
+
+	&__delivery {
+		@include mix.flex-justify(flex-start);
+		width: max-content;
+		margin-top: 16px;
+		gap: 8px;
+		color: var(--gray);
+
+		&--icon {
+			@include mix.flex-justify;
+			width: 18px;
+			height: 18px;
+			border-radius: 50%;
+			background-color: var(--green);
+
+			&:after {
+				content: '';
+				width: 8px;
+				height: 7px;
+				background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width='8'%20height='7'%20viewBox='0%200%208%207'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3E%3Cpath%20d='M2.53496%205.82187C2.53496%205.82187%200.407977%203.59613%200.255084%203.43651C-0.0850281%203.08075%20-0.0850281%202.50184%200.255084%202.14638C0.596063%201.78971%201.1475%201.78971%201.48848%202.14638L2.86547%203.58672C3.0367%203.76582%203.31458%203.76459%203.48436%203.58458L6.50782%200.376444C6.84764%200.0158296%207.40286%200.0133887%207.74557%200.37189C8.08306%200.724905%208.0851%201.30141%207.74992%201.65716C4.46659%205.14168%203.84307%205.82157%203.84307%205.82157C3.4826%206.19859%202.89571%206.19891%202.53496%205.82187Z'%20fill='%23FFFFFF'/%3E%3C/svg%3E");
+			}
+		}
+	}
+
+	&__details {
+		display: flex;
+		justify-content: start;
+		align-items: stretch;
+		flex-direction: column;
+		margin-top: 24px;
+		gap: 3px;
+
+		&--item {
+			display: grid;
+			grid-template-columns: 40% 1fr; // 160px or 40%
+			justify-items: start;
+			justify-content: start;
+			align-items: center;
+
+			.body-s-sb {
+				color: var(--black);
+			}
+			.body-s-reg {
+				color: var(--gray);
+			}
+		}
+	}
+
+	&__info {
+		margin-top: 24px;
+
+		ul {
+			margin-top: 8px;
+			list-style: none;
+
+			li {
+				position: relative;
+				padding-left: 16px;
+				margin-top: 4px;
+
+				@extend .body-s-reg;
+
+				&:before {
+					content: '';
+					position: absolute;
+					left: 0;
+					top: 50%;
+					transform: translateY(-50%);
+					width: 8px;
+					height: 6px;
+					background: url("data:image/svg+xml;charset=UTF-8,%3csvg width='8' height='6' viewBox='0 0 8 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M7.81411 0.3079C7.56659 0.060049 7.16466 0.0602052 6.9168 0.3079L2.8783 4.34657L1.08335 2.55164C0.835501 2.30379 0.433739 2.30379 0.185888 2.55164C-0.0619628 2.79949 -0.0619628 3.20125 0.185888 3.4491L2.42947 5.69268C2.55332 5.81653 2.71571 5.87861 2.87812 5.87861C3.04053 5.87861 3.20309 5.81669 3.32693 5.69268L7.81411 1.20535C8.06196 0.957669 8.06196 0.555735 7.81411 0.3079Z' fill='%23929292'/%3e%3c/svg%3e") no-repeat center center;
+					background-size: contain;
+				}
+			}
+		}
+	}
+
+	&__guarantee {
+		margin-top: 24px;
+
+		p {
+			margin-top: 8px;
+			color: var(--gray);
 		}
 	}
 }

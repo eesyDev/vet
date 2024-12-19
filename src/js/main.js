@@ -203,7 +203,7 @@ $(function() {
 
     $(document).on('click', '.mini-card__option--link', function (e) {
         e.preventDefault();
-        const optionValue = $(this).data('mini-card-option');
+        const optionValue = $(this).data('mini-card-option'); // ID товара или опции
         if (!optionValue) return;
         const $card = $(this).closest('.mini-card');
         const $images = $card.find('.mini-card-img');
@@ -211,6 +211,23 @@ $(function() {
         $(this).addClass('active');
         $images.removeClass('active').hide();
         $card.find(`.mini-card-img.img-${optionValue}`).addClass('active').fadeIn();
+    });
+
+    $(document).on('click', '.product-card__option--link', function (e) {
+        e.preventDefault();
+        const optionValue = $(this).data('product-card-option'); // ID товара или опции
+        if (!optionValue) return;
+        const newTitle = $(this).data('product-card-title');
+        if (!newTitle) return;
+        const $optionContainer = $(this).closest('.product-card__option');
+        $optionContainer.find('.product-card__option--title').text(newTitle);
+
+        $optionContainer.find('.product-card__option--link').removeClass('active');
+        $(this).addClass('active');
+
+        // тут на Ajax получаем нужные данные из Woo
+        console.log(optionValue);
+
     });
 
     function addStickyBehavior() {
@@ -253,17 +270,29 @@ $(function() {
     $(window).on('load resize', img_loader);
     $(window).on('load scroll', waitAnimation);
 
-    const swiperPreview = new Swiper(".gallery__preview.swiper-container", {
+    const previewProductCard = new Swiper(".gallery__preview.swiper-container", {
         direction: 'vertical',
         slidesPerView: 'auto',
         spaceBetween: 8,
     });
 
-    const swiperPhoto = new Swiper(".gallery__photo.swiper-container", {
+    const mainProductCard = new Swiper(".gallery__photo.swiper-container", {
         spaceBetween: 0,
         thumbs: {
-            swiper: swiperPreview,
+            swiper: previewProductCard,
         }
+    });
+
+    const sliderOffersCard = new Swiper(".offers-card__slider.swiper-container", {
+        slidesPerView: 'auto',
+        direction: 'horizontal',
+        width: 960,
+        centeredSlides: true,
+        spaceBetween: 6,
+        navigation: {
+            nextEl: ".offers-card__navigation--next",
+            prevEl: ".offers-card__navigation--prev",
+        },
     });
 
 });
