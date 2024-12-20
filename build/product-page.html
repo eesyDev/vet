@@ -4,7 +4,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" type="text/css" href="assets/css/style.css?v=1.0.0a">
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css?v=1.0.1">
 	<link rel="stylesheet" type="text/css" href="assets/lib/swiper/swiper-bundle.min.css">
 	<link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
 	<title>Project name</title>
@@ -32,8 +32,8 @@
 					<use xlink:href="assets/img/sprite.svg#phone"></use>
 				</svg>
 			</a>
-			<a href="#policy" class="button button--yellow flex header__catalog open-form">Купити</a>
-			<a href="#" class="header__cart desktop-plus-tablet flex">
+			<a href="/catalog.html" class="button button--yellow flex header__catalog">Купити</a>
+			<a href="#cart" class="header__cart desktop-plus-tablet flex open-form">
 				<svg class="ico-cart">
 					<use xlink:href="assets/img/sprite.svg#ico-cart"></use>
 				</svg>
@@ -524,13 +524,114 @@
 						</svg>
 					</div>
 					<div class="popup__content">
-						<h3 class="h3">Зворотнiй дзвiнок</h3>
-		                    <p>Privacy policy text</p>
-		                </div>
+						<h3 class="h3">Політика конфіденційності</h3>
+		            </div>
+	            </div>
+	        </div>
+			<div class="popup" id="cart">
+				<div class="popup__wrapper">
+					<div class="close">
+						<svg class="ico">
+							<use xlink:href="assets/img/sprite.svg#ico-close"></use>
+						</svg>
+					</div>
+					<div class="popup__content">
+						<h3 class="body-l-sb">Кошик</h3>
+						<div class="popup-cart">
+							<div class="popup-cart__products">
+								<form action="#">
+									
+									<!-- .popup-cart__product -->
+									<div class="popup-cart__product">
+										<div class="popup-cart__item ">
+											<div class="popup-cart__item--photo">
+												<img src="assets/img/catalog/cloud-2x.png" alt="">
+											</div>
+										</div>
+										<div class="popup-cart__item">
+											<div class="popup-cart__title">
+												<h4 class="body-s-reg">Кiгтеточка-лежанка Grace Pro Max</h4>
+											</div>
+											<div class="popup-cart__details">
+												<div class="popup-cart__calc">
+													<button class="minus"></button>
+													<input type="text" name="quantity[]" class="quantity body-s-sb" value="1" />
+													<button class="plus"></button>
+												</div>
+												<div class="popup-cart__price">
+													<p class="body-s-sb">₴ 1680</p>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!--/.popup-cart__product -->
+						
+									<div class="popup-cart__product">
+										<div class="popup-cart__item">
+											<div class="popup-cart__item--photo">
+												<img src="assets/img/catalog/dream-2x.png" alt="">
+											</div>
+										</div>
+										<div class="popup-cart__item">
+											<div class="popup-cart__title">
+												<h4 class="body-s-reg">Кiгтеточка-лежанка Dream</h4>
+											</div>
+											<div class="popup-cart__details">
+												<div class="popup-cart__calc">
+													<button class="minus"></button>
+													<input type="text" name="quantity[]" class="quantity body-s-sb" value="1" />
+													<button class="plus"></button>
+												</div>
+												<div class="popup-cart__price">
+													<p class="body-s-sb">₴ 245</p>
+												</div>
+											</div>
+										</div>
+									</div>
+						
+									<div class="popup-cart__product">
+											<div class="popup-cart__item">
+												<div class="popup-cart__item--photo">
+													<img src="assets/img/catalog/3in1-2x.png" alt="">
+												</div>
+											</div>
+											<div class="popup-cart__item">
+												<div class="popup-cart__title">
+													<h4 class="body-s-reg">Комплект 3 в 1 (Dream, Cloud та Grace)</h4>
+												</div>
+												<div class="popup-cart__details">
+													<div class="popup-cart__calc">
+														<button class="minus"></button>
+														<input type="text" name="quantity[]" class="quantity body-s-sb" value="1" />
+														<button class="plus"></button>
+													</div>
+													<div class="popup-cart__price">
+														<p class="body-s-sb">₴ 1280</p>
+													</div>
+												</div>
+											</div>
+										</div>
+						
+									<div class="popup-cart__banner"></div>
+						
+									<div class=""><!-- .popup-cart__responsive -->
+										<div class="popup-cart__total">
+											<h5 class="body-m-sb">Всього</h5>
+											<p class="body-m-sb">₴ 3205</p>
+										</div>
+										<div class="popup-cart__button">
+											<button class="button button--yellow button--big">Оформити замовлення</button>
+										</div>
+									</div>
+						
+								</form>
+							</div>
+						</div>
 		            </div>
 	            </div>
 	        </div>
 		</div>
+	</div>
 	<div class="thanks-popup" id="thanks-popup" style="display: none">
 		<div class="close-bg"></div>
 		<div class="flex-popup">
@@ -549,7 +650,7 @@
 	<script defer src="assets/lib/svgxuse.min.js"></script>
 	<!-- project's js -->
 	<script defer src="assets/lib/jquery.maskedinput.js"></script>
-	<script defer src="assets/js/main.js?v=1.0.0"></script>
+	<script defer src="assets/js/main.js?v=1.0.1"></script>
 	<script defer src="assets/js/form.js?v=1.0.0"></script>
 
 </body>
