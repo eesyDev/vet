@@ -38,7 +38,7 @@
 					<use xlink:href="assets/img/sprite.svg#ico-cart"></use>
 				</svg>
 				<div class="header__cart--count">
-					<div class="count">2</div>
+					<div class="count">3</div>
 				</div>
 			</a>
 		</div>
@@ -436,16 +436,18 @@
 						</svg>
 					</div>
 					<div class="popup__content">
-						<h3 class="body-l-sb">Кошик</h3>
+						<div class="popup__title">
+							<h3 class="body-l-sb">Кошик</h3>
+						</div>
 						<div class="popup-cart">
 							<div class="popup-cart__products">
 								<form action="#">
-									
+						
 									<!-- .popup-cart__product -->
 									<div class="popup-cart__product">
 										<div class="popup-cart__item ">
 											<div class="popup-cart__item--photo">
-												<img src="assets/img/catalog/cloud-2x.png" alt="">
+												<img src="assets/img/catalog/grace-pro-black-2x.png" alt="">
 											</div>
 										</div>
 										<div class="popup-cart__item">
@@ -459,7 +461,7 @@
 													<button class="plus"></button>
 												</div>
 												<div class="popup-cart__price">
-													<p class="body-s-sb">₴ 1680</p>
+													<p class="body-s-sb">₴ 1590</p>
 												</div>
 											</div>
 										</div>
@@ -469,7 +471,7 @@
 									<div class="popup-cart__product">
 										<div class="popup-cart__item">
 											<div class="popup-cart__item--photo">
-												<img src="assets/img/catalog/dream-2x.png" alt="">
+												<img src="assets/img/catalog/cloud-2x.png" alt="">
 											</div>
 										</div>
 										<div class="popup-cart__item">
@@ -514,7 +516,7 @@
 						
 									<div class="popup-cart__banner"></div>
 						
-									<div class=""><!-- .popup-cart__responsive -->
+									<div class="popup-cart__responsive"><!-- .popup-cart__responsive -->
 										<div class="popup-cart__total">
 											<h5 class="body-m-sb">Всього</h5>
 											<p class="body-m-sb">₴ 3205</p>
@@ -527,6 +529,47 @@
 								</form>
 							</div>
 						</div>
+		            </div>
+	            </div>
+	        </div>
+			<div class="popup" id="buy-one-click">
+				<div class="popup__wrapper">
+					<div class="close">
+						<svg class="ico">
+							<use xlink:href="assets/img/sprite.svg#ico-close"></use>
+						</svg>
+					</div>
+					<div class="popup__content">
+						<h3 class="body-l-sb">Замовлення в один клік</h3>
+						<form method="POST" class="popup__form">
+							<label class="inp-wrp">
+								<input type="text" name="name[Iм’я]" placeholder="Iм’я *" data-required="true" data-error="Please fill this Iм’я">
+							</label>
+							<label class="inp-wrp">
+								<input type="tel" name="phone[Телефон]" placeholder="Телефон *" class="inp-phone" data-required="true" data-error="Please fill this Телефон">
+							</label>
+	
+							<div class="inp-wrp">
+								<p class="form-description">Натискаючи на цю кнопку, Ви даєте згоду на обробку персональних даних та погоджуєтесь з нашою <a href="#policy">політикою конфіденційності</a></p>
+							</div>
+	
+							<div class="align-right">
+								<button class="button button--yellow button--big">Відправити заявку</button>
+							</div>
+							<input type="hidden" name="action" value="order_products_one_click">
+						</form>
+		            </div>
+	            </div>
+	        </div>
+			<div class="popup" id="more-detail">
+				<div class="popup__wrapper">
+					<div class="close">
+						<svg class="ico">
+							<use xlink:href="assets/img/sprite.svg#ico-close"></use>
+						</svg>
+					</div>
+					<div class="popup__content">
+						<h3 class="body-l-sb">Подарувати притулку</h3>
 		            </div>
 	            </div>
 	        </div>

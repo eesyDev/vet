@@ -51,8 +51,51 @@
 					</svg>
 				</div>
 				<div class="popup__content">
-					<h3 class="body-l-sb">Кошик</h3>
+					<div class="popup__title">
+						<h3 class="body-l-sb">Кошик</h3>
+					</div>
 					//= popup-cart.html
+	            </div>
+            </div>
+        </div>
+		<div class="popup" id="buy-one-click">
+			<div class="popup__wrapper">
+				<div class="close">
+					<svg class="ico">
+						<use xlink:href="assets/img/sprite.svg#ico-close"></use>
+					</svg>
+				</div>
+				<div class="popup__content">
+					<h3 class="body-l-sb">Замовлення в один клік</h3>
+					<form method="POST" class="popup__form">
+						<label class="inp-wrp">
+							<input type="text" name="name[Iм’я]" placeholder="Iм’я *" data-required="true" data-error="Please fill this Iм’я">
+						</label>
+						<label class="inp-wrp">
+							<input type="tel" name="phone[Телефон]" placeholder="Телефон *" class="inp-phone" data-required="true" data-error="Please fill this Телефон">
+						</label>
+
+						<div class="inp-wrp">
+							<p class="form-description">Натискаючи на цю кнопку, Ви даєте згоду на обробку персональних даних та погоджуєтесь з нашою <a href="#policy">політикою конфіденційності</a></p>
+						</div>
+
+						<div class="align-right">
+							<button class="button button--yellow button--big">Відправити заявку</button>
+						</div>
+						<input type="hidden" name="action" value="order_products_one_click">
+					</form>
+	            </div>
+            </div>
+        </div>
+		<div class="popup" id="more-detail">
+			<div class="popup__wrapper">
+				<div class="close">
+					<svg class="ico">
+						<use xlink:href="assets/img/sprite.svg#ico-close"></use>
+					</svg>
+				</div>
+				<div class="popup__content">
+					<h3 class="body-l-sb">Подарувати притулку</h3>
 	            </div>
             </div>
         </div>

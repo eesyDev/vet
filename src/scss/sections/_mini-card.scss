@@ -8,6 +8,7 @@
 	overflow: hidden;
 	padding: 24px;
 	background: var(--bg-light);
+	z-index: 1;
 
 	&__tag {
 		position: absolute;
@@ -15,6 +16,7 @@
 		left: 24px;
 		display: flex;
 		gap: 4px;
+		z-index: 2
 	}
 
 	&__img {
@@ -40,8 +42,12 @@
 		white-space: nowrap;
 		align-items: center;
 		justify-content: flex-start;
-		color: var(--dark);
+		color: var(--black);
 		width: 100%;
+
+		&:hover {
+			color: var(--yellow-main);
+		}
 	}
 
 	&__price {

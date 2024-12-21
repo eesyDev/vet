@@ -5,6 +5,13 @@
 	&__slider {
 		position: relative;
 		margin: 32px 0;
+
+		.swiper-wrapper {
+			cursor: grab;
+			&:active {
+				cursor: grabbing;
+			}
+		}
 	}
 
 	&__item {

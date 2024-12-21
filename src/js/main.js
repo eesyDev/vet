@@ -111,23 +111,22 @@ $(function() {
         const popupClass = category.replace('#', 'popup--');
 
         if (!$categoryForm.length) {
-            console.warn(`Попап с ID ${category} не найден.`);
+            console.log(`Попап с ID ${category} не найден.`);
             return false;
         }
 
-        $dialogs.find('.popup').removeClass('active').hide();
-
-        // Обработка открытия окна корзины (popup--cart)
-        if ( popupClass === 'popup--cart' ) {
+        // Обработка открытия окна Политика конфиденциальности
+        if ( popupClass === 'popup--policy' ) {
             $categoryForm.show();
             $dialogs.show();
         } else {
+            $dialogs.find('.popup').removeClass('active').hide();
             $categoryForm.show();
             $dialogs.show();
         }
 
         $flexPopup.addClass(popupClass);
-        $dialogs.animate({ opacity: 1 }, 200, () => {
+        $dialogs.animate({ opacity: 1 }, 300, () => {
             $categoryForm.addClass('active');
             $('body').css({ 'overflow-y': 'hidden' });
         });
@@ -141,40 +140,42 @@ $(function() {
         const $flexPopup = $dialogs.find('.flex-popup');
         const $activePopup = $dialogs.find('.popup.active');
         const popupId = $activePopup.attr('id');
-        const $categoryForm = $flexPopup.find('.popup');
-
-        const closePopup = (additionalActions = () => {}) => {
-            $dialogs.find('.popup').removeClass('active').hide();
-            $categoryForm.removeAttr('style');
-            $dialogs.animate({ opacity: 0 }, 200, function () {
-                $dialogs.hide();
-                $dialogs.find('.thanks-popup').hide();
-                additionalActions();
-            });
-        };
 
         const bodyScroll = () => {
             $('body').css({ 'overflow-y': 'auto' });
         };
 
-        // Обработка закрытия окна корзины (popup--cart)
-        if (popupId === 'cart') {
-            $categoryForm.css('margin-right', '-100%');
-
-            setTimeout(() => {
-                closePopup(() => {
-                    $categoryForm.removeAttr('style');
-                    $flexPopup.removeClass(function (index, className) {
-                        return (className.match(/popup--\S+/g) || []).join(' ');
-                    });
-                });
-                bodyScroll();
-            }, 300);
-        } else {
+        const removeClassPopup = () => {
             $flexPopup.removeClass(function (index, className) {
                 return (className.match(/popup--\S+/g) || []).join(' ');
             });
-            closePopup();
+        };
+
+        if (popupId === 'cart') { // Корзина
+            const $popupCart = $flexPopup.find('.popup.active');
+            $popupCart.animate({ right: '-100%', opacity: 0 }, 600, function () {
+                $dialogs.animate({ opacity: 0 }, 300, function () {
+                    $dialogs.find('.popup').removeClass('active').hide();
+                    $popupCart.removeAttr('style');
+                    $dialogs.hide();
+                    $dialogs.find('.thanks-popup').hide();
+                    removeClassPopup();
+                });
+                bodyScroll();
+            });
+
+        } else if (popupId === 'policy') { // Политика конфиденциальности
+            const $popupPolicy = $dialogs.find('.popup--policy');
+            $popupPolicy.hide();
+            bodyScroll();
+
+        } else { // Остальные окна
+            $dialogs.find('.popup').removeClass('active').hide();
+            $dialogs.animate({ opacity: 0 }, 300, function () {
+                $dialogs.hide();
+                $dialogs.find('.thanks-popup').hide();
+                removeClassPopup();
+            });
             bodyScroll();
         }
     });
@@ -352,5 +353,67 @@ $(function() {
             prevEl: ".offers-card__navigation--prev",
         },
     });
+
+    // Купить продукт
+    function addToCart(btnSelector) {
+        const $btnSelector = $(btnSelector);
+        $btnSelector.on('click touch', function () {
+            const $button = $(this);
+            const $productImage = $('.gallery__photo .swiper-wrapper .swiper-slide:first-child img').first();
+
+            if ($productImage.length === 0) {
+                console.log('Изображение не найдено.');
+                return;
+            }
+
+            const $cartIcon = $('.header__cart .ico-cart');
+            const $cartCount = $('.header__cart .header__cart--count .count');
+
+            let currentCount = parseInt($cartCount.text());
+            let newCount = currentCount +1;
+
+            const $flyImage = $productImage.clone().addClass('fly-image').appendTo('body');
+
+            const buttonOffset = $button.offset();
+            const buttonCenterX = buttonOffset.left + $button.outerWidth() / 2;
+            const buttonCenterY = buttonOffset.top + $button.outerHeight() / 2 - ($button.outerHeight() * 3);
+
+            const cartOffset = $cartIcon.offset();
+            const cartCenterX = cartOffset.left + $cartIcon.width() / 2;
+            const cartCenterY = cartOffset.top + $cartIcon.height() / 2;
+
+            $flyImage.css({
+                top: buttonCenterY - $productImage.height() / 2,
+                left: buttonCenterX - $productImage.width() / 2,
+                width: $productImage.width(),
+                height: $productImage.height(),
+                position: 'absolute',
+                zIndex: 1000,
+                pointerEvents: 'none'
+            });
+
+            const scale = $cartIcon.width() / $productImage.width();
+
+            $flyImage.css({
+                transition: 'transform 1000ms ease-in-out, opacity 1000ms ease-in-out',
+                transformOrigin: 'center center',
+                transform: `translate(${cartCenterX - buttonCenterX}px, ${cartCenterY - buttonCenterY}px) scale(${scale})`,
+                opacity: .3
+            });
+
+            if (newCount <= 99) $cartCount.text(newCount);
+
+            setTimeout(() => {
+                $flyImage.remove();
+            }, 1000);
+
+            // это для примера, потом будем получать нужные данные из Woo
+            const $product = $('.popup-cart__products form:first-child .popup-cart__product').first();
+            $product.clone().prependTo('.popup-cart__products form');
+
+        });
+    }
+
+    addToCart('.product-card__buttons .add_to_cart');
 
 });

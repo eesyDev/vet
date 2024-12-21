@@ -3,8 +3,8 @@
 	position: relative;
 	width: 100%;
 	height: max-content;
-	margin-top: 22px;
-	padding: 0 20px 143px 20px;
+	margin-bottom: 131px !important;
+	padding: 0 20px 24px 20px;
 	overflow-y: auto;
 
 	&__products {
@@ -123,6 +123,7 @@
 		left: 0;
 		bottom: 0;
 		padding: 16px 24px;
+		border-radius: 0 0 16px 16px;
 		width: 100%;
 		flex-wrap: nowrap;
 		background-color: var(--white);
