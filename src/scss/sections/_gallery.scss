@@ -34,6 +34,7 @@
 			&:hover {
 				opacity: 70%;
 			}
+
 		}
 
 		img {
@@ -50,6 +51,11 @@
 		align-items: center;
 		width: calc(100% - 64px);
 		height: 100%;
+
+		cursor: grab;
+		&:active {
+			cursor: grabbing;
+		}
 
 		img {
 			width: 100%;

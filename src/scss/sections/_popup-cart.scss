@@ -3,7 +3,6 @@
 	position: relative;
 	width: 100%;
 	height: max-content;
-	margin-bottom: 131px !important;
 	padding: 0 20px 24px 20px;
 	overflow-y: auto;
 
@@ -57,6 +56,7 @@
 	}
 
 	&__price {
+		@include mix.flex-justify(space-between);
 		color: var(--black);
 	}
 
@@ -145,5 +145,7 @@
 	&__banner {
 
 	}
+
+	&__up-sell {}
 
 }

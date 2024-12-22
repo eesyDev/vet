@@ -37,8 +37,8 @@
 				<svg class="ico-cart">
 					<use xlink:href="assets/img/sprite.svg#ico-cart"></use>
 				</svg>
-				<div class="header__cart--count">
-					<div class="count">3</div>
+				<div class="header__cart--count" style="display:none">
+					<div class="count">0</div>
 				</div>
 			</a>
 		</div>
@@ -471,7 +471,7 @@
 							</label>
 	
 							<div class="inp-wrp">
-								<p class="form-description">Натискаючи на цю кнопку, Ви даєте згоду на обробку персональних даних та погоджуєтесь з нашою <a href="#policy">політикою конфіденційності</a></p>
+								<p class="form-description">Натискаючи на цю кнопку, Ви даєте згоду на обробку персональних даних та погоджуєтесь з нашою <a href="#policy" class="open-popup">політикою конфіденційності</a></p>
 							</div>
 	
 							<div class="align-right">
@@ -510,15 +510,15 @@
 								<form action="#">
 						
 									<!-- .popup-cart__product -->
-									<div class="popup-cart__product">
-										<div class="popup-cart__item ">
-											<div class="popup-cart__item--photo">
-												<img src="assets/img/catalog/grace-pro-black-2x.png" alt="">
+									<!--<div class="popup-cart__product">
+										<div class="popup-cart__item">
+											<div class="popup-cart__item&#45;&#45;photo">
+												<img src="assets/img/catalog/3in1-2x.png" alt="">
 											</div>
 										</div>
 										<div class="popup-cart__item">
 											<div class="popup-cart__title">
-												<h4 class="body-s-reg">Кiгтеточка-лежанка Grace Pro Max</h4>
+												<h4 class="body-s-reg">Комплект 3 в 1 (Dream, Cloud та Grace)</h4>
 											</div>
 											<div class="popup-cart__details">
 												<div class="popup-cart__calc">
@@ -527,62 +527,57 @@
 													<button class="plus"></button>
 												</div>
 												<div class="popup-cart__price">
-													<p class="body-s-sb">₴ 1590</p>
+													<p class="body-s-sb">₴ 1280</p>
 												</div>
 											</div>
 										</div>
-									</div>
+									</div>-->
 									<!--/.popup-cart__product -->
 						
-									<div class="popup-cart__product">
-										<div class="popup-cart__item">
-											<div class="popup-cart__item--photo">
-												<img src="assets/img/catalog/cloud-2x.png" alt="">
+									<div class="banner-cart">
+										<!-- .banner-cart__up-sell -->
+										<div class="banner-cart__up-sell responsive" id="up-sell-1" style="background-image:url('assets/img/content/popup-cart-banner-2x.jpg')">
+											<div class="banner-cart__wrapper">
+												<div class="banner-cart__header">
+													<h5 class="body-m-sb">Порадуй свого котика<br>мишкою-іграшкою<br>Mr. Pickles</h5>
+												</div>
+												<div class="banner-cart__footer">
+													<div class="banner-cart__item">
+														<div class="banner-cart__price">
+															<span class="tag tag--discount">-30%</span>
+															<s class="banner-cart__discount">₴ 125</s>
+															<p class="body-s-sb">₴ 90</p>
+														</div>
+													</div>
+													<div class="banner-cart__item">
+														<button class="button button--yellow cta-s add_to_cart" data-up-sell="1">Додати</button>
+													</div>
+												</div>
 											</div>
 										</div>
-										<div class="popup-cart__item">
-											<div class="popup-cart__title">
-												<h4 class="body-s-reg">Кiгтеточка-лежанка Dream</h4>
-											</div>
-											<div class="popup-cart__details">
-												<div class="popup-cart__calc">
-													<button class="minus"></button>
-													<input type="text" name="quantity[]" class="quantity body-s-sb" value="1" />
-													<button class="plus"></button>
+										<!--/.banner-cart__up-sell -->
+										<div class="banner-cart__up-sell responsive" id="up-sell-2" style="background-image:url('assets/img/content/main-card-about-2x.jpg');display:none">
+											<div class="banner-cart__wrapper">
+												<div class="banner-cart__header">
+													<h5 class="body-m-sb">Порадуй свого котика<br>Домиком для него<br>Mr. Pickles</h5>
 												</div>
-												<div class="popup-cart__price">
-													<p class="body-s-sb">₴ 245</p>
+												<div class="banner-cart__footer">
+													<div class="banner-cart__item">
+														<div class="banner-cart__price">
+															<span class="tag tag--discount">-20%</span>
+															<s class="banner-cart__discount">₴ 200</s>
+															<p class="body-s-sb">₴ 150</p>
+														</div>
+													</div>
+													<div class="banner-cart__item">
+														<button class="button button--yellow cta-s add_to_cart" data-up-sell="2">Додати</button>
+													</div>
 												</div>
 											</div>
 										</div>
 									</div>
 						
-									<div class="popup-cart__product">
-											<div class="popup-cart__item">
-												<div class="popup-cart__item--photo">
-													<img src="assets/img/catalog/3in1-2x.png" alt="">
-												</div>
-											</div>
-											<div class="popup-cart__item">
-												<div class="popup-cart__title">
-													<h4 class="body-s-reg">Комплект 3 в 1 (Dream, Cloud та Grace)</h4>
-												</div>
-												<div class="popup-cart__details">
-													<div class="popup-cart__calc">
-														<button class="minus"></button>
-														<input type="text" name="quantity[]" class="quantity body-s-sb" value="1" />
-														<button class="plus"></button>
-													</div>
-													<div class="popup-cart__price">
-														<p class="body-s-sb">₴ 1280</p>
-													</div>
-												</div>
-											</div>
-										</div>
-						
-									<div class="popup-cart__banner"></div>
-						
-									<div class="popup-cart__responsive"><!-- .popup-cart__responsive -->
+									<div class="popup-cart__totals responsive"><!-- .popup-cart__responsive -->
 										<div class="popup-cart__total">
 											<h5 class="body-m-sb">Всього</h5>
 											<p class="body-m-sb">₴ 3205</p>
@@ -616,7 +611,7 @@
 							</label>
 	
 							<div class="inp-wrp">
-								<p class="form-description">Натискаючи на цю кнопку, Ви даєте згоду на обробку персональних даних та погоджуєтесь з нашою <a href="#policy">політикою конфіденційності</a></p>
+								<p class="form-description">Натискаючи на цю кнопку, Ви даєте згоду на обробку персональних даних та погоджуєтесь з нашою <a href="#policy" class="open-popup">політикою конфіденційності</a></p>
 							</div>
 	
 							<div class="align-right">

@@ -1,0 +1,91 @@
+@use "../utilities/mixins" as mix;
+.banner-cart {
+	$this: &;
+	position: relative;
+
+	&__up-sell {
+		position: fixed;
+		left: 4px;
+		bottom: 4px;
+		width: 360px;
+		height: 160px;
+		border-radius: 12px;
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: center center;
+		z-index: 1;
+
+		&:before, &:after {
+			content: "";
+			position: absolute;
+			left: 0;
+			width: 100%;
+			z-index: -1;
+		}
+
+		&:before {
+			top: 0;
+			height: 100%;
+			border-radius: 12px;
+			background: var(--gradient-1);
+			opacity: 25%;
+		}
+
+		&:after {
+			bottom: 0;
+			height: 80px;
+			border-radius: 0 0 12px 12px;
+			background: var(--gradient-2);
+			opacity: 90%;
+		}
+
+	}
+
+	&__wrapper {
+		@include mix.flex-justify(center, flex-start);
+		flex-direction: column;
+		flex-wrap: nowrap;
+		padding: 24px;
+		border-radius: 12px;
+		gap: 14px;
+		color: var(--white);
+	}
+
+	&__responsive {
+		&#{$this}__up-sell {
+			position: relative;
+			left: 0;
+			bottom: 0;
+			width: 100%;
+		}
+	}
+
+	&__header {
+		.body-m-sb {
+			font-weight: normal;
+		}
+	}
+
+	&__footer {
+		@include mix.flex-justify(space-between, center);
+		flex-wrap: nowrap;
+		width: 100%;
+
+		.button {
+			padding: 8px 12px;
+		}
+	}
+
+	&__item {}
+	&__discount {
+		margin-right: 8px;
+	}
+
+	&__price {
+		@include mix.flex-justify;
+
+		.tag {
+			margin-right: 16px;
+		}
+	}
+}

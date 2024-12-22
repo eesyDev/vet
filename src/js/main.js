@@ -1,4 +1,4 @@
-$(function() {
+(function ($) {
 
     // lazyload for images
     function img_loader() {
@@ -108,24 +108,24 @@ $(function() {
         const $dialogs = $('.dialogs');
         const $categoryForm = $dialogs.find(category);
         const $flexPopup = $dialogs.find('.flex-popup');
-        const popupClass = category.replace('#', 'popup--');
+        const popupCategory = category.slice(1);
+
+        if (popupCategory !== 'policy') {
+            localStorage.setItem('popup', popupCategory);
+        }
+
+        $dialogs.find('.popup').removeClass('active').hide();
 
         if (!$categoryForm.length) {
             console.log(`Попап с ID ${category} не найден.`);
             return false;
         }
 
-        // Обработка открытия окна Политика конфиденциальности
-        if ( popupClass === 'popup--policy' ) {
-            $categoryForm.show();
-            $dialogs.show();
-        } else {
-            $dialogs.find('.popup').removeClass('active').hide();
-            $categoryForm.show();
-            $dialogs.show();
-        }
+        $dialogs.find('.popup').removeClass('active').hide();
+        $categoryForm.show();
+        $dialogs.show();
 
-        $flexPopup.addClass(popupClass);
+        $flexPopup.addClass('popup--' + popupCategory);
         $dialogs.animate({ opacity: 1 }, 300, () => {
             $categoryForm.addClass('active');
             $('body').css({ 'overflow-y': 'hidden' });
@@ -152,6 +152,7 @@ $(function() {
         };
 
         if (popupId === 'cart') { // Корзина
+
             const $popupCart = $flexPopup.find('.popup.active');
             $popupCart.animate({ right: '-100%', opacity: 0 }, 600, function () {
                 $dialogs.animate({ opacity: 0 }, 300, function () {
@@ -165,11 +166,21 @@ $(function() {
             });
 
         } else if (popupId === 'policy') { // Политика конфиденциальности
-            const $popupPolicy = $dialogs.find('.popup--policy');
-            $popupPolicy.hide();
-            bodyScroll();
+
+            $dialogs.find('.popup').removeClass('active').hide();
+            let popupCategory = localStorage.getItem('popup');
+
+            // Открываем popup с соответствующим ID
+            const $popupToOpen = $('.dialogs #' + popupCategory);
+            if ($popupToOpen.length) {
+                $popupToOpen.addClass('active').show();
+                $dialogs.show();
+            } else {
+                console.error('Попап с ID ' + popupCategory + ' не найден.');
+            }
 
         } else { // Остальные окна
+
             $dialogs.find('.popup').removeClass('active').hide();
             $dialogs.animate({ opacity: 0 }, 300, function () {
                 $dialogs.hide();
@@ -359,61 +370,233 @@ $(function() {
         const $btnSelector = $(btnSelector);
         $btnSelector.on('click touch', function () {
             const $button = $(this);
-            const $productImage = $('.gallery__photo .swiper-wrapper .swiper-slide:first-child img').first();
+            const $upSell = $button.data('up-sell');
+
+            const $productImage = $('.gallery__photo .swiper-wrapper .swiper-slide img').first();
 
             if ($productImage.length === 0) {
                 console.log('Изображение не найдено.');
                 return;
             }
 
-            const $cartIcon = $('.header__cart .ico-cart');
-            const $cartCount = $('.header__cart .header__cart--count .count');
+            const $cartHeader = $('.header__cart');
+            const $cartIcon = $cartHeader.find('.ico-cart');
+            const $cartCount = $cartHeader.find('.header__cart--count');
+            const $cartCountText = $cartCount.find('.count');
 
-            let currentCount = parseInt($cartCount.text());
+            let currentCount = parseInt($cartCountText.text());
             let newCount = currentCount +1;
 
-            const $flyImage = $productImage.clone().addClass('fly-image').appendTo('body');
+            if (!$upSell) {
 
-            const buttonOffset = $button.offset();
-            const buttonCenterX = buttonOffset.left + $button.outerWidth() / 2;
-            const buttonCenterY = buttonOffset.top + $button.outerHeight() / 2 - ($button.outerHeight() * 3);
+                const $flyImage = $productImage.clone().addClass('fly-image').appendTo('body');
 
-            const cartOffset = $cartIcon.offset();
-            const cartCenterX = cartOffset.left + $cartIcon.width() / 2;
-            const cartCenterY = cartOffset.top + $cartIcon.height() / 2;
+                const buttonOffset = $button.offset();
+                const buttonCenterX = buttonOffset.left + $button.outerWidth() / 2;
+                const buttonCenterY = buttonOffset.top + $button.outerHeight() / 2 - ($button.outerHeight() * 3);
 
-            $flyImage.css({
-                top: buttonCenterY - $productImage.height() / 2,
-                left: buttonCenterX - $productImage.width() / 2,
-                width: $productImage.width(),
-                height: $productImage.height(),
-                position: 'absolute',
-                zIndex: 1000,
-                pointerEvents: 'none'
-            });
+                const cartOffset = $cartIcon.offset();
+                const cartCenterX = cartOffset.left + $cartIcon.width() / 2;
+                const cartCenterY = cartOffset.top + $cartIcon.height() / 2;
 
-            const scale = $cartIcon.width() / $productImage.width();
+                $flyImage.css({
+                    top: buttonCenterY - $productImage.height() / 2,
+                    left: buttonCenterX - $productImage.width() / 2,
+                    width: $productImage.width(),
+                    height: $productImage.height(),
+                    position: 'absolute',
+                    zIndex: 1000,
+                    pointerEvents: 'none'
+                });
 
-            $flyImage.css({
-                transition: 'transform 1000ms ease-in-out, opacity 1000ms ease-in-out',
-                transformOrigin: 'center center',
-                transform: `translate(${cartCenterX - buttonCenterX}px, ${cartCenterY - buttonCenterY}px) scale(${scale})`,
-                opacity: .3
-            });
+                const scale = $cartIcon.width() / $productImage.width();
 
-            if (newCount <= 99) $cartCount.text(newCount);
+                $flyImage.css({
+                    transition: 'transform 1000ms ease-in-out, opacity 1000ms ease-in-out',
+                    transformOrigin: 'center center',
+                    transform: `translate(${cartCenterX - buttonCenterX}px, ${cartCenterY - buttonCenterY}px) scale(${scale})`,
+                    opacity: .3
+                });
 
-            setTimeout(() => {
-                $flyImage.remove();
-            }, 1000);
+                // Получаем данные для указанного ID продукта из Woo
+                const $id = 1; // для примера
+                const data = {
+                    1: {
+                        id: $id,
+                        img: 'assets/img/catalog/grace-pro-black-2x.png',
+                        title: 'Кiгтеточка-лежанка Grace Pro Max',
+                        price: '₴ 1590',
+                    }
+                };
 
-            // это для примера, потом будем получать нужные данные из Woo
-            const $product = $('.popup-cart__products form:first-child .popup-cart__product').first();
-            $product.clone().prependTo('.popup-cart__products form');
+                if (!data[$id]) {
+                    console.log(`Товар с ID ${$id} не найден.`);
+                    return;
+                }
+                const item = data[$id];
 
+                const productHtml = `
+                    <div class="popup-cart__product">
+                        <div class="popup-cart__item ">
+                            <div class="popup-cart__item--photo">
+                                <img src="${item.img}" alt="${item.title}">
+                            </div>
+                        </div>
+                        <div class="popup-cart__item">
+                            <div class="popup-cart__title">
+                                <h4 class="body-s-reg">${item.title}</h4>
+                            </div>
+                            <div class="popup-cart__details">
+                                <div class="popup-cart__calc">
+                                    <button class="minus"></button>
+                                    <input type="text" id="quantity_${item.id}" name="quantity[]" name="cart[хешWoo][qty]" class="quantity body-s-sb" value="1" />
+                                    <button class="plus"></button>
+                                </div>
+                                <div class="popup-cart__price">
+                                    <p class="body-s-sb">${item.price}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                const $product = $('.popup-cart__products form');
+
+                $product.prepend(productHtml);
+
+                responsiveCart($product);
+
+                const $productFirst = $product.find('.popup-cart__product').first();
+                $productFirst.find('.popup-cart__calc .quantity').val(1);
+                initQuantityInput($productFirst);
+
+                if (newCount <= 99) $cartCountText.text(newCount);
+
+                setTimeout(() => {
+                    $flyImage.remove();
+                    $cartCount.show();
+
+                    // тут записываем в куки, что корзина не пуста для дальнейшей реализации на PHP
+
+                }, 1000);
+
+            } else {
+                if (newCount <= 99) $cartCountText.text(newCount);
+                addToCartUpSell($upSell)
+            }
         });
     }
 
     addToCart('.product-card__buttons .add_to_cart');
 
-});
+    function addToCartUpSell($id) {
+        const $product = $('.popup-cart__products form');
+
+        const $bannerCart = $('.banner-cart');
+        $bannerCart.find('.banner-cart__up-sell').last().show();
+        $bannerCart.find(`#up-sell-${$id}.banner-cart__up-sell`).hide();
+
+        // Получаем данные для указанного ID продукта из Woo
+        const data = {
+            1: {
+                id: 1,
+                img: 'assets/img/content/popup-cart-banner-2x.jpg',
+                title: 'Мышка-игрушка Mr. Pickles',
+                discount: '-30%',
+                price: '₴ 90',
+                price_discount: '₴ 125',
+            },
+            2: {
+                id: 2,
+                img: 'assets/img/content/main-card-about-2x.jpg',
+                title: 'Домик для кота Mr. Whiskers',
+                discount: '-20%',
+                price: '₴ 150',
+                price_discount: '₴ 200',
+            }
+        };
+
+        if (!data[$id]) {
+            console.log(`Товар с ID ${$id} не найден.`);
+            return;
+        }
+
+        const item = data[$id];
+
+        // Шаблон товара со скидкой
+        const upSellHtml = `
+            <div class="popup-cart__product popup-cart__up-sell">
+                <div class="popup-cart__item">
+                    <div class="popup-cart__item--photo">
+                        <img src="${item.img}" alt="${item.title}">
+                    </div>
+                </div>
+                <div class="popup-cart__item">
+                    <div class="popup-cart__title">
+                        <h4 class="body-s-reg">${item.title}</h4>
+                    </div>
+                    <div class="popup-cart__details">
+                        <div class="popup-cart__calc">
+                            <span class="tag tag--discount">${item.discount}</span>
+                        </div>
+                        <div class="popup-cart__price">
+                            <s class="banner-cart__discount">${item.price_discount}</s>
+                            <p class="body-s-sb">${item.price}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+
+        const $productFind = $product.find('.popup-cart__product');
+
+        if ($productFind.length === 0) {
+            $product.prepend(upSellHtml);
+        } else {
+            const $productLast = $productFind.last();
+            $productLast.after(upSellHtml);
+        }
+
+        responsiveCart($product);
+    }
+
+    addToCart('.banner-cart__up-sell .add_to_cart');
+
+    function initQuantityInput($container) {
+        $container.find('.popup-cart__calc').each(function() {
+            const $calc = $(this);
+
+            $calc.on('click touch', '.minus', function() {
+                const $input = $(this).siblings('.quantity');
+                let currentValue = parseInt($input.val(), 10);
+
+                if (currentValue > 1) {
+                    $input.val(currentValue - 1);
+                }
+            });
+
+            $calc.on('click touch', '.plus', function() {
+                const $input = $(this).siblings('.quantity');
+                let currentValue = parseInt($input.val(), 10);
+                $input.val(currentValue + 1);
+            });
+
+            $calc.on('input', '.quantity', function() {
+                let currentValue = $(this).val();
+                if (!/^\d+$/.test(currentValue) || parseInt(currentValue, 10) < 1) {
+                    $(this).val(1);
+                }
+            });
+        });
+    }
+
+    function responsiveCart($product) {
+        if ($product.find('.popup-cart__product').length > 3) {
+            $('.popup-cart').css('margin-bottom', '155px');
+            $('.banner-cart').css('margin', '20px 0');
+            $product.find('.popup-cart__totals.responsive').addClass('popup-cart__responsive');
+            $product.find('.banner-cart__up-sell.responsive').addClass('banner-cart__responsive');
+        }
+    }
+
+})(jQuery);

@@ -144,6 +144,18 @@ html {
     --error: #{$error};
     --toner: #{$toner};
     --toner-160: #{$toner-160};
+    --gradient-1: linear-gradient(
+        45deg,
+        #FFE581 0%,
+        #FFC165 100%
+    );
+    --gradient-2: linear-gradient(rgb(15 15 15 / 0%), rgb(15 15 15 / 100%));
+    --gradient-3: linear-gradient(
+        90deg,
+        #C4C4C4 100%,
+        #C4C4C4 49%,
+        #C4C4C4 0%
+    );
 
     @media (max-width: #{$w-mob}) {
         --c-padding: 20px;

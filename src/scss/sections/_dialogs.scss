@@ -60,7 +60,11 @@
 		// Подробнее на странице продукта (Детальнiше)
 		&.popup--more-detail {
 			.popup {
-
+				&__wrapper {
+					width: 800px;
+					max-width: 800px;
+					min-height: 372px;
+				}
 			}
 		}
 
