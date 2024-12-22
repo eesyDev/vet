@@ -426,6 +426,7 @@
                         img: 'assets/img/catalog/grace-pro-black-2x.png',
                         title: 'Кiгтеточка-лежанка Grace Pro Max',
                         price: '₴ 1590',
+                        tag: 'Для притулку',
                     }
                 };
 
@@ -439,6 +440,7 @@
                     <div class="popup-cart__product">
                         <div class="popup-cart__item ">
                             <div class="popup-cart__item--photo">
+                                <a href="/catalog.html" class="tag tag--gift">${item.tag}</a>
                                 <img src="${item.img}" alt="${item.title}">
                             </div>
                         </div>
