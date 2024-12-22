@@ -39,7 +39,7 @@
 
         var viewportTop = $(window).scrollTop();
         var viewportBottom = viewportTop + viewportHeight;
-        var viewportCenter = viewportTop + (viewportHeight/2);
+        //var viewportCenter = viewportTop + (viewportHeight/2);
 
         var top_to_top_percent = (elementTop - viewportTop) / viewportHeight * 100;
         var bottom_to_top_percent = (elementBottom - viewportTop) / viewportHeight * 100;
@@ -176,7 +176,7 @@
                 $popupToOpen.addClass('active').show();
                 $dialogs.show();
             } else {
-                console.error('Попап с ID ' + popupCategory + ' не найден.');
+                console.log('Попап с ID ' + popupCategory + ' не найден.');
             }
 
         } else { // Остальные окна
@@ -300,19 +300,6 @@
 
     });
 
-    function addStickyBehavior() {
-        const $firstItem = $('.product-card__item:first-child');
-        const $photoGallery = $('.product-card__photo-gallery');
-        const $description = $('.product-card__description');
-        const photoGalleryHeight = $photoGallery.outerHeight();
-        const descriptionHeight = $description.outerHeight();
-
-        if (descriptionHeight >= photoGalleryHeight) {
-            $photoGallery.css('position', 'sticky');
-            $firstItem.css('height', `${descriptionHeight}px`);
-        }
-    }
-
     function waitAnimation() {
         let scrollTop = $(window).scrollTop();
         // start animations when it is in viewport but pause when out of it
@@ -328,7 +315,6 @@
     }
 
     $(window).on('load', function () {
-        addStickyBehavior();
         initDropdownToggle([
             '.dropdown-language',
             '.dropdown-filter',

@@ -10,15 +10,15 @@
 	}
 
 	&__item {
-		display: flex;
-	}
-
-	&__photo-gallery {
-		@include mix.flex-justify(space-between, center);
-		top: calc(var(--h-header) + 24px);
-		width: 696px;
-		height: 608px;
-		gap: 32px;
+		&.gallery {
+			@include mix.flex-justify(space-between, center);
+			position: sticky;
+			top: calc(var(--h-header) + 24px);
+			left: 0;
+			width: 696px;
+			height: 608px;
+			gap: 32px;
+		}
 	}
 
 	&__description {
