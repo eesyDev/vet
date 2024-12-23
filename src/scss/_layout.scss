@@ -22,7 +22,7 @@
 .section {
 	width: 100%;
 	max-width: 100%;
-	min-width: var.$w-min;
+	//min-width: var.$w-min;
 	margin: 0 auto;
 	position: relative;
 
@@ -55,9 +55,26 @@
 		flex-direction: column;
 	}
 
+	&.center {
+		align-items: center;
+		justify-content: center;
+	}
+
 	& > * {
 		flex: 1 1 auto;
-		margin-top: 0;
+
+		.unset {
+			flex: unset;
+		}
+
+		.auto {
+			flex: 0 0 auto;
+		}
+	}
+
+	&.sp-between {
+		justify-content: space-between;
+		align-items: center;
 	}
 }
 

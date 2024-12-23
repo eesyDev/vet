@@ -587,4 +587,44 @@
         }
     }
 
+    function playVideo(videoContainer, button, text = null) {
+        const $videoContainer = $(videoContainer);
+        const $video = $videoContainer.find('video');
+        const $button = $videoContainer.find(button);
+        const $text = $videoContainer.find(text);
+
+        $video.on('pause', function () {
+            $button.show();
+            $text.show();
+        });
+
+        $button.on('click', function (e) {
+            if ($video[0].paused) {
+                $video[0].play();
+                $button.hide();
+                $text.hide();
+            } else {
+                $video[0].pause();
+                $button.show();
+                $text.show();
+            }
+        });
+
+        $video.on('click', function () {
+            if (this.paused) {
+                this.play();
+                $button.hide();
+                $text.hide();
+            } else {
+                this.pause();
+                $button.show();
+                $text.show();
+            }
+        });
+    }
+
+    $(function() {
+        playVideo('.thank-page__video', '.thank-page__play', '.thank-page__play--text');
+    });
+
 })(jQuery);
