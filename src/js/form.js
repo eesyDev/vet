@@ -1,5 +1,6 @@
 (function ($) {
     $("form").on('submit', function () {
+
         let form = $(this),
             emailApprove = 0;
 
@@ -7,12 +8,14 @@
         form.find('.error').remove();
         form.find('.required').removeClass('required');
 
+        let actionValue = form.find('input[name="action"]').val();
+
         // Проверка полей
-        form.find('input[data-required], textarea[data-required]').each(function () {
+        form.find('input[data-required], textarea[data-required], select[data-required]').each(function () {
             let errorText = $(this).attr('data-error') || 'This field is required';
 
             if ($(this).is(':checkbox')) {
-                // Проверка чекбоксов
+                // Проверка чек-боксов
                 if (!$(this).is(':checked')) {
                     $(this).closest('.inp-wrp').append(`<div class="error">${errorText}</div>`);
                     $(this).addClass('required');
@@ -24,6 +27,7 @@
                     $(this).addClass('required');
                 }
             }
+
         });
 
         // Проверка email (если присутствует)
@@ -41,6 +45,16 @@
 
         // Если есть ошибки, отменяем отправку
         if (form.find('.required').length || emailApprove === 0) {
+
+            // Не скролить, если popup form окно (Зворотнiй дзвiнок)
+            if ( actionValue !== 'order_products_one_click') {
+                const $firstError = form.find('.required').first();
+                if ($firstError.length) {
+                    $('html, body').animate({
+                        scrollTop: $firstError.offset().top - 96 // 48px header + 24px отступ до поля
+                    }, 600);
+                }
+            }
             return false;
         }
 
@@ -63,7 +77,7 @@
     });
 
     // Удаление ошибок при фокусе/изменении
-    $('input, textarea').on('click focus change', function () {
+    $('input, textarea, select').on('click focus change', function () {
         $(this).removeClass('required');
         $(this).closest('.inp-wrp').find('.error').remove();
     });
@@ -75,4 +89,15 @@
             $(this).closest('label').find('.error').remove();
         }
     });
+
+    // Не передзвонювати мені для підтвердження замовлення
+    $('#dont-call-back').on('change', function () {
+        const $dontCallBackBlock = $(this).closest('.order-form').find('.order-form__dont-call-back');
+        if ($(this).is(':checked')) {
+            $dontCallBackBlock.stop(true, true).slideDown(300);
+        } else {
+            $dontCallBackBlock.stop(true, true).slideUp(900);
+        }
+    });
+
 })(jQuery);

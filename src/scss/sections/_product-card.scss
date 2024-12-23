@@ -44,13 +44,16 @@
 		@include mix.flex-justify(flex-start, flex-start);
 		flex-direction: row;
 		width: max-content;
-		gap: 12px;
 		border-radius: 8px;
 		padding: 12px 16px;
 		background: rgba(255, 223, 101, 0.16);
 
 		span, input {
 			cursor: pointer;
+		}
+
+		input {
+			height: 16px;
 		}
 
 		a {

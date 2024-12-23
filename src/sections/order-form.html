@@ -1,0 +1,151 @@
+<div class="order-form">
+	<div class="order-form__wrapper">
+		<div class="order-form__header">
+			<h1 class="h3">Оформлення замовлення</h1>
+		</div>
+		<div class="order-form__item">
+			<h2 class="body-m-sb">Контактні дані для оформлення замовлення:</h2>
+			<div class="order-form__input">
+				<label class="inp-wrp">
+					<input type="text" name="name[Iм’я]" placeholder="Iм’я *" data-required="true" data-error="Please fill this Iм’я">
+				</label>
+			</div>
+			<div class="order-form__input">
+				<label class="inp-wrp">
+					<input type="text" name="name[Прiзвище]" placeholder="Прiзвище *" data-required="true" data-error="Please fill this Прiзвище">
+				</label>
+			</div>
+			<div class="order-form__input">
+				<label class="inp-wrp">
+					<input type="text" name="name[inn]" placeholder="INN *" data-required="true" data-error="Please fill this INN">
+				</label>
+			</div>
+			<div class="order-form__input">
+				<label class="inp-wrp">
+					<input type="email" name="email[E-mail]" placeholder="E-mail *" class="inp-email" data-required="true" data-error="Please fill this E-mail">
+				</label>
+			</div>
+		</div>
+		<div class="order-form__item">
+			<h2 class="body-m-sb">Оберіть притулок, куди хочете відправити товар:</h2>
+			<div class="order-form__input">
+				<div class="select-wrapper">
+					<label class="inp-wrp">
+						<select class="select" data-required="true" data-error="Please fill this Назва притулку">
+							<option value="">Назва притулку *</option>
+							<option value="1">Первая</option>
+							<option value="2">Вторая</option>
+						</select>
+					</label>
+				</div>
+			</div>
+			<div class="order-form__input">
+				<label class="inp-wrp">
+					<input type="text" name="name[Прiзвище]" placeholder="Прiзвище *" data-required="true" data-error="Please fill this Прiзвище">
+				</label>
+			</div>
+			<div class="order-form__input">
+				<label class="inp-wrp">
+					<input type="text" name="name[Від кого]" placeholder="Від кого (необов'язкове поле)">
+				</label>
+			</div>
+		</div>
+		<div class="order-form__item">
+			<h2 class="body-m-sb">Доставка службами Нової Пошти:</h2>
+			<p class="body-s-reg">(за тарифами перевізника, час доставки 1-3 дні)</p>
+			<div class="order-form__input">
+				<div class="form-radio inp-wrp">
+					<label class="form-radio__item">
+						<input type="radio" name="delivery[Доставка]" value="Вiддiлення Нової Пошти" checked>
+						<span>Вiддiлення Нової Пошти</span>
+					</label>
+					<label class="form-radio__item">
+						<input type="radio" name="delivery[Доставка]" value="Кур’ером">
+						<span>Кур’ером</span>
+					</label>
+				</div>
+			</div>
+			<div class="order-form__input">
+				<div class="select-wrapper">
+					<label class=" inp-wrp">
+						<select class="select" data-required="true" data-error="Please fill this Відділення Нової Пошти">
+							<option value="">Відділення Нової Пошти *</option>
+							<option value="1">№ Відділення Нової Пошти 1</option>
+							<option value="2">№ Відділення Нової Пошти 2</option>
+						</select>
+					</label>
+				</div>
+			</div>
+			<div class="order-form__input">
+				<div class="flex">
+					<label class="inp-wrp">
+						<input type="text" name="name[Будинку]" placeholder="№ Будинку *" data-required="true" data-error="Please fill this Мiсто">
+					</label>
+					<label class="inp-wrp">
+						<input type="text" name="name[Квартири]" placeholder="№ Квартири *" data-required="true" data-error="Please fill this Мiсто">
+					</label>
+				</div>
+			</div>
+		</div>
+		<div class="order-form__item">
+			<h2 class="body-m-sb">Зручний спосiб оплати:</h2>
+			<div class="order-form__input">
+				<div class="form-radio inp-wrp">
+					<label class="form-radio__item">
+						<input type="radio" name="payment[Оплата]" value="Онлайн" checked>
+						<span>Онлайн</span>
+					</label>
+					<label class="form-radio__item">
+						<input type="radio" name="payment[Оплата]" value="Оплата після отримання">
+						<span>Оплата після отримання</span>
+					</label>
+				</div>
+			</div>
+		</div>
+		<div class="order-form__item">
+			<h2 class="body-m-sb">Комментар (не обов’язково):</h2>
+			<div class="order-form__input">
+				<label class="inp-wrp">
+					<textarea name="text[Комментар]" placeholder="Ви можете додати коментар до замовлення з побажаннями"></textarea>
+				</label>
+			</div>
+		</div>
+
+		<div class="order-form__item order-form__dont-call-back">
+			<div class="flex">
+				<span>
+					<svg class="ico">
+						<use xlink:href="/assets/img/sprite.svg#ico-percent"></use>
+					</svg>
+				</span>
+				<h2 class="body-m-sb">Бонус за персоналiзацiю</h2>
+			</div>
+			<p class="body-s-reg">Вкажiть iм’я вашого котика чи кiшечки та отримайте 100₴ знижки на наступне замовлення</p>
+			<div class="order-form__input">
+				<label class="inp-wrp">
+					<input type="text" name="catname[Iм’я котика]" placeholder="Iм’я котика">
+				</label>
+			</div>
+		</div>
+
+		<div class="order-form__item">
+			<div class="order-form__input order-form__flex">
+				<div class="inp-wrp">
+					<label class="flex row" for="dont-call-back">
+						<input id="dont-call-back" type="checkbox" name="dontcallback[Не передзвонювати мені]" value="Не передзвонювати мені" checked>
+						<span class="body-s-sb">Не передзвонювати мені для підтвердження замовлення</span>
+					</label>
+				</div>
+				<div class="flex row">
+					<div class="align-left inp-wrp">
+						<p class="form-description">Натискаючи на цю кнопку, Ви даєте згоду<br>на обробку персональних даних та погоджуєтесь<br>з нашою <a href="#policy-order" class="open-popup">політикою конфіденційності</a></p>
+					</div>
+					<div class="align-right">
+						<button class="button button--yellow button--big">Перейти до сплати</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>

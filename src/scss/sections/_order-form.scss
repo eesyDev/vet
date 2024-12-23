@@ -1,0 +1,100 @@
+@use "../utilities/mixins" as mix;
+.order-form {
+	$this: &;
+
+	&__wrapper {
+		@include mix.flex-justify(flex-start, flex-start);
+		flex-direction: column;
+		flex-wrap: nowrap;
+		gap: 44px;
+		width: 100%;
+	}
+
+	&__header {
+
+	}
+
+	&__item {
+		width: 100%;
+
+		.body-s-reg {
+			margin-top: 4px;
+		}
+	}
+
+	&__input {
+		margin-top: 16px;
+		width: 100%;
+
+		.inp-wrp {
+			width: 100%;
+		}
+
+		.flex {
+			width: 100%;
+		}
+
+		.form-radio {
+			padding-bottom: 8px;
+		}
+
+		&:last-child {
+			.form-radio {
+				padding-bottom: 0 !important;
+			}
+		}
+
+	}
+
+	&__flex {
+		@include mix.flex-justify(flex-start, flex-start);
+		flex-direction: column;
+		flex-wrap: nowrap;
+		gap: 24px;
+	}
+
+	&__dont-call-back {
+		@include mix.flex-justify(space-between, flex-start);
+		flex-direction: column;
+		padding: 24px;
+		border-radius: 8px;
+		background-color: var(--bg-light);
+
+		h2 {
+			color: var(--orange-2);
+		}
+
+		span {
+			position: relative;
+			display: block;
+			flex: 0 0 auto;
+			width: 16px;
+			height: 16px;
+			margin-right: 4px;
+			margin-bottom: 1px;
+			border-radius: 50%;
+			background: var(--orange-2);
+
+			svg {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				width: 8px;
+				height: 8px;
+				use {
+					fill: var(--white);
+				}
+				transform: translate(-50%, -50%);
+			}
+		}
+
+		p {
+			margin-top: 4px;
+		}
+
+		.flex {
+			align-items: center;
+		}
+	}
+
+}

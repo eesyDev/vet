@@ -26,16 +26,16 @@
 					<a href="/ru" class="dropdown__item">RU</a>
 				</div>
 			</div>
-			<a href="#call" class="button button--white flex header__call open-form">
-				<span class="desktop-plus-tablet">Зателефонувати</span>
+			<a href="#call" class="header__call open-form">
+				<span class="button button--white flex desktop-plus-tablet">Зателефонувати</span>
 				<svg class="ico-phone mobile-only">
-					<use xlink:href="assets/img/sprite.svg#phone"></use>
+					<use xlink:href="/assets/img/sprite.svg#ico-phone"></use>
 				</svg>
 			</a>
-			<a href="/catalog.html" class="button button--yellow flex header__catalog">Купити</a>
-			<a href="#cart" class="header__cart desktop-plus-tablet flex open-form">
+			<a href="/catalog.html" class="button button--yellow desktop-plus-tablet flex header__catalog">Купити</a>
+			<a href="#cart" class="header__cart flex open-form">
 				<svg class="ico-cart">
-					<use xlink:href="assets/img/sprite.svg#ico-cart"></use>
+					<use xlink:href="/assets/img/sprite.svg#ico-cart"></use>
 				</svg>
 				<div class="header__cart--count" style="display:none">
 					<div class="count">0</div>
@@ -396,11 +396,11 @@
 				</div>
 			</div>
 			<nav class="breadcrumbs" aria-label="Breadcrumb">
-				<a href="#">Головна</a>
+				<a href="/">Головна</a>
 				<span></span>
-				<a href="#">Каталог</a>
+				<a href="/catalog.html">Каталог</a>
 				<span></span>
-				<a href="#">Всi товари</a>
+				<a href="/catalog.html">Всi товари</a>
 			</nav>
 			<div class="promo-links">
 				<div class="promo-links__item">
@@ -456,12 +456,12 @@
 					<div class="promo-links__social">
 						<a href="https://www.facebook.com/saymeow.com.ua/" target="_blank">
 							<svg class="ico-facebook">
-								<use xlink:href="assets/img/sprite.svg#ico-facebook"></use>
+								<use xlink:href="/assets/img/sprite.svg#ico-facebook"></use>
 							</svg>
 						</a>
 						<a href="https://www.instagram.com/saymeow.com.ua/" target="_blank">
 							<svg class="ico-instagram">
-								<use xlink:href="assets/img/sprite.svg#ico-instagram"></use>
+								<use xlink:href="/assets/img/sprite.svg#ico-instagram"></use>
 							</svg>
 						</a>
 					</div>
@@ -473,7 +473,7 @@
 			<div class="footer__copyright">
 				<div class="flex">
 					<p>Турбота може бути красивою. ©Say Meow 2018-2024</p>
-					<p><a href="#">Політика конфіденційності</a></p>
+					<p><a href="#policy-all" class="open-popup">Політика конфіденційності</a></p>
 				</div>
 				<div class="flex">
 					<p>Зроблено в <a href="#">Thinkers</a></p>
@@ -489,7 +489,7 @@
 				<div class="popup__wrapper">
 					<div class="close">
 						<svg class="ico">
-							<use xlink:href="assets/img/sprite.svg#ico-close"></use>
+							<use xlink:href="/assets/img/sprite.svg#ico-close"></use>
 						</svg>
 					</div>
 					<div class="popup__content">
@@ -518,11 +518,38 @@
 				<div class="popup__wrapper">
 					<div class="close">
 						<svg class="ico">
-							<use xlink:href="assets/img/sprite.svg#ico-close"></use>
+							<use xlink:href="/assets/img/sprite.svg#ico-close"></use>
 						</svg>
 					</div>
 					<div class="popup__content">
 						<h3 class="h3">Політика конфіденційності</h3>
+						<h4 class="body-m-sb">Зворотнiй дзвiнок</h4>
+		            </div>
+	            </div>
+	        </div>
+			<div class="popup" id="policy-order">
+				<div class="popup__wrapper">
+					<div class="close">
+						<svg class="ico">
+							<use xlink:href="/assets/img/sprite.svg#ico-close"></use>
+						</svg>
+					</div>
+					<div class="popup__content">
+						<h3 class="h3">Політика конфіденційності</h3>
+						<h4 class="body-m-sb">Оформлення замовлення</h4>
+		            </div>
+	            </div>
+	        </div>
+			<div class="popup" id="policy-all">
+				<div class="popup__wrapper">
+					<div class="close">
+						<svg class="ico">
+							<use xlink:href="/assets/img/sprite.svg#ico-close"></use>
+						</svg>
+					</div>
+					<div class="popup__content">
+						<h3 class="h3">Політика конфіденційності</h3>
+						<h4 class="body-m-sb">Общая</h4>
 		            </div>
 	            </div>
 	        </div>
@@ -530,7 +557,7 @@
 				<div class="popup__wrapper">
 					<div class="close">
 						<svg class="ico">
-							<use xlink:href="assets/img/sprite.svg#ico-close"></use>
+							<use xlink:href="/assets/img/sprite.svg#ico-close"></use>
 						</svg>
 					</div>
 					<div class="popup__content">
@@ -610,13 +637,13 @@
 										</div>
 									</div>
 						
-									<div class="popup-cart__totals responsive"><!-- .popup-cart__responsive -->
+									<div class="popup-cart__totals responsive">
 										<div class="popup-cart__total">
 											<h5 class="body-m-sb">Всього</h5>
 											<p class="body-m-sb">₴ 3205</p>
 										</div>
 										<div class="popup-cart__button">
-											<button class="button button--yellow button--big">Оформити замовлення</button>
+											<a href="/order-page.html" class="button button--yellow button--big">Оформити замовлення</a>
 										</div>
 									</div>
 						
@@ -630,7 +657,7 @@
 				<div class="popup__wrapper">
 					<div class="close">
 						<svg class="ico">
-							<use xlink:href="assets/img/sprite.svg#ico-close"></use>
+							<use xlink:href="/assets/img/sprite.svg#ico-close"></use>
 						</svg>
 					</div>
 					<div class="popup__content">
@@ -659,7 +686,7 @@
 				<div class="popup__wrapper">
 					<div class="close">
 						<svg class="ico">
-							<use xlink:href="assets/img/sprite.svg#ico-close"></use>
+							<use xlink:href="/assets/img/sprite.svg#ico-close"></use>
 						</svg>
 					</div>
 					<div class="popup__content">
@@ -674,7 +701,7 @@
 		<div class="flex-popup">
 	        <div class="popup">
 	            <svg class="close ico">
-	                <use xlink:href="assets/img/sprite.svg#ico-close"></use>
+	                <use xlink:href="/assets/img/sprite.svg#ico-close"></use>
 	            </svg>
 				<h3>Thanks for request!</h3>
 	            <p>We'll contaact you soon</p>

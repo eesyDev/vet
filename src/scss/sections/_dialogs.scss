@@ -57,6 +57,18 @@
 			}
 		}
 
+		// Политика конфиденциальности (При оформление заказа и общая)
+		&.popup--policy-all,
+		&.popup--policy-order {
+			.popup {
+				&__wrapper {
+					width: 800px;
+					max-width: 800px;
+					min-height: 372px;
+				}
+			}
+		}
+
 		// Подробнее на странице продукта (Детальнiше)
 		&.popup--more-detail {
 			.popup {
