@@ -15,5 +15,8 @@
 @use "order-form";
 @use "fail-page";
 @use "thank-page";
+@use "blog-page";
+@use "blog-card";
+@use "pagination";
 @use "footer";
 @use "dialogs"; // all modal windows layout

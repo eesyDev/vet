@@ -1,0 +1,65 @@
+@use "../modules";
+.blog-page {
+	background-color: var(--line-light);
+
+	&__wrapper {
+		padding-top: 40px;
+		gap: 30px;
+
+		&.grid {
+			display: flex;
+			flex-wrap: wrap;
+			flex-direction: row;
+
+			> * {
+				flex: 0 0 calc(50% - 15px); /* Учитываем gap для первой строки (30px делим пополам) */
+			}
+
+			> *:nth-child(n+3) {
+				flex: 0 0 calc(33.33% - 20px); /* Учитываем gap для остальных строк (30px / 1.5 на 3 блока) */
+
+				.blog-card {
+
+					&__photo {
+						height: 292px;
+					}
+
+					&__title {
+						h2 {
+							@extend .body-m-sb;
+						}
+					}
+
+					&__meta {
+						justify-content: space-between;
+					}
+				}
+			}
+		}
+	}
+
+	&__categories {
+		padding-top: 40px;
+		gap: 8px;
+
+		> .button {
+			&:not(.active):not(:hover) {
+				color: var(--gray-2);
+				border-color: var(--line-light);
+			}
+		}
+	}
+
+	.blog-card {
+		&__photo {
+			height: 457px;
+		}
+	}
+
+	> .section__wrapper {
+		> .pagination {
+			margin: 0 auto;
+			padding-top: 64px;
+		}
+	}
+}

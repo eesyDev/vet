@@ -70,6 +70,15 @@
 		.auto {
 			flex: 0 0 auto;
 		}
+
+		.none {
+			flex: none;
+		}
+
+		.fl-wrap {
+			display: flex;
+			flex-wrap: wrap;
+		}
 	}
 
 	&.sp-between {
