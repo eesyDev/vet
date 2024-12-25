@@ -48,9 +48,9 @@
 
             // Не скролить, если popup form окна
             if (
-                actionValue !== 'call' ||                     // Popup call
-                actionValue !== 'consult' ||                  // Popup consultation
-                actionValue !== 'work_offer' ||               // Popup work-offer
+                actionValue !== 'call' &&                     // Popup call
+                actionValue !== 'consult' &&                  // Popup consultation
+                actionValue !== 'work_offer' &&               // Popup work-offer
                 actionValue !== 'order_products_one_click'    // Замовлення в один клік
             ) {
                 const $firstError = form.find('.required').first();
