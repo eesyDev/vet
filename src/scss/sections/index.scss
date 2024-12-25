@@ -18,5 +18,9 @@
 @use "blog-page";
 @use "blog-card";
 @use "pagination";
+@use "article-header";
+@use "article-content";
+@use "article-related";
+@use "podcast";
 @use "footer";
 @use "dialogs"; // all modal windows layout

@@ -1,0 +1,53 @@
+@use "../utilities/mixins" as mix;
+.podcast {
+	@include mix.flex-justify;
+	padding: 40px 0;
+	gap: 40px;
+
+	.button {
+		padding: 11px 24px;
+		border-radius: 32px;
+		gap: 16px;
+
+		.ico-audio-play {
+			@include mix.flex-justify;
+			width: 24px;
+			height: 24px;
+			border-radius: 50%;
+			border: 1px solid var(--black);
+			transition: all linear .2s;
+
+			> svg {
+				width: 6.67px;
+				height: 9.33px;
+				transition: all linear .2s;
+			}
+		}
+
+		&:hover {
+			.ico-audio-play {
+				border-color: var(--yellow-main);
+				svg {
+					fill: var(--yellow-main);
+				}
+			}
+		}
+
+	}
+
+	&__button {
+		@include mix.flex-justify(flex-start, center);
+	}
+
+	&__progress {
+		@include mix.flex-justify(flex-start, center);
+		width: 515px;
+		gap: 16px;
+
+		&--time {
+			font-size: 12px;
+			color: var(--gray);
+		}
+
+	}
+}

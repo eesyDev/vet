@@ -1,0 +1,36 @@
+@use "../modules";
+.article-related {
+
+	> .section__wrapper {
+		padding-top: 64px;
+
+		> .title {
+
+		}
+	}
+
+	&__blog-card {
+		padding-top: 32px;
+		gap: 30px;
+
+		&.grid {
+			> * {
+
+				flex: 0 0 calc(33.334% - 20px); /* Учитываем gap для строк (30px / 1.5 на 3 блока) */
+
+				.blog-card {
+
+					&__photo {
+						height: 292px;
+					}
+
+					&__title {
+						h2 {
+							@extend .body-m-sb;
+						}
+					}
+				}
+			}
+		}
+	}
+}

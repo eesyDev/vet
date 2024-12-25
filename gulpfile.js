@@ -182,7 +182,7 @@ gulp.task('build', gulp.series(
     'svg:build',
     'lib:build',
     'php:build',
-    'video:build'
+    //'video:build'
 ));
 
 gulp.task('watch', async function () {
@@ -194,7 +194,7 @@ gulp.task('watch', async function () {
     gulp.watch([path.watch.fonts], gulp.series('fonts:build'));
     gulp.watch([path.watch.lib], gulp.series('lib:build'));
     gulp.watch([path.watch.php], gulp.series('php:build'));
-    gulp.watch([path.watch.video], gulp.series('video:build'));
+    //gulp.watch([path.watch.video], gulp.series('video:build'));
 });
 
 gulp.task('webserver', async function () {

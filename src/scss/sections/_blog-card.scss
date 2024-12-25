@@ -45,20 +45,6 @@
 		}
 	}
 
-	&__categories {
-		gap: 4px;
-
-		> a {
-			border-radius: 8px;
-			padding: 4px 8px;
-			color: var(--black);
-
-			&:hover {
-				transform: scale(.93);
-			}
-		}
-	}
-
 	&__title {
 		h2 {
 			@extend .body-l-sb;
@@ -71,8 +57,15 @@
 	}
 
 	&__meta {
-		gap: 24px;
+		align-items: center;
 		color: var(--gray);
+		gap: 12px;
+
+		svg {
+			width: 2px;
+			height: 14px;
+			stroke: var(--line-light);
+		}
 	}
 
 }
