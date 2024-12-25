@@ -46,8 +46,13 @@
         // Если есть ошибки, отменяем отправку
         if (form.find('.required').length || emailApprove === 0) {
 
-            // Не скролить, если popup form окно (Зворотнiй дзвiнок)
-            if ( actionValue !== 'order_products_one_click') {
+            // Не скролить, если popup form окна
+            if (
+                actionValue !== 'call' ||                     // Popup call
+                actionValue !== 'consult' ||                  // Popup consultation
+                actionValue !== 'work_offer' ||               // Popup work-offer
+                actionValue !== 'order_products_one_click'    // Замовлення в один клік
+            ) {
                 const $firstError = form.find('.required').first();
                 if ($firstError.length) {
                     $('html, body').animate({

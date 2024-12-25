@@ -11,23 +11,7 @@
 				</div>
 				<div class="popup__content">
 					<h3 class="h3">Зворотнiй дзвiнок</h3>
-					<form method="POST" class="popup__form">
-						<label class="inp-wrp">
-							<input type="text" name="name[Iм’я]" placeholder="Iм’я *" data-required="true" data-error="Please fill this Iм’я">
-						</label>
-						<label class="inp-wrp">
-							<input type="tel" name="phone[Телефон]" placeholder="Телефон *" class="inp-phone" data-required="true" data-error="Please fill this Телефон">
-						</label>
-
-						<div class="inp-wrp">
-							<p class="form-description">Натискаючи на цю кнопку, Ви даєте згоду на обробку персональних даних та погоджуєтесь з нашою <a href="#policy" class="open-popup">політикою конфіденційності</a></p>
-						</div>
-
-						<div class="align-right">
-							<button class="button button--yellow button--big">Вiдправити</button>
-						</div>
-						<input type="hidden" name="action" value="order_products_one_click">
-					</form>
+					//= popup-call.html
 				</div>
 			</div>
 		</div>
@@ -40,7 +24,7 @@
 				</div>
 				<div class="popup__content">
 					<h3 class="h3">Політика конфіденційності</h3>
-					<h4 class="body-m-sb">Зворотнiй дзвiнок</h4>
+					//= popup-policy.html
 	            </div>
             </div>
         </div>
@@ -53,20 +37,7 @@
 				</div>
 				<div class="popup__content">
 					<h3 class="h3">Політика конфіденційності</h3>
-					<h4 class="body-m-sb">Оформлення замовлення</h4>
-	            </div>
-            </div>
-        </div>
-		<div class="popup" id="policy-all">
-			<div class="popup__wrapper">
-				<div class="close">
-					<svg class="ico">
-						<use xlink:href="/assets/img/sprite.svg#ico-close"></use>
-					</svg>
-				</div>
-				<div class="popup__content">
-					<h3 class="h3">Політика конфіденційності</h3>
-					<h4 class="body-m-sb">Общая</h4>
+					//= popup-policy-order.html
 	            </div>
             </div>
         </div>
@@ -94,23 +65,7 @@
 				</div>
 				<div class="popup__content">
 					<h3 class="body-l-sb">Замовлення в один клік</h3>
-					<form method="POST" class="popup__form">
-						<label class="inp-wrp">
-							<input type="text" name="name[Iм’я]" placeholder="Iм’я *" data-required="true" data-error="Please fill this Iм’я">
-						</label>
-						<label class="inp-wrp">
-							<input type="tel" name="phone[Телефон]" placeholder="Телефон *" class="inp-phone" data-required="true" data-error="Please fill this Телефон">
-						</label>
-
-						<div class="inp-wrp">
-							<p class="form-description">Натискаючи на цю кнопку, Ви даєте згоду на обробку персональних даних та погоджуєтесь з нашою <a href="#policy" class="open-popup">політикою конфіденційності</a></p>
-						</div>
-
-						<div class="align-right">
-							<button class="button button--yellow button--big">Відправити заявку</button>
-						</div>
-						<input type="hidden" name="action" value="order_products_one_click">
-					</form>
+					//= popup-buy-one-click.html
 	            </div>
             </div>
         </div>
@@ -123,9 +78,67 @@
 				</div>
 				<div class="popup__content">
 					<h3 class="body-l-sb">Подарувати притулку</h3>
+					//= popup-more-detail.html
 	            </div>
             </div>
         </div>
+		<div class="popup" id="list">
+			<div class="popup__wrapper">
+				<div class="close">
+					<svg class="ico">
+						<use xlink:href="/assets/img/sprite.svg#ico-close"></use>
+					</svg>
+				</div>
+				<div class="popup__content">
+					<div class="popup__title">
+						<h3 class="body-l-sb">Список притулків</h3>
+					</div>
+					//= popup-list.html
+				</div>
+			</div>
+		</div>
+		<div class="popup" id="work-offer">
+			<div class="popup__wrapper">
+				<div class="close">
+					<svg class="ico">
+						<use xlink:href="/assets/img/sprite.svg#ico-close"></use>
+					</svg>
+				</div>
+				<div class="popup__content">
+					<div class="popup__title">
+						<h3 class="body-l-sb">Надiслати резюме</h3>
+					</div>
+					//= popup-work-offer.html
+				</div>
+			</div>
+		</div>
+		<div class="popup" id="details">
+			<div class="popup__wrapper">
+				<div class="close">
+					<svg class="ico">
+						<use xlink:href="/assets/img/sprite.svg#ico-close"></use>
+					</svg>
+				</div>
+				<div class="popup__content">
+					//= popup-details.html
+				</div>
+			</div>
+		</div>
+		<div class="popup" id="consult">
+			<div class="popup__wrapper">
+				<div class="close">
+					<svg class="ico">
+						<use xlink:href="/assets/img/sprite.svg#ico-close"></use>
+					</svg>
+				</div>
+				<div class="popup__content">
+					<div class="popup__title">
+						<h3 class="body-l-sb">Консультацiя</h3>
+					</div>
+					//= popup-consult.html
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
 <div class="thanks-popup" id="thanks-popup" style="display: none">

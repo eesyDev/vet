@@ -7,7 +7,7 @@
 	width: 100%;
 	height: 100%;
 	z-index: 50;
-	overflow: hidden auto;
+	overflow-x: hidden;
 	-webkit-overflow-scrolling:touch;
 	background: var(--toner-160);
 	backdrop-filter: blur(24px);
@@ -57,8 +57,7 @@
 			}
 		}
 
-		// Политика конфиденциальности (При оформление заказа и общая)
-		&.popup--policy-all,
+		// Политика конфиденциальности (При оформление заказа)
 		&.popup--policy-order {
 			.popup {
 				&__wrapper {
@@ -119,6 +118,85 @@
 
 			}
 		}
+
+		// Список приютов
+		&.popup--list {
+			align-items: flex-start;
+			justify-content: flex-end;
+			width: 100%;
+			overflow: hidden;
+
+			.popup {
+				position: absolute;
+				left: 0;
+				bottom: -100%;
+				max-width: 100%;
+				min-width: 100%;
+				margin: 0 auto;
+				transition: bottom 300ms;
+
+				&.active {
+					bottom: 0;
+					margin: 0;
+					padding: 4px;
+				}
+
+				&__wrapper {
+					width: 100%;
+					max-width: 100%;
+					min-width: 100%;
+					height: calc(100vh - 236px);
+					transform: translate3d(0,0,0) scale(1);
+				}
+
+				&__title {
+					display: flex;
+					align-items: center;
+					margin: 0 22px 0 22px;
+					padding-bottom: 22px;
+				}
+
+				&__content {
+					padding: 24px 4px 4px 4px;
+				}
+
+			}
+		}
+
+		// Детали преимуществ
+		&.popup--details {
+
+			.popup {
+				position: absolute;
+				left: 0;
+				top: -100%;
+				max-width: 100%;
+				min-width: 100%;
+				margin: 0 auto;
+
+				&.active {
+					top: 200px;
+					margin: 0;
+					padding: 4px;
+				}
+
+				&__wrapper {
+					width: 100%;
+					max-width: 800px;
+					transform: none;
+				}
+
+				&__content {
+					width: 100%;
+					height: 100%;
+					max-height: 100%;
+					min-height: 100%;
+					padding: 64px 80px;
+				}
+
+			}
+		}
+
 	}
 
 	.close {

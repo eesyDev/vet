@@ -106,7 +106,7 @@
 
         const category = $(this).attr('href');
         const $dialogs = $('.dialogs');
-        const $categoryForm = $dialogs.find(category);
+        const $categoryDialogs = $dialogs.find(category);
         const $flexPopup = $dialogs.find('.flex-popup');
         const popupCategory = category.slice(1);
 
@@ -114,20 +114,30 @@
             localStorage.setItem('popup', popupCategory);
         }
 
+        if (popupCategory === 'list') {
+            $('body').css({ 'overflow-y': 'hidden' });
+            $dialogs.css({ 'overflow-y': 'hidden' });
+        }
+
+        if ( popupCategory === 'work-offer' || popupCategory === 'details' ) {
+            $('body').css({ 'overflow-y': 'hidden' });
+            $dialogs.css({ 'overflow-y': 'auto' });
+        }
+
         $dialogs.find('.popup').removeClass('active').hide();
 
-        if (!$categoryForm.length) {
+        if (!$categoryDialogs.length) {
             console.log(`Попап с ID ${category} не найден.`);
             return false;
         }
 
         $dialogs.find('.popup').removeClass('active').hide();
-        $categoryForm.show();
+        $categoryDialogs.show();
         $dialogs.show();
 
         $flexPopup.addClass('popup--' + popupCategory);
         $dialogs.animate({ opacity: 1 }, 300, () => {
-            $categoryForm.addClass('active');
+            $categoryDialogs.addClass('active');
             $('body').css({ 'overflow-y': 'hidden' });
         });
 
@@ -151,13 +161,13 @@
             });
         };
 
-        if (popupId === 'cart') { // Корзина
+        const $popupActive = $flexPopup.find('.popup.active');
 
-            const $popupCart = $flexPopup.find('.popup.active');
-            $popupCart.animate({ right: '-100%', opacity: 0 }, 600, function () {
+        if (popupId === 'cart') { // Корзина
+            $popupActive.animate({ right: '-100%', opacity: 0 }, 600, function () {
                 $dialogs.animate({ opacity: 0 }, 300, function () {
                     $dialogs.find('.popup').removeClass('active').hide();
-                    $popupCart.removeAttr('style');
+                    $popupActive.removeAttr('style');
                     $dialogs.hide();
                     $dialogs.find('.thanks-popup').hide();
                     removeClassPopup();
@@ -167,7 +177,8 @@
 
         } else if (popupId === 'policy') { // Политика конфиденциальности
 
-            $dialogs.find('.popup').removeClass('active').hide();
+            $popupActive.removeClass('active').hide();
+
             let popupCategory = localStorage.getItem('popup');
 
             // Открываем popup с соответствующим ID
@@ -179,15 +190,39 @@
                 console.log('Попап с ID ' + popupCategory + ' не найден.');
             }
 
+        } else if (popupId === 'details') { // Детали преимуществ
+
+            $popupActive.animate({ top: '100%', opacity: 0 }, 600, function () {
+                $dialogs.animate({ opacity: 0 }, 400, function () {
+                    $dialogs.find('.popup').removeClass('active').hide();
+                    $popupActive.removeAttr('style');
+                    $dialogs.hide();
+                    removeClassPopup();
+                });
+                bodyScroll();
+            });
+
+        } else if (popupId === 'list') { // Список приютов
+
+            $popupActive.animate({ bottom: '-100%', opacity: 0 }, 600, function () {
+                $dialogs.animate({ opacity: 0 }, 300, function () {
+                    $dialogs.find('.popup').removeClass('active').hide();
+                    $popupActive.removeAttr('style');
+                    $dialogs.hide();
+                    removeClassPopup();
+                });
+                bodyScroll();
+            });
+
         } else { // Остальные окна
 
-            $dialogs.find('.popup').removeClass('active').hide();
+            $popupActive.removeClass('active').hide();
             $dialogs.animate({ opacity: 0 }, 300, function () {
                 $dialogs.hide();
                 $dialogs.find('.thanks-popup').hide();
                 removeClassPopup();
+                bodyScroll();
             });
-            bodyScroll();
         }
     });
 

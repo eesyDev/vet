@@ -1,0 +1,17 @@
+<form method="POST" class="popup__form">
+	<label class="inp-wrp">
+		<input type="text" name="name[Iм’я]" placeholder="Iм’я *" data-required="true" data-error="Please fill this Iм’я">
+	</label>
+	<label class="inp-wrp">
+		<input type="tel" name="phone[Телефон]" placeholder="Телефон *" class="inp-phone" data-required="true" data-error="Please fill this Телефон">
+	</label>
+
+	<div class="inp-wrp">
+		<p class="form-description">Натискаючи на цю кнопку, Ви даєте згоду на обробку персональних даних та погоджуєтесь з нашою <a href="#policy">політикою конфіденційності</a></p>
+	</div>
+
+	<div class="align-right">
+		<button class="button button--yellow button--big">Вiдправити</button>
+	</div>
+	<input type="hidden" name="action" value="call">
+</form>
