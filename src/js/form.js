@@ -47,12 +47,8 @@
         if (form.find('.required').length || emailApprove === 0) {
 
             // Не скролить, если popup form окна
-            if (
-                actionValue !== 'call' &&                     // Popup call
-                actionValue !== 'consult' &&                  // Popup consultation
-                actionValue !== 'work_offer' &&               // Popup work-offer
-                actionValue !== 'order_products_one_click'    // Замовлення в один клік
-            ) {
+            const validActions = ['call', 'consult', 'work_offer', 'order_products_one_click'];
+            if (!validActions.includes(actionValue)) {
                 const $firstError = form.find('.required').first();
                 if ($firstError.length) {
                     $('html, body').animate({
@@ -104,5 +100,40 @@
             $dontCallBackBlock.stop(true, true).slideUp(900);
         }
     });
+
+    /**
+     * Инициализирует функциональность загрузки файла с возможностью выбора файла по клику на указанный элемент.
+     * Если длина имени выбранного файла превышает maxLength, сохраняются начало и конец строки, а середина заменяется на '...'.
+     *
+     * @param {string} triggerSelector - Селектор элемента, клик по которому вызывает выбор файла.
+     * @param {string} inputSelector - Селектор скрытого <input type="file">.
+     * @param {string} textSelector - Селектор элемента, в который будет выводиться название выбранного файла.
+     * @param {number} [maxLength=20] - Максимальная длина текста для отображения имени файла. По умолчанию 20 символов.
+     */
+    function initFileUpload(triggerSelector, inputSelector, textSelector, maxLength = 20) {
+        $(triggerSelector).on('click', function () {
+            $(inputSelector).trigger('click');
+        });
+
+        $(inputSelector).on('change', function () {
+            let fileName = this.files[0]?.name || 'Файл не обрано';
+
+            if (fileName.length > maxLength) {
+                const extIndex = fileName.lastIndexOf('.');
+                const extension = extIndex !== -1 ? fileName.slice(extIndex) : ''; // Расширение файла
+                const visibleLength = maxLength - extension.length - 3; // Учёт места под '...'
+
+                if (visibleLength > 0) {
+                    const start = fileName.slice(0, Math.ceil(visibleLength / 2)); // Начало имени
+                    const end = fileName.slice(-Math.floor(visibleLength / 2)); // Конец имени
+                    fileName = `${start}...${end}${extension}`;
+                }
+            }
+
+            $(textSelector).text(fileName);
+        });
+    }
+    initFileUpload('#work_offer-drop', '#work_offer-file', '#work_offer-drop span', 40);
+
 
 })(jQuery);
