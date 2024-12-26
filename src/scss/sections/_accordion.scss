@@ -12,7 +12,7 @@
 			align-items: flex-start;
 		}
 
-		> .accordion__button {
+		> .active {
 			> a {
 				svg {
 					transition: all ease-in-out .2s;
@@ -27,6 +27,10 @@
 			> h4 {
 				transition: all ease-in-out .2s;
 				color: var(--gray-2);
+
+				&:hover {
+					color: var(--black);
+				}
 			}
 		}
 
@@ -47,6 +51,10 @@
 					color: var(--black);
 				}
 			}
+		}
+
+		.accordion-open {
+			cursor: pointer;
 		}
 	}
 

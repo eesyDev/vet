@@ -711,7 +711,7 @@
 
     $(function() {
         playVideo('.thank-page__video', '.thank-page__button', '.thank-page__play--text', '.thank-page__item');
-        initializeAccordion('.accordion__button > a', '.accordion__content', '.accordion__item');
+        initializeAccordion('.accordion-open', '.accordion__content', '.accordion__item');
     });
 
 })(jQuery);
