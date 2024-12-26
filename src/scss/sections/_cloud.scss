@@ -1,0 +1,58 @@
+.cloud {
+	position: relative;
+	width: 100%;
+	height: 566px;
+	overflow: hidden;
+
+	&__wrapper {
+		gap: 4px;
+	}
+
+	&__description {
+		text-align: center;
+		color: var(--black);
+		z-index: 1;
+
+		.h1h2 {
+			color: var(--line-light);
+			transition: color 0.3s ease;
+
+			> span {
+				&.active {
+					color: var(--black);
+				}
+			}
+		}
+
+	}
+
+	&__message {
+		position: absolute;
+		display: block;
+		width: max-content;
+		border-radius: 8px;
+		padding: 16px;
+		color: var(--black);
+		z-index: 2;
+
+		svg {
+			display: block;
+			position: absolute;
+			bottom: 2px;
+			width: 15px;
+			height: 12px;
+		}
+
+		&--left {
+			svg {
+				left: -7px;
+			}
+		}
+		&--right {
+			svg {
+				right: -7px;
+				transform: scaleX(-1);
+			}
+		}
+	}
+}

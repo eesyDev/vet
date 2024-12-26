@@ -51,7 +51,7 @@
 
 	&__item {
 		gap: 16px;
-		@extend .sta-m;
+		@extend .cta-m;
 		color: var(--gray-2);
 
 		&:hover:not(.active) {

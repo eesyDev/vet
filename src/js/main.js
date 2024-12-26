@@ -622,44 +622,97 @@
         }
     }
 
-    function playVideo(videoContainer, button, text = null) {
+    function playVideo(videoContainer, button, text = null, fixContainer = null) {
         const $videoContainer = $(videoContainer);
+        const $fixContainer = $(fixContainer);
         const $video = $videoContainer.find('video');
         const $button = $videoContainer.find(button);
         const $text = $videoContainer.find(text);
 
         $video.on('pause', function () {
             $button.show();
-            $text.show();
+            $button.css('opacity', '1');
+            $fixContainer.css('position', 'relative');
+            $video.removeAttr('style');
         });
 
         $button.on('click', function (e) {
             if ($video[0].paused) {
                 $video[0].play();
-                $button.hide();
+                $button.css('opacity', '.5');
                 $text.hide();
+                $fixContainer.css('position', 'static');
+                $video.css({
+                    'position' : 'absolute',
+                    'top' : 0,
+                    'left' : 0,
+                });
+
             } else {
                 $video[0].pause();
-                $button.show();
+                $button.css('opacity', '1');
                 $text.show();
+                $fixContainer.css('position', 'relative');
+                $video.removeAttr('style');
             }
         });
 
         $video.on('click', function () {
-            if (this.paused) {
-                this.play();
-                $button.hide();
-                $text.hide();
-            } else {
+            if (this.played) {
                 this.pause();
-                $button.show();
+                $button.css('opacity', '1');
                 $text.show();
+                $fixContainer.css('position', 'relative');
+                $video.removeAttr('style');
+            }
+        });
+
+        function playMouse($html, event, value) {
+            $html.on(event, function () {
+                $button.css('opacity', value);
+            });
+        }
+        playMouse($button, 'mouseenter', '1');
+        playMouse($videoContainer, 'mouseleave', '1');
+        playMouse($button, 'mouseleave', '.5');
+
+        $(document).on('keyup', function (e) {
+            if (e.key === 'Escape' || e.keyCode === 27) {
+                if ($video[0].played) {
+                    $video[0].pause();
+                    $button.show();
+                    $text.show();
+                    $button.css('opacity', '1');
+                    $fixContainer.css('position', 'relative');
+                    $video.removeAttr('style');
+                }
+            }
+        });
+    }
+
+    // Ми шукамо
+    function initializeAccordion(button, content, item) {
+        $(content).hide();
+        $(button).on('click', function(e) {
+            e.preventDefault();
+
+            const $accordionItem = $(this).closest(item);
+            const $visible = $accordionItem.find(content);
+
+            if ($visible.is(':visible')) {
+                $visible.slideUp();
+                $accordionItem.removeClass('active');
+            } else {
+                $(content).slideUp();
+                $visible.slideDown();
+                $accordionItem.addClass('active');
             }
         });
     }
 
     $(function() {
-        playVideo('.thank-page__video', '.thank-page__play', '.thank-page__play--text');
+        playVideo('.thank-page__video', '.thank-page__button', '.thank-page__play--text', '.thank-page__item');
+        initializeAccordion('.accordion__button > a', '.accordion__content', '.accordion__item');
     });
 
 })(jQuery);

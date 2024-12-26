@@ -61,7 +61,7 @@
 	&--big {
 		border-radius: 24px;
 		padding: 14px 24px;
-		@extend .sta-m;
+		@extend .cta-m;
 	}
 }
 
@@ -232,90 +232,90 @@
 h1, h2,
 .h1h2 {
 	font-family: var(--font-family-b);
-	font-size: var(--desctop-h1h2-font-size);
-	line-height: var(--desctop-h1h2-line-height);
-	font-weight: var(--desctop-h1h2-font-weight);
+	font-size: 52px;
+	line-height: 116%;
+	font-weight: 600;
 	letter-spacing: -0.2px;
 }
 
 h3,
 .h3 {
 	font-family: var(--font-family-b);
-	font-size: var(--desctop-h3-font-size);
-	line-height: var(--desctop-h3-line-height);
-	font-weight: var(--desctop-h3-font-weight);
+	font-size: 32px;
+	line-height: 36px;
+	font-weight: 600;
 	letter-spacing: -0.2px;
 }
 
 .body-s-sb {
 	font-family: var(--font-family-b);
-	font-size: var(--desctop-body-s-sb-font-size);
-	line-height: var(--desctop-body-s-sb-line-height);
-	font-weight: var(--desctop-body-s-sb-font-weight);
+	font-size: 13px;
+	line-height: 140%;
+	font-weight: 600;
 	letter-spacing: 0;
 }
 
 .body-s-reg {
 	font-family: var(--font-family);
-	font-size: var(--desctop-body-s-reg-font-size);
-	line-height: var(--desctop-body-s-reg-line-height);
-	font-weight: var(--desctop-body-s-reg-font-weight);
+	font-size: 13px;
+	line-height: 140%;
+	font-weight: 400;
 	letter-spacing: 0;
 }
 
 .body-m-sb {
 	font-family: var(--font-family-b);
-	font-size: var(--desctop-body-m-sb-font-size);
-	line-height: var(--desctop-body-m-sb-line-height);
-	font-weight: var(--desctop-body-m-sb-font-weight);
+	font-size: 17px;
+	line-height: 22px;
+	font-weight: 600;
 	letter-spacing: 0;
 }
 
 .body-l-sb {
 	font-family: var(--font-family-b);
-	font-size: var(--desctop-body-l-sb-font-size);
-	line-height: var(--desctop-body-l-sb-line-height);
-	font-weight: var(--desctop-body-l-sb-font-weight);
+	font-size: 22px;
+	line-height: 28px;
+	font-weight: 600;
 	letter-spacing: 0;
 }
 
 .cta-s {
 	font-family: var(--font-family);
-	font-size: var(--desctop-cta-s-font-size);
-	line-height: var(--desctop-cta-s-line-height);
-	font-weight: var(--desctop-cta-s-font-weight);
+	font-size: 13px;
+	line-height: 120%;
+	font-weight: 400;
 	letter-spacing: 0;
 }
 
 .cta-s-link {
 	font-family: var(--font-family);
-	font-size: var(--desctop-cta-s-link-font-size);
-	line-height: var(--desctop-cta-s-link-line-height);
-	font-weight: var(--desctop-cta-s-link-font-weight);
+	font-size: 13px;
+	line-height: 120%;
+	font-weight: 400;
 	letter-spacing: 0;
 }
 
-.sta-m {
+.cta-m {
 	font-family: var(--font-family);
-	font-size: var(--desctop-sta-m-font-size);
-	line-height: var(--desctop-sta-m-line-height);
-	font-weight: var(--desctop-sta-m-font-weight);
+	font-size: 15px;
+	line-height: 120%;
+	font-weight: 400;
 	letter-spacing: 0;
 }
 
 .cta-m-link {
 	font-family: var(--font-family);
-	font-size: var(--desctop-cta-m-link-font-size);
-	line-height: var(--desctop-cta-m-link-line-height);
-	font-weight: var(--desctop-cta-m-link-font-weight);
+	font-size: 15px;
+	line-height: 120%;
+	font-weight: 400;
 	letter-spacing: 0;
 }
 
 .textaccedent {
 	font-family: var(--font-family-c);
-	font-size: var(--desctop-textaccedent-font-size);
-	line-height: var(--desctop-textaccedent-line-height);
-	font-weight: var(--desctop-textaccedent-font-weight);
+	font-size: 24px;
+	line-height: 25px;
+	font-weight: 700;
 	letter-spacing: 0;
 }
 
@@ -323,9 +323,9 @@ h3,
 	margin-left: 22px;
 	li {
 		font-family: var(--font-family);
-		font-size: var(--desctop-list-font-size);
-		line-height: var(--desctop-list-line-height);
-		font-weight: var(--desctop-list-font-weight);
+		font-size: 13px;
+		line-height: 120%;
+		font-weight: 400;
 		letter-spacing: 0;
 		margin-bottom: 9px;
 	}
@@ -611,10 +611,6 @@ textarea {
 
 .title {
 	text-align: center;
-
-	&__description {
-
-	}
 }
 
 .spacer {

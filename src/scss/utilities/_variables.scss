@@ -9,152 +9,58 @@ $w-laptop:     1500px; // Laptop
 $w-min:        320px;  // Min screen
 $w-max:        2560px; // Max screen
 
-// --- COLORS ---
-$white:                #fff;
-$black:                #282827;
-$gray:                 #747473;
-$gray-2:               #929292;
-$gray-3:               #d4d4d4;
-$line-light:           #f5f5f5;
-$bg-light:             #fafafa;
-$bg-light-2:           #f9f9f9;
-$yellow-main:          #f8ca02;
-$yellow-secondary:     #ffdf65;
-$orange:               #ffc165;
-$orange-2:             #f1711c;
-$green:                #56e264;
-$pro-grey-pro:         #a8a8a8;
-$pro-pro-lines:        #232322;
-$pro-lines-bg-pro:     #151515;
-$successful:           #49aa53;
-$violet:               #7165ff;
-$error:                #e64832;
-$toner:                rgba(0, 0, 0, 0.25);
-$toner-160:            rgba(0, 0, 0, 0.16);
-
 // --- DOCUMENT SETTINGS ---
-$c-padding:         0;
+$c-padding:      0;
 $c-font-size:    14px;
-$cols:             12;     // Grid columns
-$gutter:           20px;   // Grid gutter
-$column-width:     calc((100% - (#{$gutter} * (#{$cols} - 1))) / #{$cols});
 
 $w-content: 960px;
-$h-header: 48px;
+$h-header:  48px;
 
 // CSS Variables
 html {
-    --c-padding: #{$c-padding};
+    --c-padding:   #{$c-padding};
     --c-font-size: #{$c-font-size};
-    --cols: #{$cols};
-    --gutter: #{$gutter};
-    --column: #{$column-width};
-    --w-content: #{$w-content};
-    --h-header: #{$h-header};
+    --w-content:   #{$w-content};
+    --h-header:    #{$h-header};
 
     // --- FONTS ---
-    --font-family: 'Inter-Regular', sans-serif;
+    --font-family:   'Inter-Regular', sans-serif;
     --font-family-b: 'Inter-SemiBold', sans-serif;
     --font-family-c: 'Caveat-Bold', sans-serif;
 
-    // --- TYPOGRAPHY ---
-    --desctop-h1h2-font-size: 52px;
-    --desctop-h1h2-line-height: 116%;
-    --desctop-h1h2-font-weight: 600;
-
-    --desctop-h3-font-size: 32px;
-    --desctop-h3-line-height: 36px;
-    --desctop-h3-font-weight: 600;
-
-    --desctop-body-s-sb-font-size: 13px;
-    --desctop-body-s-sb-line-height: 140%;
-    --desctop-body-s-sb-font-weight: 600;
-
-    --desctop-body-s-reg-font-size: 13px;
-    --desctop-body-s-reg-line-height: 140%;
-    --desctop-body-s-reg-font-weight: 400;
-
-    --desctop-body-m-sb-font-size: 17px;
-    --desctop-body-m-sb-line-height: 22px;
-    --desctop-body-m-sb-font-weight: 600;
-
-    --desctop-body-l-sb-font-size: 22px;
-    --desctop-body-l-sb-line-height: 28px;
-    --desctop-body-l-sb-font-weight: 600;
-
-    --desctop-cta-s-font-size: 13px;
-    --desctop-cta-s-line-height: 120%;
-    --desctop-cta-s-font-weight: 400;
-
-    --desctop-cta-s-link-font-size: 13px;
-    --desctop-cta-s-link-line-height: 120%;
-    --desctop-cta-s-link-font-weight: 400;
-
-    --desctop-sta-m-font-size: 15px;
-    --desctop-sta-m-line-height: 120%;
-    --desctop-sta-m-font-weight: 400;
-
-    --desctop-cta-m-link-font-size: 15px;
-    --desctop-cta-m-link-line-height: 120%;
-    --desctop-cta-m-link-font-weight: 400;
-
-    --desctop-textaccedent-font-size: 24px;
-    --desctop-textaccedent-line-height: 25px;
-    --desctop-textaccedent-font-weight: 700;
-
-    --desctop-list-font-size: 13px;
-    --desctop-list-line-height: 120%;
-    --desctop-list-font-weight: 400;
-
-    --mob-h1h2-font-size: 38px;
-    --mob-h1h2-line-height: 42px;
-    --mob-h1h2-font-weight: 600;
-
-    --mob-h3-font-size: 26px;
-    --mob-h3-line-height: 30px;
-    --mob-h3-font-weight: 600;
-
-    --mob-cta-m-font-size: 15px;
-    --mob-cta-m-line-height: 20px;
-    --mob-cta-m-font-weight: 400;
-
-    --mob-cta-m-semibold-font-size: 15px;
-    --mob-cta-m-semibold-line-height: 20px;
-    --mob-cta-m-semibold-font-weight: 600;
-
     // --- COLORS ---
-    --white: #{$white};
-    --black: #{$black};
-    --gray: #{$gray};
-    --gray-2: #{$gray-2};
-    --gray-3: #{$gray-3};
-    --line-light: #{$line-light};
-    --bg-light: #{$bg-light};
-    --bg-light-2: #{$bg-light-2};
-    --yellow-main: #{$yellow-main};
-    --yellow-secondary: #{$yellow-secondary};
-    --orange: #{$orange};
-    --orange-2: #{$orange-2};
-    --green: #{$green};
-    --pro-grey-pro: #{$pro-grey-pro};
-    --pro-pro-lines: #{$pro-pro-lines};
-    --pro-lines-bg-pro: #{$pro-lines-bg-pro};
-    --successful: #{$successful};
-    --violet: #{$violet};
-    --error: #{$error};
-    --toner: #{$toner};
-    --toner-160: #{$toner-160};
+    --white:                 #ffffff;
+    --black:                 #282827;
+    --gray:                  #747473;
+    --gray-2:                #929292;
+    --gray-3:                #f5f5f5;
+    --line-light:            #f5f5f5;
+    --bg-light:              #fafafa;
+    --bg-light-2:            #f9f9f9;
+    --yellow-main:           #f8ca02;
+    --yellow-secondary:      #ffdf65;
+    --orange:                #ffc165;
+    --orange-2:              #f1711c;
+    --green:                 #56e264;
+    --pro-grey-pro:          #a8a8a8;
+    --pro-pro-lines:         #232322;
+    --pro-lines-bg-pro:      #151515;
+    --successful:            #49aa53;
+    --violet:                #7165ff;
+    --error:                 #e64832;
+    --toner: rgba(0, 0, 0, 0.25);
+    --toner-160: rgba(0, 0, 0, 0.16);
     --gradient-1: linear-gradient(
         45deg,
-        #FFE581 0%,
-        #FFC165 100%
+        #ffe581 0%,
+        #ffc165 100%
     );
     --gradient-2: linear-gradient(rgb(15 15 15 / 0%), rgb(15 15 15 / 100%));
     --gradient-3: linear-gradient(
         90deg,
-        #C4C4C4 100%,
-        #C4C4C4 49%,
-        #C4C4C4 0%
+        #c4c4c4 100%,
+        #c4c4c4 49%,
+        #c4c4c4 0%
     );
 
     @media (max-width: #{$w-mob}) {

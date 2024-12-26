@@ -1,0 +1,20 @@
+.cta {
+	width: 100%;
+	padding: 64px 0 84px 0;
+	background-color: var(--bg-light);
+
+	&__wrapper {
+		gap: 32px;
+	}
+	&__description {
+		gap: 24px;
+
+		> h2 {
+			color: var(--black);
+		}
+
+		> p {
+			color: var(--gray);
+		}
+	}
+}

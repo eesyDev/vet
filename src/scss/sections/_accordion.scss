@@ -1,0 +1,100 @@
+@use "../modules";
+.accordion {
+	width: 100%;
+	border-bottom: 1px solid var(--line-light);
+
+	&__item {
+		padding: 23px 0;
+		border-top: 1px solid var(--line-light);
+		gap: 56px;
+
+		&.align-left {
+			align-items: flex-start;
+		}
+
+		> .accordion__button {
+			> a {
+				svg {
+					transition: all ease-in-out .2s;
+					use {
+						fill: var(--gray-2);
+					}
+				}
+			}
+		}
+
+		> .flex {
+			> h4 {
+				transition: all ease-in-out .2s;
+				color: var(--gray-2);
+			}
+		}
+
+		&.active {
+			> .accordion__button {
+				> a {
+					border-color: var(--yellow-main);
+					> svg {
+						transform: rotate(90deg);
+						use {
+							fill: var(--yellow-main);
+						}
+					}
+				}
+			}
+			> .flex {
+				> h4 {
+					color: var(--black);
+				}
+			}
+		}
+	}
+
+	&__button {
+		> a {
+			width: 24px;
+			height: 24px;
+			border-radius: 50%;
+			background: var(--white);
+			border: 1px solid var(--gray-2);
+			transition: all ease-in-out .2s;
+
+			> svg {
+				width: 8px;
+				height: 8px;
+				transform: rotate(45deg);
+				transition: all ease-in-out .2s;
+				use {
+					fill: var(--gray-2);
+				}
+			}
+		}
+
+		&:hover {
+			> a {
+				border-color: var(--yellow-main);
+				> svg {
+					use {
+						fill: var(--yellow-main);
+					}
+				}
+			}
+		}
+	}
+
+	&__content {
+		margin-top: 22px;
+		> h4 {
+			margin-top: 24px;
+			@extend .body-s-sb;
+		}
+		> p {
+			margin-top: 24px;
+			@extend .body-s-reg;
+		}
+		> ul {
+			margin-top: 12px;
+			@extend .list;
+		}
+	}
+}

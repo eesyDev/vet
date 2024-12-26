@@ -1,0 +1,48 @@
+.vacancies {
+
+	> .section__wrapper {
+		gap: 32px;
+		> .title {
+			width: 731px;
+			> h1 {
+				padding-top: 0;
+			}
+		}
+	}
+
+	&__button {
+		z-index: 2;
+	}
+
+	&__cloud {
+		padding-top: 184px;
+
+		> .cloud {
+
+		}
+
+	}
+
+	&__facts {
+		padding-top: 120px;
+
+		> .facts {
+
+		}
+
+	}
+
+	&__accordion {
+		padding-top: 120px;
+
+		> .accordion {
+			margin-top: 64px;
+		}
+
+	}
+
+	&__cta {
+		padding-top: 72px;
+	}
+
+}
