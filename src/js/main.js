@@ -692,20 +692,19 @@
 
     // Ми шукамо
     function initializeAccordion(button, content, item) {
-        $(content).hide();
         $(button).on('click', function(e) {
             e.preventDefault();
 
             const $accordionItem = $(this).closest(item);
             const $visible = $accordionItem.find(content);
 
-            if ($visible.is(':visible')) {
-                $visible.slideUp();
-                $accordionItem.removeClass('active');
-            } else {
-                $(content).slideUp();
-                $visible.slideDown();
+            if (!$accordionItem.hasClass('active')) {
+                $accordionItem.siblings().removeClass('active').find(content).slideUp();
                 $accordionItem.addClass('active');
+                $visible.stop(true, true).slideDown();
+            } else {
+                $accordionItem.removeClass('active');
+                $visible.stop(true, true).slideUp();
             }
         });
     }
