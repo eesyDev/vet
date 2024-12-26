@@ -96,5 +96,9 @@
 			margin-top: 12px;
 			@extend .list;
 		}
+
+		> .flex {
+			margin-top: 16px;
+		}
 	}
 }
