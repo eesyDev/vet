@@ -709,6 +709,25 @@
         });
     }
 
+    const reviewsSlider = new Swiper('.reviews-slider__wrapper.swiper-container', {
+        slidesPerView: 3,
+        spaceBetween: 40,
+        pagination: {
+            el: '.reviews-slider__pagination',
+            clickable: true,
+        },
+        breakpoints: {
+            320: {
+                slidesPerView: 'auto',
+                spaceBetween: 20,
+            },
+            800: {
+                slidesPerView: 3,
+                spaceBetween: 40,
+            },
+        }
+    });
+
     $(function() {
         playVideo('.thank-page__video', '.thank-page__button', '.thank-page__play--text', '.thank-page__item');
         initializeAccordion('.accordion-open', '.accordion__content', '.accordion__item');

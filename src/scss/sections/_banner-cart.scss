@@ -27,8 +27,8 @@
 			top: 0;
 			height: 100%;
 			border-radius: 12px;
-			background: var(--gradient-1);
-			opacity: 25%;
+			background: var(--gradient-1-25);
+			opacity: 50%;
 		}
 
 		&:after {
@@ -36,7 +36,6 @@
 			height: 80px;
 			border-radius: 0 0 12px 12px;
 			background: var(--gradient-2);
-			opacity: 90%;
 		}
 
 	}

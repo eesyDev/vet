@@ -702,3 +702,12 @@ textarea {
 		}
 	}
 }
+
+.badge {
+	padding: 10px 16px;
+	border-radius: 19px;
+	background: var(--gradient-1-32);
+	> span {
+		color: var(--black);
+	}
+}

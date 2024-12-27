@@ -1,0 +1,87 @@
+@use "../utilities/mixins" as mix;
+.program-grid {
+	@include mix.flex-justify(flex-start);
+	flex-direction: column;
+
+	&__description {
+		text-align: center;
+		gap: 24px;
+	}
+
+	&__card {
+		margin-top: 64px;
+
+		&.grid {
+			> * {
+				flex: 0 0 33.334%;
+			}
+		}
+
+		.flex {
+			gap: 20px;
+			padding: 0 40px;
+			text-align: center;
+			position: relative;
+			z-index: 1;
+
+			&:not(:last-child):after {
+				content: "";
+				position: absolute;
+				top: 20px;
+				left: 50%;
+				width: 100%;
+				height: 1px;
+				background-color: var(--line-light);
+				z-index: -1;
+			}
+		}
+	}
+
+	&__count {
+		width: 44px;
+		height: 44px;
+		border-radius: 50%;
+		background-color: var(--bg-light);
+
+		&.grid {
+			align-items: center;
+			justify-content: center;
+		}
+
+		> h3 {
+			color: var(--black);
+		}
+	}
+
+	&__footer {
+		width: 100%;
+		margin-top: 64px;
+		padding-top: 16px;
+		text-align: center;
+		border-top: 1px solid var(--line-light);
+		> p {
+			color: var(--gray-2);
+			> span {
+				color: var(--black);
+			}
+		}
+	}
+
+	&__ico {
+		&.flex {
+			gap: 10px;
+			> svg {
+				width: 16px;
+				height: 16px;
+				> use {
+					fill: var(--black);
+				}
+			}
+
+			> span {
+				color: var(--pro-grey-pro);
+			}
+		}
+	}
+
+}

@@ -1,0 +1,26 @@
+@use "../utilities/mixins" as mix;
+.program-image {
+	@include mix.flex-justify(flex-start);
+	flex-direction: column;
+
+	&__description {
+		text-align: center;
+		gap: 24px;
+
+		> p {
+			> span {
+				color: var(--gray);
+			}
+		}
+	}
+
+	&__button {
+		padding-top: 32px;
+	}
+
+	&__hint {
+		padding-top: 16px;
+		text-align: center;
+		color: var(--black);
+	}
+}
