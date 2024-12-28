@@ -92,4 +92,17 @@
 			color: var(--black);
 		}
 	}
+
+	&__about {
+		margin-top: 64px;
+		> p {
+			color: var(--black);
+			> a {
+				background: var(--gradient-1);
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+			}
+		}
+
+	}
 }
