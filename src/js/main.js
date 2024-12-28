@@ -709,22 +709,12 @@
         });
     }
 
-    const reviewsSlider = new Swiper('.reviews-slider__wrapper.swiper-container', {
+    const reviewsSlider = new Swiper('.reviews > .swiper-container', {
         slidesPerView: 3,
-        spaceBetween: 40,
+        spaceBetween: 30,
         pagination: {
-            el: '.reviews-slider__pagination',
+            el: '.reviews > .swiper-pagination-clickable',
             clickable: true,
-        },
-        breakpoints: {
-            320: {
-                slidesPerView: 'auto',
-                spaceBetween: 20,
-            },
-            800: {
-                slidesPerView: 3,
-                spaceBetween: 40,
-            },
         }
     });
 
