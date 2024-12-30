@@ -1,3 +1,4 @@
+@use "../utilities/mixins" as mix;
 .charity {
 
 	> .section__wrapper {
@@ -38,6 +39,93 @@
 
 	&__reviews {
 		padding-top: 120px;
+
+		.reviews {
+			@include mix.flexbox(flex-start);
+			flex-direction: column;
+			background-color: transparent;
+
+			&__title {
+				text-align: center;
+				gap: 24px;
+
+				> p {
+					color: var(--black);
+					> span {
+						color: var(--gray);
+					}
+				}
+			}
+
+			> .swiper-container {
+				margin: 64px 0;
+				width: var(--w-content);
+				height: 540px;
+
+				> .swiper-wrapper {
+
+					cursor: grab;
+					&:active {
+						cursor: grabbing;
+					}
+				}
+			}
+
+			> .swiper-pagination-clickable {
+				gap: 8px;
+				> .swiper-pagination-bullet {
+					background: var(--gray-3);
+					opacity: 1;
+					transition: all ease-in-out .2s;
+
+					&.swiper-pagination-bullet-active {
+						background: var(--white);
+						border: 2px solid var(--yellow-main);
+						transition: none;
+					}
+
+					&:hover:not(.swiper-pagination-bullet-active) {
+						background: var(--gray);
+					}
+				}
+			}
+
+			&__about {
+				margin-top: 64px;
+				> p {
+					color: var(--black);
+					> a {
+						position: relative;
+						background: var(--gradient-1);
+						-webkit-background-clip: text;
+						-webkit-text-fill-color: transparent;
+
+						&:after {
+							content: '';
+							position: absolute;
+							left: -0.6px;
+							bottom: -0.6px;
+							width: 100%;
+							height: 0.7px;
+							background: var(--gradient-1);
+							transform: scaleY(1.5);
+							transition: all ease-in-out .2s;
+						}
+
+						&:hover {
+							&:after {
+								opacity: 0;
+							}
+						}
+					}
+				}
+
+			}
+
+			&__card {
+				background-color: var(--bg-light);
+			}
+		}
 	}
 
 	&__slider {

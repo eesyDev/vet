@@ -174,7 +174,7 @@
 	}
 }
 
-@mixin flex-justify($alignment: center, $align: center) {
+@mixin flexbox($alignment: center, $align: center) {
 	display: flex;
 	justify-content: $alignment;
 	align-items: $align;

@@ -1,6 +1,6 @@
 @use "../utilities/mixins" as mix;
 .podcast {
-	@include mix.flex-justify;
+	@include mix.flexbox;
 	padding: 40px 0;
 	gap: 40px;
 
@@ -10,7 +10,7 @@
 		gap: 16px;
 
 		.ico-audio-play {
-			@include mix.flex-justify;
+			@include mix.flexbox;
 			width: 24px;
 			height: 24px;
 			border-radius: 50%;
@@ -36,11 +36,11 @@
 	}
 
 	&__button {
-		@include mix.flex-justify(flex-start, center);
+		@include mix.flexbox(flex-start, center);
 	}
 
 	&__progress {
-		@include mix.flex-justify(flex-start, center);
+		@include mix.flexbox(flex-start, center);
 		width: 515px;
 		gap: 16px;
 

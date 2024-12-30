@@ -3,7 +3,7 @@
 	$this: &;
 
 	&__wrapper {
-		@include mix.flex-justify(flex-start, flex-start);
+		@include mix.flexbox(flex-start, flex-start);
 		flex-direction: column;
 		flex-wrap: nowrap;
 		gap: 44px;
@@ -48,14 +48,14 @@
 	}
 
 	&__flex {
-		@include mix.flex-justify(flex-start, flex-start);
+		@include mix.flexbox(flex-start, flex-start);
 		flex-direction: column;
 		flex-wrap: nowrap;
 		gap: 24px;
 	}
 
 	&__dont-call-back {
-		@include mix.flex-justify(space-between, flex-start);
+		@include mix.flexbox(space-between, flex-start);
 		flex-direction: column;
 		padding: 24px;
 		border-radius: 8px;

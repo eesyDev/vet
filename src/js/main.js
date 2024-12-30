@@ -320,13 +320,13 @@
 
     $(DROPDOWN_CLASS).on('filtered', DROPDOWN_CLASS + '__item', function () {
         const $filter = $(this).closest(DROPDOWN_CLASS);
-        const $list = $filter.closest('section').find('.filtered-list');
+        const $list = $('.filtered-list');
 
         const activeFilters = $filter.find(DROPDOWN_CLASS + '__item.active').map(function () {
             return $(this).data('filter');
         }).get();
 
-        const $items = $list.find(DROPDOWN_CLASS + '__item');
+        const $items = $list.find('.reviews__item');
         $items.hide().removeClass('left right');
 
         if (activeFilters.length > 0) {

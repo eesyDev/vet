@@ -117,7 +117,7 @@
 	padding-top: 32px;
 
 	&__item {
-		@include mix.flex-justify('flex-start', 'flex-start');
+		@include mix.flexbox('flex-start', 'flex-start');
 		flex-direction: column;
 
 		h3 {
@@ -133,7 +133,7 @@
 			li {
 				margin-bottom: 6px;
 				a {
-					@include mix.flex-justify('flex-start', 'center');
+					@include mix.flexbox('flex-start', 'center');
 					color: var(--white);
 
 					.tag {
@@ -173,11 +173,11 @@
 	}
 
 	&__social {
-		@include mix.flex-justify;
+		@include mix.flexbox;
 		gap: 16px;
 
 		a {
-			@include mix.flex-justify;
+			@include mix.flexbox;
 			width: auto;
 
 			svg {
@@ -486,7 +486,7 @@ input {
 	width: 100%;
 
 	&__item {
-		@include mix.flex-justify('flex-start');
+		@include mix.flexbox('flex-start');
 		gap: 8px;
 		box-sizing: border-box;
 		cursor: pointer;
@@ -497,7 +497,7 @@ input {
 		}
 
 		span {
-			@include mix.flex-justify('flex-start');
+			@include mix.flexbox('flex-start');
 			width: 100%;
 			border-width: 1px;
 			border-style: solid;

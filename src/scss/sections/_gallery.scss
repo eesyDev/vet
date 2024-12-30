@@ -12,7 +12,7 @@
 		}
 
 		.swiper-slide {
-			@include mix.flex-justify;
+			@include mix.flexbox;
 			height: 80px !important;
 			cursor: pointer;
 			opacity: 16%;

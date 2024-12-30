@@ -2,7 +2,7 @@
 .catalog {
 	$this: &;
 	&__header {
-		@include mix.flex-justify(space-between, center);
+		@include mix.flexbox(space-between, center);
 		padding-bottom: 16px;
 		border-bottom-style: solid;
 		border-bottom-width: 1px;
@@ -11,12 +11,12 @@
 
 	&__category {
 		$this: &;
-		@include mix.flex-justify(center, center);
+		@include mix.flexbox(center, center);
 		position: relative;
 		width: max-content;
 
 		&--title{
-			@include mix.flex-justify(center, center);
+			@include mix.flexbox(center, center);
 			position: relative;
 			width: max-content;
 			color: var(--black);
@@ -57,12 +57,12 @@
 	}
 
 	&__module {
-		@include mix.flex-justify(space-between, center);
+		@include mix.flexbox(space-between, center);
 		width: max-content;
 		gap: 24px;
 
 		&--view {
-			@include mix.flex-justify(space-between, center);
+			@include mix.flexbox(space-between, center);
 			border-right: 1px solid var(--line-light);
 			gap: 16px;
 			padding-right: 24px;
@@ -92,7 +92,7 @@
 			width: max-content;
 
 			&-link {
-				@include mix.flex-justify(center, center);
+				@include mix.flexbox(center, center);
 				color: var(--black);
 
 				&:hover,

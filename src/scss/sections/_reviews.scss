@@ -1,70 +1,92 @@
+@use "../layout";
 @use "../utilities/mixins" as mix;
 .reviews {
-	@include mix.flex-justify(flex-start);
-	flex-direction: column;
+	background-color: var(--line-light);
 
-	&__title {
-		text-align: center;
-		gap: 24px;
+	&__wrapper {
+		margin: 0 auto;
+		padding: 6px 11px 100px 11px;
+		width: 823px;
 
-		> p {
-			color: var(--black);
-			> span {
-				color: var(--gray);
-			}
+		&:after {
+			content: '';
+			display: block;
+			width: 100%;
+			clear: both;
 		}
 	}
 
-	> .swiper-container {
-		margin: 64px 0;
-		width: var(--w-content);
-		height: 540px;
+	&__item {
+		position: relative;
+		max-width: 320px;
+		min-width: 320px;
+		margin-top: -160px;
+		float: left;
+		clear: both;
+		z-index: 1;
 
-		> .swiper-wrapper {
+		&:after {
+			position: absolute;
+			content: '';
+			display: block;
+			bottom: 20.8px;
+			width: 40px;
+			height: 26px;
+			background-image: url("data:image/svg+xml,%3Csvg%20width='40'%20height='26'%20viewBox='0%200%2040%2026'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3E%3Cpath%20d='M11.3529%2012C11.3529%2018.8%202.85287%2020.5%200.352867%2021C-2.14722%2022.5%209.35287%2025.8333%2012.3529%2025.5L39.3529%2019.5L31.3529%200C24.6862%201.16667%2011.3529%205.2%2011.3529%2012Z'%20fill='white'/%3E%3C/svg%3E%0A");
+			z-index: -1;
+		}
 
-			> .swiper-slide {
-				background-color: var(--bg-light);
-				border-radius: 24px;
-				padding: 4px 4px 22px 4px;
-			}
+		&.left {
+			float: left;
+		}
 
-			cursor: grab;
-			&:active {
-				cursor: grabbing;
+		&.right {
+			float: right;
+		}
+
+		&:nth-child(odd):not(.right) {
+			float: left;
+
+			&:after {
+				left: -11px;
 			}
 		}
+
+		&:nth-child(even):not(.left) {
+			float: right;
+
+			&:after {
+				right: -11px;
+				transform: scaleX(-1);
+			}
+		}
+
+		.reviews {
+			&__card {
+				background-color: var(--white);
+			}
+			&__description {
+				max-height: 306px;
+			}
+		}
+
 	}
 
-	> .swiper-pagination-clickable {
-		gap: 8px;
-		> .swiper-pagination-bullet {
-			background: var(--gray-3);
-			opacity: 1;
-			transition: all ease-in-out .2s;
-
-			&.swiper-pagination-bullet-active {
-				background: var(--white);
-				border: 2px solid var(--yellow-main);
-				transition: none;
-			}
-
-			&:hover:not(.swiper-pagination-bullet-active) {
-				background: var(--gray);
-			}
-		}
+	&__card {
+		border-radius: 24px;
+		padding: 4px 4px 22px 4px;
 	}
 
 	&__header {
 		width: 100%;
 		height: auto;
-		gap: 24px;
 	}
 
 	&__footer {
 		width: 100%;
 		align-items: flex-end;
 		justify-content: flex-end;
-		padding: 0 22px;
+		padding: 16px 22px 0 22px;
 		gap: 12px;
 
 		> p {
@@ -88,8 +110,8 @@
 	}
 
 	&__description {
-		padding: 0 22px;
-		height: 162px;
+		padding: 24px 22px 0 22px;
+		max-height: 166px;
 		overflow: hidden;
 		text-align: left;
 		text-overflow: clip;
@@ -98,35 +120,25 @@
 		}
 	}
 
-	&__about {
-		margin-top: 64px;
-		> p {
-			color: var(--black);
-			> a {
-				position: relative;
-				background: var(--gradient-1);
-				-webkit-background-clip: text;
-				-webkit-text-fill-color: transparent;
+	&__filter {
+		position: relative;
 
-				&:after {
-					content: '';
-					position: absolute;
-					left: -0.6px;
-					bottom: -0.6px;
+		.button {
+			@include mix.flexbox;
+			gap: 16px;
+
+			.ico-ellipsis {
+				@include mix.flexbox;
+				width: 16px;
+				height: 4px;
+				transition: all linear .2s;
+
+				> svg {
 					width: 100%;
-					height: 0.7px;
-					background: var(--gradient-1);
-					transform: scaleY(1.5);
-					transition: all ease-in-out .2s;
-				}
-
-				&:hover {
-					&:after {
-						opacity: 0;
-					}
+					height: 100%;
+					transition: all linear .2s;
 				}
 			}
 		}
-
 	}
 }

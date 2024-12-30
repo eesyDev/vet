@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+//= utilities/head.html
+<body>
+
+	//= sections/header.html
+
+	<section class="section section--reviews reviews">
+		<div class="section__wrapper">
+			<div class="reviews__filter align-right">
+				<button class="button button--yellow button--big dropdown-filter">
+					<span>Розумний фiльтр</span>
+					<span class="ico-ellipsis">
+						<svg>
+							<use xlink:href="assets/img/sprite.svg#ico-ellipsis"></use>
+						</svg>
+					</span>
+				</button>
+				<div class="dropdown dropdown--right">
+					<div class="dropdown__item" data-filter="interaktivna-korobka">
+						<span>Інтерактивна коробка</span>
+						<span class="switcher"></span>
+					</div>
+					<div class="dropdown__item" data-filter="srok">
+						<span>Термін служби</span>
+						<span class="switcher"></span>
+					</div>
+					<div class="dropdown__item" data-filter="mebel">
+						<span>Відучили від меблів</span>
+						<span class="switcher"></span>
+					</div>
+					<div class="dropdown__item" data-filter="2v1">
+						<span>2 в 1 (кігтеточка та лежанка)</span>
+						<span class="switcher"></span>
+					</div>
+					<div class="dropdown__item" data-filter="design">
+						<span>Дизайн та якість</span>
+						<span class="switcher"></span>
+					</div>
+					<div class="dropdown__item" data-filter="service">
+						<span>Сервіс</span>
+						<span class="switcher"></span>
+					</div>
+					<div class="dropdown__item" data-filter="dream">
+						<span>Модель Dream</span>
+						<span class="switcher"></span>
+					</div>
+					<div class="dropdown__item" data-filter="cloud">
+						<span>Модель Cloud</span>
+						<span class="switcher"></span>
+					</div>
+					<div class="dropdown__item" data-filter="grace">
+						<span>Модель Grace</span>
+						<span class="switcher"></span>
+					</div>
+					<div class="dropdown__item" data-filter="grace-max">
+						<span>Модель Grace Max</span>
+						<span class="switcher"></span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="section reviews">
+		<div class="section__wrapper">
+			<div class="reviews__wrapper filtered-list">
+				//= sections/reviews.html
+			</div>
+		</div>
+	</section>
+
+	//= sections/footer.html
+	//= sections/dialogs.html
+	//= utilities/scripts.html
+
+</body>
+</html>

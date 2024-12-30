@@ -20,10 +20,10 @@ body, html {
 	padding: 0;
 	box-sizing: border-box;
 
-	&:first-child {
+	&:first-child:not(.reviews__wrapper) {
 		margin-top: 0 !important;
 	}
-	&:last-child:not(.popup-cart)
+	& :last-child:not(.popup-cart)
 	{
 		margin-bottom: 0 !important;
 	}

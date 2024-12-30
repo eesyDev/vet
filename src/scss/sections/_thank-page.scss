@@ -54,7 +54,7 @@
 	}
 
 	&__play {
-		@include mix.flex-justify(space-between, center);
+		@include mix.flexbox(space-between, center);
 		flex-direction: column;
 		position: absolute;
 		height: 95px;

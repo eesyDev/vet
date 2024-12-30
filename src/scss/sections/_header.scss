@@ -13,18 +13,18 @@
 	&__wrapper {
 		padding: 8px var(--c-padding);
 		height: max-content;
-		@include mix.flex-justify('flex-start');
+		@include mix.flexbox('flex-start');
 		@include mix.wrapper;
 
 		&--full {
 			padding: 8px var(--c-padding);
 			height: max-content;
-			@include mix.flex-justify('flex-start');
+			@include mix.flexbox('flex-start');
 			@include mix.wrapper(100%, 20px);
 		}
 
 		&--navigation {
-			@include mix.flex-justify('flex-start');
+			@include mix.flexbox('flex-start');
 			flex-direction: column;
 			@include mix.wrapper;
 
@@ -137,7 +137,7 @@
 		}
 
 		&--count {
-			@include mix.flex-justify;
+			@include mix.flexbox;
 			text-wrap-mode: nowrap;
 			position: absolute;
 			top: 0;

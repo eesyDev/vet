@@ -18,7 +18,7 @@
 			width: 64px;
 
 			> .swiper-slide {
-				@include mix.flex-justify;
+				@include mix.flexbox;
 				height: 80px;
 				background-color: var(--bg-light-2);
 				cursor: pointer;
@@ -63,7 +63,7 @@
 			height: 100%;
 
 			> .swiper-slide {
-				@include mix.flex-justify;
+				@include mix.flexbox;
 				width: 100%;
 				height: 100%;
 				background-color: var(--white);

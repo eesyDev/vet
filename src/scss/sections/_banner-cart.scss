@@ -41,7 +41,7 @@
 	}
 
 	&__wrapper {
-		@include mix.flex-justify(center, flex-start);
+		@include mix.flexbox(center, flex-start);
 		flex-direction: column;
 		flex-wrap: nowrap;
 		padding: 24px;
@@ -66,7 +66,7 @@
 	}
 
 	&__footer {
-		@include mix.flex-justify(space-between, center);
+		@include mix.flexbox(space-between, center);
 		flex-wrap: nowrap;
 		width: 100%;
 
@@ -81,7 +81,7 @@
 	}
 
 	&__price {
-		@include mix.flex-justify;
+		@include mix.flexbox;
 
 		.tag {
 			margin-right: 16px;

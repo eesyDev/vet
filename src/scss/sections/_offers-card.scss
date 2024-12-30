@@ -23,14 +23,14 @@
 	}
 
 	&__navigation {
-		@include mix.flex-justify(flex-end, center);
+		@include mix.flexbox(flex-end, center);
 		margin-top: 32px;
 		width: 100%;
 		gap: 8px;
 
 		&--next,
 		&--prev {
-			@include mix.flex-justify;
+			@include mix.flexbox;
 			position: relative;
 			width: 36px;
 			height: 36px;

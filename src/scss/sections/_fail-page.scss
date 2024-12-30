@@ -1,12 +1,12 @@
 @use "../utilities/mixins" as mix;
 .fail-page {
-	@include mix.flex-justify;
+	@include mix.flexbox;
 	width: 100%;
 	height: 100vh;
 
 	.section__wrapper {
 		&.fail-page__wrapper {
-			@include mix.flex-justify;
+			@include mix.flexbox;
 			flex-direction: column;
 
 			h1 {

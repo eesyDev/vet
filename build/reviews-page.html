@@ -99,363 +99,156 @@
 		</div>
 	</header>
 
-	<article class="section section--first article-header charity">
-		<div class="section__wrapper flex col center">
-			<div class="title flex col center">
-				<h1 class="h1h2">Благодійні ініціативи Say Meow</h1>
-				<p class="body-l-sb">Для Say Meow благодійна складова являється дуже значимою, так як ми впевненні що сучасний бізнес – це тільки соціально відповідальний бізнес</p>
-			</div>
-			<div class="charity__button flex center">
-				<a href="#consult" class="button button--yellow button--big open-popup">Дізнатись більше</a>
-			</div>
-			<div class="article-header__bg">
-				<img srcset="assets/img/charity/charity-header-2x.jpg 2x" src="assets/img/charity/charity-header.jpg" alt="" class="desktop-plus-tablet transition">
-				<img srcset="assets/img/charity/charity-header-mobile-2x.jpg 2x" src="assets/img/charity/charity-header-mobile.jpg" alt="" class="mobile-only transition">
-			</div>
-		</div>
-	</article>
-
-	<section class="section charity__plates">
+	<section class="section section--reviews reviews">
 		<div class="section__wrapper">
-			<div class="plates flex col">
-				<div class="grid">
-					<div class="plates__item">
-						<div class="plates__description">
-							<p>Допомогли притулкам на</p>
-							<h4>400 тис.</h4>
-						</div>
+			<div class="reviews__filter align-right">
+				<button class="button button--yellow button--big dropdown-filter">
+					<span>Розумний фiльтр</span>
+					<span class="ico-ellipsis">
+						<svg>
+							<use xlink:href="assets/img/sprite.svg#ico-ellipsis"></use>
+						</svg>
+					</span>
+				</button>
+				<div class="dropdown dropdown--right">
+					<div class="dropdown__item" data-filter="interaktivna-korobka">
+						<span>Інтерактивна коробка</span>
+						<span class="switcher"></span>
 					</div>
-					<div class="plates__item">
-						<img class="ico-zsu" src="assets/img/svg/ico-zsu.svg?v=1" alt="">
-						<div class="plates__description">
-							<p>Допомогли ЗСУ на</p>
-							<h4>1,2 млн.</h4>
-						</div>
+					<div class="dropdown__item" data-filter="srok">
+						<span>Термін служби</span>
+						<span class="switcher"></span>
 					</div>
-				</div>
-				<div class="plates__item">
-					<h4 class="body-l-sb">Подарували кiгтеточок притулкам</h4>
-					<div class="plates__image">
-						<img srcset="assets/img/charity/plates-400-2x.png 2x" src="assets/img/charity/plates-400.png" alt="" class="desktop-plus-tablet transition">
-						<img srcset="assets/img/charity/plates-400-mobile-2x.png 2x" src="assets/img/charity/plates-400-mobile.png" alt="" class="mobile-only transition">
+					<div class="dropdown__item" data-filter="mebel">
+						<span>Відучили від меблів</span>
+						<span class="switcher"></span>
+					</div>
+					<div class="dropdown__item" data-filter="2v1">
+						<span>2 в 1 (кігтеточка та лежанка)</span>
+						<span class="switcher"></span>
+					</div>
+					<div class="dropdown__item" data-filter="design">
+						<span>Дизайн та якість</span>
+						<span class="switcher"></span>
+					</div>
+					<div class="dropdown__item" data-filter="service">
+						<span>Сервіс</span>
+						<span class="switcher"></span>
+					</div>
+					<div class="dropdown__item" data-filter="dream">
+						<span>Модель Dream</span>
+						<span class="switcher"></span>
+					</div>
+					<div class="dropdown__item" data-filter="cloud">
+						<span>Модель Cloud</span>
+						<span class="switcher"></span>
+					</div>
+					<div class="dropdown__item" data-filter="grace">
+						<span>Модель Grace</span>
+						<span class="switcher"></span>
+					</div>
+					<div class="dropdown__item" data-filter="grace-max">
+						<span>Модель Grace Max</span>
+						<span class="switcher"></span>
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
 
-	<section class="section charity__program-grid">
+	<section class="section reviews">
 		<div class="section__wrapper">
-			<div class="program-grid">
-				<div id="program-1" class="badge flex col center">
-					<span class="body-s-reg">Программа №1</span>
-				</div>
-				<div class="program-grid__description flex col">
-					<h2 class="h1h2">Подарувати кігтеточку притулку</h2>
-					<p class="body-l-sb">Кожен бажаючий може придбати кігтеточку для притулку зі списку перевірених зі знижкою 50% з безкоштовную доставкою</p>
-				</div>
-				<div class="program-grid__card grid">
-					<div class="flex col center">
-						<div class="program-grid__count grid">
-							<h3 class="body-m-sb">1</h3>
+			<div class="reviews__wrapper filtered-list">
+				<div class="reviews__item" data-filter="mebel interaktivna-korobka">
+					<div class="reviews__card flex col sp-between">
+						<div class="reviews__header flex col auto">
+							<div class="reviews__media flex">
+								<img src="assets/img/reviews/reviews-1.jpg" alt="">
+								<!--<video muted autoplay loop>
+									<source src="assets/video/reviews.mp4" type="video/mp4">
+								</video>-->
+							</div>
+							<div class="reviews__description flex col"><!-- 320 символов максимально, далее ставим многоточие  -->
+								<p class="body-s-reg">Без преувеличения, это самая лучшая покупка для моей кошки за всю ее жизнь! Кошка активно ее использует, но когтеточка не сдается, хотя ей уже больше года. Очень удобно, что это еще и лежак, не нужно покупать отдельно.</p>
+							</div>
 						</div>
-						<p class="body-m-sb">Обирайте кігтеточку зі списку нижче зі знижкою 50%</p>
-						<a href="#" class="button button--yellow">Обрати модель</a>
-					</div>
-					<div class="flex col center">
-						<div class="program-grid__count grid">
-							<h3 class="body-m-sb">2</h3>
-						</div>
-						<p class="body-m-sb">Обирайте притулок, якому плануєте зробити подарунок</p>
-						<a href="#list" class="button button--yellow open-popup">Список притулків</a>
-					</div>
-					<div class="flex col center">
-						<div class="program-grid__count grid">
-							<h3 class="body-m-sb">3</h3>
-						</div>
-						<p class="body-m-sb">Оплачуєте замовлення, а ми відправляємо кігтеточку до притулку</p>
-						<div class="program-grid__ico flex center">
-							<svg>
-								<use xlink:href="assets/img/sprite.svg#ico-delivery"></use>
-							</svg>
-							<span class="body-s-reg">Оплатимо доставку</span>
+						<div class="reviews__footer flex">
+							<p class="body-s-sb">Притулок Друг Днiпро</p>
 						</div>
 					</div>
 				</div>
-				<div class="program-grid__footer flex col center sp-between">
-					<p class="body-s-reg">За весь період роботи програми до притулків було надіслано: <span>249 кігтеточок.</span><br>Приєднуйся до благодійної програми та зроби котиків щасливими разом з нами!</p>
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<section class="section charity__slider">
-		<div class="section__wrapper">
-			<div class="title">
-				<h3 class="h3">Обрати кігтеточку для притулку</h3>
-			</div>
-		</div>
-		<div class="offers-card__slider swiper-container">
-			<div class="swiper-wrapper">
-				<div class="offers-card__item swiper-slide">
-					<div class="mini-card">
-						<div class="mini-card__tag">
-							<a href="/product-page.html#discount" class="tag tag--discount">-50%</a>
+				<div class="reviews__item" data-filter="design cloud interaktivna-korobka">
+					<div class="reviews__card flex col sp-between">
+						<div class="reviews__header flex col auto">
+							<div class="reviews__media flex">
+								<img src="assets/img/reviews/reviews-2.jpg" alt="">
+							</div>
+							<div class="reviews__description flex col"><!-- 320 символов максимально, далее ставим многоточие  -->
+								<p class="body-s-reg">Это самая лучшая покупка для моей кошки за всю ее жизнь! Кошка активно ее использует, но когтеточка не сдается, хотя ей уже больше года. Очень удобно, что это еще и лежак, не нужно покупать отдельно. Спасибо за такой качественный продукт. Кстати, все гости удивленно спрашивают, что же это. Сразу не верят, что это когте...</p>
+							</div>
 						</div>
-						<div class="mini-card__img">
-							<img class="mini-card-img img-1 active" src="assets/img/catalog/dream-2x.png" alt="" />
-						</div>
-						<a href="/product-page.html" class="mini-card__title">
-							<h3 class="body-s-sb">Dream</h3>
-						</a>
-						<div class="mini-card__price">
-							<p class="body-s-reg">490 ₴</p>
-						</div>
-						<div class="mini-card__option"></div>
-					</div>
-				</div>
-				<div class="offers-card__item swiper-slide">
-					<div class="mini-card">
-						<div class="mini-card__tag">
-							<a href="/product-page.html#discount" class="tag tag--discount">-50%</a>
-						</div>
-						<div class="mini-card__img">
-							<img class="mini-card-img img-1 active" src="assets/img/catalog/cloud-2x.png" alt="" />
-						</div>
-						<a href="/product-page.html" class="mini-card__title">
-							<h3 class="body-s-sb">Cloud</h3>
-						</a>
-						<div class="mini-card__price">
-							<p class="body-s-reg">890 ₴</p>
-						</div>
-						<div class="mini-card__option"></div>
-					</div>
-				</div>
-				<div class="offers-card__item swiper-slide">
-					<div class="mini-card">
-						<div class="mini-card__tag">
-							<a href="/product-page.html#discount" class="tag tag--discount">-50%</a>
-						</div>
-						<div class="mini-card__img">
-							<img class="mini-card-img img-2 active" src="assets/img/catalog/grace-pro-black-2x.png" alt="" />
-							<img class="mini-card-img img-1" src="assets/img/catalog/cloud-2x.png" alt="" style="display:none"/>
-						</div>
-						<a href="/product-page.html" class="mini-card__title">
-							<h3 class="body-s-sb">Grace Pro</h3>
-						</a>
-						<div class="mini-card__price">
-							<p class="body-s-reg">1390 ₴</p>
-						</div>
-						<div class="mini-card__option">
-							<a href="#" class="mini-card__option--link" data-mini-card-option="1">
-								<span class="mini-card__option--white"></span>
-							</a>
-							<a href="#" class="mini-card__option--link active" data-mini-card-option="2">
-								<span class="mini-card__option--black"></span>
-							</a>
+						<div class="reviews__footer flex">
+							<p class="body-s-sb">Kotoxata</p>
 						</div>
 					</div>
 				</div>
-				<div class="offers-card__item swiper-slide">
-					<div class="mini-card">
-						<div class="mini-card__tag">
-							<a href="/product-page.html#new" class="tag tag--new">Новинка</a>
-							<a href="/product-page.html#soon" class="tag tag--soon">Скоро</a>
-						</div>
-						<div class="mini-card__img">
-							<img src="assets/img/catalog/max-2x.png" alt="">
-						</div>
-						<a href="/product-page.html" class="mini-card__title">
-							<h3 class="body-s-sb">Комплект Basic</h3>
-						</a>
-						<div class="mini-card__price">
-							<p class="body-s-reg">590 ₴</p>
-						</div>
-						<div class="mini-card__option"></div>
-					</div>
-				</div>
-				<div class="offers-card__item swiper-slide">
-					<div class="mini-card">
-						<div class="mini-card__tag">
-							<a href="/product-page.html#new" class="tag tag--new">Новинка</a>
-							<a href="/product-page.html#soon" class="tag tag--soon">Скоро</a>
-						</div>
-						<div class="mini-card__img">
-							<img src="assets/img/catalog/3in1-2x.png" alt="">
-						</div>
-						<a href="/product-page.html" class="mini-card__title">
-							<h3 class="body-s-sb">Комплект 3 в 1</h3>
-						</a>
-						<div class="mini-card__price">
-							<p class="body-s-reg">590 ₴</p>
-						</div>
-						<div class="mini-card__option"></div>
-					</div>
-				</div>
-				<div class="offers-card__item swiper-slide">
-					<div class="mini-card">
-						<div class="mini-card__tag">
-							<a href="/product-page.html#new" class="tag tag--new">Новинка</a>
-							<a href="/product-page.html#soon" class="tag tag--soon">Скоро</a>
-						</div>
-						<div class="mini-card__img">
-							<img src="assets/img/catalog/max-2x.png" alt="">
-						</div>
-						<a href="/product-page.html" class="mini-card__title">
-							<h3 class="body-s-sb">Комплект Max</h3>
-						</a>
-						<div class="mini-card__price">
-							<p class="body-s-reg">590 ₴</p>
-						</div>
-						<div class="mini-card__option"></div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="section__wrapper">
-			<div class="offers-card__navigation">
-				<div class="offers-card__navigation--next"></div>
-				<div class="offers-card__navigation--prev"></div>
-			</div>
-		</div>
-	</section>
-
-	<section class="section charity__reviews">
-		<div class="section__wrapper">
-			<div class="reviews">
-				<div class="reviews__title flex col">
-					<h2 class="h1h2">Погляньте на ці щасливі мордочки</h2>
-					<p class="body-l-sb">Речі на які можна дивитись вічно: <span>вода, вогонь так як котики<br>насолоджуються кігтеточками Say Meow</span></p>
-				</div>
-				<div class="swiper-container">
-					<div class="swiper-wrapper flex">
-						<div class="reviews__card swiper-slide flex col sp-between">
-							<div class="reviews__header flex col auto">
-								<div class="reviews__media flex">
-									<img src="assets/img/reviews/reviews-1.jpg" alt="">
-									<!--<video muted autoplay loop>
-										<source src="assets/video/reviews.mp4" type="video/mp4">
-									</video>-->
-								</div>
-								<div class="reviews__description flex col"><!-- 320 символов максимально, далее ставим многоточие  -->
-									<p class="body-s-reg">Без преувеличения, это самая лучшая покупка для моей кошки за всю ее жизнь! Кошка активно ее использует, но когтеточка не сдается, хотя ей уже больше года. Очень удобно, что это еще и лежак, не нужно покупать отдельно.</p>
-								</div>
+				<div class="reviews__item" data-filter="mebel design">
+					<div class="reviews__card flex col sp-between">
+						<div class="reviews__header flex col auto">
+							<div class="reviews__media flex">
+								<img src="assets/img/reviews/reviews-3.jpg" alt="">
 							</div>
-							<div class="reviews__footer flex">
-								<p class="body-s-sb">Притулок Друг Днiпро</p>
+							<div class="reviews__description flex col"><!-- 320 символов максимально, далее ставим многоточие  -->
+								<p class="body-s-reg">Фил передает вам огромный привет и говорит что когтеточкой он очень доволен, собственно, как и его домочадцы. Несмотря на то, что нашей когтеточке уже больше ГОДА, она в идеальном состоянии, служит Мне как средство почесать коготки, как лежаночка, где Его Величество, т. е. Я (Фил) могу выложить свою лени...</p>
 							</div>
 						</div>
-						<div class="reviews__card swiper-slide flex col sp-between">
-							<div class="reviews__header flex col auto">
-								<div class="reviews__media flex">
-									<img src="assets/img/reviews/reviews-2.jpg" alt="">
-								</div>
-								<div class="reviews__description flex col"><!-- 320 символов максимально, далее ставим многоточие  -->
-									<p class="body-s-reg">Это самая лучшая покупка для моей кошки за всю ее жизнь! Кошка активно ее использует, но когтеточка не сдается, хотя ей уже больше года. Очень удобно, что это еще и лежак, не нужно покупать отдельно. Спасибо за такой качественный продукт. Кстати, все гости удивленно спрашивают, что же это. Сразу не верят, что это когте...</p>
-								</div>
-							</div>
-							<div class="reviews__footer flex">
-								<p class="body-s-sb">Kotoxata</p>
-							</div>
-						</div>
-						<div class="reviews__card swiper-slide flex col sp-between">
-							<div class="reviews__header flex col auto">
-								<div class="reviews__media flex">
-									<img src="assets/img/reviews/reviews-3.jpg" alt="">
-								</div>
-								<div class="reviews__description flex col"><!-- 320 символов максимально, далее ставим многоточие  -->
-									<p class="body-s-reg">Фил передает вам огромный привет и говорит что когтеточкой он очень доволен, собственно, как и его домочадцы. Несмотря на то, что нашей когтеточке уже больше ГОДА, она в идеальном состоянии, служит Мне как средство почесать коготки, как лежаночка, где Его Величество, т. е. Я (Фил) могу выложить свою лени...</p>
-								</div>
-							</div>
-							<div class="reviews__footer flex">
-								<p class="body-s-sb">ГО Душа Бродяги</p>
-							</div>
-						</div>
-						<div class="reviews__card swiper-slide flex col sp-between">
-							<div class="reviews__header flex col auto">
-								<div class="reviews__media flex">
-									<img src="assets/img/reviews/reviews-4.jpg" alt="">
-								</div>
-								<div class="reviews__description flex col"><!-- 320 символов максимально, далее ставим многоточие  -->
-									<p class="body-s-reg">Кігтеточка коту сподобалася відразу, за час експлуатації стала улюбленим місцем проживання. Служить добре, ще в нормальному стані, але вже замислюємося про нову. Можливо, у вас з'явилися інші моделі. Не думала, що так довго служитиме. Однозначно служить довше за звичайні килимові та сизалеві. Останнім час...</p>
-								</div>
-							</div>
-							<div class="reviews__footer flex">
-								<p class="body-s-sb">Meri Kushnir</p>
-							</div>
-						</div>
-						<div class="reviews__card swiper-slide flex col sp-between">
-							<div class="reviews__header flex col auto">
-								<div class="reviews__media flex">
-									<img src="assets/img/reviews/reviews-5.jpg" alt="">
-								</div>
-								<div class="reviews__description flex col"><!-- 320 символов максимально, далее ставим многоточие  -->
-									<p class="body-s-reg">Доброго дня.Дякую за швидку відправку, сьогодні вже отримали посилку. Наш Річі знайомиться з новою цікавою іграшкою. Шкода тільки, що не подумала, що він таки вже не такий маленький)))) можна було б обрати більшого розміру (консультант пропонувала), недооцінила нашого хлопця))) Вона йому однозна...</p>
-								</div>
-							</div>
-							<div class="reviews__footer flex">
-								<p class="body-s-sb">Kosmetira</p>
-							</div>
-						</div>
-						<div class="reviews__card swiper-slide flex col sp-between">
-							<div class="reviews__header flex col auto">
-								<div class="reviews__media flex">
-									<img src="assets/img/reviews/reviews-6.jpg" alt="">
-								</div>
-								<div class="reviews__description flex col"><!-- 320 символов максимально, далее ставим многоточие  -->
-									<p class="body-s-reg">У нас уже друга кігтеточка від вас))) Першу котейка трохи потріпала, бо кігті точить дуже часто) Тому вирішили оновити) Чекаємо, коли знову з'явиться Грейс.</p>
-								</div>
-							</div>
-							<div class="reviews__footer flex">
-								<p class="body-s-sb">Darinetix</p>
-							</div>
+						<div class="reviews__footer flex">
+							<p class="body-s-sb">ГО Душа Бродяги</p>
 						</div>
 					</div>
 				</div>
-				<div class="swiper-pagination-clickable flex"></div>
-				<div class="reviews__about">
-					<p class="cta-m">У нашій колекції вже понад 2000 відгуків. <a href="/reviews-page.html" class="cta-m-link">Дивіться самі</a></p>
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<section class="section charity__program-image" style="background-image: url('/assets/img/charity/program-image-bg.png');">
-		<div class="section__wrapper">
-			<div class="program-image">
-				<div id="program-2" class="badge flex col center">
-					<span class="body-s-reg">Программа №2</span>
-				</div>
-				<div class="program-image__description flex col">
-					<h2 class="h1h2">Візьми котика з притулку та отримай знижку 50% на першу кігтеточку</h2>
-					<p class="body-l-sb">Початок неймуррвірної історії. <span>Обирай друга з притулку-партнера та<br>отримуй знижку 50% на першу кігтеточку</span></p>
-				</div>
-				<div class="program-image__button">
-					<a href="#list" class="button button--yellow button--big open-popup">Список притулків</a>
-				</div>
-				<div class="program-image__hint flex col center">
-					<p class="body-s-sb">220 котиків <span class="body-s-reg">з притулків, які знайшли нову сім’ю<br>вже скористалися програмою</span></p>
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<section class="section charity">
-		<div class="section__wrapper">
-			<div class="charity__cta">
-				<!--\ Призыв к действию -->
-				<div class="cta">
-					<div class="cta__wrapper flex col center">
-						<div class="cta__description flex col center">
-							<h2 class="h1h2">Є пропозиції по співпраці?</h2>
-							<p class="body-l-sb">Маєте цікаві ідеї? Готові їх втілити разом із нами? Ласкаво просимо до клубу котячих партнерів!</p>
+				<div class="reviews__item" data-filter="interaktivna-korobka">
+					<div class="reviews__card flex col sp-between">
+						<div class="reviews__header flex col auto">
+							<div class="reviews__media flex">
+								<img src="assets/img/reviews/reviews-4.jpg" alt="">
+							</div>
+							<div class="reviews__description flex col"><!-- 320 символов максимально, далее ставим многоточие  -->
+								<p class="body-s-reg">Кігтеточка коту сподобалася відразу, за час експлуатації стала улюбленим місцем проживання. Служить добре, ще в нормальному стані, але вже замислюємося про нову. Можливо, у вас з'явилися інші моделі. Не думала, що так довго служитиме. Однозначно служить довше за звичайні килимові та сизалеві. Останнім час...</p>
+							</div>
 						</div>
-						<div class="flex">
-							<a href="#consult" class="button button--yellow button--big open-popup">Написати</a>
+						<div class="reviews__footer flex">
+							<p class="body-s-sb">Meri Kushnir</p>
 						</div>
 					</div>
 				</div>
-				<!--/ Призыв к действию -->
+				<div class="reviews__item" data-filter="mebel design cloud">
+					<div class="reviews__card flex col sp-between">
+						<div class="reviews__header flex col auto">
+							<div class="reviews__media flex">
+								<img src="assets/img/reviews/reviews-5.jpg" alt="">
+							</div>
+							<div class="reviews__description flex col"><!-- 320 символов максимально, далее ставим многоточие  -->
+								<p class="body-s-reg">Доброго дня.Дякую за швидку відправку, сьогодні вже отримали посилку. Наш Річі знайомиться з новою цікавою іграшкою. Шкода тільки, що не подумала, що він таки вже не такий маленький)))) можна було б обрати більшого розміру (консультант пропонувала), недооцінила нашого хлопця))) Вона йому однозна...</p>
+							</div>
+						</div>
+						<div class="reviews__footer flex">
+							<p class="body-s-sb">Kosmetira</p>
+						</div>
+					</div>
+				</div>
+				<div class="reviews__item" data-filter="design cloud">
+					<div class="reviews__card flex col sp-between">
+						<div class="reviews__header flex col auto">
+							<div class="reviews__description flex col">
+								<p class="body-s-reg">Фил передает вам огромный привет и говорит что когтеточкой он очень доволен, собственно, как и его домочадцы. Несмотря на то, что нашей когтеточке уже больше ГОДА, она в идеальном состоянии, служит Мне как средство почесать коготки, как лежаночка, где Его Величество, т. е. Я (Фил) могу выложить свою ленивую попку!!! Меня очень радует, что у меня есть своя собственная, стильная (не побоюсь этого слова) мебель. Рекомендую всем котикам по когтеточке!!! Прошу маму купить мне (Филу) на дачу такую же когтеточку. ОБЕЩАЛА!!! Сделайте что-то, чтобы это наконец-то свершилось!!!</p>
+							</div>
+						</div>
+						<div class="reviews__footer flex">
+							<p class="body-s-sb">Darinetix</p>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</section>

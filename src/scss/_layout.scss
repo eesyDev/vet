@@ -30,6 +30,10 @@
 		padding-top: calc(52px + var(--h-header));
 	}
 
+	&--reviews {
+		padding-top: calc(32px + var(--h-header));
+	}
+
 	&--shop {
 		padding-top: calc(var(--h-header)*2);
 	}
@@ -131,11 +135,11 @@
 }
 
 .align-right {
-	@include mix.flex-justify('flex-end');
+	@include mix.flexbox('flex-end');
 }
 
 .align-left {
-	@include mix.flex-justify('flex-start');
+	@include mix.flexbox('flex-start');
 }
 
 .mobile-only {

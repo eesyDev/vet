@@ -4,14 +4,14 @@
 	border-bottom: 1px solid var(--line-light);
 
 	&__wrapper {
-		@include mix.flex-justify(flex-start, flex-start);
+		@include mix.flexbox(flex-start, flex-start);
 		padding-left: 24px;
 		gap: 80px;
 	}
 
 	&__item {
 		&.gallery {
-			@include mix.flex-justify(space-between, center);
+			@include mix.flexbox(space-between, center);
 			position: sticky;
 			top: calc(var(--h-header) + 24px);
 			left: 0;
@@ -41,7 +41,7 @@
 	}
 
 	&__gift {
-		@include mix.flex-justify(flex-start, flex-start);
+		@include mix.flexbox(flex-start, flex-start);
 		flex-direction: row;
 		width: max-content;
 		border-radius: 8px;
@@ -77,13 +77,13 @@
 
 	&__option {
 		position: relative;
-		@include mix.flex-justify;
+		@include mix.flexbox;
 		width: max-content;
 		gap: 5px;
 		$this: &;
 
 		&--link	{
-			@include mix.flex-justify;
+			@include mix.flexbox;
 			width: 30px;
 			height: 30px;
 			border-radius: 50%;
@@ -131,7 +131,7 @@
 	}
 
 	&__actions {
-		@include mix.flex-justify(flex-start);
+		@include mix.flexbox(flex-start);
 		width: max-content;
 		margin-top: 16px;
 		gap: 12px;
@@ -143,20 +143,20 @@
 	}
 
 	&__buttons {
-		@include mix.flex-justify;
+		@include mix.flexbox;
 		width: 100%;
 		gap: 12px;
 	}
 
 	&__delivery {
-		@include mix.flex-justify(flex-start);
+		@include mix.flexbox(flex-start);
 		width: max-content;
 		margin-top: 16px;
 		gap: 8px;
 		color: var(--gray);
 
 		&--icon {
-			@include mix.flex-justify;
+			@include mix.flexbox;
 			width: 18px;
 			height: 18px;
 			border-radius: 50%;

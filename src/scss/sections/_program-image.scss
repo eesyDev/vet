@@ -1,6 +1,6 @@
 @use "../utilities/mixins" as mix;
 .program-image {
-	@include mix.flex-justify(flex-start);
+	@include mix.flexbox(flex-start);
 	flex-direction: column;
 
 	&__description {
