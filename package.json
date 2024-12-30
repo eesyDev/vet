@@ -28,6 +28,7 @@
     "sass": "^1.82.0"
   },
   "dependencies": {
+    "archiver": "^7.0.1",
     "node-html-parser": "^6.1.13"
   },
   "type": "module"

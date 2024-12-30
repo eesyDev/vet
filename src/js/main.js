@@ -100,6 +100,56 @@
         $(this).hide();
     });
 
+    // Swiper
+    const previewProductCard = new Swiper(".gallery > .gallery__preview.swiper-container", {
+        direction: 'vertical',
+        slidesPerView: 'auto',
+        spaceBetween: 8,
+    });
+
+    const mainProductCard = new Swiper(".gallery > .gallery__media.swiper-container", {
+        spaceBetween: 0,
+        thumbs: {
+            swiper: previewProductCard,
+        }
+    });
+
+    const offersCardSlider = new Swiper(".offers-card__slider.swiper-container", {
+        slidesPerView: 'auto',
+        direction: 'horizontal',
+        width: 960,
+        centeredSlides: true,
+        spaceBetween: 6,
+        navigation: {
+            nextEl: ".offers-card__navigation--next",
+            prevEl: ".offers-card__navigation--prev",
+        },
+    });
+
+    const reviewsSlider = new Swiper('.reviews > .swiper-container', {
+        slidesPerView: 3,
+        spaceBetween: 30,
+        pagination: {
+            el: '.reviews > .swiper-pagination-clickable',
+            clickable: true,
+        }
+    });
+
+    function popupGallery() {
+        const previewPopUpGallery = new Swiper(".popup-gallery > .popup-gallery__preview", {
+            direction: 'vertical',
+            slidesPerView: 'auto',
+            spaceBetween: 8,
+        });
+
+        const mainPopUpGallery = new Swiper(".popup-gallery > .popup-gallery__media", {
+            spaceBetween: 0,
+            thumbs: {
+                swiper: previewPopUpGallery,
+            }
+        });
+    }
+
     // opening popups
     $('body').on('click touch', '.open-dialog, .open-popup, .open-form, .open-modal', function (event) {
         event.preventDefault();
@@ -140,6 +190,10 @@
             $categoryDialogs.addClass('active');
             $('body').css({ 'overflow-y': 'hidden' });
         });
+
+        if (popupCategory === 'gallery') {
+            popupGallery()
+        }
 
         return false;
     });
@@ -361,31 +415,6 @@
     $(window).on('load resize', img_loader);
     $(window).on('load scroll', waitAnimation);
 
-    const previewProductCard = new Swiper(".gallery__preview.swiper-container", {
-        direction: 'vertical',
-        slidesPerView: 'auto',
-        spaceBetween: 8,
-    });
-
-    const mainProductCard = new Swiper(".gallery__photo.swiper-container", {
-        spaceBetween: 0,
-        thumbs: {
-            swiper: previewProductCard,
-        }
-    });
-
-    const sliderOffersCard = new Swiper(".offers-card__slider.swiper-container", {
-        slidesPerView: 'auto',
-        direction: 'horizontal',
-        width: 960,
-        centeredSlides: true,
-        spaceBetween: 6,
-        navigation: {
-            nextEl: ".offers-card__navigation--next",
-            prevEl: ".offers-card__navigation--prev",
-        },
-    });
-
     // Купить продукт
     function addToCart(btnSelector) {
         const $btnSelector = $(btnSelector);
@@ -393,7 +422,7 @@
             const $button = $(this);
             const $upSell = $button.data('up-sell');
 
-            const $productImage = $('.gallery__photo .swiper-wrapper .swiper-slide img').first();
+            const $productImage = $('.gallery__media .swiper-wrapper .swiper-slide img').first();
 
             if ($productImage.length === 0) {
                 console.log('Изображение не найдено.');
@@ -708,15 +737,6 @@
             }
         });
     }
-
-    const reviewsSlider = new Swiper('.reviews > .swiper-container', {
-        slidesPerView: 3,
-        spaceBetween: 30,
-        pagination: {
-            el: '.reviews > .swiper-pagination-clickable',
-            clickable: true,
-        }
-    });
 
     $(function() {
         playVideo('.thank-page__video', '.thank-page__button', '.thank-page__play--text', '.thank-page__item');

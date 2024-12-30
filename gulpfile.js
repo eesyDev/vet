@@ -17,6 +17,8 @@ import browserSync from 'browser-sync';
 import debug from 'gulp-debug';
 import { promises as fs } from 'fs';
 import { parse } from 'node-html-parser';
+import { createWriteStream } from 'fs';
+import archiver from 'archiver';
 
 const reload = browserSync.reload;
 const wp_path = 'wordpress/wp-content/themes/say-meow/';
@@ -81,6 +83,7 @@ gulp.task('clean', async function () {
 gulp.task('html:build', async function () {
     return gulp.src(path.src.html)
         .pipe(rigger())
+        .pipe(replace('{{version}}', `${Date.now()}` )) // обновления версий в HTML
         .pipe(gulp.dest(path.build.html))
         .pipe(reload({ stream: true }));
 });
@@ -166,7 +169,7 @@ gulp.task('php:build', async function () {
 });
 
 gulp.task('video:build', async function () {
-    return gulp.src(path.src.video)
+    return gulp.src(path.src.video, { encoding: false })
         .pipe(gulp.dest(path.build.video))
         .pipe(gulp.dest(path.wp.video));
 });
@@ -182,7 +185,7 @@ gulp.task('build', gulp.series(
     'svg:build',
     'lib:build',
     'php:build',
-    //'video:build'
+    'video:build'
 ));
 
 gulp.task('watch', async function () {
@@ -194,7 +197,7 @@ gulp.task('watch', async function () {
     gulp.watch([path.watch.fonts], gulp.series('fonts:build'));
     gulp.watch([path.watch.lib], gulp.series('lib:build'));
     gulp.watch([path.watch.php], gulp.series('php:build'));
-    //gulp.watch([path.watch.video], gulp.series('video:build'));
+    gulp.watch([path.watch.video], gulp.series('video:build'));
 });
 
 gulp.task('webserver', async function () {
@@ -209,3 +212,23 @@ gulp.task('webserver', async function () {
 });
 
 gulp.task('default', gulp.series('build', gulp.parallel('webserver', 'watch')));
+
+// Архивация
+gulp.task('zip', async function () {
+    const output = createWriteStream('./build.zip');
+    const archive = archiver('zip', { zlib: { level: 9 } });
+
+    archive.on('error', (err) => {
+        throw err;
+    });
+
+    archive.pipe(output);
+    archive.directory('build/', false);
+
+    const robotsContent = `
+User-agent: *
+Disallow: /
+    `.trim();
+    archive.append(robotsContent, { name: 'robots.txt' });
+    await archive.finalize();
+});
