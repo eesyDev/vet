@@ -179,14 +179,3 @@
 	justify-content: $alignment;
 	align-items: $align;
 }
-
-// --- SPACING GENERATOR ---
-@mixin spacer($heights...) {
-	@each $height in $heights {
-		&--#{$height} {
-			display: block;
-			width: 100%;
-			height: #{$height}px;
-		}
-	}
-}

@@ -117,12 +117,24 @@
     const offersCardSlider = new Swiper(".offers-card__slider.swiper-container", {
         slidesPerView: 'auto',
         direction: 'horizontal',
-        width: 960,
+        width: 1191.4, // (316 + 6) * 3.7
         centeredSlides: true,
         spaceBetween: 6,
         navigation: {
-            nextEl: ".offers-card__navigation--next",
-            prevEl: ".offers-card__navigation--prev",
+            nextEl: ".offers-card__navigation .slider-nav__next",
+            prevEl: ".offers-card__navigation .slider-nav__prev",
+        },
+    });
+
+    const benefitsCardSlider = new Swiper(".benefits-card__slider.swiper-container", {
+        slidesPerView: 'auto',
+        direction: 'horizontal',
+        width: 1200, // (460 + 40) * 2.4
+        centeredSlides: true,
+        spaceBetween: 40,
+        navigation: {
+            nextEl: ".benefits-card__navigation .slider-nav__next",
+            prevEl: ".benefits-card__navigation .slider-nav__prev",
         },
     });
 

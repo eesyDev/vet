@@ -1,0 +1,115 @@
+.video-block {
+	gap: 36px;
+	> .title {
+		gap: 24px;
+		> h2 {
+			color: var(--black);
+		}
+		> p {
+			color: var(--gray);
+
+			> span {
+				color: var(--black);
+			}
+		}
+	}
+
+	&__source {
+		position: relative;
+		width: 460px;
+		height: 720px;
+		background-color: var(--bg-light);
+		border-radius: 32px;
+		z-index: 1;
+
+		> img,
+		> video,
+		> iframe {
+			width: 100%;
+			height: 100%;
+			border-radius: 32px;
+			object-fit: cover;
+		}
+	}
+
+	&__description {
+		position: absolute;
+		top: 24px;
+		left: 24px;
+		gap: 16px;
+		padding-right: 24px;
+		z-index: 2;
+
+		> p,
+		> h3 {
+			color: var(--white);
+		}
+	}
+
+	&__button {
+		position: absolute;
+		bottom: 24px;
+		border-radius: 50%;
+		cursor: pointer;
+		z-index: 2;
+
+		&--mp4 {
+			left: 24px;
+			width: 44px;
+			height: 44px;
+			border: 1px solid rgba(255, 255, 255, .15);
+			background: transparent;
+			transition: all ease-in-out .2s;
+
+			> svg {
+				width: 8px;
+				height: 12px;
+				transition: all ease-in-out .2s;
+
+				> use {
+					fill: var(--white);
+				}
+			}
+
+			&:hover {
+				border-color: var(--white);
+
+				> svg {
+					> use {
+						fill: rgba(255, 255, 255, .88);
+					}
+				}
+			}
+		}
+
+		&--popup {
+			right: 24px;
+			width: 36px;
+			height: 36px;
+			background: var(--gradient-3);
+			transition: all ease-in-out .2s;
+
+			> svg {
+				width: 16px;
+				height: 16px;
+				transition: all ease-in-out .2s;
+
+				> use {
+					fill: var(--pro-grey-pro);
+				}
+			}
+
+			&:hover {
+				background: var(--yellow-main);
+
+				> svg {
+					> use {
+						fill: var(--black);
+					}
+				}
+			}
+		}
+	}
+
+
+}

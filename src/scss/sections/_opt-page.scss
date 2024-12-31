@@ -1,0 +1,32 @@
+.opt-page {
+	&.article-header {
+		height: auto;
+		min-height: 100vh;
+		background-color: var(--white);
+
+		.title {
+			gap: 24px;
+
+			h1, p {
+				padding-top: 0;
+				color: var(--black);
+			}
+
+		}
+	}
+
+	&__map {
+		padding-top: 64px;
+
+		> img,
+		> svg {
+			width: auto;
+			height: 540px;
+		}
+	}
+
+	&__partners {
+		padding-top: 32px;
+	}
+
+}

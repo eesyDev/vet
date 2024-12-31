@@ -1,0 +1,39 @@
+@use "../utilities/mixins" as mix;
+.benefits-card {
+	margin-top: 59px;
+
+	&__slider {
+		position: relative;
+		margin: 64px 0 32px 0;
+
+		.swiper-wrapper {
+			cursor: grab;
+			&:active {
+				cursor: grabbing;
+			}
+		}
+	}
+
+	&__item {
+		position: relative;
+		&.swiper-slide {
+			width: 460px;
+			height: 720px;
+		}
+
+		> .video-block__source {
+			background: #000;
+
+			> img,
+			> video {
+				opacity: .84;
+			}
+		}
+	}
+
+	&__navigation {
+
+	}
+
+
+}

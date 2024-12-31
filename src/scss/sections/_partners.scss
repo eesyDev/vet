@@ -1,0 +1,51 @@
+.partners {
+
+	&.grid {
+		gap: 6px;
+
+		> * {
+			flex: 0 0 calc(25% - 4.5px);
+		}
+	}
+
+	&__item {
+		position: relative;
+		height: 160px;
+		border-radius: 24px;
+		border: 1px solid var(--line-light);
+		background-color: var(--white);
+		z-index: 1;
+
+		> img {
+			display: block;
+			max-width: 100%;
+			max-height: 100%;
+			object-fit: scale-down;
+			z-index: 2;
+		}
+
+		&:before {
+			position: absolute;
+			content: "";
+			display: block;
+			top: 24px;
+			right: 24px;
+			width: 8px;
+			height: 8px;
+			background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg width='8' height='8' viewBox='0 0 8 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M1.17154 6.82851L6.82839 1.17165M6.82839 1.17165H1.87864M6.82839 1.17165V6.1214' stroke='%23d4d4d4' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e");
+			background-repeat: no-repeat;
+			transition: background ease-in-out .2s;
+			z-index: 3;
+		}
+
+		&:hover {
+			border-color: transparent;
+			background-color: var(--bg-light);
+
+			&:before {
+				background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg width='8' height='8' viewBox='0 0 8 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M1.17154 6.82851L6.82839 1.17165M6.82839 1.17165H1.87864M6.82839 1.17165V6.1214' stroke='%23282827' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e");
+			}
+		}
+	}
+
+}
