@@ -94,7 +94,7 @@
 
     // video play on click
     $('.container').on('click touch', '.js-play-video', function(){
-        var video = $(this).siblings('video')[0];
+        let video = $(this).siblings('video')[0];
         video.play();
         video.controls="controls";
         $(this).hide();
@@ -117,8 +117,8 @@
     const offersCardSlider = new Swiper(".offers-card__slider.swiper-container", {
         slidesPerView: 'auto',
         direction: 'horizontal',
-        width: 1191.4, // (316 + 6) * 3.7
-        centeredSlides: true,
+        slidesOffsetBefore: 240, // смещение слева в px
+        slidesOffsetAfter: 240, // смещение справа в px
         spaceBetween: 6,
         navigation: {
             nextEl: ".offers-card__navigation .slider-nav__next",
@@ -129,8 +129,8 @@
     const benefitsCardSlider = new Swiper(".benefits-card__slider.swiper-container", {
         slidesPerView: 'auto',
         direction: 'horizontal',
-        width: 1200, // (460 + 40) * 2.4
-        centeredSlides: true,
+        slidesOffsetBefore: 240, // смещение слева в px
+        slidesOffsetAfter: 240, // смещение справа в px
         spaceBetween: 40,
         navigation: {
             nextEl: ".benefits-card__navigation .slider-nav__next",
@@ -750,7 +750,38 @@
         });
     }
 
+    // Адаптивное меню с прокруткой
+    function modelsMenu(menu, item) {
+        const $menu = $(menu);
+        const $items = $menu.find(item);
+
+        function centerActiveItem($item) {
+            const menuWidth = $menu.outerWidth();
+            const menuScrollLeft = $menu.scrollLeft();
+            const itemOffsetLeft = $item.offset().left;
+            const menuOffsetLeft = $menu.offset().left;
+            const itemLeft = itemOffsetLeft - menuOffsetLeft;
+            const itemWidth = $item.outerWidth();
+            const scrollTo = menuScrollLeft + itemLeft - (menuWidth / 2) + (itemWidth / 2);
+            $menu.animate({ scrollLeft: scrollTo }, 300);
+        }
+
+        $items.on('click', function () {
+            const $clickedItem = $(this);
+            $items.removeClass('active');
+            $clickedItem.addClass('active');
+            centerActiveItem($clickedItem);
+        });
+
+        // Установить начальный активный элемент, если он есть, в центр
+        const $initialActive = $menu.find(item + '.active');
+        if ($initialActive.length) {
+            centerActiveItem($initialActive);
+        }
+    }
+
     $(function() {
+        modelsMenu('.models-menu', '.models-menu__item');
         playVideo('.thank-page__video', '.thank-page__button', '.thank-page__play--text', '.thank-page__item');
         initializeAccordion('.accordion-open', '.accordion__content', '.accordion__item');
     });

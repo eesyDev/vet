@@ -9,19 +9,12 @@ $w-laptop:     1500px; // Laptop
 $w-min:        320px;  // Min screen
 $w-max:        2560px; // Max screen
 
-// --- DOCUMENT SETTINGS ---
-$c-padding:      0;
-$c-font-size:    14px;
-
-$w-content: 960px;
-$h-header:  48px;
-
 // CSS Variables
 html {
-    --c-padding:   #{$c-padding};
-    --c-font-size: #{$c-font-size};
-    --w-content:   #{$w-content};
-    --h-header:    #{$h-header};
+    --c-padding:   0;
+    --c-font-size: 14px;
+    --w-content:   960px;
+    --h-header:    48px;
 
     // --- FONTS ---
     --font-family:   'Inter-Regular', sans-serif;
@@ -37,7 +30,7 @@ html {
     --line-light:            #f5f5f5;
     --bg-light:              #fafafa;
     --bg-light-2:            #f9f9f9;
-    --yellow-main:           #f8ca02; // ffcb05
+    --yellow-main:           #f8ca02;
     --yellow-secondary:      #ffdf65;
     --orange:                #ffc165;
     --orange-2:              #f1711c;
