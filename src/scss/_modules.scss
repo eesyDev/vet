@@ -1,3 +1,4 @@
+@use "utilities/variables" as var;
 @use "utilities/mixins" as mix;
 .button {
 	position: relative;
@@ -766,12 +767,21 @@ textarea {
 }
 
 .models-menu {
+	display: flex;
 	gap: 4px;
 	padding: 8px;
+	max-width: 100%;
 	border-radius: 24px;
 	background-color: var(--black);
+	overflow-x: auto;
+
+	@include mix.maxw(var.$w-mob-s) {
+		max-width: 100%;
+	}
 
 	&__item {
+		white-space: nowrap;
+
 		&.button {
 			border-style: none;
 
@@ -786,4 +796,29 @@ textarea {
 			}
 		}
 	}
+
+	&::-webkit-scrollbar {
+		height: 6px;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background-color: var(--gray-2);
+		border-radius: 4px;
+		cursor: grab;
+
+		&:hover {
+			background-color: var(--gray);
+		}
+
+		&:active {
+			cursor: grabbing;
+		}
+	}
+
+	&::-webkit-scrollbar-track {
+		background-color: var(--black);
+		margin: 0 20px;
+		border-radius: 4px;
+	}
+
 }
