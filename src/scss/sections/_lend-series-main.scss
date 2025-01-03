@@ -1,0 +1,107 @@
+.lend-series-main {
+
+	&.article-header {
+		background-color: var(--bg-light-2);
+
+		> .section__wrapper {
+			> .title {
+				gap: 8px;
+				z-index: 2;
+
+				> h1 {
+					padding-top: 0;
+					color: var(--black);
+				}
+
+				> p {
+					background: linear-gradient(90deg, var(--yellow-secondary) 0%, var(--orange) 100%);
+					background-clip: text;
+					-webkit-background-clip: text;
+					-webkit-text-fill-color: transparent;
+				}
+			}
+			> .button__wrapper {
+				margin-top: 24px;
+				z-index: 2;
+			}
+
+			> .article-header__bg {
+				opacity: 1;
+				> img {
+					object-fit: contain;
+				}
+			}
+
+		}
+
+	}
+
+	&__price {
+		margin-top: 16px;
+		z-index: 2;
+		> p {
+			color: var(--gray);
+		}
+	}
+
+	&__video-block {
+		> .video-block {
+			gap: 64px;
+		}
+	}
+
+	&__benefits-card-slider {
+		margin-top: 64px;
+		> .video-block {
+
+			.benefits-card__item {
+				> .video-block__source {
+
+					> .video-block__button {
+
+						&--popup {
+							> svg {
+								> use {
+									fill: var(--line-light);
+								}
+							}
+
+							&:hover {
+								> svg {
+									> use {
+										fill: var(--black);
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+
+		}
+	}
+
+	&__reviews {
+		.reviews {
+
+			&__title {
+				> p {
+					padding: 0 82px;
+				}
+			}
+
+			&__card {
+				background-color: var(--line-light);
+			}
+		}
+	}
+
+	&__accordion {
+
+		> .accordion {
+			margin-top: 64px;
+		}
+
+	}
+
+}

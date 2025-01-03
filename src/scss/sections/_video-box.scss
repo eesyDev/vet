@@ -1,0 +1,29 @@
+.video-box {
+	> .section__wrapper {
+		> .title {
+			gap: 24px;
+
+			> h3 {
+				color: var(--black);
+			}
+			> p {
+				color: var(--black);
+			}
+		}
+	}
+
+	.video-block__source {
+		margin-top: 74px;
+		width: 100%;
+		height: 800px;
+		background-color: #E7E7E7;
+		border-radius: 0;
+
+		> img,
+		> video,
+		> iframe {
+			border-radius: 0;
+			object-fit: scale-down;
+		}
+	}
+}

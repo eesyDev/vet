@@ -1,0 +1,45 @@
+.in-box {
+	padding: 64px 0 55px 0;
+	background-color: var(--line-light);
+
+	> .section__wrapper {
+		gap: 64px;
+
+		> .title {
+			> h3 {
+				color: var(--black);
+			}
+		}
+
+		> .grid {
+			justify-content: space-between;
+			align-items: flex-start;
+			text-align: center;
+
+			> * {
+				flex: 0 0 25%;
+			}
+		}
+	}
+
+	&__item {
+		gap: 20px;
+
+		> svg {
+			width: 100%;
+			max-height: 44px;
+			object-fit: scale-down;
+
+			> use {
+				fill: var(--gray-2);
+			}
+		}
+		> h4 {
+			color: var(--black);
+		}
+		> p {
+			padding: 0 20px;
+			color: var(--gray);
+		}
+	}
+}

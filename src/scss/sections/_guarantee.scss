@@ -1,0 +1,66 @@
+.guarantee {
+	&__text {
+		gap: 12px;
+
+		> h3 { // Временно, не получилось в sprite из-за градиента
+			font-family: var(--font-family-b);
+			font-size: 140px;
+			line-height: normal;
+			font-weight: 600;
+			letter-spacing: -0.2px;
+
+			background: var(--gradient-1);
+			background-clip: text;
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+		}
+
+		> p {
+			font-family: var(--font-family-b);
+			font-size: 21px;
+			line-height: normal;
+			font-weight: 600;
+			letter-spacing: 0;
+			color: var(--black);
+		}
+	}
+
+	> .section__wrapper {
+		margin-top: 54px;
+		gap: 36px;
+	}
+
+	&__info {
+		align-items: center;
+		gap: 114px;
+		width: 100%;
+		padding: 50px 40px 47px 40px;
+		border-radius: 24px;
+		background: linear-gradient(90deg, rgba(255,223,101,0.25) 0%, rgba(255,193,101,0.25) 100%);
+	}
+
+	&__description {
+		gap: 45px;
+		width: calc(395px + 45px);
+
+		p {
+			color: var(--black);
+		}
+
+		&:after {
+			display: block;
+			content: "";
+			width: 1px;
+			height: auto;
+			background: #ffcb05;
+			opacity: 25%;
+		}
+	}
+
+	&__about {
+		> p {
+			color: var(--gray);
+		}
+	}
+
+}

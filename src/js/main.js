@@ -799,6 +799,9 @@
 
             if ($video[0].paused) {
                 $video[0].play();
+                if ( $video.hasClass('cover') ) {
+                    $video.css('object-fit', 'cover');
+                }
                 $useIco.attr('href', 'assets/img/sprite.svg#ico-pause');
             } else {
                 $video[0].pause();

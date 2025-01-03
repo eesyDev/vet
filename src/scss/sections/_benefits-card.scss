@@ -29,18 +29,14 @@
 				z-index: 1;
 			}
 
-			&:after {
-				position: absolute;
-				display: block;
-				content: "";
-				top: 0;
-				left: 0;
-				width: 100%;
-				height: 100%;
-				border-radius: 32px;
-				background: var(--toner-160);
-				z-index: 2;
+			&.toner {
+				&:after {
+					border-radius: 32px;
+					background: var(--toner-160);
+					z-index: 2;
+				}
 			}
+
 		}
 	}
 
