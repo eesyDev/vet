@@ -134,14 +134,15 @@
         }
     });
 
-    function popupGallery() {
-        const previewPopUpGallery = new Swiper(".popup-gallery > .popup-gallery__preview", {
+    function popupGallery(product) {
+
+        const previewPopUpGallery = new Swiper(`.popup-gallery[data-gallery="product-${product}"] > .popup-gallery__preview`, {
             direction: 'vertical',
             slidesPerView: 'auto',
             spaceBetween: 8,
         });
 
-        const mainPopUpGallery = new Swiper(".popup-gallery > .popup-gallery__media", {
+        const mainPopUpGallery = new Swiper(`.popup-gallery[data-gallery="product-${product}"] > .popup-gallery__media`, {
             spaceBetween: 0,
             thumbs: {
                 swiper: previewPopUpGallery,
@@ -227,7 +228,11 @@
         });
 
         if (popupCategory === 'gallery') {
-            popupGallery()
+            const product = $(this).attr('data-product');
+            $flexPopup.find(`.popup__content .popup-gallery`).hide();
+            const $productGallery = $flexPopup.find(`.popup__content .popup-gallery[data-gallery="product-${product}"]`);
+            $productGallery.show();
+            popupGallery(product);
         }
 
         return false;

@@ -4,7 +4,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" type="text/css" href="assets/css/style.css?v=1735986642942">
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css?v=1735998458537">
 	<link rel="stylesheet" type="text/css" href="assets/lib/swiper/swiper-bundle.min.css">
 	<link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
 	<title>Project SayMEOW</title>
@@ -142,7 +142,7 @@
 				<li><a href="#consult" class="open-popup">Popup consultation</a></li>
 				<li><a href="#details" class="open-popup">Popup details</a></li>
 				<li><a href="#list" class="open-popup">Popup list</a></li>
-				<li><a href="#gallery" class="open-popup">Popup gallery</a></li>
+				<li><a href="#gallery" class="open-popup" data-product="1">Popup gallery</a></li>
 			</ul>
 		</div>
 	</section>
@@ -899,7 +899,7 @@
 						</svg>
 					</div>
 					<div class="popup__content">
-						<div class="popup-gallery" data-gallery="product-1">
+						<div class="popup-gallery" data-gallery="product-1" style="display:none">
 						
 							<div class="popup-gallery__preview">
 								<div class="swiper-wrapper">
@@ -1036,6 +1036,19 @@
 					</div>
 				</div>
 			</div>
+			<div class="popup" id="characteristics">
+				<div class="popup__wrapper">
+					<div class="close">
+						<svg class="ico">
+							<use xlink:href="/assets/img/sprite.svg#ico-close"></use>
+						</svg>
+					</div>
+					<div class="popup__content">
+						<h3 class="body-l-sb">Всi характеристики</h3>
+						
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 	<div class="thanks-popup" id="thanks-popup" style="display: none">
@@ -1056,8 +1069,8 @@
 	<script defer src="assets/lib/svgxuse.min.js"></script>
 	<!-- project's js -->
 	<script defer src="assets/lib/jquery.maskedinput.js"></script>
-	<script defer src="assets/js/main.js?v=1735986642942"></script>
-	<script defer src="assets/js/form.js?v=1735986642942"></script>
+	<script defer src="assets/js/main.js?v=1735998458537"></script>
+	<script defer src="assets/js/form.js?v=1735998458537"></script>
 
 </body>
 </html>
