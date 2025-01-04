@@ -770,7 +770,6 @@ textarea {
 }
 
 .models-menu {
-	display: flex;
 	gap: 4px;
 	padding: 8px;
 	max-width: 100%;
@@ -789,14 +788,15 @@ textarea {
 			border-style: none;
 
 			&:not(.active) {
-				background-color: transparent;
 				color: var(--white);
+				background-color: transparent;
 
-				&:hover {
+				/*&:hover {
 					color: var(--black);
 					background-color: var(--yellow-main);
-				}
+				}*/
 			}
+
 		}
 	}
 

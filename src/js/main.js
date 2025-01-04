@@ -1,16 +1,18 @@
 (function ($) {
 
+    let isScrollTopBody = true;
+
     // lazyload for images
     function img_loader() {
         setTimeout(function(){
             $('body').find('img[data-src]').each(function(){
-                var src = $(this).attr('data-src');
-                var srcset = $(this).attr('data-srcset');
-                var classes = $(this).attr('class');
-                var alt = $(this).attr('alt');
-                var title = $(this).attr('title');
+                let src = $(this).attr('data-src');
+                let srcset = $(this).attr('data-srcset');
+                let classes = $(this).attr('class');
+                let alt = $(this).attr('alt');
+                let title = $(this).attr('title');
                 if (src) {
-                    var img = new Image();
+                    let img = new Image();
                     $(img).hide();
                     $(img).on('load', function(){
                         $(this).fadeIn(400);
@@ -31,21 +33,21 @@
 
     // calc block position in viewport
     $.fn.percentOfViewport = function() {
-        var viewportHeight = $(window).height();
+        let viewportHeight = $(window).height();
 
-        var elementTop = $(this).offset().top;
-        var elementBottom = elementTop + $(this).height();
+        let elementTop = $(this).offset().top;
+        let elementBottom = elementTop + $(this).height();
 
 
-        var viewportTop = $(window).scrollTop();
-        var viewportBottom = viewportTop + viewportHeight;
-        //var viewportCenter = viewportTop + (viewportHeight/2);
+        let viewportTop = $(window).scrollTop();
+        let viewportBottom = viewportTop + viewportHeight;
+        //let viewportCenter = viewportTop + (viewportHeight/2);
 
-        var top_to_top_percent = (elementTop - viewportTop) / viewportHeight * 100;
-        var bottom_to_top_percent = (elementBottom - viewportTop) / viewportHeight * 100;
+        let top_to_top_percent = (elementTop - viewportTop) / viewportHeight * 100;
+        let bottom_to_top_percent = (elementBottom - viewportTop) / viewportHeight * 100;
 
-        var top_to_bottom_percent = (viewportBottom - elementTop) / viewportHeight * 100;
-        var bottom_to_bottom_percent = (viewportBottom - elementBottom) / viewportHeight * 100;
+        let top_to_bottom_percent = (viewportBottom - elementTop) / viewportHeight * 100;
+        let bottom_to_bottom_percent = (viewportBottom - elementBottom) / viewportHeight * 100;
 
         return {
             ELtop_to_VPtop:     top_to_top_percent,
@@ -59,7 +61,7 @@
 
     // check is block is in viewport
     $.fn.isInViewport = function() {
-        var p = $(this).percentOfViewport();
+        let p = $(this).percentOfViewport();
 
         return  p.ELtop_to_VPtop < 100 &&
             p.ELbottom_to_VPtop > 0;
@@ -83,24 +85,9 @@
 
     $('.inp-phone').mask('+38 (999) 999-99-99');
 
-    // smooth scrolling to anchor
-    $('a.smooth, nav > ul li a').on('click touch', function(){
-        var id = $(this).attr('href');
-        var loc_url = window.location.pathname;
-        var pos = ($(id).offset().top) - $('header').outerHeight() - 49;
-        $('html, body').animate({scrollTop: pos }, 1000);
-        return false;
-    });
-
-    // video play on click
-    $('.container').on('click touch', '.js-play-video', function(){
-        let video = $(this).siblings('video')[0];
-        video.play();
-        video.controls="controls";
-        $(this).hide();
-    });
-
-    // Swiper
+    /**
+     * @typedef {import('node_modules/swiper').Swiper} Swiper
+     */
     const previewProductCard = new Swiper(".gallery > .gallery__preview.swiper-container", {
         direction: 'vertical',
         slidesPerView: 'auto',
@@ -161,6 +148,42 @@
             }
         });
     }
+
+    const prodSlider = new Swiper('.product-slider', {
+        slidesPerView: 'auto',
+        spaceBetween: 120, // По макету, но напрашивается 60px 🤷‍♂️
+        threshold: 20,
+        speed: 800,
+        initialSlide: 3, // по умолчанию Grace Max
+        loop: false,
+        observer: true,
+        autoHeight: false,
+        observeParents: true,
+        slideToClickedSlide: true,
+        observeSlideChildren: true,
+        centeredSlides: true,
+        hashNavigation: {
+            replaceState: true,
+            watchState: true,
+        },
+        on: {
+
+            init: function () {
+                isScrollTopBody = false;
+            },
+
+            slideChange: function () {
+                const $menu = $('.slider-menu .models-menu');
+                const $item = $menu.find('a');
+                $item.removeClass('active');
+                $item.eq(this.realIndex).addClass('active').trigger('classChange');
+
+                if (!isScrollTopBody) {
+                    scrollTopBody($menu);
+                }
+            }
+        }
+    });
 
     // opening popups
     $('body').on('click touch', '.open-dialog, .open-popup, .open-form, .open-modal', function (event) {
@@ -432,13 +455,13 @@
         const $btnSelector = $(btnSelector);
         $btnSelector.on('click touch', function () {
             const $button = $(this);
-            const $upSell = $button.data('up-sell');
+            const upSell  = $button.data('up-sell');  // post_ID
+            const product = $button.data('product'); // post_ID
 
-            const $productImage = $('.gallery__media .swiper-wrapper .swiper-slide img').first();
+            const $productImage = $(`.popup-gallery[data-gallery="product-${product}"] .popup-gallery__media .swiper-wrapper .swiper-slide img`).first();
 
             if ($productImage.length === 0) {
-                console.log('Изображение не найдено.');
-                return;
+                console.log(`Изображение для продукта ${product} не найдено.`);
             }
 
             const $cartHeader = $('.header__cart');
@@ -447,9 +470,12 @@
             const $cartCountText = $cartCount.find('.count');
 
             let currentCount = parseInt($cartCountText.text());
-            let newCount = currentCount +1;
+            let newCount = currentCount + 1;
 
-            if (!$upSell) {
+            if (!upSell) {
+                // Используем естественные размеры изображения
+                const imageWidth = $productImage.prop('naturalWidth');
+                const imageHeight = $productImage.prop('naturalHeight');
 
                 const $flyImage = $productImage.clone().addClass('fly-image').appendTo('body');
 
@@ -462,47 +488,55 @@
                 const cartCenterY = cartOffset.top + $cartIcon.height() / 2;
 
                 $flyImage.css({
-                    top: buttonCenterY - $productImage.height() / 2,
-                    left: buttonCenterX - $productImage.width() / 2,
-                    width: $productImage.width(),
-                    height: $productImage.height(),
+                    top: buttonCenterY - imageHeight / 2,
+                    left: buttonCenterX - imageWidth / 2,
+                    width: imageWidth,
+                    height: imageHeight,
                     position: 'absolute',
                     zIndex: 1000,
                     pointerEvents: 'none'
                 });
 
-                const scale = $cartIcon.width() / $productImage.width();
+                const scale = $cartIcon.width() / imageWidth;
 
                 $flyImage.css({
                     transition: 'transform 1000ms ease-in-out, opacity 1000ms ease-in-out',
                     transformOrigin: 'center center',
                     transform: `translate(${cartCenterX - buttonCenterX}px, ${cartCenterY - buttonCenterY}px) scale(${scale})`,
-                    opacity: .3
+                    opacity: 0.3
                 });
 
                 // Получаем данные для указанного ID продукта из Woo
-                const $id = 1; // для примера
                 const data = {
                     1: {
-                        id: $id,
+                        id: product,
                         img: 'assets/img/catalog/grace-pro-black-2x.png',
                         title: 'Кiгтеточка-лежанка Grace Pro Max',
                         price: '₴ 1590',
-                        tag: 'Для притулку',
+                        tag_text: 'Для притулку',
+                        tag_class: 'gift',
+                    },
+                    2: {
+                        id: product,
+                        img: 'assets/img/catalog/3in1-2x.png',
+                        title: 'Cloud',
+                        price: '₴ 2590',
+                        tag_text: 'Новинка',
+                        tag_class: 'new',
                     }
                 };
 
-                if (!data[$id]) {
-                    console.log(`Товар с ID ${$id} не найден.`);
+                if (!data[product]) {
+                    console.log(`Товар с ID ${product} не найден.`);
                     return;
                 }
-                const item = data[$id];
+                const item = data[product];
 
                 const productHtml = `
                     <div class="popup-cart__product">
                         <div class="popup-cart__item ">
                             <div class="popup-cart__item--photo">
-                                <a href="/catalog.html" class="tag tag--gift">${item.tag}</a>
+                                <a href="/catalog.html" class="tag tag--${item.tag_class}">${item.tag_text}</a>
                                 <img src="${item.img}" alt="${item.title}">
                             </div>
                         </div>
@@ -541,24 +575,23 @@
                     $cartCount.show();
 
                     // тут записываем в куки, что корзина не пуста для дальнейшей реализации на PHP
-
                 }, 1000);
 
             } else {
                 if (newCount <= 99) $cartCountText.text(newCount);
-                addToCartUpSell($upSell)
+                addToCartUpSell(upSell);
             }
         });
     }
 
     addToCart('.product-card__buttons .add_to_cart');
 
-    function addToCartUpSell($id) {
+    function addToCartUpSell(post_id) {
         const $product = $('.popup-cart__products form');
 
         const $bannerCart = $('.banner-cart');
         $bannerCart.find('.banner-cart__up-sell').last().show();
-        $bannerCart.find(`#up-sell-${$id}.banner-cart__up-sell`).hide();
+        $bannerCart.find(`#up-sell-${post_id}.banner-cart__up-sell`).hide();
 
         // Получаем данные для указанного ID продукта из Woo
         const data = {
@@ -580,12 +613,12 @@
             }
         };
 
-        if (!data[$id]) {
-            console.log(`Товар с ID ${$id} не найден.`);
+        if (!data[post_id]) {
+            console.log(`Товар с ID ${post_id} не найден.`);
             return;
         }
 
-        const item = data[$id];
+        const item = data[post_id];
 
         // Шаблон товара со скидкой
         const upSellHtml = `
@@ -766,7 +799,7 @@
             $menu.animate({ scrollLeft: scrollTo }, 300);
         }
 
-        $items.on('click', function () {
+        $items.on('click touch', function () {
             const $clickedItem = $(this);
             $items.removeClass('active');
             $clickedItem.addClass('active');
@@ -808,6 +841,12 @@
                 $useIco.attr('href', 'assets/img/sprite.svg#ico-play');
             }
         });
+    }
+
+    function scrollTopBody($element) {
+        $('html, body').animate({
+            scrollTop: $element.offset().top - 54 // 48px header + 6px отступ до нужного элемента
+        }, 600);
     }
 
     $(function() {

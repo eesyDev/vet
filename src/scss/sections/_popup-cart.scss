@@ -54,7 +54,8 @@
 			.tag {
 				position: absolute;
 				top: 4px;
-				left: 4px;
+				left: auto;
+				z-index: 2;
 			}
 		}
 
