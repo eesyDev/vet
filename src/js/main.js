@@ -352,11 +352,11 @@
         });
     }
 
-
     $(DROPDOWN_CLASS).on('click touch', DROPDOWN_CLASS + '__item', function (e) {
         $(this).toggleClass('active').trigger('filtered');
         e.stopPropagation();
     });
+
 
     $(DROPDOWN_CLASS).on('filtered', DROPDOWN_CLASS + '__item', function () {
         const $filter = $(this).closest(DROPDOWN_CLASS);
@@ -366,21 +366,40 @@
             return $(this).data('filter');
         }).get();
 
+        // Получаем все элементы
         const $items = $list.find('.reviews__item');
         $items.hide().removeClass('left right');
 
         if (activeFilters.length > 0) {
+            const filteredItems = [];
+
+            $items.each(function () {
+                const $item = $(this);
+                const itemFilters = $item.data('filter').split(' ');
+
+                if (activeFilters.some(filter => itemFilters.includes(filter))) {
+                    filteredItems.push($item);
+                }
+            });
+
             let index = 0;
-            activeFilters.forEach(filter => {
-                $items.filter(`[data-filter*="${filter}"]`).each(function () {
-                    $(this).show().addClass(index % 2 === 0 ? 'left' : 'right');
-                    index++;
-                });
+            filteredItems.forEach((item) => {
+                item.show().addClass(index % 2 === 0 ? 'left' : 'right');
+                index++;
             });
         } else {
             $items.show();
         }
+
+        const $visible = $list.find('.reviews__item:visible');
+        $visible.removeClass('margin-top-reset');
+        $visible.each(function (index) {
+            if (index <= 0) {
+                $(this).addClass('margin-top-reset');
+            }
+        });
     });
+
 
     // Универсальный переключатель с поддержкой любых количеств видов сеток
     function viewGridSwitcher(btnSelector) {
@@ -447,7 +466,8 @@
         initDropdownToggle([
             '.dropdown-language',
             '.dropdown-filter',
-            '.dropdown-category'
+            '.dropdown-category',
+            '.dropdown-sort',
         ]);
         viewGridSwitcher('.catalog-view a');
     });
@@ -848,11 +868,54 @@
         });
     }
 
-    function scrollTopBody($element) {
-        $('html, body').animate({
-            scrollTop: $element.offset().top - 54 // 48px header + 6px отступ до нужного элемента
-        }, 600);
+    /**
+     * Animate scroll top to element
+     *
+     * @param {Object|string} $element jQuery object or selector string.
+     * @param {Number} [indent=54] indent to the desired element in px.
+     * @param {Number} [duration=600] animation time in milliseconds.
+     *
+     * @example
+     * // Using a jQuery object
+     * scrollTopBody($('.element'));
+     *
+     * @example
+     * // Using a selector string
+     * scrollTopBody('.element');
+     *
+     * @example
+     * // Using a custom indent and duration
+     * scrollTopBody('.element', 80, 1000);
+     */
+    function scrollTopBody($element, indent = 54, duration = 600) {
+
+        if (typeof $element === 'string') {
+            $element = $($element);
+        }
+
+        if ($element.length) {
+            $('html, body').animate({
+                scrollTop: $element.offset().top - indent
+            }, duration);
+        }
     }
+
+    function addClassOnScroll(selector, threshold, className) {
+        const $targetBlock = $(selector);
+
+        function handleScroll() {
+            if ($(window).scrollTop() >= threshold) {
+                if (!$targetBlock.hasClass(className)) {
+                    $targetBlock.addClass(className); // Добавляем класс
+                }
+            } else {
+                $targetBlock.removeClass(className); // Убираем класс
+            }
+        }
+
+        $(window).on('scroll', handleScroll);
+    }
+
 
     $(function() {
 
@@ -863,6 +926,9 @@
         modelsMenu('.models-menu', '.models-menu__item');
         playVideoThank('.thank-page__video', '.thank-page__button', '.thank-page__play--text', '.thank-page__item');
         initializeAccordion('.accordion-open', '.accordion__content', '.accordion__item');
+
+        addClassOnScroll('.section--reviews > .section__wrapper', 120, 'fixed');
+
     });
 
 })(jQuery);

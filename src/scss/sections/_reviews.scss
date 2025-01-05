@@ -3,6 +3,26 @@
 .reviews {
 	background-color: var(--line-light);
 
+	> .section__wrapper {
+		transition: all ease-in-out 500ms;
+
+		&.fixed {
+			width: auto;
+			right: 10px;
+			top: 56px;
+
+			.dropdown-filter {
+				height: 48px;
+				padding: 14px 16px;
+
+				> span:not(.ico-ellipsis) {
+					display: none;
+					visibility: hidden;
+				}
+			}
+		}
+	}
+
 	&__wrapper {
 		margin: 0 auto;
 		padding: 6px 11px 100px 11px;
@@ -20,10 +40,14 @@
 		position: relative;
 		max-width: 320px;
 		min-width: 320px;
-		margin-top: -160px;
+		margin-top: -140px;
 		float: left;
 		clear: both;
 		z-index: 1;
+
+		&.margin-top-reset {
+			margin-top: 0 !important;
+		}
 
 		&:after {
 			position: absolute;
@@ -66,13 +90,14 @@
 				background-color: var(--white);
 			}
 			&__description {
-				max-height: 306px;
+				-webkit-line-clamp: none;
 			}
 		}
 
 	}
 
 	&__card {
+		gap: 16px;
 		border-radius: 24px;
 		padding: 4px 4px 22px 4px;
 	}
@@ -86,7 +111,7 @@
 		width: 100%;
 		align-items: flex-end;
 		justify-content: flex-end;
-		padding: 16px 22px 0 22px;
+		padding: 0 20px;
 		gap: 12px;
 
 		> p {
@@ -110,11 +135,12 @@
 	}
 
 	&__description {
-		padding: 24px 22px 0 22px;
-		max-height: 166px;
+		padding: 24px 20px 0 20px;
 		overflow: hidden;
 		text-align: left;
-		text-overflow: clip;
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 9; /* количество видимых строк */
 		> p {
 			color: var(--black);
 		}

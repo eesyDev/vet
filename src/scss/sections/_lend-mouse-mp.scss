@@ -1,0 +1,29 @@
+.lend-mouse-mp {
+
+	&__reviews {
+		.reviews {
+
+			&__title {
+				> p {
+					padding: 0 82px;
+				}
+			}
+
+			&__card {
+				background-color: var(--line-light);
+			}
+		}
+	}
+
+	&__accordion {
+
+		> .title {
+			text-align: left;
+		}
+
+		> .accordion {
+			margin-top: 64px;
+		}
+
+	}
+}

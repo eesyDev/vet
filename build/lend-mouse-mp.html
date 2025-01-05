@@ -98,285 +98,809 @@
 			</div>
 		</div>
 	</header>
-	<section class="section section--shop order">
+
+	<article class="section section--first article-header lend-series-main">
+		<div class="section__wrapper flex col center">
+			<div class="title flex col center">
+				<h1 class="h1h2">Say Meow – неймурррвірні кігтеточки нового покоління</h1>
+				<p class="body-l-sb">Кігтеточка. Лежанка. Задоволення.</p>
+			</div>
+			<div class="button__wrapper flex center">
+				<a href="#consult" class="button button--yellow button--big open-popup">Дізнатись більше</a>
+			</div>
+			<div class="lend-series-main__price flex col center">
+				<p class="body-s-reg">*від 490 ₴</p>
+			</div>
+			<div class="article-header__bg">
+				<img src="assets/img/lend-series-main/header-bg.jpg" alt="">
+			</div>
+		</div>
+	</article>
+
+	<div class="spacer--120"></div>
+
+	<section class="section">
+		<div class="section__wrapper lend-series-main__video-block">
+			<div class="video-block flex col center">
+				<div class="title flex col">
+					<h2 class="h1h2">Любов з першого погляду існує</h2>
+					<p class="body-l-sb"><span>Кігтеточки-лежанки Say Meow - інтуїтивно зрозумілий девайс для<br>котиків у будь-якому віці, так як виконані з високоякісного картону,</span><br> який за своїм запахом та текстурою нагадує котикам дерево.<br>90% котиків звикають до кігтеточки за перші 14 днів.</p>
+				</div>
+				<div class="video-block__source">
+			
+					<video poster="assets/img/lend-series-main/video-cover.jpg" muted autoplay loop>
+						<source src="assets/video/thank-page.mp4" type="video/mp4">
+					</video>
+			
+					<button class="video-block__button video-block__button--mp4 flex col center">
+						<svg class="ico-video-button">
+							<use xlink:href="assets/img/sprite.svg#ico-pause"></use>
+						</svg>
+					</button>
+			
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<div class="spacer--120"></div>
+
+	<section class="section">
 		<div class="section__wrapper">
-			<form action="#">
-				<div class="order__wrapper">
-					<div class="order__item order__sticky">
-						<div class="order-cart">
-							<div class="order-cart__wrapper">
-								<div class="order-cart__header">
-									<h2 class="body-m-sb">Ваше замовлення</h2>
-								</div>
-								<div class="order-cart__products">
-									<div class="popup-cart__product">
-										<div class="popup-cart__item">
-											<div class="popup-cart__item--photo">
-												<a href="#" class="popup-cart__item--remove">
-													<svg class="ico-remove">
-														<use xlink:href="/assets/img/sprite.svg#ico-remove"></use>
-													</svg>
-												</a>
-												<a href="/product-page.html">
-													<img src="assets/img/catalog/grace-pro-black-2x.png" alt="">
-												</a>
-											</div>
-										</div>
-										<div class="popup-cart__item">
-											<div class="popup-cart__title">
-												<a href="/product-page.html">
-													<h4 class="body-s-reg">Кiгтеточка-лежанка Grace Pro Max</h4>
-												</a>
-												<div class="order-cart__tag"></div>
-											</div>
-											<div class="popup-cart__details">
-												<div class="popup-cart__price">
-													<p class="body-s-sb">₴ 1680</p>
-												</div>
-											</div>
-										</div>
-									</div>
-									<!-- .popup-cart__product -->
-									<div class="popup-cart__product">
-										<div class="popup-cart__item">
-											<div class="popup-cart__item--photo">
-												<a href="#" class="popup-cart__item--remove">
-													<svg class="ico-remove">
-														<use xlink:href="/assets/img/sprite.svg#ico-remove"></use>
-													</svg>
-												</a>
-												<a href="/product-page.html">
-													<img src="assets/img/catalog/dream-2x.png" alt="">
-												</a>
-											</div>
-										</div>
-										<div class="popup-cart__item">
-											<div class="popup-cart__title">
-												<a href="/product-page.html">
-													<h4 class="body-s-reg">Кiгтеточка-лежанка Dream</h4>
-												</a>
-												<div class="order-cart__tag">
-													<a href="/catalog.html" class="tag tag--gift">Для притулку</a>
-												</div>
-											</div>
-											<div class="popup-cart__details">
-												<div class="popup-cart__price">
-													<p class="body-s-sb">₴ 245</p>
-												</div>
-											</div>
-										</div>
-									</div>
-									<!-- .popup-cart__product -->
-									<div class="popup-cart__product">
-										<div class="popup-cart__item">
-											<div class="popup-cart__item--photo">
-												<a href="#" class="popup-cart__item--remove">
-													<svg class="ico-remove">
-														<use xlink:href="/assets/img/sprite.svg#ico-remove"></use>
-													</svg>
-												</a>
-												<a href="/product-page.html">
-													<img src="assets/img/catalog/3in1-2x.png" alt="">
-												</a>
-											</div>
-										</div>
-										<div class="popup-cart__item">
-											<div class="popup-cart__title">
-												<a href="/product-page.html">
-													<h4 class="body-s-reg">Комплект 3 в 1 (Dream, Cloud та Grace)</h4>
-												</a>
-												<div class="order-cart__tag"></div>
-											</div>
-											<div class="popup-cart__details">
-												<div class="popup-cart__price">
-													<p class="body-s-sb">₴ 1280</p>
-												</div>
-											</div>
-										</div>
-									</div>
-									<label class="order-cart__promo-code" for="promo-code">
-										<input type="text" name="promo-code" id="promo-code" placeholder="Промокод">
-										<button class="button button--yellow" id="promo-code-send">Застосувати</button>
-									</label>
-									<div class="order-cart__calc">
-										<div class="order-cart__calc--item">
-											<h3 class="body-s-reg">Проміжний підсумок</h3>
-											<p class="body-s-sb">₴ 3205</p>
-										</div>
-										<div class="order-cart__calc--item">
-											<h3 class="body-s-reg">Доставка (Нова Пошта)</h3>
-											<p class="body-s-sb">₴ 49</p>
-										</div>
-										<div class="order-cart__calc--item order-cart__calc--discount">
-											<h3 class="body-s-reg">Знижка (для притулку)</h3>
-											<p class="body-s-sb">- ₴ 245</p>
-										</div>
-									</div>
-									<div class="popup-cart__totals">
-										<div class="popup-cart__total">
-											<h5 class="body-m-sb">Всього</h5>
-											<p class="body-m-sb">₴ 3205</p>
-										</div>
-									</div>
-								</div>
+			<div class="title">
+				<h3 class="h1h2">5 причин чому котики обожнюють Say Meow</h3>
+			</div>
+		</div>
+
+		<div class="lend-series-main__benefits-card-slider">
+			<div class="benefits-card__slider swiper-container video-block">
+				<div class="swiper-wrapper" style="transition: all; transform: translate3d(240px, 0px, 0px);">
+					<!-- .benefits-card__item -->
+					<div class="benefits-card__item swiper-slide">
+						<div class="video-block__source">
+			
+							<div class="video-block__description flex col">
+								<p class="body-m-sb" style="color:#747473">3 в 1</p>
+								<h3 class="h3" style="color:#282827">Вершина<br>котономіки*</h3>
 							</div>
+			
+							<img src="assets/img/lend-series-main/benefits-1.jpg" alt="">
+			
+							<a href="#details" class="video-block__button video-block__button--popup flex col center open-popup">
+								<svg class="ico-popup-button">
+									<use xlink:href="assets/img/sprite.svg#ico-more"></use>
+								</svg>
+							</a>
+			
 						</div>
 					</div>
-					<div class="order__item">
-						<div class="order-form">
-							<div class="order-form__wrapper">
-								<div class="order-form__header">
-									<h1 class="h3">Оформлення замовлення</h1>
+					<!--/.benefits-card__item -->
+			
+					<div class="benefits-card__item swiper-slide">
+						<div class="video-block__source toner">
+			
+							<div class="video-block__description flex col">
+								<p class="body-m-sb">Безпека</p>
+								<h3 class="h3">Для здоров'я<br>котів та кігтів</h3>
+							</div>
+			
+							<img src="assets/img/lend-series-main/benefits-2.jpg" alt="">
+			
+							<a href="#details" class="video-block__button video-block__button--popup flex col center open-popup">
+								<svg class="ico-popup-button">
+									<use xlink:href="assets/img/sprite.svg#ico-more"></use>
+								</svg>
+							</a>
+			
+						</div>
+					</div>
+					<div class="benefits-card__item swiper-slide">
+						<div class="video-block__source toner">
+			
+							<div class="video-block__description flex col">
+								<p class="body-m-sb">Зроблено в Україні</p>
+								<h3 class="h3">Зроблено в Україні,<br>з любов'ю</h3>
+							</div>
+			
+							<img src="assets/img/lend-series-main/benefits-3.jpg" alt="">
+			
+							<a href="#details" class="video-block__button video-block__button--popup flex col center open-popup">
+								<svg class="ico-popup-button">
+									<use xlink:href="assets/img/sprite.svg#ico-more"></use>
+								</svg>
+							</a>
+			
+						</div>
+					</div>
+					<div class="benefits-card__item swiper-slide">
+						<div class="video-block__source toner">
+			
+							<div class="video-block__description flex col">
+								<p class="body-m-sb">Гарантiя</p>
+								<h3 class="h3">Гарантія<br>повернення<br>протягом року</h3>
+							</div>
+			
+							<img src="assets/img/lend-series-main/benefits-4.jpg" alt="">
+			
+							<a href="#details" class="video-block__button video-block__button--popup flex col center open-popup">
+								<svg class="ico-popup-button">
+									<use xlink:href="assets/img/sprite.svg#ico-more"></use>
+								</svg>
+							</a>
+			
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="section__wrapper">
+				<div class="benefits-card__navigation slider-nav">
+					<div class="slider-nav__next"></div>
+					<div class="slider-nav__prev"></div>
+				</div>
+			</div>
+		</div>
+
+	</section>
+
+	<div class="spacer--120"></div>
+
+	<section class="section">
+		<div class="in-box">
+			<div class="section__wrapper flex col center">
+				<div class="title">
+					<h3 class="h3">З кожною кігтеточкою у комплекті</h3>
+				</div>
+				<div class="grid">
+					<div class="in-box__item flex col center">
+						<svg>
+							<use xlink:href="assets/img/sprite.svg#ico-in-box-1"></use>
+						</svg>
+						<h4 class="body-m-sb">Антиковзашки</h4>
+						<p class="body-s-reg">На дно кігтеточки для комфортного використання на слизькій поверхні</p>
+					</div>
+					<div class="in-box__item flex col center">
+						<svg>
+							<use xlink:href="assets/img/sprite.svg#ico-in-box-2"></use>
+						</svg>
+						<h4 class="body-m-sb">Коробка – iгровий будиночок</h4>
+						<p class="body-s-reg">Доїде в будь-яку точку в<br>цілості та безпеці, а коробка стане ще однією іграшкою котика</p>
+					</div>
+					<div class="in-box__item flex col center">
+						<svg>
+							<use xlink:href="assets/img/sprite.svg#ico-in-box-3"></use>
+						</svg>
+						<h4 class="body-m-sb">Фірмові<br>стікери</h4>
+						<p class="body-s-reg">Кльові стікери, щоб<br>покращити ваш настрій та надихнути вашого котогероя</p>
+					</div>
+					<div class="in-box__item flex col center">
+						<svg>
+							<use xlink:href="assets/img/sprite.svg#ico-in-box-4"></use>
+						</svg>
+						<h4 class="body-m-sb">Рекомендації по привченню до кігтеточки</h4>
+						<p class="body-s-reg">Заснована на досвіді<br>привчання котиків наших клієнтів – ми допоможемо вам привчити свого вихованця до кігтеточки</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<div class="spacer--120"></div>
+
+	<section class="section">
+		<div class="section__wrapper">
+			<div class="slider-menu flex col center">
+				<nav class="models-menu flex">
+					<a href="#Dream" class="models-menu__item button button--yellow">Dream</a>
+					<a href="#Cloud" class="models-menu__item button button--yellow">Cloud</a>
+					<a href="#Grace" class="models-menu__item button button--yellow">Grace</a>
+					<a href="#Grace-Max" class="models-menu__item button button--yellow">Grace Max</a>
+					<a href="#Model-Y" class="models-menu__item button button--yellow">Model Y</a>
+					<a href="#Set-Base" class="models-menu__item button button--yellow">Комплект Base</a>
+					<a href="#3-in-1" class="models-menu__item button button--yellow">3 в 1</a>
+					<a href="#Set-Max" class="models-menu__item button button--yellow">Комплект Max</a>
+				</nav>
+			</div>
+		</div>
+	</section>
+
+	<section class="section lend-series-main__product-slider">
+		<div class="product-slider">
+			<div class="swiper-wrapper">
+				<!-- .swiper-slide -->
+				<div data-hash="Dream" class="swiper-slide flex col center">
+					<div class="title flex col center">
+						<h2 class="h1h2">Dream</h2>
+						<p class="body-m-sb">Ще бiльше простору для вiдпочинку та точiння</p>
+					</div>
+					<div class="product-slider__photo flex col center">
+						<img src="assets/img/lend-series-main/product-slider/grace-max.jpg" alt="Dream">
+					</div>
+		
+					<div class="product-slider__actions">
+		
+						<div class="product-card__price">
+							<p class="body-s-sb">1590 ₴</p>
+						</div>
+		
+						<div class="product-card__buttons">
+							<button class="button button--yellow button--big add_to_cart" data-product="1">Купити</button>
+							<a href="#buy-one-click" class="button button--black button--big open-modal">Купити в 1 клiк</a>
+						</div>
+		
+						<div class="product-card__delivery">
+							<span class="product-card__delivery--icon"></span>
+							<p class="body-s-reg">Готова до вiдправлення</p>
+						</div>
+		
+					</div>
+		
+					<div class="product-slider__details flex">
+						<div class="flex col center">
+							<a href="#gallery" class="cta-s open-popup" data-product="1">
+								<svg class="ico-gallery">
+									<use xlink:href="/assets/img/sprite.svg#ico-gallery"></use>
+								</svg>
+								<span>Фото / Вiдео</span>
+							</a>
+						</div>
+						<div class="flex col center">
+							<a  href="#characteristics" class="cta-s open-popup" data-product="1">
+								<span>Всi характеристики</span>
+								<svg class="ico-characteristics">
+									<use xlink:href="/assets/img/sprite.svg#ico-characteristics"></use>
+								</svg>
+							</a>
+						</div>
+					</div>
+		
+				</div>
+				<!--\ .swiper-slide -->
+		
+				<div data-hash="Cloud" class="swiper-slide flex col center">
+					<div class="title flex col center">
+						<h2 class="h1h2">Cloud</h2>
+						<p class="body-m-sb">Ще бiльше простору для вiдпочинку та точiння</p>
+					</div>
+					<div class="product-slider__photo flex col center">
+						<img src="assets/img/lend-series-main/product-slider/grace-max.jpg" alt="Cloud">
+					</div>
+		
+					<div class="product-slider__actions">
+		
+						<div class="product-card__price">
+							<p class="body-s-sb">1590 ₴</p>
+						</div>
+		
+						<div class="product-card__buttons">
+							<button class="button button--yellow button--big add_to_cart" data-product="2">Купити</button>
+							<a href="#buy-one-click" class="button button--black button--big open-modal">Купити в 1 клiк</a>
+						</div>
+		
+						<div class="product-card__delivery">
+							<span class="product-card__delivery--icon"></span>
+							<p class="body-s-reg">Готова до вiдправлення</p>
+						</div>
+		
+					</div>
+		
+					<div class="product-slider__details flex">
+						<div class="flex col center">
+							<a href="#gallery" class="cta-s open-popup" data-product="2">
+								<svg class="ico-gallery">
+									<use xlink:href="/assets/img/sprite.svg#ico-gallery"></use>
+								</svg>
+								<span>Фото / Вiдео</span>
+							</a>
+						</div>
+						<div class="flex col center">
+							<a  href="#characteristics" class="cta-s open-popup" data-product="2">
+								<span>Всi характеристики</span>
+								<svg class="ico-characteristics">
+									<use xlink:href="/assets/img/sprite.svg#ico-characteristics"></use>
+								</svg>
+							</a>
+						</div>
+					</div>
+		
+				</div>
+		
+				<div data-hash="Grace" class="swiper-slide flex col center">
+					<div class="title flex col center">
+						<h2 class="h1h2">Grace</h2>
+						<p class="body-m-sb">Ще бiльше простору для вiдпочинку та точiння</p>
+					</div>
+					<div class="product-slider__photo flex col center">
+						<img src="assets/img/lend-series-main/product-slider/grace-max.jpg" alt="Grace">
+					</div>
+		
+					<div class="product-slider__actions">
+		
+						<div class="product-card__price">
+							<p class="body-s-sb">1590 ₴</p>
+						</div>
+		
+						<div class="product-card__buttons">
+							<button class="button button--yellow button--big add_to_cart" data-product="1">Купити</button>
+							<a href="#buy-one-click" class="button button--black button--big open-modal">Купити в 1 клiк</a>
+						</div>
+		
+						<div class="product-card__delivery">
+							<span class="product-card__delivery--icon"></span>
+							<p class="body-s-reg">Готова до вiдправлення</p>
+						</div>
+		
+					</div>
+		
+					<div class="product-slider__details flex">
+						<div class="flex col center">
+							<a href="#gallery" class="cta-s open-popup" data-product="1">
+								<svg class="ico-gallery">
+									<use xlink:href="/assets/img/sprite.svg#ico-gallery"></use>
+								</svg>
+								<span>Фото / Вiдео</span>
+							</a>
+						</div>
+						<div class="flex col center">
+							<a  href="#characteristics" class="cta-s open-popup" data-product="1">
+								<span>Всi характеристики</span>
+								<svg class="ico-characteristics">
+									<use xlink:href="/assets/img/sprite.svg#ico-characteristics"></use>
+								</svg>
+							</a>
+						</div>
+					</div>
+		
+				</div>
+		
+				<div data-hash="Grace-Max" class="swiper-slide flex col center">
+					<div class="title flex col center">
+						<h2 class="h1h2">Grace Max</h2>
+						<p class="body-m-sb">Ще бiльше простору для вiдпочинку та точiння</p>
+					</div>
+					<div class="product-slider__photo flex col center">
+						<img src="assets/img/lend-series-main/product-slider/grace-max.jpg" alt="Grace Max">
+					</div>
+		
+					<div class="product-slider__actions">
+		
+						<div class="product-card__price">
+							<p class="body-s-sb">1590 ₴</p>
+						</div>
+		
+						<div class="product-card__buttons">
+							<button class="button button--yellow button--big add_to_cart" data-product="2">Купити</button>
+							<a href="#buy-one-click" class="button button--black button--big open-modal">Купити в 1 клiк</a>
+						</div>
+		
+						<div class="product-card__delivery">
+							<span class="product-card__delivery--icon"></span>
+							<p class="body-s-reg">Готова до вiдправлення</p>
+						</div>
+		
+					</div>
+		
+					<div class="product-slider__details flex">
+						<div class="flex col center">
+							<a href="#gallery" class="cta-s open-popup" data-product="2">
+								<svg class="ico-gallery">
+									<use xlink:href="/assets/img/sprite.svg#ico-gallery"></use>
+								</svg>
+								<span>Фото / Вiдео</span>
+							</a>
+						</div>
+						<div class="flex col center">
+							<a  href="#characteristics" class="cta-s open-popup" data-product="2">
+								<span>Всi характеристики</span>
+								<svg class="ico-characteristics">
+									<use xlink:href="/assets/img/sprite.svg#ico-characteristics"></use>
+								</svg>
+							</a>
+						</div>
+					</div>
+		
+				</div>
+		
+				<div data-hash="Model-Y" class="swiper-slide flex col center">
+					<div class="title flex col center">
+						<h2 class="h1h2">Model Y</h2>
+						<p class="body-m-sb">Ще бiльше простору для вiдпочинку та точiння</p>
+					</div>
+					<div class="product-slider__photo flex col center">
+						<img src="assets/img/lend-series-main/product-slider/grace-max.jpg" alt="Model Y">
+					</div>
+		
+					<div class="product-slider__actions">
+		
+						<div class="product-card__price">
+							<p class="body-s-sb">1590 ₴</p>
+						</div>
+		
+						<div class="product-card__buttons">
+							<button class="button button--yellow button--big add_to_cart" data-product="1">Купити</button>
+							<a href="#buy-one-click" class="button button--black button--big open-modal">Купити в 1 клiк</a>
+						</div>
+		
+						<div class="product-card__delivery">
+							<span class="product-card__delivery--icon"></span>
+							<p class="body-s-reg">Готова до вiдправлення</p>
+						</div>
+		
+					</div>
+		
+					<div class="product-slider__details flex">
+						<div class="flex col center">
+							<a href="#gallery" class="cta-s open-popup" data-product="1">
+								<svg class="ico-gallery">
+									<use xlink:href="/assets/img/sprite.svg#ico-gallery"></use>
+								</svg>
+								<span>Фото / Вiдео</span>
+							</a>
+						</div>
+						<div class="flex col center">
+							<a  href="#characteristics" class="cta-s open-popup" data-product="1">
+								<span>Всi характеристики</span>
+								<svg class="ico-characteristics">
+									<use xlink:href="/assets/img/sprite.svg#ico-characteristics"></use>
+								</svg>
+							</a>
+						</div>
+					</div>
+		
+				</div>
+		
+				<div data-hash="Set-Base" class="swiper-slide flex col center">
+					<div class="title flex col center">
+						<h2 class="h1h2">Комплект Base</h2>
+						<p class="body-m-sb">Ще бiльше простору для вiдпочинку та точiння</p>
+					</div>
+					<div class="product-slider__photo flex col center">
+						<img src="assets/img/lend-series-main/product-slider/grace-max.jpg" alt="Комплект Base">
+					</div>
+		
+					<div class="product-slider__actions">
+		
+						<div class="product-card__price">
+							<p class="body-s-sb">1590 ₴</p>
+						</div>
+		
+						<div class="product-card__buttons">
+							<button class="button button--yellow button--big add_to_cart" data-product="2">Купити</button>
+							<a href="#buy-one-click" class="button button--black button--big open-modal">Купити в 1 клiк</a>
+						</div>
+		
+						<div class="product-card__delivery">
+							<span class="product-card__delivery--icon"></span>
+							<p class="body-s-reg">Готова до вiдправлення</p>
+						</div>
+		
+					</div>
+		
+					<div class="product-slider__details flex">
+						<div class="flex col center">
+							<a href="#gallery" class="cta-s open-popup" data-product="2">
+								<svg class="ico-gallery">
+									<use xlink:href="/assets/img/sprite.svg#ico-gallery"></use>
+								</svg>
+								<span>Фото / Вiдео</span>
+							</a>
+						</div>
+						<div class="flex col center">
+							<a  href="#characteristics" class="cta-s open-popup" data-product="2">
+								<span>Всi характеристики</span>
+								<svg class="ico-characteristics">
+									<use xlink:href="/assets/img/sprite.svg#ico-characteristics"></use>
+								</svg>
+							</a>
+						</div>
+					</div>
+		
+				</div>
+		
+				<div data-hash="3-in-1" class="swiper-slide flex col center">
+					<div class="title flex col center">
+						<h2 class="h1h2">3 в 1</h2>
+						<p class="body-m-sb">Ще бiльше простору для вiдпочинку та точiння</p>
+					</div>
+					<div class="product-slider__photo flex col center">
+						<img src="assets/img/lend-series-main/product-slider/grace-max.jpg" alt="3 в 1">
+					</div>
+		
+					<div class="product-slider__actions">
+		
+						<div class="product-card__price">
+							<p class="body-s-sb">1590 ₴</p>
+						</div>
+		
+						<div class="product-card__buttons">
+							<button class="button button--yellow button--big add_to_cart" data-product="1">Купити</button>
+							<a href="#buy-one-click" class="button button--black button--big open-modal">Купити в 1 клiк</a>
+						</div>
+		
+						<div class="product-card__delivery">
+							<span class="product-card__delivery--icon"></span>
+							<p class="body-s-reg">Готова до вiдправлення</p>
+						</div>
+		
+					</div>
+		
+					<div class="product-slider__details flex">
+						<div class="flex col center">
+							<a href="#gallery" class="cta-s open-popup" data-product="1">
+								<svg class="ico-gallery">
+									<use xlink:href="/assets/img/sprite.svg#ico-gallery"></use>
+								</svg>
+								<span>Фото / Вiдео</span>
+							</a>
+						</div>
+						<div class="flex col center">
+							<a  href="#characteristics" class="cta-s open-popup" data-product="1">
+								<span>Всi характеристики</span>
+								<svg class="ico-characteristics">
+									<use xlink:href="/assets/img/sprite.svg#ico-characteristics"></use>
+								</svg>
+							</a>
+						</div>
+					</div>
+		
+				</div>
+		
+				<div data-hash="Set-Max" class="swiper-slide flex col center">
+					<div class="title flex col center">
+						<h2 class="h1h2">Комплект Max</h2>
+						<p class="body-m-sb">Ще бiльше простору для вiдпочинку та точiння</p>
+					</div>
+					<div class="product-slider__photo flex col center">
+						<img src="assets/img/lend-series-main/product-slider/grace-max.jpg" alt="Комплект Max">
+					</div>
+		
+					<div class="product-slider__actions">
+		
+						<div class="product-card__price">
+							<p class="body-s-sb">1590 ₴</p>
+						</div>
+		
+						<div class="product-card__buttons">
+							<button class="button button--yellow button--big add_to_cart" data-product="2">Купити</button>
+							<a href="#buy-one-click" class="button button--black button--big open-modal">Купити в 1 клiк</a>
+						</div>
+		
+						<div class="product-card__delivery">
+							<span class="product-card__delivery--icon"></span>
+							<p class="body-s-reg">Готова до вiдправлення</p>
+						</div>
+		
+					</div>
+		
+					<div class="product-slider__details flex">
+						<div class="flex col center">
+							<a href="#gallery" class="cta-s open-popup" data-product="2">
+								<svg class="ico-gallery">
+									<use xlink:href="/assets/img/sprite.svg#ico-gallery"></use>
+								</svg>
+								<span>Фото / Вiдео</span>
+							</a>
+						</div>
+						<div class="flex col center">
+							<a  href="#characteristics" class="cta-s open-popup" data-product="2">
+								<span>Всi характеристики</span>
+								<svg class="ico-characteristics">
+									<use xlink:href="/assets/img/sprite.svg#ico-characteristics"></use>
+								</svg>
+							</a>
+						</div>
+					</div>
+		
+				</div>
+		
+			</div>
+		</div>
+	</section>
+
+	<div class="spacer--120"></div>
+
+	<section class="section">
+		<div class="video-box">
+			<div class="section__wrapper">
+				<div class="title flex col">
+					<h3 class="h1h2">Коробка – iгровий будиночок</h3>
+					<p class="body-l-sb">Коробка – це не просто коробка для кiгтеточки, а iгровий будиночок. Вона не лише доїде в будь-яку точку в цілості та безпеці, а ще й стане ще однією іграшкою котика</p>
+				</div>
+			</div>
+			<div class="video-block__source">
+		
+				<video class="cover" poster="assets/img/lend-series-main/video-box-video-cover.jpg">
+					<source src="assets/video/thank-page.mp4" type="video/mp4">
+				</video>
+		
+				<button class="video-block__button video-block__button--mp4 flex col center">
+					<svg class="ico-video-button">
+						<use xlink:href="assets/img/sprite.svg#ico-play"></use>
+					</svg>
+				</button>
+		
+			</div>
+		</div>
+	</section>
+
+	<div class="spacer--120"></div>
+
+	<section class="section">
+		<div class="guarantee">
+			<div class="guarantee__text flex col center">
+				<!--<svg>
+					<use xlink:href="assets/img/sprite.svg#guarantee-UA"></use>
+				</svg>-->
+				<h3>12 мiсяцiв</h3>
+				<p>Гарантія повернення протягом року!</p>
+			</div>
+			<div class="section__wrapper flex col center">
+				<div class="guarantee__info grid">
+					<div class="guarantee__description flex">
+						<p class="body-m-sb">Ми так впевнені, що ваш котик полюбить кігтеточку, що готові повернути вам гроші, якщо через 12 місяців ваша котоособистість так і не почне її використовувати.</p>
+					</div>
+					<div class="flex">
+						<a href="#" class="button button--yellow button--big">Обрати ідеальну кігтеточку</a>
+					</div>
+				</div>
+				<div class="guarantee__about">
+					<p class="body-m-sb">P.S.: відправка кігтеточки назад на наш рахунок</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<div class="spacer--120"></div>
+
+	<section class="section lend-mouse-mp__reviews charity__reviews">
+		<div class="section__wrapper">
+			<div class="reviews">
+				<div class="reviews__title flex col">
+					<h2 class="h1h2">Погляньте на ці щасливі мордочки</h2>
+					<p class="body-l-sb">Речі на які можна дивитись вічно: <span>вода, вогонь так як котики насолоджуються кігтеточками Say Meow</span></p>
+				</div>
+				<div class="swiper-container">
+					<div class="swiper-wrapper flex">
+						<div class="reviews__card swiper-slide flex col sp-between">
+							<div class="reviews__header flex col auto">
+								<div class="reviews__media flex">
+									<img src="assets/img/lend-mouse-mp/reviews-1.jpg" alt="">
+									<!--<video muted autoplay loop>
+										<source src="assets/video/reviews.mp4" type="video/mp4">
+									</video>-->
 								</div>
-								<div class="order-form__item">
-									<h2 class="body-m-sb">Контактні дані для оформлення замовлення:</h2>
-									<div class="order-form__input">
-										<label class="inp-wrp">
-											<input type="text" name="name[Iм’я]" placeholder="Iм’я *" data-required="true" data-error="Please fill this Iм’я">
-										</label>
-									</div>
-									<div class="order-form__input">
-										<label class="inp-wrp">
-											<input type="text" name="name[Прiзвище]" placeholder="Прiзвище *" data-required="true" data-error="Please fill this Прiзвище">
-										</label>
-									</div>
-									<div class="order-form__input">
-										<label class="inp-wrp">
-											<input type="text" name="name[inn]" placeholder="INN *" data-required="true" data-error="Please fill this INN">
-										</label>
-									</div>
-									<div class="order-form__input">
-										<label class="inp-wrp">
-											<input type="email" name="email[E-mail]" placeholder="E-mail *" class="inp-email" data-required="true" data-error="Please fill this E-mail">
-										</label>
-									</div>
+								<div class="reviews__description flex col"><!-- 320 символов максимально, далее ставим многоточие  -->
+									<p class="body-s-reg">Без преувеличения, это самая лучшая покупка для моей кошки за всю ее жизнь! Кошка активно ее использует, но когтеточка не сдается, хотя ей уже больше года. Очень удобно, что это еще и лежак, не нужно покупать отдельно.</p>
 								</div>
-								<div class="order-form__item">
-									<h2 class="body-m-sb">Оберіть притулок, куди хочете відправити товар:</h2>
-									<div class="order-form__input">
-										<div class="select-wrapper">
-											<label class="inp-wrp">
-												<select class="select" data-required="true" data-error="Please fill this Назва притулку">
-													<option value="">Назва притулку *</option>
-													<option value="1">Первая</option>
-													<option value="2">Вторая</option>
-												</select>
-											</label>
-										</div>
-									</div>
-									<div class="order-form__input">
-										<label class="inp-wrp">
-											<input type="text" name="name[Прiзвище]" placeholder="Прiзвище *" data-required="true" data-error="Please fill this Прiзвище">
-										</label>
-									</div>
-									<div class="order-form__input">
-										<label class="inp-wrp">
-											<input type="text" name="name[Від кого]" placeholder="Від кого (необов'язкове поле)">
-										</label>
-									</div>
+							</div>
+							<div class="reviews__footer flex">
+								<p class="body-s-sb">Марина, когтеточке 1 год</p>
+							</div>
+						</div>
+						<div class="reviews__card swiper-slide flex col sp-between">
+							<div class="reviews__header flex col auto">
+								<div class="reviews__media flex">
+									<img src="assets/img/lend-mouse-mp/reviews-2.jpg" alt="">
 								</div>
-								<div class="order-form__item">
-									<h2 class="body-m-sb">Доставка службами Нової Пошти:</h2>
-									<p class="body-s-reg">(за тарифами перевізника, час доставки 1-3 дні)</p>
-									<div class="order-form__input">
-										<div class="form-radio inp-wrp">
-											<label class="form-radio__item">
-												<input type="radio" name="delivery[Доставка]" value="Вiддiлення Нової Пошти" checked>
-												<span>Вiддiлення Нової Пошти</span>
-											</label>
-											<label class="form-radio__item">
-												<input type="radio" name="delivery[Доставка]" value="Кур’ером">
-												<span>Кур’ером</span>
-											</label>
-										</div>
-									</div>
-									<div class="order-form__input">
-										<div class="select-wrapper">
-											<label class=" inp-wrp">
-												<select class="select" data-required="true" data-error="Please fill this Відділення Нової Пошти">
-													<option value="">Відділення Нової Пошти *</option>
-													<option value="1">№ Відділення Нової Пошти 1</option>
-													<option value="2">№ Відділення Нової Пошти 2</option>
-												</select>
-											</label>
-										</div>
-									</div>
-									<div class="order-form__input">
-										<div class="flex">
-											<label class="inp-wrp">
-												<input type="text" name="name[Будинку]" placeholder="№ Будинку *" data-required="true" data-error="Please fill this Мiсто">
-											</label>
-											<label class="inp-wrp">
-												<input type="text" name="name[Квартири]" placeholder="№ Квартири *" data-required="true" data-error="Please fill this Мiсто">
-											</label>
-										</div>
-									</div>
+								<div class="reviews__description flex col"><!-- 320 символов максимально, далее ставим многоточие  -->
+									<p class="body-s-reg">Это самая лучшая покупка для моей кошки за всю ее жизнь! Кошка активно ее использует, но когтеточка не сдается, хотя ей уже больше года. Очень удобно, что это еще и лежак, не нужно покупать отдельно. Спасибо за такой качественный продукт. Кстати, все гости удивленно спрашивают, что же это. Сразу не верят, что это когтеточка, но потом наша кошка проводит демонстрацию всех ее функций.</p>
 								</div>
-								<div class="order-form__item">
-									<h2 class="body-m-sb">Зручний спосiб оплати:</h2>
-									<div class="order-form__input">
-										<div class="form-radio inp-wrp">
-											<label class="form-radio__item">
-												<input type="radio" name="payment[Оплата]" value="Онлайн" checked>
-												<span>Онлайн</span>
-											</label>
-											<label class="form-radio__item">
-												<input type="radio" name="payment[Оплата]" value="Оплата після отримання">
-												<span>Оплата після отримання</span>
-											</label>
-										</div>
-									</div>
+							</div>
+							<div class="reviews__footer flex">
+								<p class="body-s-sb">Дима, когтеточке 2 месяца</p>
+							</div>
+						</div>
+						<div class="reviews__card swiper-slide flex col sp-between">
+							<div class="reviews__header flex col auto">
+								<div class="reviews__media flex">
+									<img src="assets/img/lend-mouse-mp/reviews-3.jpg" alt="">
 								</div>
-								<div class="order-form__item">
-									<h2 class="body-m-sb">Комментар (не обов’язково):</h2>
-									<div class="order-form__input">
-										<label class="inp-wrp">
-											<textarea name="text[Комментар]" placeholder="Ви можете додати коментар до замовлення з побажаннями"></textarea>
-										</label>
-									</div>
+								<div class="reviews__description flex col"><!-- 320 символов максимально, далее ставим многоточие  -->
+									<p class="body-s-reg">Фил передает вам огромный привет и говорит что когтеточкой он очень доволен, собственно, как и его домочадцы. Несмотря на то, что нашей когтеточке уже больше ГОДА, она в идеальном состоянии, служит Мне как средство почесать коготки, как лежаночка, где Его Величество, т. е. Я (Фил) могу выложить свою ленивую попку!!! Меня очень радует, что у меня есть своя собственная, стильная (не побоюсь этого слова) мебель. Рекомендую всем котикам по когтеточке!!! Прошу маму купить мне (Филу) на дачу такую же когтеточку. ОБЕЩАЛА!!! Сделайте что-то, чтобы это наконец-то свершилось!!!</p>
 								</div>
-						
-								<div class="order-form__item order-form__dont-call-back">
-									<div class="flex">
-										<span>
-											<svg class="ico">
-												<use xlink:href="/assets/img/sprite.svg#ico-percent"></use>
-											</svg>
-										</span>
-										<h2 class="body-m-sb">Бонус за персоналiзацiю</h2>
-									</div>
-									<p class="body-s-reg">Вкажiть iм’я вашого котика чи кiшечки та отримайте 100₴ знижки на наступне замовлення</p>
-									<div class="order-form__input">
-										<label class="inp-wrp">
-											<input type="text" name="catname[Iм’я котика]" placeholder="Iм’я котика">
-										</label>
-									</div>
+							</div>
+							<div class="reviews__footer flex">
+								<p class="body-s-sb">Алекс, когтеточке 1 год</p>
+							</div>
+						</div>
+						<div class="reviews__card swiper-slide flex col sp-between">
+							<div class="reviews__header flex col auto">
+								<div class="reviews__media flex">
+									<img src="assets/img/reviews/reviews-4.jpg" alt="">
 								</div>
-						
-								<div class="order-form__item">
-									<div class="order-form__input order-form__flex">
-										<div class="inp-wrp">
-											<label class="flex row" for="dont-call-back">
-												<input id="dont-call-back" type="checkbox" name="dontcallback[Не передзвонювати мені]" value="Не передзвонювати мені" checked>
-												<span class="body-s-sb">Не передзвонювати мені для підтвердження замовлення</span>
-											</label>
-										</div>
-										<div class="flex row">
-											<div class="align-left inp-wrp">
-												<p class="form-description">Натискаючи на цю кнопку, Ви даєте згоду<br>на обробку персональних даних та погоджуєтесь<br>з нашою <a href="#policy-order" class="open-popup">політикою конфіденційності</a></p>
-											</div>
-											<div class="align-right">
-												<button class="button button--yellow button--big">Перейти до сплати</button>
-											</div>
-										</div>
-									</div>
+								<div class="reviews__description flex col"><!-- 320 символов максимально, далее ставим многоточие  -->
+									<p class="body-s-reg">Кігтеточка коту сподобалася відразу, за час експлуатації стала улюбленим місцем проживання. Служить добре, ще в нормальному стані, але вже замислюємося про нову. Можливо, у вас з'явилися інші моделі. Не думала, що так довго служитиме. Однозначно служить довше за звичайні килимові та сизалеві. Останнім час...</p>
 								</div>
-						
+							</div>
+							<div class="reviews__footer flex">
+								<p class="body-s-sb">Meri Kushnir</p>
+							</div>
+						</div>
+						<div class="reviews__card swiper-slide flex col sp-between">
+							<div class="reviews__header flex col auto">
+								<div class="reviews__media flex">
+									<img src="assets/img/reviews/reviews-5.jpg" alt="">
+								</div>
+								<div class="reviews__description flex col"><!-- 320 символов максимально, далее ставим многоточие  -->
+									<p class="body-s-reg">Доброго дня.Дякую за швидку відправку, сьогодні вже отримали посилку. Наш Річі знайомиться з новою цікавою іграшкою. Шкода тільки, що не подумала, що він таки вже не такий маленький)))) можна було б обрати більшого розміру (консультант пропонувала), недооцінила нашого хлопця))) Вона йому однозна...</p>
+								</div>
+							</div>
+							<div class="reviews__footer flex">
+								<p class="body-s-sb">Kosmetira</p>
+							</div>
+						</div>
+						<div class="reviews__card swiper-slide flex col sp-between">
+							<div class="reviews__header flex col auto">
+								<div class="reviews__media flex">
+									<img src="assets/img/reviews/reviews-6.jpg" alt="">
+								</div>
+								<div class="reviews__description flex col"><!-- 320 символов максимально, далее ставим многоточие  -->
+									<p class="body-s-reg">У нас уже друга кігтеточка від вас))) Першу котейка трохи потріпала, бо кігті точить дуже часто) Тому вирішили оновити) Чекаємо, коли знову з'явиться Грейс.</p>
+								</div>
+							</div>
+							<div class="reviews__footer flex">
+								<p class="body-s-sb">Darinetix</p>
 							</div>
 						</div>
 					</div>
 				</div>
-			</form>
+				<div class="swiper-pagination-clickable flex"></div>
+				<div class="about-link">
+					<p class="cta-m">У нашій колекції вже понад 2000 відгуків. <a href="/reviews-page.html" class="cta-m-link">Дивіться самі</a></p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<div class="spacer--120"></div>
+
+	<section class="section">
+		<div class="section__wrapper">
+			<div class="lend-mouse-mp__accordion">
+				<div class="title">
+					<h4 class="h1h2">Відповіді на питання</h4>
+				</div>
+				<!--\ Відповіді на питання -->
+				<div class="accordion" id="accordion">
+					<div class="flex col">
+						<div class="accordion__item align-left">
+							<div class="accordion__button">
+								<a href="#" class="flex center accordion-open">
+									<svg>
+										<use xlink:href="/assets/img/sprite.svg#ico-remove"></use>
+									</svg>
+								</a>
+							</div>
+							<div class="flex col">
+								<h4 class="body-m-sb accordion-open">А якщо котик буде ігнорувати іграшку?</h4>
+								<div class="accordion__content">
+									<p>Іграшка повністю безпечна для побутового використання, проте, якщо котик дуже активний, важливо не допустити моменту, коли шви іграшки будуть розірвани, усередині іграшки міститься синтепон і його споживання може бути небезпечним для котика.</p>
+								</div>
+							</div>
+						</div>
+						<div class="accordion__item align-left active">
+							<div class="accordion__button">
+								<a href="#" class="flex center accordion-open">
+									<svg>
+										<use xlink:href="/assets/img/sprite.svg#ico-remove"></use>
+									</svg>
+								</a>
+							</div>
+							<div class="flex col">
+								<h4 class="body-m-sb accordion-open">Чи безпечна іграшка?</h4>
+								<div class="accordion__content" style="display:block">
+									<p>Іграшка повністю безпечна для побутового використання, проте, якщо котик дуже активний, важливо не допустити моменту, коли шви іграшки будуть розірвани, усередині іграшки міститься синтепон і його споживання може бути небезпечним для котика.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--/ Відповіді на питання -->
+			</div>
+
+			<div class="about-link">
+				<p class="cta-m">Не знайшли відповідь? <a href="#consult" class="cta-m-link open-popup">Напишіть у наш відділ турботи</a></p>
+			</div>
+
 		</div>
 	</section>
 

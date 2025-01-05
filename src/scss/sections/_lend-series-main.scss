@@ -98,6 +98,10 @@
 
 	&__accordion {
 
+		> .title {
+			text-align: left;
+		}
+
 		> .accordion {
 			margin-top: 64px;
 		}
