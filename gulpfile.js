@@ -215,7 +215,7 @@ gulp.task('webserver', async function () {
 gulp.task('default', gulp.series('build', gulp.parallel('webserver', 'watch')));
 
 // Архивация
-gulp.task('zip', function (done) {
+gulp.task('zip', async function (done) {
     const output = createWriteStream('./build.zip');
     const archive = archiver('zip', { zlib: { level: 9 } });
 
@@ -260,7 +260,7 @@ Disallow: /
     `.trim();
     archive.append(robotsContent, { name: 'robots.txt' });
 
-    archive.finalize();
+    await archive.finalize();
 
     output.on('close', done);
 });
