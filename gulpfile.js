@@ -18,12 +18,12 @@ import { promises as fs } from 'fs';
 import { parse } from 'node-html-parser';
 import { createWriteStream, readdirSync, statSync, readFileSync } from 'fs';
 import archiver from 'archiver';
-import paths from 'path';
+import path from 'node:path';
 
 const reload = browserSync.reload;
-const wp_path = 'wordpress/wp-content/themes/say-meow/';
+const wpThemePath = 'wordpress/wp-content/themes/say-meow/';
 
-const path = {
+const projectPaths = {
     build: {
         html: 'build/',
         js: 'build/assets/js/',
@@ -36,13 +36,13 @@ const path = {
         video: 'build/assets/video/',
     },
     wp: {
-        js: wp_path + 'assets/js/',
-        css: wp_path + 'assets/css/',
-        img: wp_path + 'assets/img/',
-        fonts: wp_path + 'assets/fonts/',
-        lib: wp_path + 'assets/lib/',
-        php: wp_path + 'assets/php/',
-        video: wp_path + 'assets/video/',
+        js: wpThemePath + 'assets/js/',
+        css: wpThemePath + 'assets/css/',
+        img: wpThemePath + 'assets/img/',
+        fonts: wpThemePath + 'assets/fonts/',
+        lib: wpThemePath + 'assets/lib/',
+        php: wpThemePath + 'assets/php/',
+        video: wpThemePath + 'assets/video/',
     },
     src: {
         html: 'src/*.html',
@@ -67,62 +67,62 @@ const path = {
         video: 'src/video/**/*.*',
     },
     clean: './build',
-    cleanwp: wp_path + 'assets'
+    cleanwp: wpThemePath + 'assets'
 };
 
 // Задача очистки директорий
 gulp.task('clean', async function () {
     await Promise.all([
-        fs.rm(path.clean, { recursive: true, force: true }),
-        fs.rm(path.cleanwp, { recursive: true, force: true }),
+        fs.rm(projectPaths.clean, { recursive: true, force: true }),
+        fs.rm(projectPaths.cleanwp, { recursive: true, force: true }),
     ]);
 });
 
 // Задачи сборки
 
 gulp.task('html:build', async function () {
-    return gulp.src(path.src.html)
+    return gulp.src(projectPaths.src.html)
         .pipe(rigger())
         .pipe(replace('{{version}}', `${Date.now()}` )) // обновления версий в HTML
-        .pipe(gulp.dest(path.build.html))
+        .pipe(gulp.dest(projectPaths.build.html))
         .pipe(reload({ stream: true }));
 });
 
 gulp.task('js:build', async function () {
-    return gulp.src(path.src.js)
+    return gulp.src(projectPaths.src.js)
         .pipe(sourcemaps.init())
         .pipe(uglify())
         .pipe(sourcemaps.write('.'))
-        .pipe(gulp.dest(path.build.js))
-        .pipe(gulp.dest(path.wp.js))
+        .pipe(gulp.dest(projectPaths.build.js))
+        .pipe(gulp.dest(projectPaths.wp.js))
         .pipe(reload({ stream: true }));
 });
 
 gulp.task('style:build', async function () {
-    return gulp.src(path.src.style)
+    return gulp.src(projectPaths.src.style)
         .pipe(sourcemaps.init())
         .pipe(dartSass().on('error', dartSass.logError))
         .pipe(prefixer())
         .pipe(cleanCSS())
         .pipe(sourcemaps.write('.'))
-        .pipe(gulp.dest(path.build.css))
-        .pipe(gulp.dest(path.wp.css))
+        .pipe(gulp.dest(projectPaths.build.css))
+        .pipe(gulp.dest(projectPaths.wp.css))
         .pipe(reload({ stream: true }));
 });
 
 gulp.task('image:build', async function () {
-    return gulp.src(path.src.img, { encoding: false })
+    return gulp.src(projectPaths.src.img, { encoding: false })
         .pipe(imagemin([
             mozjpeg({ quality: 75, progressive: true }),
             optipng({ optimizationLevel: 5 }),
         ]))
-        .pipe(gulp.dest(path.build.img))
-        .pipe(gulp.dest(path.wp.img))
+        .pipe(gulp.dest(projectPaths.build.img))
+        .pipe(gulp.dest(projectPaths.wp.img))
         .pipe(reload({ stream: true }));
 });
 
 gulp.task('svg:build', async function () {
-    return gulp.src(path.src.svg)
+    return gulp.src(projectPaths.src.svg)
         .pipe(svgmin({ js2svg: { pretty: true } }))
         .on('data', (file) => {
             if (file.isBuffer()) {
@@ -142,34 +142,34 @@ gulp.task('svg:build', async function () {
                 },
             },
         }))
-        .pipe(gulp.dest(path.build.img))
-        .pipe(gulp.dest(path.wp.img))
+        .pipe(gulp.dest(projectPaths.build.img))
+        .pipe(gulp.dest(projectPaths.wp.img))
         .pipe(reload({ stream: true }));
 });
 
 gulp.task('fonts:build', async function () {
-    return gulp.src(path.src.fonts)
-        .pipe(gulp.dest(path.build.fonts))
-        .pipe(gulp.dest(path.wp.fonts))
+    return gulp.src(projectPaths.src.fonts)
+        .pipe(gulp.dest(projectPaths.build.fonts))
+        .pipe(gulp.dest(projectPaths.wp.fonts))
         .pipe(reload({ stream: true }));
 });
 
 gulp.task('lib:build', async function () {
-    return gulp.src(path.src.lib)
-        .pipe(gulp.dest(path.build.lib))
-        .pipe(gulp.dest(path.wp.lib));
+    return gulp.src(projectPaths.src.lib)
+        .pipe(gulp.dest(projectPaths.build.lib))
+        .pipe(gulp.dest(projectPaths.wp.lib));
 });
 
 gulp.task('php:build', async function () {
-    return gulp.src(path.src.php)
-        .pipe(gulp.dest(path.build.php))
-        .pipe(gulp.dest(path.wp.php));
+    return gulp.src(projectPaths.src.php)
+        .pipe(gulp.dest(projectPaths.build.php))
+        .pipe(gulp.dest(projectPaths.wp.php));
 });
 
 gulp.task('video:build', async function () {
-    return gulp.src(path.src.video, { encoding: false })
-        .pipe(gulp.dest(path.build.video))
-        .pipe(gulp.dest(path.wp.video));
+    return gulp.src(projectPaths.src.video, { encoding: false })
+        .pipe(gulp.dest(projectPaths.build.video))
+        .pipe(gulp.dest(projectPaths.wp.video));
 });
 
 // Общие задачи
@@ -187,15 +187,15 @@ gulp.task('build', gulp.series(
 ));
 
 gulp.task('watch', async function () {
-    gulp.watch([path.watch.html], gulp.series('html:build'));
-    gulp.watch([path.watch.style], gulp.series('style:build'));
-    gulp.watch([path.watch.js], gulp.series('js:build'));
-    gulp.watch([path.watch.img], gulp.series('image:build'));
-    gulp.watch([path.watch.svg], gulp.series('svg:build'));
-    gulp.watch([path.watch.fonts], gulp.series('fonts:build'));
-    gulp.watch([path.watch.lib], gulp.series('lib:build'));
-    gulp.watch([path.watch.php], gulp.series('php:build'));
-    gulp.watch([path.watch.video], gulp.series('video:build'));
+    gulp.watch([projectPaths.watch.html], gulp.series('html:build'));
+    gulp.watch([projectPaths.watch.style], gulp.series('style:build'));
+    gulp.watch([projectPaths.watch.js], gulp.series('js:build'));
+    gulp.watch([projectPaths.watch.img], gulp.series('image:build'));
+    gulp.watch([projectPaths.watch.svg], gulp.series('svg:build'));
+    gulp.watch([projectPaths.watch.fonts], gulp.series('fonts:build'));
+    gulp.watch([projectPaths.watch.lib], gulp.series('lib:build'));
+    gulp.watch([projectPaths.watch.php], gulp.series('php:build'));
+    gulp.watch([projectPaths.watch.video], gulp.series('video:build'));
 });
 
 gulp.task('webserver', async function () {
@@ -227,7 +227,7 @@ gulp.task('zip', async function (done) {
         const files = readdirSync(dirPath);
 
         files.forEach((file) => {
-            const fullPath = paths.join(dirPath, file);
+            const fullPath = path.join(dirPath, file);
             const stats = statSync(fullPath);
 
             if (stats.isDirectory()) {
@@ -243,7 +243,7 @@ gulp.task('zip', async function (done) {
                         fileContent = fileContent.replace(/\/\/# sourceMappingURL=.*\.map/g, '');
                     }
 
-                    archive.append(fileContent, { name: paths.relative('build', fullPath) });
+                    archive.append(fileContent, { name: path.relative('build', fullPath) });
                 }
             }
         });
