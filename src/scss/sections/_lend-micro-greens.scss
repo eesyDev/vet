@@ -1,0 +1,75 @@
+.lend-micro-greens {
+	&.article-header {
+		background-color: var(--bg-light);
+	}
+
+	&__video-block {
+		> .video-block {
+			gap: 64px;
+		}
+	}
+	&__benefits-card-slider {
+		margin-top: 64px;
+		> .video-block {
+
+			.video-block__description {
+				padding-right: 25px;
+			}
+
+			.benefits-card__item {
+				> .video-block__source {
+
+					> .video-block__button {
+
+						&--popup {
+							> svg {
+								> use {
+									fill: var(--line-light);
+								}
+							}
+
+							&:hover {
+								> svg {
+									> use {
+										fill: var(--black);
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	&__product-slider {
+		padding-top: 32px;
+	}
+
+	&__reviews {
+		.reviews {
+
+			&__title {
+				> p {
+					padding: 0 82px;
+				}
+			}
+
+			&__card {
+				background-color: var(--line-light);
+			}
+		}
+	}
+
+	&__accordion {
+
+		> .title {
+			text-align: left;
+		}
+
+		> .accordion {
+			margin-top: 64px;
+		}
+
+	}
+}

@@ -567,6 +567,14 @@
                         price: '₴ 1590',
                         tag_text: 'Новинка',
                         tag_class: 'new',
+                    },
+                    4: {
+                        id: product,
+                        img: 'assets/img/catalog/pot-with-micro-greens.png',
+                        title: 'Горщик з мікрозеленню',
+                        price: '₴ 1590',
+                        tag_text: 'Для притулку',
+                        tag_class: 'gift',
                     }
                 };
 
