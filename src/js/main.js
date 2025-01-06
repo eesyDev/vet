@@ -575,6 +575,14 @@
                         price: '₴ 1590',
                         tag_text: 'Для притулку',
                         tag_class: 'gift',
+                    },
+                    5: {
+                        id: product,
+                        img: 'assets/img/catalog/t-shirt-cat-parents.png',
+                        title: 'Футболка котобатьків',
+                        price: '₴ 1590',
+                        tag_text: 'Для притулку',
+                        tag_class: 'gift',
                     }
                 };
 
