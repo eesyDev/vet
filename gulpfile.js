@@ -14,7 +14,6 @@ import svgSprite from 'gulp-svg-sprite';
 import svgmin from 'gulp-svgmin';
 import replace from 'gulp-replace';
 import browserSync from 'browser-sync';
-import debug from 'gulp-debug';
 import { promises as fs } from 'fs';
 import { parse } from 'node-html-parser';
 import { createWriteStream, readdirSync, statSync, readFileSync } from 'fs';
@@ -113,7 +112,6 @@ gulp.task('style:build', async function () {
 
 gulp.task('image:build', async function () {
     return gulp.src(path.src.img, { encoding: false })
-        //.pipe(debug({ title: 'Found image:' }))
         .pipe(imagemin([
             mozjpeg({ quality: 75, progressive: true }),
             optipng({ optimizationLevel: 5 }),
@@ -126,7 +124,6 @@ gulp.task('image:build', async function () {
 gulp.task('svg:build', async function () {
     return gulp.src(path.src.svg)
         .pipe(svgmin({ js2svg: { pretty: true } }))
-        //.pipe(debug({ title: 'Before DOM manipulation:' }))
         .on('data', (file) => {
             if (file.isBuffer()) {
                 const content = file.contents.toString();
