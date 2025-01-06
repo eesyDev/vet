@@ -18,7 +18,7 @@ import { promises as fs } from 'fs';
 import { parse } from 'node-html-parser';
 import { createWriteStream, readdirSync, statSync, readFileSync } from 'fs';
 import archiver from 'archiver';
-import * as paths from 'path';
+import paths from 'path';
 
 const reload = browserSync.reload;
 const wp_path = 'wordpress/wp-content/themes/say-meow/';
