@@ -235,6 +235,8 @@
             popupGallery(product);
         }
 
+        pauseOtherVideos('.swiper-slide');
+
         return false;
     });
 
@@ -318,12 +320,14 @@
                 bodyScroll();
             });
         }
+        pauseOtherVideos('.swiper-slide');
     });
 
     // closing popups pressing esc
     $(document).on('keyup', function (e) {
         if (e.key === 'Escape' || e.keyCode === 27) {
             $('.dialogs .popup.active .close').trigger('click');
+            pauseOtherVideos('.swiper-slide');
         }
     });
 
@@ -548,6 +552,14 @@
                         price: '₴ 2590',
                         tag_text: 'Новинка',
                         tag_class: 'new',
+                    },
+                    3: {
+                        id: product,
+                        img: 'assets/img/catalog/mouse-mr-pickles.png',
+                        title: 'Мишка Мiстер Піклз',
+                        price: '₴ 1590',
+                        tag_text: 'Новинка',
+                        tag_class: 'new',
                     }
                 };
 
@@ -721,6 +733,48 @@
         }
     }
 
+    /**
+     * Pause all other videos
+     *
+     * @param videoContainer
+     */
+    function pauseOtherVideos(videoContainer) {
+        const $videoContainer = $(videoContainer).find('video');
+        $videoContainer.each(function () {
+            this.pause();
+        });
+    }
+
+    function playVideo(videoContainer) {
+        const $videoContainer = $(videoContainer);
+        const $video = $videoContainer.find('video');
+        const $button = $videoContainer.find('.video-block__button--mp4');
+        const $useIco = $button.find('.ico-video-button > use');
+
+        $button.on('click', function () {
+
+            $('.video-block__source video').each(function () {
+                if (this !== $video[0]) {
+                    this.pause();
+                    $(this).closest('.video-block__source')
+                        .find('.ico-video-button > use')
+                        .attr('href', 'assets/img/sprite.svg#ico-play');
+                }
+            });
+
+            if ($video[0].paused) {
+                $video[0].play();
+                if ( $video.hasClass('cover') ) {
+                    $video.css('object-fit', 'cover');
+                }
+                $useIco.attr('href', 'assets/img/sprite.svg#ico-pause');
+            } else {
+                $video[0].pause();
+                $useIco.attr('href', 'assets/img/sprite.svg#ico-play');
+            }
+        });
+    }
+
     function playVideoThank(videoContainer, button, text = null, fixContainer = null) {
         const $videoContainer = $(videoContainer);
         const $fixContainer = $(fixContainer);
@@ -838,36 +892,6 @@
         }
     }
 
-    function playVideo(videoContainer) {
-        const $videoContainer = $(videoContainer);
-        const $video = $videoContainer.find('video');
-        const $button = $videoContainer.find('.video-block__button--mp4');
-        const $useIco = $button.find('.ico-video-button > use');
-
-        $button.on('click', function () {
-            // Ставим все остальные видео на паузу
-            $('.video-block__source video').each(function () {
-                if (this !== $video[0]) {
-                    this.pause();
-                    $(this).closest('.video-block__source')
-                        .find('.ico-video-button > use')
-                        .attr('href', 'assets/img/sprite.svg#ico-play');
-                }
-            });
-
-            if ($video[0].paused) {
-                $video[0].play();
-                if ( $video.hasClass('cover') ) {
-                    $video.css('object-fit', 'cover');
-                }
-                $useIco.attr('href', 'assets/img/sprite.svg#ico-pause');
-            } else {
-                $video[0].pause();
-                $useIco.attr('href', 'assets/img/sprite.svg#ico-play');
-            }
-        });
-    }
-
     /**
      * Animate scroll top to element
      *
@@ -916,6 +940,37 @@
         $(window).on('scroll', handleScroll);
     }
 
+    /**
+     * Preloads all specified media elements (images or videos) within a hidden container.
+     * Ensures that when the container is displayed, the media is already loaded,
+     * improving user experience by eliminating loading delays.
+     *
+     * @param {string} containerSelector - A jQuery selector string specifying the hidden container
+     *                                     where the media elements are located.
+     * @param {string} mediaType - The type of media to preload.
+     *                             Possible values: 'img' for images, 'video' for videos.
+     *
+     * @example:
+     * $(document).ready(function () {
+     *     preloadHiddenMedia('.container', 'img');   // Preloads images
+     *     preloadHiddenMedia('.container', 'video'); // Preloads videos
+     * });
+     */
+    function preloadHiddenMedia(containerSelector, mediaType) {
+        if (mediaType !== 'img' && mediaType !== 'video') {
+            console.log('Invalid mediaType. Use "img" or "video".');
+            return;
+        }
+
+        $(containerSelector).find(mediaType).each(function () {
+            if (mediaType === 'img') {
+                const img = new Image();
+                img.src = $(this).attr('src');  // Preload image by setting src
+            } else if (mediaType === 'video') {
+                this.load();  // Preload video by invoking the load() method
+            }
+        });
+    }
 
     $(function() {
 
@@ -928,6 +983,9 @@
         initializeAccordion('.accordion-open', '.accordion__content', '.accordion__item');
 
         addClassOnScroll('.section--reviews > .section__wrapper', 120, 'fixed');
+
+        // WP загружать только на нужных страницах
+        preloadHiddenMedia('.dialogs', 'img');
 
     });
 

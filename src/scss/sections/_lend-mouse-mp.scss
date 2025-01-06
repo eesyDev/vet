@@ -1,5 +1,72 @@
 .lend-mouse-mp {
 
+	&.article-header {
+		> .section__wrapper {
+			gap: 24px;
+
+			> .title {
+				gap: 8px;
+				> p {
+					background: var(--gradient-1);
+					background-clip: text;
+					-webkit-background-clip: text;
+					-webkit-text-fill-color: transparent;
+				}
+			}
+		}
+	}
+
+	&__video-block {
+		> .video-block {
+			gap: 64px;
+
+			> .title {
+				> p {
+					padding: 0 83px;
+				}
+			}
+		}
+	}
+
+	&__benefits-card-slider {
+		margin-top: 75px;
+		> .video-block {
+
+			.video-block__description {
+				padding-right: 25px;
+			}
+
+			.benefits-card__item {
+				> .video-block__source {
+
+					> .video-block__button {
+
+						&--popup {
+							> svg {
+								> use {
+									fill: var(--line-light);
+								}
+							}
+
+							&:hover {
+								> svg {
+									> use {
+										fill: var(--black);
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+
+		}
+	}
+
+	&__product-slider {
+		padding-top: 32px;
+	}
+
 	&__reviews {
 		.reviews {
 
