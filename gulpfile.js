@@ -17,8 +17,9 @@ import browserSync from 'browser-sync';
 import debug from 'gulp-debug';
 import { promises as fs } from 'fs';
 import { parse } from 'node-html-parser';
-import { createWriteStream } from 'fs';
+import { createWriteStream, readdirSync, statSync, readFileSync } from 'fs';
 import archiver from 'archiver';
+import * as paths from 'path';
 
 const reload = browserSync.reload;
 const wp_path = 'wordpress/wp-content/themes/say-meow/';
@@ -214,7 +215,7 @@ gulp.task('webserver', async function () {
 gulp.task('default', gulp.series('build', gulp.parallel('webserver', 'watch')));
 
 // Архивация
-gulp.task('zip', async function () {
+gulp.task('zip', function (done) {
     const output = createWriteStream('./build.zip');
     const archive = archiver('zip', { zlib: { level: 9 } });
 
@@ -223,12 +224,43 @@ gulp.task('zip', async function () {
     });
 
     archive.pipe(output);
-    archive.directory('build/', false);
+
+    // Исключаем .map файлы и строки
+    const addFilesToArchive = (dirPath) => {
+        const files = readdirSync(dirPath);
+
+        files.forEach((file) => {
+            const fullPath = paths.join(dirPath, file);
+            const stats = statSync(fullPath);
+
+            if (stats.isDirectory()) {
+                addFilesToArchive(fullPath);
+            } else {
+                if (!fullPath.endsWith('.map')) {
+                    let fileContent;
+                    if (fullPath.match(/\.(jpg|jpeg|png|gif|mp4|webm|svg|bmp|avi|mov)$/)) {
+                        fileContent = readFileSync(fullPath);
+                    } else {
+                        fileContent = readFileSync(fullPath, 'utf8');
+                        fileContent = fileContent.replace(/\/\*# sourceMappingURL=.*\.map \*\//g, '');
+                        fileContent = fileContent.replace(/\/\/# sourceMappingURL=.*\.map/g, '');
+                    }
+
+                    archive.append(fileContent, { name: paths.relative('build', fullPath) });
+                }
+            }
+        });
+    };
+
+    addFilesToArchive('build');
 
     const robotsContent = `
 User-agent: *
 Disallow: /
     `.trim();
     archive.append(robotsContent, { name: 'robots.txt' });
-    await archive.finalize();
+
+    archive.finalize();
+
+    output.on('close', done);
 });
