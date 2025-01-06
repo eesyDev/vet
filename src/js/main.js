@@ -1,11 +1,16 @@
 (function ($) {
+    window.App = window.App || {};
 
-    let isScrollTopBody = true;
+    App.isScrollTopBody  = true;
+    App.winLocHash       = window.location.hash;
+    App.$body            = $('body');
+    App.$htmlBody        = $('html, body');
+    App.$modelsMenu      = $('.slider-menu .models-menu');
 
     // lazyload for images
     function img_loader() {
         setTimeout(function(){
-            $('body').find('img[data-src]').each(function(){
+            App.$body.find('img[data-src]').each(function(){
                 let src = $(this).attr('data-src');
                 let srcset = $(this).attr('data-srcset');
                 let classes = $(this).attr('class');
@@ -176,17 +181,16 @@
             on: {
 
                 init: function () {
-                    isScrollTopBody = false;
+                    App.isScrollTopBody = false;
                 },
 
                 slideChange: function () {
-                    const $menu = $('.slider-menu .models-menu');
-                    const $item = $menu.find('a');
+                    const $item = App.$modelsMenu.find('a');
                     $item.removeClass('active');
                     $item.eq(this.realIndex).addClass('active').trigger('classChange');
 
-                    if (!isScrollTopBody) {
-                        scrollTopBody($menu);
+                    if (!App.isScrollTopBody) {
+                        App.scrollTopBody(App.$modelsMenu);
                     }
                 }
             }
@@ -194,7 +198,7 @@
     }
 
     // opening popups
-    $('body').on('click touch', '.open-dialog, .open-popup, .open-form, .open-modal', function (event) {
+    App.$body.on('click touch', '.open-dialog, .open-popup, .open-form, .open-modal', function (event) {
         event.preventDefault();
 
         const category = $(this).attr('href');
@@ -208,12 +212,12 @@
         }
 
         if (popupCategory === 'list') {
-            $('body').css({ 'overflow-y': 'hidden' });
+            App.$body.css({ 'overflow-y': 'hidden' });
             $dialogs.css({ 'overflow-y': 'hidden' });
         }
 
         if ( popupCategory === 'work-offer' || popupCategory === 'details' ) {
-            $('body').css({ 'overflow-y': 'hidden' });
+            App.$body.css({ 'overflow-y': 'hidden' });
             $dialogs.css({ 'overflow-y': 'auto' });
         }
 
@@ -231,7 +235,7 @@
         $flexPopup.addClass('popup--' + popupCategory);
         $dialogs.animate({ opacity: 1 }, 300, () => {
             $categoryDialogs.addClass('active');
-            $('body').css({ 'overflow-y': 'hidden' });
+            App.$body.css({ 'overflow-y': 'hidden' });
         });
 
         if (popupCategory === 'gallery') {
@@ -255,7 +259,7 @@
         const popupId = $activePopup.attr('id');
 
         const bodyScroll = () => {
-            $('body').css({ 'overflow-y': 'auto' });
+            App.$body.css({ 'overflow-y': 'auto' });
         };
 
         const removeClassPopup = () => {
@@ -885,20 +889,21 @@
         });
     }
 
-    // Адаптивное меню с прокруткой
-    function modelsMenu(menu, item) {
-        const $menu = $(menu);
-        const $items = $menu.find(item);
+    /**
+     * Адаптивное меню с прокруткой
+     */
+    function modelsMenu() {
+        const $items = App.$modelsMenu.find('a');
 
         function centerActiveItem($item) {
-            const menuWidth = $menu.outerWidth();
-            const menuScrollLeft = $menu.scrollLeft();
+            const menuWidth = App.$modelsMenu.outerWidth();
+            const menuScrollLeft = App.$modelsMenu.scrollLeft();
             const itemOffsetLeft = $item.offset().left;
-            const menuOffsetLeft = $menu.offset().left;
+            const menuOffsetLeft = App.$modelsMenu.offset().left;
             const itemLeft = itemOffsetLeft - menuOffsetLeft;
             const itemWidth = $item.outerWidth();
             const scrollTo = menuScrollLeft + itemLeft - (menuWidth / 2) + (itemWidth / 2);
-            $menu.animate({ scrollLeft: scrollTo }, 300);
+            App.$modelsMenu.animate({ scrollLeft: scrollTo }, 300);
         }
 
         $items.on('click touch', function () {
@@ -909,7 +914,7 @@
         });
 
         // Установить начальный активный элемент, если он есть, в центр
-        const $initialActive = $menu.find(item + '.active');
+        const $initialActive = $items;
         if ($initialActive.length) {
             centerActiveItem($initialActive);
         }
@@ -924,28 +929,27 @@
      *
      * @example
      * // Using a jQuery object
-     * scrollTopBody($('.element'));
+     * App.scrollTopBody($('.element'));
      *
      * @example
      * // Using a selector string
-     * scrollTopBody('.element');
+     * App.scrollTopBody('.element');
      *
      * @example
      * // Using a custom indent and duration
-     * scrollTopBody('.element', 80, 1000);
+     * App.scrollTopBody('.element', 80, 1000);
      */
-    function scrollTopBody($element, indent = 54, duration = 600) {
-
+    App.scrollTopBody = function($element, indent = 54, duration = 600) {
         if (typeof $element === 'string') {
             $element = $($element);
         }
 
         if ($element.length) {
-            $('html, body').animate({
+            App.$htmlBody.animate({
                 scrollTop: $element.offset().top - indent
             }, duration);
         }
-    }
+    };
 
     function addClassOnScroll(selector, threshold, className) {
         const $targetBlock = $(selector);
@@ -995,13 +999,54 @@
         });
     }
 
+    function chooseProductScroll() {
+        App.$body.on('click touch', '.choose-product', () => {
+            if (App.$modelsMenu.length > 0) {
+                App.scrollTopBody(App.$modelsMenu);
+            }
+        });
+    }
+
+    /**
+     * Инициализирует функциональность загрузки файла с возможностью выбора файла по клику на указанный элемент.
+     * Если длина имени выбранного файла превышает maxLength, сохраняются начало и конец строки, а середина заменяется на '...'.
+     *
+     * @param {string} triggerSelector - Селектор элемента, клик по которому вызывает выбор файла.
+     * @param {string} inputSelector - Селектор скрытого <input type="file">.
+     * @param {string} textSelector - Селектор элемента, в который будет выводиться название выбранного файла.
+     * @param {number} [maxLength=20] - Максимальная длина текста для отображения имени файла. По умолчанию 20 символов.
+     */
+    App.initFileUpload = function(triggerSelector, inputSelector, textSelector, maxLength = 20) {
+        $(triggerSelector).on('click', function () {
+            $(inputSelector).trigger('click');
+        });
+
+        $(inputSelector).on('change', function () {
+            let fileName = this.files[0]?.name || 'Файл не обрано';
+
+            if (fileName.length > maxLength) {
+                const extIndex = fileName.lastIndexOf('.');
+                const extension = extIndex !== -1 ? fileName.slice(extIndex) : ''; // Расширение файла
+                const visibleLength = maxLength - extension.length - 3; // Учёт места под '...'
+
+                if (visibleLength > 0) {
+                    const start = fileName.slice(0, Math.ceil(visibleLength / 2)); // Начало имени
+                    const end = fileName.slice(-Math.floor(visibleLength / 2)); // Конец имени
+                    fileName = `${start}...${end}${extension}`;
+                }
+            }
+
+            $(textSelector).text(fileName);
+        });
+    }
+
     $(function() {
 
         $('.video-block__source').each(function () {
             playVideo(this);
         });
 
-        modelsMenu('.models-menu', '.models-menu__item');
+        modelsMenu('.models-menu__item');
         playVideoThank('.thank-page__video', '.thank-page__button', '.thank-page__play--text', '.thank-page__item');
         initializeAccordion('.accordion-open', '.accordion__content', '.accordion__item');
 
@@ -1009,6 +1054,13 @@
 
         // WP загружать только на нужных страницах
         preloadHiddenMedia('.dialogs', 'img');
+
+        chooseProductScroll();
+
+        if (App.winLocHash === '#choose-product' && App.$modelsMenu.length > 0) {
+            App.scrollTopBody(App.$modelsMenu);
+            history.pushState(null, '', window.location.href.split('#')[0]);
+        }
 
     });
 

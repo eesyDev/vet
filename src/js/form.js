@@ -1,4 +1,5 @@
 (function ($) {
+
     $("form").on('submit', function () {
 
         let form = $(this),
@@ -51,9 +52,7 @@
             if (!validActions.includes(actionValue)) {
                 const $firstError = form.find('.required').first();
                 if ($firstError.length) {
-                    $('html, body').animate({
-                        scrollTop: $firstError.offset().top - 96 // 48px header + 24px отступ до поля
-                    }, 600);
+                    App.scrollTopBody($firstError, 96, 600);
                 }
             }
             return false;
@@ -101,39 +100,6 @@
         }
     });
 
-    /**
-     * Инициализирует функциональность загрузки файла с возможностью выбора файла по клику на указанный элемент.
-     * Если длина имени выбранного файла превышает maxLength, сохраняются начало и конец строки, а середина заменяется на '...'.
-     *
-     * @param {string} triggerSelector - Селектор элемента, клик по которому вызывает выбор файла.
-     * @param {string} inputSelector - Селектор скрытого <input type="file">.
-     * @param {string} textSelector - Селектор элемента, в который будет выводиться название выбранного файла.
-     * @param {number} [maxLength=20] - Максимальная длина текста для отображения имени файла. По умолчанию 20 символов.
-     */
-    function initFileUpload(triggerSelector, inputSelector, textSelector, maxLength = 20) {
-        $(triggerSelector).on('click', function () {
-            $(inputSelector).trigger('click');
-        });
-
-        $(inputSelector).on('change', function () {
-            let fileName = this.files[0]?.name || 'Файл не обрано';
-
-            if (fileName.length > maxLength) {
-                const extIndex = fileName.lastIndexOf('.');
-                const extension = extIndex !== -1 ? fileName.slice(extIndex) : ''; // Расширение файла
-                const visibleLength = maxLength - extension.length - 3; // Учёт места под '...'
-
-                if (visibleLength > 0) {
-                    const start = fileName.slice(0, Math.ceil(visibleLength / 2)); // Начало имени
-                    const end = fileName.slice(-Math.floor(visibleLength / 2)); // Конец имени
-                    fileName = `${start}...${end}${extension}`;
-                }
-            }
-
-            $(textSelector).text(fileName);
-        });
-    }
-    initFileUpload('#work_offer-drop', '#work_offer-file', '#work_offer-drop span', 40);
-
+    App.initFileUpload('#work_offer-drop', '#work_offer-file', '#work_offer-drop span', 40);
 
 })(jQuery);
