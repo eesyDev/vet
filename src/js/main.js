@@ -150,41 +150,48 @@
         });
     }
 
-    const prodSlider = new Swiper('.product-slider', {
-        slidesPerView: 'auto',
-        spaceBetween: 120, // По макету, но напрашивается 60px 🤷‍♂️
-        threshold: 20,
-        speed: 800,
-        initialSlide: 3, // по умолчанию Grace Max
-        loop: false,
-        observer: true,
-        autoHeight: false,
-        observeParents: true,
-        slideToClickedSlide: true,
-        observeSlideChildren: true,
-        centeredSlides: true,
-        hashNavigation: {
-            replaceState: true,
-            watchState: true,
-        },
-        on: {
 
-            init: function () {
-                isScrollTopBody = false;
+    const PRODUCT_CLASS_SLIDER = '.product-slider';
+    const $productSlider = $(PRODUCT_CLASS_SLIDER);
+
+    if ($productSlider.length > 0) {
+
+        const prodSlider = new Swiper(PRODUCT_CLASS_SLIDER, {
+            slidesPerView: 'auto',
+            spaceBetween: 120, // По макету, но напрашивается 60px 🤷‍♂️
+            threshold: 20,
+            speed: 800,
+            initialSlide: (parseInt($productSlider.data('initial-slide')) || 1) - 1, // активный слайд
+            loop: false,
+            observer: true,
+            autoHeight: false,
+            observeParents: true,
+            slideToClickedSlide: true,
+            observeSlideChildren: true,
+            centeredSlides: true,
+            hashNavigation: {
+                replaceState: true,
+                watchState: true,
             },
+            on: {
 
-            slideChange: function () {
-                const $menu = $('.slider-menu .models-menu');
-                const $item = $menu.find('a');
-                $item.removeClass('active');
-                $item.eq(this.realIndex).addClass('active').trigger('classChange');
+                init: function () {
+                    isScrollTopBody = false;
+                },
 
-                if (!isScrollTopBody) {
-                    scrollTopBody($menu);
+                slideChange: function () {
+                    const $menu = $('.slider-menu .models-menu');
+                    const $item = $menu.find('a');
+                    $item.removeClass('active');
+                    $item.eq(this.realIndex).addClass('active').trigger('classChange');
+
+                    if (!isScrollTopBody) {
+                        scrollTopBody($menu);
+                    }
                 }
             }
-        }
-    });
+        });
+    }
 
     // opening popups
     $('body').on('click touch', '.open-dialog, .open-popup, .open-form, .open-modal', function (event) {
