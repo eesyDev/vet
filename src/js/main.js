@@ -71,34 +71,32 @@
         });
     }
 
-    // lazyload for images
-    function img_loader() {
-        setTimeout(function(){
-            App.$body.find('img').each(function(){
-                let src = $(this).attr('src');
-                let srcset = $(this).attr('srcset');
-                let classes = $(this).attr('class');
-                let alt = $(this).attr('alt');
-                let title = $(this).attr('title');
-                if (src) {
-                    let img = new Image();
-                    $(img).hide();
-                    $(img).on('load', function(){
-                        $(this).fadeIn(400);
-                        setTimeout(function(){
-                            $(img).addClass('transition');
-                        },400);
-                    });
-                    $(img).attr('srcset', srcset );
-                    $(img).attr('src', src );
-                    $(img).attr('alt', alt);
-                    $(img).attr('title', title);
-                    $(img).addClass(classes);
-                    $(this).replaceWith(img);
-                }
-            });
-        }, 150);
+    // lazy load for images
+    App.lazyLoadImages = function () {
+        $('img[data-src]').each(function () {
+            let $img = $(this);
+            if ($img.isInViewportImg() && !$img.data('loaded')) {
+                let src = $img.attr('data-src');
+                let srcset = $img.attr('data-srcset');
+
+                if (src) $img.attr('src', src);
+                if (srcset) $img.attr('srcset', srcset);
+                $img.data('loaded', true);
+                $img.hide().fadeIn(400);
+            }
+        });
     }
+
+    $.fn.isInViewportImg = function () {
+        let elementTop = $(this).offset().top;
+        let elementBottom = elementTop + $(this).outerHeight();
+        let viewportTop = $(window).scrollTop();
+        let viewportBottom = viewportTop + $(window).height();
+
+        return elementBottom > viewportTop && elementTop < viewportBottom;
+    };
+
+    $(window).on('load scroll resize', App.lazyLoadImages);
 
     // calc block position in viewport
     $.fn.percentOfViewport = function() {
@@ -126,7 +124,6 @@
             viewportHeight: viewportHeight
         };
     };
-
 
     // check is block is in viewport
     $.fn.isInViewport = function() {
@@ -550,9 +547,6 @@
         ]);
         viewGridSwitcher('.catalog-view a');
     });
-
-    $(window).on('load resize', img_loader);
-    $(window).on('load scroll', waitAnimation);
 
     // Купить продукт
     function addToCart(btnSelector) {
@@ -1039,6 +1033,8 @@
             }
         });
     }
+
+    $(window).on('load scroll', waitAnimation);
 
     $(function() {
 
