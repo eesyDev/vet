@@ -4,7 +4,6 @@ import gulp from 'gulp';
 import prefixer from 'gulp-autoprefixer';
 import uglify from 'gulp-uglify';
 import dartSass from 'gulp-dart-sass';
-import sourcemaps from 'gulp-sourcemaps';
 import rigger from 'gulp-rigger';
 import cleanCSS from 'gulp-clean-css';
 import imagemin from 'gulp-imagemin';
@@ -14,13 +13,13 @@ import svgSprite from 'gulp-svg-sprite';
 import svgmin from 'gulp-svgmin';
 import replace from 'gulp-replace';
 import browserSync from 'browser-sync';
+import sourcemaps from 'gulp-sourcemaps';
 import { promises as fs } from 'fs';
 import { parse } from 'node-html-parser';
 import { createWriteStream, readdirSync, statSync, readFileSync } from 'fs';
 import archiver from 'archiver';
 import path from 'node:path';
 
-const reload = browserSync.reload;
 const wpThemePath = 'wordpress/wp-content/themes/say-meow/';
 
 const projectPaths = {
@@ -83,9 +82,8 @@ gulp.task('clean', async function () {
 gulp.task('html:build', async function () {
     return gulp.src(projectPaths.src.html)
         .pipe(rigger())
-        .pipe(replace('{{version}}', `${Date.now()}` )) // обновления версий в HTML
         .pipe(gulp.dest(projectPaths.build.html))
-        .pipe(reload({ stream: true }));
+        .pipe(browserSync.stream());
 });
 
 gulp.task('js:build', async function () {
@@ -95,7 +93,7 @@ gulp.task('js:build', async function () {
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest(projectPaths.build.js))
         .pipe(gulp.dest(projectPaths.wp.js))
-        .pipe(reload({ stream: true }));
+        .pipe(browserSync.stream());
 });
 
 gulp.task('style:build', async function () {
@@ -107,7 +105,7 @@ gulp.task('style:build', async function () {
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest(projectPaths.build.css))
         .pipe(gulp.dest(projectPaths.wp.css))
-        .pipe(reload({ stream: true }));
+        .pipe(browserSync.stream());
 });
 
 gulp.task('image:build', async function () {
@@ -117,8 +115,7 @@ gulp.task('image:build', async function () {
             optipng({ optimizationLevel: 5 }),
         ]))
         .pipe(gulp.dest(projectPaths.build.img))
-        .pipe(gulp.dest(projectPaths.wp.img))
-        .pipe(reload({ stream: true }));
+        .pipe(gulp.dest(projectPaths.wp.img));
 });
 
 gulp.task('svg:build', async function () {
@@ -143,15 +140,13 @@ gulp.task('svg:build', async function () {
             },
         }))
         .pipe(gulp.dest(projectPaths.build.img))
-        .pipe(gulp.dest(projectPaths.wp.img))
-        .pipe(reload({ stream: true }));
+        .pipe(gulp.dest(projectPaths.wp.img));
 });
 
 gulp.task('fonts:build', async function () {
     return gulp.src(projectPaths.src.fonts)
         .pipe(gulp.dest(projectPaths.build.fonts))
-        .pipe(gulp.dest(projectPaths.wp.fonts))
-        .pipe(reload({ stream: true }));
+        .pipe(gulp.dest(projectPaths.wp.fonts));
 });
 
 gulp.task('lib:build', async function () {
@@ -186,16 +181,24 @@ gulp.task('build', gulp.series(
     'video:build'
 ));
 
+const watchTasks = [
+    { path: projectPaths.watch.html, task: 'html:build' },
+    { path: projectPaths.watch.style, task: 'style:build' },
+    { path: projectPaths.watch.js, task: 'js:build' },
+    { path: projectPaths.watch.img, task: 'image:build' },
+    { path: projectPaths.watch.svg, task: 'svg:build' },
+    { path: projectPaths.watch.fonts, task: 'fonts:build' },
+    { path: projectPaths.watch.lib, task: 'lib:build' },
+    { path: projectPaths.watch.php, task: 'php:build' },
+    { path: projectPaths.watch.video, task: 'video:build' },
+];
+
+const delay = 500;
+
 gulp.task('watch', async function () {
-    gulp.watch([projectPaths.watch.html], gulp.series('html:build'));
-    gulp.watch([projectPaths.watch.style], gulp.series('style:build'));
-    gulp.watch([projectPaths.watch.js], gulp.series('js:build'));
-    gulp.watch([projectPaths.watch.img], gulp.series('image:build'));
-    gulp.watch([projectPaths.watch.svg], gulp.series('svg:build'));
-    gulp.watch([projectPaths.watch.fonts], gulp.series('fonts:build'));
-    gulp.watch([projectPaths.watch.lib], gulp.series('lib:build'));
-    gulp.watch([projectPaths.watch.php], gulp.series('php:build'));
-    gulp.watch([projectPaths.watch.video], gulp.series('video:build'));
+    watchTasks.forEach(({ path, task }) => {
+        gulp.watch(path, { delay: delay }, gulp.series(task));
+    });
 });
 
 gulp.task('webserver', async function () {
@@ -205,7 +208,8 @@ gulp.task('webserver', async function () {
         port: 8081,
         open: false,
         logLevel: "info",
-        notify: false
+        notify: false,
+        reloadDebounce: delay,
     });
 });
 
@@ -225,6 +229,7 @@ gulp.task('zip', async function (done) {
     // Исключаем .map файлы и строки
     const addFilesToArchive = (dirPath) => {
         const files = readdirSync(dirPath);
+        const version = Date.now();
 
         files.forEach((file) => {
             const fullPath = path.join(dirPath, file);
@@ -241,6 +246,10 @@ gulp.task('zip', async function (done) {
                         fileContent = readFileSync(fullPath, 'utf8');
                         fileContent = fileContent.replace(/\/\*# sourceMappingURL=.*\.map \*\//g, '');
                         fileContent = fileContent.replace(/\/\/# sourceMappingURL=.*\.map/g, '');
+
+                        if (fullPath.endsWith('.html')) {
+                            fileContent = fileContent.replace('{{version}}', `${version}`);
+                        }
                     }
 
                     archive.append(fileContent, { name: path.relative('build', fullPath) });
