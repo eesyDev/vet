@@ -248,7 +248,7 @@ gulp.task('zip', async function (done) {
                         fileContent = fileContent.replace(/\/\/# sourceMappingURL=.*\.map/g, '');
 
                         if (fullPath.endsWith('.html')) {
-                            fileContent = fileContent.replace('{{version}}', `${version}`);
+                            fileContent = fileContent.replace(/{{version}}/g, version.toString());
                         }
                     }
 
