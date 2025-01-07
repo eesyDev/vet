@@ -1,6 +1,14 @@
 .lend-merch {
 	&.article-header {
 		background-color: var(--white);
+
+		> .section__wrapper {
+			> .article-header__bg {
+				> img {
+					object-fit: cover;
+				}
+			}
+		}
 	}
 
 	&__product-slider {
