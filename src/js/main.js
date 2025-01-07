@@ -7,12 +7,76 @@
     App.$htmlBody        = $('html, body');
     App.$modelsMenu      = $('.slider-menu .models-menu');
 
+    /**
+     * Animate scroll top to element
+     *
+     * @param {Object|string} $element jQuery object or selector string.
+     * @param {Number} [indent=54] indent to the desired element in px.
+     * @param {Number} [duration=600] animation time in milliseconds.
+     *
+     * @example
+     * // Using a jQuery object
+     * App.scrollTopBody($('.element'));
+     *
+     * @example
+     * // Using a selector string
+     * App.scrollTopBody('.element');
+     *
+     * @example
+     * // Using a custom indent and duration
+     * App.scrollTopBody('.element', 80, 1000);
+     */
+    App.scrollTopBody = function($element, indent = 54, duration = 600) {
+        if (typeof $element === 'string') {
+            $element = $($element);
+        }
+
+        if ($element.length) {
+            App.$htmlBody.animate({
+                scrollTop: $element.offset().top - indent
+            }, duration);
+        }
+    };
+
+    /**
+     * Инициализирует функциональность загрузки файла с возможностью выбора файла по клику на указанный элемент.
+     * Если длина имени выбранного файла превышает maxLength, сохраняются начало и конец строки, а середина заменяется на '...'.
+     *
+     * @param {string} triggerSelector - Селектор элемента, клик по которому вызывает выбор файла.
+     * @param {string} inputSelector - Селектор скрытого <input type="file">.
+     * @param {string} textSelector - Селектор элемента, в который будет выводиться название выбранного файла.
+     * @param {number} [maxLength=20] - Максимальная длина текста для отображения имени файла. По умолчанию 20 символов.
+     */
+    App.initFileUpload = function(triggerSelector, inputSelector, textSelector, maxLength = 20) {
+        $(triggerSelector).on('click', function () {
+            $(inputSelector).trigger('click');
+        });
+
+        $(inputSelector).on('change', function () {
+            let fileName = this.files[0]?.name || 'Файл не обрано';
+
+            if (fileName.length > maxLength) {
+                const extIndex = fileName.lastIndexOf('.');
+                const extension = extIndex !== -1 ? fileName.slice(extIndex) : ''; // Расширение файла
+                const visibleLength = maxLength - extension.length - 3; // Учёт места под '...'
+
+                if (visibleLength > 0) {
+                    const start = fileName.slice(0, Math.ceil(visibleLength / 2)); // Начало имени
+                    const end = fileName.slice(-Math.floor(visibleLength / 2)); // Конец имени
+                    fileName = `${start}...${end}${extension}`;
+                }
+            }
+
+            $(textSelector).text(fileName);
+        });
+    }
+
     // lazyload for images
     function img_loader() {
         setTimeout(function(){
-            App.$body.find('img[data-src]').each(function(){
-                let src = $(this).attr('data-src');
-                let srcset = $(this).attr('data-srcset');
+            App.$body.find('img').each(function(){
+                let src = $(this).attr('src');
+                let srcset = $(this).attr('srcset');
                 let classes = $(this).attr('class');
                 let alt = $(this).attr('alt');
                 let title = $(this).attr('title');
@@ -920,37 +984,6 @@
         }
     }
 
-    /**
-     * Animate scroll top to element
-     *
-     * @param {Object|string} $element jQuery object or selector string.
-     * @param {Number} [indent=54] indent to the desired element in px.
-     * @param {Number} [duration=600] animation time in milliseconds.
-     *
-     * @example
-     * // Using a jQuery object
-     * App.scrollTopBody($('.element'));
-     *
-     * @example
-     * // Using a selector string
-     * App.scrollTopBody('.element');
-     *
-     * @example
-     * // Using a custom indent and duration
-     * App.scrollTopBody('.element', 80, 1000);
-     */
-    App.scrollTopBody = function($element, indent = 54, duration = 600) {
-        if (typeof $element === 'string') {
-            $element = $($element);
-        }
-
-        if ($element.length) {
-            App.$htmlBody.animate({
-                scrollTop: $element.offset().top - indent
-            }, duration);
-        }
-    };
-
     function addClassOnScroll(selector, threshold, className) {
         const $targetBlock = $(selector);
 
@@ -1004,39 +1037,6 @@
             if (App.$modelsMenu.length > 0) {
                 App.scrollTopBody(App.$modelsMenu);
             }
-        });
-    }
-
-    /**
-     * Инициализирует функциональность загрузки файла с возможностью выбора файла по клику на указанный элемент.
-     * Если длина имени выбранного файла превышает maxLength, сохраняются начало и конец строки, а середина заменяется на '...'.
-     *
-     * @param {string} triggerSelector - Селектор элемента, клик по которому вызывает выбор файла.
-     * @param {string} inputSelector - Селектор скрытого <input type="file">.
-     * @param {string} textSelector - Селектор элемента, в который будет выводиться название выбранного файла.
-     * @param {number} [maxLength=20] - Максимальная длина текста для отображения имени файла. По умолчанию 20 символов.
-     */
-    App.initFileUpload = function(triggerSelector, inputSelector, textSelector, maxLength = 20) {
-        $(triggerSelector).on('click', function () {
-            $(inputSelector).trigger('click');
-        });
-
-        $(inputSelector).on('change', function () {
-            let fileName = this.files[0]?.name || 'Файл не обрано';
-
-            if (fileName.length > maxLength) {
-                const extIndex = fileName.lastIndexOf('.');
-                const extension = extIndex !== -1 ? fileName.slice(extIndex) : ''; // Расширение файла
-                const visibleLength = maxLength - extension.length - 3; // Учёт места под '...'
-
-                if (visibleLength > 0) {
-                    const start = fileName.slice(0, Math.ceil(visibleLength / 2)); // Начало имени
-                    const end = fileName.slice(-Math.floor(visibleLength / 2)); // Конец имени
-                    fileName = `${start}...${end}${extension}`;
-                }
-            }
-
-            $(textSelector).text(fileName);
         });
     }
 
