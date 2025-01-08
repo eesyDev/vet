@@ -1,0 +1,67 @@
+.guarantee-pro {
+	> .section__wrapper {
+		gap: 65px;
+	}
+
+	&__info {
+		padding: 29px 37px;
+		border-radius: 24px;
+		background-color: var(--black-bg);
+	}
+
+	&__text {
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+		align-items: flex-start;
+		gap: 12px;
+
+		width: 100%;
+
+		> h3 { // Временно, не получилось в sprite из-за градиента
+			font-family: var(--font-family-b);
+			font-size: 65px;
+			line-height: 70px;
+			font-weight: 600;
+			letter-spacing: -0.2px;
+		}
+
+		> h3,
+		> p {
+			background: var(--gradient-pro);
+			background-clip: text;
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+		}
+	}
+
+	&__description {
+		display: flex;
+		align-items: center;
+		height: 100%;
+		gap: 49px;
+		width: calc(100% - 50px);
+
+		> p {
+			color: var(--white);
+
+			> span {
+				color: var(--grey-pro);
+			}
+		}
+
+		&:before {
+			display: block;
+			content: "";
+			width: 1px;
+			height: 128px;
+			background: var(--lines-pro);
+		}
+	}
+
+	&__about {
+		> p {
+			color: var(--grey-pro);
+		}
+	}
+}

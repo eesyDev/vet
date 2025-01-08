@@ -65,6 +65,14 @@
 
 	&__product-slider {
 		padding-top: 32px;
+
+		> .product-slider {
+			> .swiper-wrapper {
+				> .swiper-slide {
+					width: var(--w-content);
+				}
+			}
+		}
 	}
 
 	&__reviews {

@@ -23,7 +23,7 @@
 
 				/*background:
 						linear-gradient(90deg, rgba(40,40,39,1) 0%, rgba(255,193,101,0) 100%),
-						#000000 url('../../assets/img/charity/plates-bg-400.jpg')
+						var(--dark) url('../../assets/img/charity/plates-bg-400.jpg')
 						center center no-repeat;*/
 
 
@@ -47,7 +47,7 @@
 
 				/*background:
 						linear-gradient(90deg, rgba(40,40,39,1) 0%, rgba(255,193,101,0) 100%),
-						#000000 url('../../assets/img/charity/plates-bg-zsu.png')
+						var(--dark) url('../../assets/img/charity/plates-bg-zsu.png')
 						center center no-repeat;*/
 
 				> .plates__description {

@@ -87,6 +87,12 @@
 			&__card {
 				background-color: var(--bg-light);
 			}
+
+			&__footer {
+				> p {
+					color: var(--gray-2);
+				}
+			}
 		}
 	}
 

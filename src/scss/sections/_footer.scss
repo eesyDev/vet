@@ -3,7 +3,7 @@
 .footer {
 	width: 100%;
 	padding: 56px 0 12px;
-	background: #0f0f0f;
+	background: var(--black-bg);
 
 	&__wrapper {
 		@include mix.flexbox('flex-start');

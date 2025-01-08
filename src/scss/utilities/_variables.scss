@@ -23,7 +23,10 @@ html {
 
     // --- COLORS ---
     --white:                 #ffffff;
+    --dark:                  #000000;
     --black:                 #282827;
+    --black-bg:              #0f0f0f;
+    --black-pro:             #1A1A1A;
     --gray:                  #747473;
     --gray-2:                #929292;
     --gray-3:                #d4d4d4;
@@ -35,9 +38,10 @@ html {
     --orange:                #ffc165;
     --orange-2:              #f1711c;
     --green:                 #56e264;
-    --pro-grey-pro:          #a8a8a8;
-    --pro-pro-lines:         #232322;
-    --pro-lines-bg-pro:      #151515;
+    --grey-pro:              #a8a8a8;
+    --lines-pro:             #232322;
+    --dark-bg-pro:           #0b0b0b;
+    --lines-bg-pro:          #151515;
     --successful:            #49aa53;
     --violet:                #7165ff;
     --error:                 #e64832;
@@ -48,6 +52,7 @@ html {
     --gradient-1: linear-gradient(90deg, rgba(255,223,101,100) 0%, rgba(255,193,101,100) 100%);
     --gradient-2: linear-gradient(180deg, rgba(21,21,21,0) 0%, rgba(21,21,21,1) 100%);
     --gradient-3: linear-gradient(90deg, rgba(46,46,46,0.50) 0%, rgba(69,69,69,0.50) 100%);
+    --gradient-pro: linear-gradient(90deg, rgba(116,116,115,1) -44%, rgba(255,193,101,1) 100%);
 
     @media (max-width: #{$w-mob}) {
         --c-padding: 20px;

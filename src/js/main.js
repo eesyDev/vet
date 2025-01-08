@@ -216,7 +216,6 @@
         });
     }
 
-
     const PRODUCT_CLASS_SLIDER = '.product-slider';
     const $productSlider = $(PRODUCT_CLASS_SLIDER);
 
@@ -224,7 +223,7 @@
 
         const prodSlider = new Swiper(PRODUCT_CLASS_SLIDER, {
             slidesPerView: 'auto',
-            spaceBetween: 120, // По макету, но напрашивается 60px 🤷‍♂️
+            spaceBetween: 120,
             threshold: 20,
             speed: 800,
             initialSlide: (parseInt($productSlider.data('initial-slide')) || 1) - 1, // активный слайд
@@ -1053,11 +1052,12 @@
 
         chooseProductScroll();
 
-        if (App.winLocHash === '#choose-product' && App.$modelsMenu.length > 0) {
-            App.scrollTopBody(App.$modelsMenu);
-            history.pushState(null, '', window.location.href.split('#')[0]);
+        if ( App.$modelsMenu.length > 0 ) {
+            const $activeItem = App.$modelsMenu.find('a' + '.active');
+            if($activeItem.attr('href') === App.winLocHash || '#choose-product' === App.winLocHash) {
+                App.scrollTopBody(App.$modelsMenu);
+            }
         }
-
     });
 
 })(jQuery);

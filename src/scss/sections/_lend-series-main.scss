@@ -93,6 +93,13 @@
 			&__card {
 				background-color: var(--line-light);
 			}
+
+			&__footer {
+				> p {
+					color: var(--gray);
+				}
+			}
+
 		}
 	}
 
@@ -114,5 +121,13 @@
 
 	&__product-slider {
 		padding-top: 32px;
+
+		> .product-slider {
+			> .swiper-wrapper {
+				> .swiper-slide {
+					width: var(--w-content);
+				}
+			}
+		}
 	}
 }
