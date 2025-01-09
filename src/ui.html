@@ -2,26 +2,88 @@
 <html lang="en">
 //= utilities/head.html
 <style>
-	.uikit {
-        padding: 60px 0 0;
-	}
-    .uikit .inputs input {
-        margin-top: 5px;
-        margin-bottom: 20px;
-        padding: 5px;
-        border: 1px solid var(--gray-3);
-        width: auto;
+    .uikit {
+        padding: 20px 0 0;
+
+        h2, h3, h4, h5, h6,
+        p:not(p.form-description),
+        a:not(p.form-description > a),
+        span:not(.inputs.tags > span):not(span.body-s-sb):not(.form-radio__item > span),
+        ul, ol {
+            display: block;
+	        width: max-content;
+            padding: 15px 0 0;
+        }
+
+        span {
+	        &.body-s-sb {
+                margin-left: 8px;
+	        }
+        }
+
+        .inputs {
+	        margin-top: 15px;
+        }
+
+        .title {
+            display: flex;
+            text-align: center;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            border-bottom: 1px solid var(--black-bg);
+        }
     }
+
+    .copyable {
+        position: relative;
+        transition: all ease-in-out .2s;
+        cursor: pointer;
+
+	    &:after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 0;
+            left: calc(100% + 15px);
+            padding: 8px 12px;
+            border-radius: 16px;
+            pointer-events: none;
+
+            font-family: var(--font-family);
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 140%;
+            white-space: nowrap;
+
+            color: var(--white);
+            backdrop-filter: blur(20px);
+            background: rgba(24, 24, 24, 0.85);
+
+            opacity: 0;
+            z-index: 10;
+
+            transition: all ease-in-out .2s;
+
+        }
+
+        &:hover {
+            color: var(--orange);
+            &:after {
+                opacity: 1;
+            }
+        }
+
+    }
+
 </style>
 <body>
 
 	//= sections/header.html
 
 	<section class="section section--first">
-		<div class="section__wrapper">
+		<div class="section__wrapper uikit">
 			<div class="title">
 				<h1 class="h1h2">Типографика</h1>
-				<hr>
 			</div>
 		</div>
 	</section>
@@ -31,191 +93,168 @@
 
 			<div class="inputs">
 
-				<h2 class="h1h2">Заголовок (header)</h2>
-				<label>
-					<input type="text" value="h2.h1h2{текст}" onclick="copyToClipboard(this)">
-				</label>
+				<h2 class="h1h2 copyable" onclick="copyToClipboard('h1h2', this)">Заголовок &lt;h1&gt;, &lt;h2&gt;</h2>
+				<input id="h1h2" class="hidden" type="hidden" value="h2.h1h2{текст}">
 
-				<h3 class="h3">Заголовок (header)</h3>
-				<label>
-					<input type="text" value="h3.h3{текст}" onclick="copyToClipboard(this)">
-				</label>
+				<h3 class="h3 copyable" onclick="copyToClipboard('h3', this)">Заголовок &lt;h3&gt;</h3>
+				<input id="h3" class="hidden" type="hidden" value="h3.h3{текст}">
 
-				<p class="body-s-sb">Параграф (paragraph)</p>
-				<label>
-					<input type="text" value="p.body-s-sb{текст}" onclick="copyToClipboard(this)">
-				</label>
+				<h4 class="body-l-sb copyable" onclick="copyToClipboard('body-l-sb', this)">Заголовок &lt;h4&gt;</h4>
+				<input id="body-l-sb" class="hidden" type="hidden" value="h4.body-l-sb{Заголовок}">
 
-				<p class="body-s-reg">Параграф (paragraph)</p>
-				<label>
-					<input type="text" value="p.body-s-reg{текст}" onclick="copyToClipboard(this)">
-				</label>
+				<h5 class="body-m-sb copyable" onclick="copyToClipboard('body-m-sb', this)">Заголовок &lt;h5&gt;</h5>
+				<input id="body-m-sb" class="hidden" type="hidden" value="h5.body-m-sb{Заголовок}">
 
-				<p class="body-m-sb">Параграф (paragraph)</p>
-				<label>
-					<input type="text" value="p.body-m-sb{текст}" onclick="copyToClipboard(this)">
-				</label>
+				<h6 class="body-s-sb copyable" onclick="copyToClipboard('body-s-sb', this)">Заголовок &lt;h6&gt;</h6>
+				<input id="body-s-sb" class="hidden" type="hidden" value="h6.body-s-sb{Заголовок}">
 
-				<p class="body-l-sb">Параграф (paragraph)</p>
-				<label>
-					<input type="text" value="p.body-l-sb{текст}" onclick="copyToClipboard(this)">
-				</label>
+				<p class="cta-m copyable" onclick="copyToClipboard('cta-m', this)">Параграф &lt;p&gt;</p>
+				<input id="cta-m" class="hidden" type="hidden" value="p.cta-m{Параграф}">
 
-				<span class="cta-s">Текст (text)</span>
-				<label>
-					<input type="text" value="span.cta-s{текст}" onclick="copyToClipboard(this)">
-				</label>
+				<p class="body-s-reg copyable" onclick="copyToClipboard('body-s-reg', this)">Параграф &lt;p&gt;</p>
+				<input id="body-s-reg" class="hidden" type="hidden" value="p.body-s-reg{Параграф}">
 
-				<a href="#" class="cta-s-link">Ссылка (link)</a>
-				<label>
-					<input type="text" value="a.cta-s-link[href='#']{текст}" onclick="copyToClipboard(this)">
-				</label>
+				<span class="cta-s copyable" onclick="copyToClipboard('cta-s', this)">Текст &lt;span&gt;</span>
+				<input id="cta-s" class="hidden" type="hidden" value="span.cta-s{Текст}">
 
-				<p class="cta-m">Параграф (paragraph)</p>
-				<label>
-					<input type="text" value="p.cta-m{текст}" onclick="copyToClipboard(this)">
-				</label>
+				<a href="#" class="cta-s-link copyable" onclick="copyToClipboard('cta-s-link', this);return false">Ссылка &lt;a&gt;</a>
+				<input id="cta-s-link" class="hidden" type="hidden" value="a.cta-s-link[href='#']{Ссылка}">
 
-				<a href="#" class="cta-m-link">Ссылка (link)</a>
-				<label>
-					<input type="text" value="a.cta-m-link[href='#']{текст}" onclick="copyToClipboard(this)">
-				</label>
+				<a href="#" class="cta-m-link copyable" onclick="copyToClipboard('cta-m-link', this);return false">Ссылка &lt;a&gt;</a>
+				<input id="cta-m-link" class="hidden" type="hidden" value="a.cta-m-link[href='#']{Ссылка}">
 
-				<span class="textaccedent">Акцент (accent)</span>
-				<label>
-					<input type="text" value="span.textaccedent{текст}" onclick="copyToClipboard(this)">
-				</label>
+				<span class="textaccedent copyable" onclick="copyToClipboard('textaccedent', this)">Акцент &lt;p&gt;, &lt;span&gt;</span>
+				<input id="textaccedent" class="hidden" type="hidden" value="span.textaccedent{Акцент}">
 
-				<ul class="list">
-					<li>Элемент списка 1</li>
-					<li>Элемент списка 2</li>
-					<li>Элемент списка 3</li>
+				<ul class="list copyable" onclick="copyToClipboard('list-ul', this)">
+					<li>Элемент списка &lt;ul&gt;</li>
+					<li>Элемент списка &lt;ul&gt;</li>
+					<li>Элемент списка &lt;ul&gt;</li>
 				</ul>
-				<label>
-					<input type="text" value="ul.list>(li{Элемент $})*3" onclick="copyToClipboard(this)">
-				</label>
+				<input id="list-ul" class="hidden" type="hidden" value="ul.list>(li{Элемент $})*3">
 
-				<ol class="list">
-					<li>Элемент списка 1</li>
-					<li>Элемент списка 2</li>
-					<li>Элемент списка 3</li>
+				<ol class="list copyable" onclick="copyToClipboard('list-ol', this)">
+					<li>Элемент списка &lt;ol&gt;</li>
+					<li>Элемент списка &lt;ol&gt;</li>
+					<li>Элемент списка &lt;ol&gt;</li>
 				</ol>
-
-				<label>
-					<input type="text" value="ol.list>(li{Элемент $})*3" onclick="copyToClipboard(this)">
-				</label>
-
-				<h2 class="h1h2" style="text-align: center">Форма</h2>
-				<hr><br>
+				<input id="list-ol" class="hidden" type="hidden" value="ol.list>(li{Элемент $})*3">
 			</div>
 
-			<form method="POST" class="popup__form">
-				<label class="inp-wrp">
-					<input type="text" name="name[Iм’я]" placeholder="Iм’я *" data-required="true" data-error="Please fill this Iм’я">
-				</label>
-				<label class="inp-wrp">
-					<input type="tel" name="phone[Телефон]" placeholder="Телефон *" class="inp-phone" data-required="true" data-error="Please fill this Телефон">
-				</label>
-				<label class="inp-wrp">
-					<input type="email" name="email[E-mail]" placeholder="E-mail *" class="inp-email" data-required="true" data-error="Please fill this E-mail">
-				</label>
-				<label class="inp-wrp">
-					<input type="text" name="text[Комментарий]" placeholder="disabled" disabled>
-				</label>
-				<label class="inp-wrp">
-					<textarea name="text[Чому Say Meow]" placeholder="Чому Say Meow?" data-error="Please fill this text"></textarea>
-				</label>
-
-				<div class="select-wrapper">
-					<label>
-						<select class="select">
-							<option value="1">№ Відділення Нової Пошти *</option>
-							<option value="2">№ Відділення Нової Пошти 2</option>
-							<option value="3">№ Відділення Нової Пошти 3</option>
-						</select>
-					</label>
+			<div class="section__wrapper">
+				<div class="title">
+					<h1 class="h1h2 copyable" onclick="copyToClipboardHtml('popup__form', this)">Форма</h1>
 				</div>
+			</div>
 
-				<div class="inp-wrp form-switch">
-					<input type="checkbox" name="switch[0]" id="switch-toggle" class="form-switch__input">
-					<label for="switch-toggle" class="form-switch__label">
-						<span class="switch__slider"></span>
-					</label>
+<form method="POST" class="popup__form">
+	<label class="inp-wrp">
+		<input type="text" name="name[Iм’я]" placeholder="Iм’я *" data-required="true" data-error="Please fill this Iм’я">
+	</label>
+	<label class="inp-wrp">
+		<input type="tel" name="phone[Телефон]" placeholder="Телефон *" class="inp-phone" data-required="true" data-error="Please fill this Телефон">
+	</label>
+	<label class="inp-wrp">
+		<input type="email" name="email[E-mail]" placeholder="E-mail *" class="inp-email" data-required="true" data-error="Please fill this E-mail">
+	</label>
+	<label class="inp-wrp">
+		<input type="text" name="text[Комментарий]" placeholder="disabled" disabled>
+	</label>
+	<label class="inp-wrp">
+		<textarea name="text[Чому Say Meow]" placeholder="Чому Say Meow?" data-error="Please fill this text"></textarea>
+	</label>
+
+	<div class="select-wrapper">
+		<label>
+			<select class="select">
+				<option value="1">№ Відділення Нової Пошти *</option>
+				<option value="2">№ Відділення Нової Пошти 2</option>
+				<option value="3">№ Відділення Нової Пошти 3</option>
+			</select>
+		</label>
+	</div>
+
+	<div class="inp-wrp form-switch">
+		<input type="checkbox" name="switch[0]" id="switch-toggle" class="form-switch__input">
+		<label for="switch-toggle" class="form-switch__label">
+			<span class="switch__slider"></span>
+		</label>
+	</div>
+
+	<div class="inp-wrp form-switch">
+		<input type="checkbox" name="switch[1]" id="switch-toggle-2" class="form-switch__input" checked>
+		<label for="switch-toggle-2" class="form-switch__label">
+			<span class="switch__slider"></span>
+		</label>
+	</div>
+
+	<div class="inp-wrp form-switch">
+		<input type="checkbox" name="switch[3]" id="switch-toggle-3" class="form-switch__input" disabled>
+		<label for="switch-toggle-3" class="form-switch__label">
+			<span class="switch__slider"></span>
+		</label>
+	</div>
+
+	<div class="form-radio">
+		<label class="form-radio__item">
+			<input type="radio" name="delivery[Доставка]" value="Вiддiлення Нової Пошти" checked>
+			<span>Вiддiлення Нової Пошти</span>
+		</label>
+		<label class="form-radio__item">
+			<input type="radio" name="delivery[Доставка]" value="Кур’ером">
+			<span>Кур’ером</span>
+		</label>
+		<label class="form-radio__item">
+			<input type="radio" name="payment[Оплата]" value="Онлайн">
+			<span>Онлайн</span>
+		</label>
+		<label class="form-radio__item">
+			<input type="radio" name="payment[Оплата]" value="Оплата після отримання" checked>
+			<span>Оплата після отримання</span>
+		</label>
+		<label class="form-radio__item">
+			<input type="radio" name="disabled[true]" value="" disabled>
+			<span>disabled</span>
+		</label>
+	</div>
+
+	<div class="inp-wrp">
+		<p class="form-description">Натискаючи на цю кнопку, Ви даєте згоду на обробку персональних даних та погоджуєтесь з нашою <a href="#policy-order" class="open-popup">політикою конфіденційності</a></p>
+	</div>
+
+	<div class="inp-wrp">
+		<label class="flex row" for="check-policy-ui">
+			<input id="check-policy-ui" type="checkbox" name="checkpolicy[Не передзвонювати мені]" value="Не передзвонювати мені" data-required="true" data-error="Please fill this Не передзвонювати мені">
+			<span class="body-s-sb">Не передзвонювати мені для підтвердження замовлення</span>
+		</label>
+	</div>
+
+	<div class="align-right">
+		<button class="button button--yellow button--big">Вiдправити</button>
+	</div>
+
+	<input type="hidden" name="action" value="form_uikit">
+
+</form>
+
+			<div class="section__wrapper">
+				<div class="title">
+					<h1 class="h1h2">Теги</h1>
 				</div>
+			</div>
 
-				<div class="inp-wrp form-switch">
-					<input type="checkbox" name="switch[1]" id="switch-toggle-2" class="form-switch__input" checked>
-					<label for="switch-toggle-2" class="form-switch__label">
-						<span class="switch__slider"></span>
-					</label>
-				</div>
+			<div class="inputs tags">
+				<span class="tag tag--discount copyable" onclick="copyToClipboard('tag--discount', this)">-30%</span>
+				<input id="tag--discount" class="hidden" type="hidden" value="span.tag.tag--discount{-30%}">
 
-				<div class="inp-wrp form-switch">
-					<input type="checkbox" name="switch[3]" id="switch-toggle-3" class="form-switch__input" disabled>
-					<label for="switch-toggle-3" class="form-switch__label">
-						<span class="switch__slider"></span>
-					</label>
-				</div>
+				<span class="tag tag--gift copyable" onclick="copyToClipboard('tag--gift', this)">Мышка у подарунок</span>
+				<input id="tag--gift" class="hidden" type="hidden" value="span.tag.tag--gift{Мышка у подарунок}">
 
-				<div class="form-radio">
-					<label class="form-radio__item">
-						<input type="radio" name="delivery[Доставка]" value="Вiддiлення Нової Пошти" checked>
-						<span>Вiддiлення Нової Пошти</span>
-					</label>
-					<label class="form-radio__item">
-						<input type="radio" name="delivery[Доставка]" value="Кур’ером">
-						<span>Кур’ером</span>
-					</label>
-					<label class="form-radio__item">
-						<input type="radio" name="payment[Оплата]" value="Онлайн">
-						<span>Онлайн</span>
-					</label>
-					<label class="form-radio__item">
-						<input type="radio" name="payment[Оплата]" value="Оплата після отримання" checked>
-						<span>Оплата після отримання</span>
-					</label>
-					<label class="form-radio__item">
-						<input type="radio" name="disabled[true]" value="" disabled>
-						<span>disabled</span>
-					</label>
-				</div>
+				<span class="tag tag--soon copyable" onclick="copyToClipboard('tag--soon', this)">Скоро</span>
+				<input id="tag--soon" class="hidden" type="hidden" value="span.tag.tag--soon{Скоро}">
 
-				<div class="inp-wrp">
-					<p class="form-description">Натискаючи на цю кнопку, Ви даєте згоду на обробку персональних даних та погоджуєтесь з нашою <a href="#policy">політикою конфіденційності</a></p>
-				</div>
-
-				<div class="inp-wrp">
-					<label class="flex row" for="check-policy-ui">
-						<input id="check-policy-ui" type="checkbox" name="checkpolicy[Не передзвонювати мені]" value="Не передзвонювати мені" data-required="true" data-error="Please fill this Не передзвонювати мені">
-						<span class="body-s-sb">Не передзвонювати мені для підтвердження замовлення</span>
-					</label>
-				</div>
-
-				<div class="align-right">
-					<button class="button button--yellow button--big">Вiдправити</button>
-				</div>
-				<input type="hidden" name="action" value="order_products_one_click">
-			</form>
-
-			<h2 class="h1h2" style="text-align: center">Теги</h2>
-			<hr><br>
-
-			<div class="inputs">
-				<span class="tag tag--discount">-30%</span>
-				<input type="text" value="span.tag.tag--discount{текст}" onclick="copyToClipboard(this)">
-				<br>
-
-				<span class="tag tag--gift">Мышка у подарунок</span>
-				<input type="text" value="span.tag.tag--gift{текст}" onclick="copyToClipboard(this)">
-				<br>
-
-				<span class="tag tag--soon">Скоро</span>
-				<input type="text" value="span.tag.tag--soon{текст}" onclick="copyToClipboard(this)">
-				<br>
-
-				<span class="tag tag--new">Новинка</span>
-				<input type="text" value="span.tag.tag--new{текст}" onclick="copyToClipboard(this)">
-
+				<span class="tag tag--new copyable" onclick="copyToClipboard('tag--new', this)">Новинка</span>
+				<input id="tag--new" class="hidden" type="hidden" value="span.tag.tag--new{Новинка}">
 			</div>
 		</div>
 	</section>
@@ -227,10 +266,46 @@
 	//= utilities/scripts.html
 
 	<script>
-        function copyToClipboard(input) {
-            input.select();
-            navigator.clipboard.writeText(input.value)
-        }
+
+		document.querySelectorAll('.copyable').forEach(element => {
+			const id = element.getAttribute('onclick').match(/'([^']+)'/)[1];
+			const inputElement = document.getElementById(id);
+			if (inputElement && id !== 'popup__form') {
+				element.setAttribute('data-tooltip', `Копировать Emmet: ${inputElement.value}`);
+			} else {
+				element.setAttribute('data-tooltip', 'Копировать HTML');
+			}
+		});
+
+		function copyToClipboard(id, element) {
+			const inputElement = document.getElementById(id);
+			if (inputElement) {
+				navigator.clipboard.writeText(inputElement.value)
+					.then(() => {
+						element.setAttribute('data-tooltip', 'Emmet скопирован!');
+						setTimeout(() => {
+							const originalText = `Копировать Emmet: ${inputElement.value}`;
+							element.setAttribute('data-tooltip', originalText);
+						}, 2000);
+					})
+					.catch(err => console.log('Ошибка при копировании: ' + err));
+			}
+		}
+
+		function copyToClipboardHtml(Class, element) {
+			const formElement = document.getElementsByClassName(Class)[0];
+			if (formElement) {
+				const formHtml = formElement.outerHTML;
+				navigator.clipboard.writeText(formHtml)
+					.then(() => {
+						element.setAttribute('data-tooltip', 'HTML скопирован!');
+						setTimeout(() => {
+							element.setAttribute('data-tooltip', 'Копировать HTML');
+						}, 2000);
+					})
+					.catch(err => console.log('Ошибка при копировании: ' + err));
+			}
+		}
 	</script>
 </body>
 </html>
