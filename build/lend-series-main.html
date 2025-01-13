@@ -1126,7 +1126,7 @@
 					</div>
 					<div class="popup__content">
 						<div class="popup__title">
-							<h3 class="body-l-sb">Кошик</h3>
+							<h3 class="h3">Кошик</h3>
 						</div>
 						<div class="popup-cart">
 							<div class="popup-cart__products">
@@ -1268,7 +1268,7 @@
 					</div>
 					<div class="popup__content">
 						<div class="popup__title">
-							<h3 class="body-l-sb">Список притулків</h3>
+							<h3 class="h3">Список притулків</h3>
 						</div>
 						<div class="popup-list grid">
 							<div class="popup-list__item">
@@ -1596,51 +1596,56 @@
 					</div>
 					<div class="popup__content">
 						<div class="popup__title">
-							<h3 class="body-l-sb">Надiслати резюме</h3>
+							<h3 class="h3">Надiслати резюме</h3>
 						</div>
-						<form method="POST" class="popup__form">
-							<label class="inp-wrp">
-								<input type="text" name="name[Iм’я]" placeholder="Iм’я *" data-required="true" data-error="Please fill this Iм’я">
-							</label>
-							<label class="inp-wrp">
-								<input type="text" name="name[Прiзвище]" placeholder="Прiзвище *" data-required="true" data-error="Please fill this Прiзвище">
-							</label>
-							<label class="inp-wrp">
-								<input type="email" name="email[E-mail]" placeholder="E-mail *" class="inp-email" data-required="true" data-error="Please fill this E-mail">
-							</label>
-							<label class="inp-wrp">
-								<input type="tel" name="phone[Телефон]" placeholder="Телефон *" class="inp-phone" data-required="true" data-error="Please fill this Телефон">
-							</label>
-							<label class="inp-wrp">
-								<input type="text" name="name[Посилання на соц. мережi]" placeholder="Посилання на соц. мережi">
-							</label>
-							<label class="inp-wrp">
-								<input type="text" name="name[Мiсто]" data-required="true" placeholder="Мiсто *">
-							</label>
-							<div class="select-wrapper">
+						<form method="POST">
+							<div class="popup-list popup__form">
 								<label class="inp-wrp">
-									<select class="select" data-required="true" data-error="Please fill this Напрямок роботи">
-										<option value="">Напрямок роботи *</option>
-										<option value="1">Первая</option>
-										<option value="2">Вторая</option>
-									</select>
+									<input type="text" name="name[Iм’я]" placeholder="Iм’я *" data-required="true" data-error="Please fill this Iм’я">
 								</label>
-							</div>
-							<label class="inp-wrp">
-								<textarea name="text[Чому Say Meow]" placeholder="Чому Say Meow?"></textarea>
-							</label>
-							<div class="inp-wrp">
-								<div class="popup__file flex col center" id="work_offer-drop">
-									<p class="body-s-sb">Завантажити резюме чи вiдео CV</p>
-									<span>Максимально 50 мб</span>
+								<label class="inp-wrp">
+									<input type="text" name="name[Прiзвище]" placeholder="Прiзвище *" data-required="true" data-error="Please fill this Прiзвище">
+								</label>
+								<label class="inp-wrp">
+									<input type="email" name="email[E-mail]" placeholder="E-mail *" class="inp-email" data-required="true" data-error="Please fill this E-mail">
+								</label>
+								<label class="inp-wrp">
+									<input type="tel" name="phone[Телефон]" placeholder="Телефон *" class="inp-phone" data-required="true" data-error="Please fill this Телефон">
+								</label>
+								<label class="inp-wrp">
+									<input type="text" name="name[Посилання на соц. мережi]" placeholder="Посилання на соц. мережi">
+								</label>
+								<label class="inp-wrp">
+									<input type="text" name="name[Мiсто]" data-required="true" placeholder="Мiсто *">
+								</label>
+								<div class="select-wrapper">
+									<label class="inp-wrp">
+										<select class="select" data-required="true" data-error="Please fill this Напрямок роботи">
+											<option value="">Напрямок роботи *</option>
+											<option value="1">Первая</option>
+											<option value="2">Вторая</option>
+										</select>
+									</label>
 								</div>
-								<input type="file" name="name[file]" id="work_offer-file" style="display:none;">
+								<label class="inp-wrp">
+									<textarea name="text[Чому Say Meow]" placeholder="Чому Say Meow?"></textarea>
+								</label>
+								<div class="inp-wrp">
+									<div class="popup__file flex col center" id="work_offer-drop">
+										<p class="body-s-sb">Завантажити резюме чи вiдео CV</p>
+										<span>Максимально 50 мб</span>
+									</div>
+									<input type="file" name="name[file]" id="work_offer-file" style="display:none;">
+								</div>
 							</div>
-							<div class="inp-wrp">
-								<p class="form-description">Натискаючи на цю кнопку, Ви даєте згоду на обробку персональних даних та погоджуєтесь з нашою <a href="#policy">політикою конфіденційності</a></p>
-							</div>
-							<div class="align-right">
-								<button class="button button--yellow button--big">Вiдправити</button>
+						
+							<div class="popup-list__footer">
+								<div class="inp-wrp">
+									<p class="form-description">Натискаючи на цю кнопку, Ви даєте згоду на обробку персональних даних та погоджуєтесь з нашою <a href="#policy">політикою конфіденційності</a></p>
+								</div>
+								<div class="align-right">
+									<button class="button button--yellow button--big">Вiдправити</button>
+								</div>
 							</div>
 							<input type="hidden" name="action" value="work_offer">
 						</form>
@@ -1676,7 +1681,7 @@
 					</div>
 					<div class="popup__content">
 						<div class="popup__title">
-							<h3 class="body-l-sb">Консультацiя</h3>
+							<h3 class="h3">Консультацiя</h3>
 						</div>
 						<form method="POST" class="popup__form">
 							<label class="inp-wrp">
@@ -1766,7 +1771,8 @@
 										</video>
 									</div>-->
 									<div class="swiper-slide">
-										<img src="assets/img/content/main-intro-offer-2x.jpg" alt=""/>
+										<img srcset="assets/img/content/main-intro-offer-2x.jpg 2x" src="assets/img/content/main-intro-offer.jpg" alt="" class="desktop-plus-tablet">
+										<img srcset="assets/img/content/main-intro-offer-mobile-2x.jpg 2x" src="assets/img/content/main-intro-offer-mobile.jpg" alt="" class="mobile-only">
 									</div>
 									<div class="swiper-slide">
 										<img src="assets/img/catalog/max-2x.png" alt="" />

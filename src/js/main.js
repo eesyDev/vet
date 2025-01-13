@@ -207,9 +207,24 @@
     function popupGallery(product) {
 
         const previewPopUpGallery = new Swiper(`.popup-gallery[data-gallery="product-${product}"] > .popup-gallery__preview`, {
-            direction: 'vertical',
             slidesPerView: 'auto',
             spaceBetween: 8,
+            threshold: 8,
+            breakpoints: {
+                320: {
+                    direction: 'horizontal',
+                    slidesOffsetBefore: 20,
+                    slidesOffsetAfter: 20,
+                },
+                480: {
+                    direction: 'horizontal',
+                    slidesOffsetBefore: 20,
+                    slidesOffsetAfter: 20,
+                },
+                640: {
+                    direction: 'vertical',
+                }
+            }
         });
 
         const mainPopUpGallery = new Swiper(`.popup-gallery[data-gallery="product-${product}"] > .popup-gallery__media`, {

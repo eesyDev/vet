@@ -1,9 +1,19 @@
+@use "../utilities/variables" as var;
+@use "../utilities/mixins" as mix;
 .popup-list {
 	padding: 0 22px 22px 22px;
 	overflow-y: auto;
 
+	@include mix.maxw(var.$w-mob) {
+		padding: 0;
+	}
+
 	&.grid {
 		gap: 16px 20px;
+
+		@include mix.maxw(var.$w-mob) {
+			display: grid;
+		}
 
 		> * {
 			flex: 0 0 calc(50% - 10px);
@@ -16,6 +26,10 @@
 
 		> .grid {
 			gap: 16px;
+
+			@include mix.maxw(var.$w-mob) {
+				flex-wrap: nowrap;
+			}
 		}
 	}
 
@@ -53,5 +67,12 @@
 			}
 		}
 
+	}
+
+	&__footer {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-end;
+		gap: 16px;
 	}
 }

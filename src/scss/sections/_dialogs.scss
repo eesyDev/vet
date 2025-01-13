@@ -31,6 +31,11 @@
 
 		// Позвонить
 		&.popup--call {
+
+			@include mix.maxw(var.$w-mob) {
+				justify-content: flex-end;
+			}
+
 			.popup {
 				animation: upCall 1600ms ease forwards;
 				@keyframes upCall {
@@ -45,6 +50,79 @@
 					100% {
 						opacity: 1;
 						transform: translate3d(0, 0, 0) scale(1);
+					}
+				}
+
+				@include mix.maxw(var.$w-mob) {
+					padding: 0;
+
+					animation: upCall 800ms ease forwards;
+
+					@keyframes upCall {
+						0% {
+							opacity: 0;
+							transform: translateY(100vh);
+						}
+						100% {
+							opacity: 1;
+							transform: translateY(0);
+						}
+					}
+				}
+			}
+		}
+
+		// All
+		&.popup--work-offer,
+		&.popup--consult {
+			@include mix.maxw(var.$w-mob) {
+				justify-content: flex-end;
+			}
+
+			.popup {
+				@include mix.maxw(var.$w-mob) {
+					padding: 0;
+
+					animation: upCall 800ms ease forwards;
+
+					@keyframes upCall {
+						0% {
+							opacity: 0;
+							transform: translateY(100vh);
+						}
+						100% {
+							opacity: 1;
+							transform: translateY(0);
+						}
+					}
+				}
+			}
+		}
+		&.popup--work-offer {
+			@include mix.maxw(var.$w-mob) {
+				.popup__content {
+
+					.popup__title {
+						padding-bottom: 20px;
+					}
+
+					.popup-list {
+						padding: 0 0 12px 0;
+						max-height: calc(100vh - 360px);
+					}
+
+					.popup__form {
+						margin: 0;
+					}
+
+					.popup-list__footer {
+						background-color: var(--white);
+						padding: 12px 0 0 0;
+						gap: calc(32px - 8px);
+
+						.align-right {
+							width: 100%;
+						}
 					}
 				}
 			}
@@ -139,6 +217,10 @@
 					bottom: 0;
 					margin: 0;
 					padding: 4px;
+
+					@include mix.maxw(var.$w-mob) {
+						padding: 0;
+					}
 				}
 
 				&__wrapper {
@@ -158,6 +240,20 @@
 
 				&__content {
 					padding: 24px 4px 4px 4px;
+				}
+
+				&__content {
+					@include mix.maxw(var.$w-mob) {
+						> .popup__title {
+							margin: 0;
+							padding-bottom: 20px;
+
+							> h3 {
+								font-size: 17px !important;
+								line-height: 22px !important;
+							}
+						}
+					}
 				}
 
 			}
@@ -255,15 +351,6 @@
 		transition: all ease-in-out .3s;
 		background: transparent;
 		color: var(--black);
-
-		@include mix.maxw(1000px) {
-			padding: 30px 0;
-		}
-		@include mix.maxw(450px) {
-			max-width: 100% !important;
-			width: 100% !important;
-		}
-
 
 		&.active {
 			opacity: 1;
@@ -401,6 +488,11 @@
 		width: 100%;
 		margin-top: 32px;
 		gap: 24px;
+
+		&.popup-list {
+			padding: 20px 0;
+			max-height: 100%;
+		}
 	}
 
 	&__file {
@@ -409,7 +501,7 @@
 		padding: 17px 0;
 		border-radius: 4px;
 		color: var(--gray);
-		outline: 1px dashed var(--gray-3);
+		border: 1px dashed var(--gray-3);
 		transition: all ease-in-out .2s;
 		cursor: pointer;
 
@@ -419,10 +511,64 @@
 		}
 
 		&:hover {
-			outline-color: var(--black);
+			border-color: var(--black);
 		}
 	}
+}
 
+@include mix.maxw(var.$w-mob) {
+	.popup:not(#gallery) {
+		.close {
+			right: 50%;
+			top: -(calc(36px + 8px));
+			width: 36px;
+			height: 36px;
+			transform: translateX(50%);
+
+			.ico {
+				width: 16px;
+				height: 16px;
+			}
+		}
+
+		.popup__wrapper {
+			width: 100%;
+			max-width: 100%;
+			min-width: 100%;
+			min-height: 100%;
+			border-radius: 16px 16px 0 0;
+			transform: translate3d(0,0,0) scale(1);
+		}
+
+		.popup__content {
+			padding: 20px;
+
+			h3 {
+				font-size: 26px;
+				line-height: 30px;
+			}
+
+			.align-right {
+				justify-content: center;
+				margin-top: calc(32px - 24px);
+			}
+
+			.button {
+				width: 100%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+		}
+
+		.popup__form {
+			margin-top: 32px;
+
+			.form-description {
+				padding-right: calc(53px + 20px);
+			}
+		}
+	}
 }
 
 //TESTING of POPUP LAYOUT
