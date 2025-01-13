@@ -1,12 +1,22 @@
+@use "../utilities/variables" as var;
 @use "../utilities/mixins" as mix;
 .catalog {
 	$this: &;
+
+	@include mix.maxw(var.$w-mob) {
+		padding-bottom: 80px;
+	}
+
 	&__header {
 		@include mix.flexbox(space-between, center);
 		padding-bottom: 16px;
 		border-bottom-style: solid;
 		border-bottom-width: 1px;
 		border-bottom-color: var(--line-light);
+
+		@include mix.maxw(var.$w-mob) {
+			padding-bottom: 20px;
+		}
 	}
 
 	&__category {
@@ -20,6 +30,13 @@
 			position: relative;
 			width: max-content;
 			color: var(--black);
+
+			@include mix.maxw(var.$w-mob) {
+				> h1 {
+					font-size: 17px;
+					line-height: 22px;
+				}
+			}
 
 			&:hover,
 			&:focus {
@@ -118,6 +135,10 @@
 	&__title {
 		padding-top: 16px;
 		color: var(--gray);
+
+		@include mix.maxw(var.$w-mob) {
+			padding-top: 34px;
+		}
 	}
 
 	.view {
@@ -127,16 +148,32 @@
 			padding-top: 16px;
 			gap: 6px;
 
+			@include mix.maxw(var.$w-mob) {
+				grid-template-columns: repeat(2, 1fr);
+			}
+
 			.catalog__item {
 				height: 316px;
+
+				@include mix.maxw(var.$w-mob) {
+					height: 273px;
+				}
 			}
 
 			&--two {
 				grid-template-columns: repeat(2, 1fr);
 				gap: 8px;
 
+				@include mix.maxw(var.$w-mob) {
+					grid-template-columns: auto;
+				}
+
 				.catalog__item {
 					height: 476px;
+
+					@include mix.maxw(var.$w-mob) {
+						height: 353px;
+					}
 				}
 			}
 		}

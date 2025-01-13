@@ -765,7 +765,7 @@ textarea {
 	transform: translateY(-10px);
 	transition: all ease-in-out 0.2s;
 	cursor: default;
-	z-index: 2;
+	z-index: 3;
 
 	&.active {
 		opacity: 1;

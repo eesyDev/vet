@@ -40,6 +40,10 @@
 
 	&--shop {
 		padding-top: calc(var(--h-header)*2);
+
+		@include mix.maxw(var.$w-mob) {
+			padding-top: calc(32px + var(--h-header));
+		}
 	}
 
 	&__wrapper {
