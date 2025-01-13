@@ -1,16 +1,31 @@
+@use "../utilities/variables" as var;
+@use "../utilities/mixins" as mix;
 .delivery {
 	margin-top: 25px;
 	width: 640px;
+	padding-bottom: 120px;
+
+	@include mix.maxw(var.$w-mob) {
+		margin-top: 24px;
+		padding-bottom: 100px;
+	}
 
 	h2 {
-		padding-bottom: 40px;
-		padding-top: 40px;
+		padding: 40px 0;
+
+		@include mix.maxw(var.$w-mob) {
+			padding: 32px 0;
+		}
 
 	}
 
 	.list {
 		margin-top: 16px;
 		margin-bottom: 40px;
+
+		@include mix.maxw(var.$w-mob) {
+			margin-bottom: 32px;
+		}
 
 		li {
 			color: var(--gray);

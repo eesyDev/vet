@@ -28,6 +28,10 @@
 
 	&--first {
 		padding-top: calc(52px + var(--h-header));
+
+		@include mix.maxw(var.$w-mob) {
+			padding-top: calc(64px + var(--h-header));
+		}
 	}
 
 	&--reviews {
