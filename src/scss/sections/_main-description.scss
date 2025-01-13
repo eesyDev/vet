@@ -1,5 +1,6 @@
+@use "../utilities/variables" as var;
+@use "../utilities/mixins" as mix;
 .main-description {
-
 	&__content {
 		color: var(--gray);
 		text-align: left;
@@ -9,5 +10,11 @@
 		height: auto;
 		max-height: 420px;
 		overflow-x: auto;
+
+		@include mix.maxw(var.$w-mob) {
+			padding: 0 8px 0 20px;
+			max-height: 100%;
+			overflow-x: hidden;
+		}
 	}
 }

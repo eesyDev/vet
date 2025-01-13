@@ -5,10 +5,18 @@
 	padding: 56px 0 12px;
 	background: var(--black-bg);
 
+	@include mix.maxw(var.$w-mob) {
+		padding: 64px 0 20px;
+	}
+
 	&__wrapper {
 		@include mix.flexbox('flex-start');
 		flex-direction: column;
-		@include mix.wrapper;
+		max-width: var(--w-content);
+		margin: 0 auto;
+		padding: 0;
+		box-sizing: border-box;
+		z-index: 2;
 
 		@include mix.maxw(var.$w-mob-s) {
 			padding: 0 20px;
@@ -34,21 +42,15 @@
 		&__button {
 			.button {
 				@include mix.maxw(var.$w-mob) {
-					font-size: 15px;
-					height: 48px;
-				}
-				@include mix.maxw(var.$w-mob-s) {
-					font-size: 15px;
-					height: 48px;
+					border-radius: 24px;
+					padding: 14px 24px;
 				}
 			}
 
 			@include mix.maxw(var.$w-mob) {
 				margin-top: 20px;
 			}
-			@include mix.maxw(var.$w-mob-s) {
-				margin-top: 20px;
-			}
+
 		}
 		@include mix.maxw(var.$w-mob) {
 			padding-bottom: 20px;
@@ -100,12 +102,31 @@
 		margin-top: 64px;
 		padding-bottom: 12px;
 		border-bottom: 1px solid #1d1d1d;
+
+		@include mix.maxw(var.$w-mob) {
+			margin-top: 32px;
+			padding-bottom: 20px;
+		}
 	}
 
 	&__copyright {
 		@include mix.flexbox('space-between', 'flex-start');
 		width: 100%;
 		margin-top: 12px;
+
+		@include mix.maxw(var.$w-mob) {
+			margin-top: 20px;
+			flex-direction: column;
+			gap: 40px;
+
+			> .flex {
+				flex-direction: column;
+			}
+
+			&--link {
+				margin-top: 8px;
+			}
+		}
 
 		p {
 			font-weight: 400;
@@ -115,6 +136,10 @@
 
 			&:last-child {
 				margin-left: 20px;
+
+				@include mix.maxw(var.$w-mob) {
+					margin-left: 0;
+				}
 			}
 
 			a {

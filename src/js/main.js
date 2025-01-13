@@ -87,6 +87,10 @@
         });
     }
 
+    App.isMobileDevice = function(url) {
+        return /Android|iPhone|iPad|iPod|BlackBerry|Windows Phone/i.test(navigator.userAgent);
+    }
+
     $.fn.isInViewportImg = function () {
         let elementTop = $(this).offset().top;
         let elementBottom = elementTop + $(this).outerHeight();
@@ -1033,9 +1037,23 @@
         });
     }
 
+    function toggleDropdownMenu(open) {
+        $(open).on('click', function () {
+            const $this = $(this);
+            const $item = $this.next('.menu-dropdown__item');
+            const $svg = $this.find('svg');
+            $item.slideToggle(300);
+            $svg.toggleClass('rotated');
+        });
+    }
+
     $(window).on('load scroll', waitAnimation);
 
     $(function() {
+
+        if (App.isMobileDevice()) {
+            toggleDropdownMenu('.menu-dropdown > .menu-dropdown__open');
+        }
 
         $('.video-block__source').each(function () {
             playVideo(this);

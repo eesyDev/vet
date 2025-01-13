@@ -39,7 +39,15 @@
 	}
 
 	&__wrapper {
-		@include mix.wrapper;
+		max-width: var(--w-content);
+		margin: 0 auto;
+		padding: 0;
+		box-sizing: border-box;
+		z-index: 2;
+
+		@include mix.maxw(var.$w-mob) {
+			padding: 0 20px;
+		}
 	}
 
 }

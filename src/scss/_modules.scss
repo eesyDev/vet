@@ -120,6 +120,11 @@
 	gap: 16px;
 	padding-top: 32px;
 
+	@include mix.maxw(var.$w-mob) {
+		flex-direction: column;
+		gap: 0;
+	}
+
 	&__item {
 		@include mix.flexbox('flex-start', 'flex-start');
 		flex-direction: column;
@@ -133,6 +138,20 @@
 		}
 		ul {
 			list-style: none;
+
+			@include mix.maxw(var.$w-mob) {
+				&.links-hidden__item {
+					li {
+						a {
+							color: var(--gray);
+
+							&:hover {
+								color: var(--white);
+							}
+						}
+					}
+				}
+			}
 
 			li {
 				margin-bottom: 6px;
@@ -155,7 +174,27 @@
 				}
 			}
 		}
+
+		@include mix.maxw(var.$w-mob) {
+
+			.promo-links__directions {
+				> li {
+					margin-bottom: 12px;
+
+					a {
+						font-family: var(--font-family-b);
+						font-size: 22px;
+						line-height: 28px;
+						font-weight: 600;
+						letter-spacing: 0;
+					}
+				}
+
+			}
+
+		}
 	}
+
 
 	&__mt {
 		margin-top: 16px;
@@ -176,9 +215,22 @@
 		}
 	}
 
+	&__catalog {
+		&--all {
+			padding: 64px 0;
+			 > a {
+				 color: var(--white);
+			 }
+		}
+	}
+
 	&__social {
 		@include mix.flexbox;
 		gap: 16px;
+
+		@include mix.maxw(var.$w-mob) {
+			padding-top: 32px;
+		}
 
 		a {
 			@include mix.flexbox;
@@ -190,6 +242,11 @@
 				min-width: 100%;
 				fill: var(--yellow-secondary);
 				transition: all ease-in-out .2s;
+
+				@include mix.maxw(var.$w-mob) {
+					width: 24px;
+					height: 24px;
+				}
 			}
 
 			&:hover {
@@ -197,6 +254,64 @@
 					fill: var(--white);
 				}
 			}
+		}
+	}
+}
+
+@include mix.maxw(var.$w-mob) {
+	.menu-dropdown {
+		padding: 20px 0;
+
+		&.b {
+
+			&-top {
+				border-top: 1px solid #1d1d1d;
+			}
+
+			&-bottom {
+				border-bottom: 1px solid #1d1d1d;
+			}
+		}
+
+		&__open {
+			margin-bottom: 0;
+			color: var(--white);
+			font-family: var(--font-family);
+			font-size: 15px;
+			line-height: 120%;
+			font-weight: 400;
+			letter-spacing: 0;
+
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			width: 100%;
+
+			transition: all ease-in-out .2s;
+			cursor: pointer;
+
+			> svg {
+				width: 12px;
+				height: 8px;
+
+				use {
+					fill: var(--grey-pro);
+				}
+
+				&.rotated {
+					transform: rotate(90deg);
+				}
+			}
+
+			&:hover,
+			&:focus {
+				color: var(--yellow-main);
+			}
+		}
+
+		&__item {
+			display: none;
+			margin-top: 20px;
 		}
 	}
 }
@@ -240,6 +355,10 @@ h1, h2,
 	line-height: 116%;
 	font-weight: 600;
 	letter-spacing: -0.2px;
+
+	@include mix.maxw(var.$w-mob) {
+		font-size: 38px;
+	}
 }
 
 h3,
@@ -625,6 +744,10 @@ textarea {
 	&--72    { height: 72px }
 	&--120   { height: 120px }
 	&--184   { height: 184px }
+
+	@include mix.maxw(var.$w-mob) {
+		&--120   { height: 20px }
+	}
 }
 
 .dropdown {

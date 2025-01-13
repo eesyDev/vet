@@ -140,40 +140,6 @@
 	}
 }
 
-@mixin wrapper($max-width: var(--w-content), $default-padding: var(--c-padding), $mobile-padding: 20px) {
-	max-width: $max-width;
-	margin: 0 auto;
-	padding: 0 $default-padding;
-	box-sizing: border-box;
-	z-index: 2;
-
-	@include maxw(var.$w-mob-s) {
-		padding: $mobile-padding;
-	}
-
-	@include maxw(var.$w-mob) {
-		padding: 0 $mobile-padding;
-	}
-
-	@include maxw(var.$w-tab) {
-		padding: 0 $default-padding;
-	}
-
-	@include maxw(var.$w-laptop) {
-		padding: 0 $default-padding;
-	}
-
-	@include minw(var.$w-min) {
-		width: 100%;
-		padding: 0 $mobile-padding;
-	}
-
-	@include maxw(var.$w-max) {
-		width: 100%;
-		padding: 0 $default-padding;
-	}
-}
-
 @mixin flexbox($alignment: center, $align: center) {
 	display: flex;
 	justify-content: $alignment;

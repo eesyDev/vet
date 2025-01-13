@@ -205,7 +205,7 @@ gulp.task('webserver', async function () {
     browserSync({
         server: { baseDir: "./build" },
         host: 'localhost',
-        port: 8081,
+        port: 8080,
         open: false,
         logLevel: "info",
         notify: false,

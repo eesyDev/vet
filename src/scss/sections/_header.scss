@@ -5,32 +5,45 @@
 	top: 0;
 	left: 0;
 	width: 100%;
-	padding: 8px var(--c-padding);
+	padding: 8px;
 	backdrop-filter: blur(20px);
 	background: rgba(24, 24, 24, 0.85);
 	z-index: 10;
 
+	@include mix.maxw(var.$w-mob) {
+		padding: 8px 20px;
+	}
+
 	&__wrapper {
-		padding: 8px var(--c-padding);
-		height: max-content;
 		@include mix.flexbox('flex-start');
-		@include mix.wrapper;
+		max-width: var(--w-content);
+		padding: 0;
+		margin: 0 auto;
+		box-sizing: border-box;
+		z-index: 2;
+
+		@include mix.maxw(var.$w-mob) {
+			gap: 20px;
+			justify-content: flex-end;
+		}
 
 		&--full {
-			padding: 8px var(--c-padding);
-			height: max-content;
 			@include mix.flexbox('flex-start');
-			@include mix.wrapper(100%, 20px);
+			max-width: 100%;
+			margin: 0 auto;
+			padding: 0 20px;
+			box-sizing: border-box;
+			z-index: 2;
 		}
 
 		&--navigation {
 			@include mix.flexbox('flex-start');
 			flex-direction: column;
-			@include mix.wrapper;
-
-			@include mix.maxw(var.$w-mob-s) {
-				padding: 0 20px;
-			}
+			max-width: var(--w-content);
+			margin: 0 auto;
+			padding: 0;
+			box-sizing: border-box;
+			z-index: 2;
 		}
 	}
 
@@ -39,6 +52,10 @@
 		width: 123px;
 		height: auto;
 		margin-right: 37px;
+
+		@include mix.maxw(var.$w-mob) {
+			margin-right: auto;
+		}
 
 		img {
 			width: 100%;
@@ -54,6 +71,12 @@
 		padding: 8.5px 0;
 		cursor: pointer;
 
+		@include mix.maxw(var.$w-mob) {
+			order: 1;
+			margin-right: 0;
+			padding: 2.25px 0;
+		}
+
 		span {
 			display: block;
 			width: 32px;
@@ -62,6 +85,10 @@
 			background: #fff;
 			margin: 0 auto 3px;
 			transition: all ease-in-out .2s;
+
+			@include mix.maxw(var.$w-mob) {
+				width: 24px;
+			}
 		}
 
 		&.active {
@@ -85,27 +112,20 @@
 		position: relative;
 		z-index: 2;
 		width: 100%;
-		margin-top: 8px;
-		height: calc(100vh - var(--h-header));
+		height: calc(100vh - var(--h-header) + 8px);
 		//backdrop-filter: blur(20px);
 		overflow-y: auto;
 
 		ul {
 			&.promo-links__directions {
 				li {
+					margin-bottom: 12px;
 					a {
-						font-size: 17px;
-						line-height: 22px;
+						font-family: var(--font-family-b);
+						font-size: 22px;
+						line-height: 28px;
 						font-weight: 600;
-					}
-				}
-			}
-			&.promo-links__catalog {
-				li {
-					a {
-						font-size: 13px;
-						line-height: 140%;
-						font-weight: 400;
+						letter-spacing: 0;
 					}
 				}
 			}
@@ -115,10 +135,19 @@
 	&__call {
 		margin-right: 8px;
 
+		@include mix.maxw(var.$w-mob) {
+			margin-right: 0;
+		}
+
 		svg {
-			width: 20px;
-			height: 20px;
-			fill: var(--white);
+			display: flex;
+			width: 24px;
+			height: 24px;
+
+			> use {
+				fill: none;
+				stroke: var(--white);
+			}
 		}
 
 	}

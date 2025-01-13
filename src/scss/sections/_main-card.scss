@@ -1,12 +1,23 @@
+@use "../utilities/variables" as var;
+@use "../utilities/mixins" as mix;
 .main-card {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	gap: 8px;
 	z-index: 1;
 
+
+	@include mix.maxw(var.$w-mob) {
+		grid-template-columns: auto;
+	}
+
 	&__item {
 		position: relative;
 		height: 700px;
+
+		@include mix.maxw(var.$w-mob) {
+			padding: 64px 20px;
+		}
 	}
 
 	&__wrapper {
@@ -17,6 +28,10 @@
 		padding: 64px 0;
 		height: 100%;
 		z-index: 3;
+
+		@include mix.maxw(var.$w-mob) {
+			padding: 8px 0;
+		}
 
 		.title {
 			margin-bottom: 16px;
