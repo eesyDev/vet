@@ -118,7 +118,7 @@
 			</div>
 		</div>
 	</header>
-	<section class="section section--shop product-card">
+	<section class="section product-card">
 		<div class="product-card__wrapper">
 			<div class="product-card__item gallery">
 				<div class="gallery__preview swiper-container">
@@ -178,6 +178,11 @@
 					</div>
 				</div>
 			</div>
+	
+			<div class="product-card__pagination flex col center mobile-only">
+				<div class="swiper-pagination-clickable flex"></div>
+			</div>
+	
 			<div class="product-card__item">
 				<div class="product-card__description">
 					<div class="product-card__title">
@@ -191,8 +196,8 @@
 								<span class="body-s-sb">Подарувати притулку. <a href="#more-detail" class="cta-s-link open-popup">Детальнiше</a></span>
 							</label>
 	
-							<!-- .product-card__responsive (для перестановки элементов на mobile) -->
 							<div class="product-card__responsive">
+	
 								<div class="product-card__option">
 									<a href="#" class="product-card__option--link" data-product-card-option="1" data-product-card-title="Біла">
 										<span class="product-card__option--white"></span>
@@ -202,25 +207,24 @@
 									</a>
 									<span class="product-card__option--title body-s-reg">Чорна</span>
 								</div>
-								<div class="product-card__actions">
-									<div class="product-card__price">
-										<p class="body-s-sb">1590 ₴</p>
-									</div>
 	
-									<!-- .product-card__buttons (position fixed in mobile) -->
-									<div class="product-card__buttons">
-										<button class="button button--yellow button--big add_to_cart" data-product="1">Купити</button>
-										<a href="#buy-one-click" class="button button--black button--big open-modal">Купити в 1 клiк</a>
-									</div>
-									<!--/.product-card__buttons -->
-	
+								<div class="product-card__price">
+									<p class="body-s-sb">1590 ₴</p>
 								</div>
+	
+								<div class="product-card__buttons">
+									<button class="button button--yellow button--big add_to_cart" data-product="1">Купити</button>
+									<a href="#buy-one-click" class="button button--black button--big open-modal">Купити в 1 клiк</a>
+								</div>
+	
 								<div class="product-card__delivery">
 									<span class="product-card__delivery--icon"></span>
 									<p class="body-s-reg">Готова до вiдправлення</p>
 								</div>
+	
 							</div>
-							<!--/.product-card__responsive -->
+	
+							<div class="product-card__buttons--clone"></div>
 	
 						</form>
 					</div>

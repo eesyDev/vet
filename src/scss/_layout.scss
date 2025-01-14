@@ -140,14 +140,7 @@
 }
 
 .fly-image {
-	position: absolute;
-	z-index: 1000;
-	pointer-events: none;
-	transition: transform 1000ms ease-in-out, opacity 1000ms ease-in-out;
-	will-change: transform, opacity;
-	width: max-content;
-	height: 100vh;
-	object-fit: contain;
+	display: none;
 }
 
 .align-right {

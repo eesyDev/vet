@@ -168,19 +168,35 @@
         spaceBetween: 0,
         thumbs: {
             swiper: previewProductCard,
+        },
+        pagination: {
+            el: '.product-card__wrapper > .flex > .swiper-pagination-clickable',
+            clickable: true,
         }
     });
 
     const offersCardSlider = new Swiper(".offers-card__slider.swiper-container", {
         slidesPerView: 'auto',
         direction: 'horizontal',
-        slidesOffsetBefore: 240, // смещение слева в px
-        slidesOffsetAfter: 240, // смещение справа в px
         spaceBetween: 6,
         navigation: {
             nextEl: ".offers-card__navigation .slider-nav__next",
             prevEl: ".offers-card__navigation .slider-nav__prev",
         },
+        breakpoints: {
+            320: {
+                slidesOffsetBefore: 20,
+                slidesOffsetAfter: 20,
+            },
+            480: {
+                slidesOffsetBefore: 20,
+                slidesOffsetAfter: 20,
+            },
+            640: {
+                slidesOffsetBefore: 240,
+                slidesOffsetAfter: 240,
+            }
+        }
     });
 
     const benefitsCardSlider = new Swiper(".benefits-card__slider.swiper-container", {
@@ -604,6 +620,7 @@
                 const cartCenterY = cartOffset.top + $cartIcon.height() / 2;
 
                 $flyImage.css({
+                    display: 'block',
                     top: buttonCenterY - imageHeight / 2,
                     left: buttonCenterX - imageWidth / 2,
                     width: imageWidth,
@@ -702,7 +719,11 @@
 
                 $product.prepend(productHtml);
 
-                responsiveCart($product);
+                if (App.isMobileDevice()) {
+                    responsiveCart($product, 2);
+                } else {
+                    responsiveCart($product);
+                }
 
                 const $productFirst = $product.find('.popup-cart__product').first();
                 $productFirst.find('.popup-cart__calc .quantity').val(1);
@@ -724,7 +745,9 @@
         });
     }
 
-    addToCart('.product-card__buttons .add_to_cart');
+    if (!App.isMobileDevice()) {
+        addToCart('.add_to_cart');
+    }
 
     function addToCartUpSell(post_id) {
         const $product = $('.popup-cart__products form');
@@ -797,8 +820,6 @@
         responsiveCart($product);
     }
 
-    addToCart('.banner-cart__up-sell .add_to_cart');
-
     function initQuantityInput($container) {
         $container.find('.popup-cart__calc').each(function() {
             const $calc = $(this);
@@ -827,8 +848,8 @@
         });
     }
 
-    function responsiveCart($product) {
-        if ($product.find('.popup-cart__product').length > 3) {
+    function responsiveCart($product, lengths = 3) {
+        if ($product.find('.popup-cart__product').length > lengths) {
             $('.popup-cart').css('margin-bottom', '155px');
             $('.banner-cart').css('margin', '20px 0');
             $product.find('.popup-cart__totals.responsive').addClass('popup-cart__responsive');
@@ -946,7 +967,6 @@
         });
     }
 
-    // Ми шукамо
     function initializeAccordion(button, content, item) {
         $(button).on('click', function(e) {
             e.preventDefault();
@@ -1068,6 +1088,15 @@
 
         if (App.isMobileDevice()) {
             toggleDropdownMenu('.menu-dropdown > .menu-dropdown__open');
+            addClassOnScroll('.product-card__form .product-card__buttons--clone', 200, 'fixed');
+
+            // Манипуляция с адаптивными кнопками
+            $('.product-card__form .product-card__buttons').each(function() {
+                const content = $(this).html();
+                $(this).remove();
+                $('.product-card__form .product-card__buttons--clone').html(content);
+                addToCart('.add_to_cart');
+            });
         }
 
         $('.video-block__source').each(function () {

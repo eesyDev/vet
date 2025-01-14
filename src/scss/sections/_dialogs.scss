@@ -29,8 +29,9 @@
 		width: 100%;
 		box-sizing: border-box;
 
-		// Позвонить
-		&.popup--call {
+
+		&.popup--call,
+		&.popup--buy-one-click {
 
 			@include mix.maxw(var.$w-mob) {
 				justify-content: flex-end;
@@ -163,6 +164,10 @@
 			justify-content: flex-start;
 			flex-direction: row-reverse;
 
+			@include mix.maxw(var.$w-mob) {
+				justify-content: flex-end;
+			}
+
 			.popup {
 				position: absolute;
 				top: 0;
@@ -170,15 +175,46 @@
 				margin: 0;
 				transition: right 300ms;
 
+				@include mix.maxw(var.$w-mob) {
+					transition: none;
+					top: auto;
+					right: 0;
+					bottom: 0;
+					min-width: 100%;
+
+					animation: upCall 800ms ease forwards;
+
+					@keyframes upCall {
+						0% {
+							opacity: 0;
+							transform: translateY(100vh);
+						}
+						100% {
+							opacity: 1;
+							transform: translateY(0);
+						}
+					}
+				}
+
 				&.active {
 					right: 0;
 					margin: 4px 4px 4px 0 !important;
+
+					@include mix.maxw(var.$w-mob) {
+						margin: 0 !important;
+					}
 				}
 
 				&__wrapper {
 					width: 368px;
 					height: calc(100vh - 8px);
 					transform: translate3d(0,0,0) scale(1);
+
+					@include mix.maxw(var.$w-mob) {
+						width: 100%;
+						max-height: max-content;
+						transform: none;
+					}
 				}
 
 				&__title {
@@ -187,11 +223,29 @@
 					margin: 0 20px 0 20px;
 					padding-bottom: 22px;
 					//border-bottom: 1px solid var(--gray-3);
+
+					@include mix.maxw(var.$w-mob) {
+						margin: 0;
+					}
 				}
 
 				&__content {
 					height: calc(100vh - 8px);
 					padding: 24px 4px 4px 4px;
+
+					@include mix.maxw(var.$w-mob) {
+						padding: 0;
+						height: calc(100vh - (144px + 8px));
+
+						> .popup__title {
+							padding-bottom: 32px;
+
+							> h3 {
+								font-size: 17px !important;
+								line-height: 22px !important;
+							}
+						}
+					}
 				}
 
 			}

@@ -1,6 +1,23 @@
+@use "../utilities/variables" as var;
 @use "../utilities/mixins" as mix;
 .offers-card {
 	margin-top: 59px;
+
+	@include mix.maxw(var.$w-mob) {
+		margin-top: 64px;
+	}
+
+	> .section__wrapper {
+
+		@include mix.maxw(var.$w-mob) {
+			> .title {
+				> h3 {
+					font-size: 26px;
+					line-height: 30px;
+				}
+			}
+		}
+	}
 
 	&__slider {
 		position: relative;
@@ -19,6 +36,11 @@
 		&.swiper-slide {
 			width: 316px;
 			height: 316px;
+
+			@include mix.maxw(var.$w-mob) {
+				width: 333px;
+				height: 333px;
+			}
 		}
 	}
 

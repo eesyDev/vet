@@ -1,3 +1,4 @@
+@use "../utilities/variables" as var;
 @use "../utilities/mixins" as mix;
 .gallery {
 	&__preview {
@@ -5,6 +6,10 @@
 		width: 64px;
 		height: 100%;
 		overflow-y: auto;
+
+		@include mix.maxw(var.$w-mob) {
+			display: none;
+		}
 
 		.swiper-container {
 			width: 100%;

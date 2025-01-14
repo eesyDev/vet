@@ -1,3 +1,4 @@
+@use "../utilities/variables" as var;
 @use "../utilities/mixins" as mix;
 .popup-cart {
 	$this: &;
@@ -6,6 +7,10 @@
 	height: max-content;
 	padding: 0 20px 24px 20px;
 	overflow-y: auto;
+
+	@include mix.maxw(var.$w-mob) {
+		padding: 0;
+	}
 
 	&__products {
 		position: relative;
