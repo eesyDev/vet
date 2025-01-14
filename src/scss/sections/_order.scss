@@ -1,8 +1,15 @@
+@use "../utilities/variables" as var;
 @use "../utilities/mixins" as mix;
 .order {
 	&__wrapper {
 		@include mix.flexbox(flex-start, flex-start);
 		gap: 160px;
+
+		@include mix.maxw(var.$w-mob) {
+			gap: 32px;
+			flex-direction: column;
+		}
+
 	}
 	&__item {
 		&:last-child {
@@ -14,5 +21,10 @@
 		position: sticky;
 		top: calc(var(--h-header) + 24px);
 		left: 0;
+
+		@include mix.maxw(var.$w-mob) {
+			position: static;
+			top: auto;
+		}
 	}
 }

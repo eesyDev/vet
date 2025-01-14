@@ -1,3 +1,4 @@
+@use "../utilities/variables" as var;
 @use "../utilities/mixins" as mix;
 .order-form {
 	$this: &;
@@ -8,6 +9,10 @@
 		flex-wrap: nowrap;
 		gap: 44px;
 		width: 100%;
+
+		@include mix.maxw(var.$w-mob) {
+			gap: 32px;
+		}
 	}
 
 	&__header {
@@ -22,9 +27,39 @@
 		}
 	}
 
+	&__res {
+		@include mix.maxw(var.$w-mob) {
+			flex-direction: column !important;
+			gap: 32px !important;
+
+			> .align-left,
+			> .align-right {
+				justify-content: center;
+			}
+
+			.form-description {
+				> br {
+					display: none;
+				}
+			}
+
+			.button {
+				width: 100%;
+				align-items: center;
+				justify-content: center;
+			}
+		}
+	}
+
 	&__input {
 		margin-top: 16px;
 		width: 100%;
+
+		@include mix.maxw(var.$w-mob) {
+			input[type=checkbox] {
+				width: 20px;
+			}
+		}
 
 		.inp-wrp {
 			width: 100%;
