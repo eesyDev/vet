@@ -1,4 +1,6 @@
 @use "../modules";
+@use "../utilities/variables" as var;
+@use "../utilities/mixins" as mix;
 .blog-page {
 	background-color: var(--line-light);
 
@@ -6,18 +8,35 @@
 		padding-top: 40px;
 		gap: 30px;
 
+		@include mix.maxw(var.$w-mob) {
+			padding-top: 32px;
+			gap: 20px;
+		}
+
 		&.grid {
 			> * {
 				flex: 0 0 calc(50% - 15px); /* Учитываем gap для первой строки (30px делим пополам) */
+
+				@include mix.maxw(var.$w-mob) {
+					flex: 1 1 auto;
+				}
 			}
 
 			> *:nth-child(n+3) {
 				flex: 0 0 calc(33.334% - 20px); /* Учитываем gap для остальных строк (30px / 1.5 на 3 блока) */
 
+				@include mix.maxw(var.$w-mob) {
+					flex: 1 1 auto;
+				}
+
 				.blog-card {
 
 					&__photo {
 						height: 292px;
+
+						@include mix.maxw(var.$w-mob) {
+							height: 345px;
+						}
 					}
 
 					&__title {
@@ -32,7 +51,13 @@
 
 	&__categories {
 		padding-top: 40px;
+		max-width: 100%;
 		gap: 8px;
+		overflow-x: auto;
+
+		@include mix.maxw(var.$w-mob) {
+			padding-top: 32px;
+		}
 
 		> .button {
 			&:not(.active):not(:hover) {
@@ -45,6 +70,10 @@
 	.blog-card {
 		&__photo {
 			height: 457px;
+
+			@include mix.maxw(var.$w-mob) {
+				height: 345px;
+			}
 		}
 	}
 
@@ -53,5 +82,9 @@
 			margin: 0 auto;
 			padding-top: 64px;
 		}
+	}
+
+	&.spacer--120 {
+		height: 100px;
 	}
 }

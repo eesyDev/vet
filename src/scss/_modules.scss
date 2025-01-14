@@ -901,10 +901,6 @@ textarea {
 	background-color: var(--black);
 	overflow-x: auto;
 
-	@include mix.maxw(var.$w-mob-s) {
-		max-width: 100%;
-	}
-
 	&__item {
 		white-space: nowrap;
 

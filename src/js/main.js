@@ -964,18 +964,18 @@
     /**
      * Адаптивное меню с прокруткой
      */
-    function modelsMenu() {
-        const $items = App.$modelsMenu.find('a');
+    function modelsMenu($selector) {
+        const $items = $selector.find('a');
 
         function centerActiveItem($item) {
-            const menuWidth = App.$modelsMenu.outerWidth();
-            const menuScrollLeft = App.$modelsMenu.scrollLeft();
+            const menuWidth = $selector.outerWidth();
+            const menuScrollLeft = $selector.scrollLeft();
             const itemOffsetLeft = $item.offset().left;
-            const menuOffsetLeft = App.$modelsMenu.offset().left;
+            const menuOffsetLeft = $selector.offset().left;
             const itemLeft = itemOffsetLeft - menuOffsetLeft;
             const itemWidth = $item.outerWidth();
             const scrollTo = menuScrollLeft + itemLeft - (menuWidth / 2) + (itemWidth / 2);
-            App.$modelsMenu.animate({ scrollLeft: scrollTo }, 300);
+            $selector.animate({ scrollLeft: scrollTo }, 300);
         }
 
         $items.on('click touch', function () {
@@ -1079,7 +1079,8 @@
             playVideo(this);
         });
 
-        modelsMenu('.models-menu__item');
+        modelsMenu(App.$modelsMenu);
+        modelsMenu($('.blog-page__categories'));
         playVideoThank('.thank-page__video', '.thank-page__button', '.thank-page__play--text');
         initializeAccordion('.accordion-open', '.accordion__content', '.accordion__item');
 

@@ -1,4 +1,6 @@
 @use "../modules";
+@use "../utilities/variables" as var;
+@use "../utilities/mixins" as mix;
 .blog-card {
 	padding: 4px;
 	border-radius: 24px;
@@ -38,6 +40,10 @@
 		border-radius: 0 0 24px 24px;
 		gap: 64px;
 
+		@include mix.maxw(var.$w-mob) {
+			padding: 20px 73px 19.6px 20px;
+		}
+
 		> .flex {
 			&:first-child {
 				gap: 20px;
@@ -46,15 +52,27 @@
 	}
 
 	&__title {
+		color: var(--black);
+
+		&:hover {
+			color: var(--yellow-main);
+		}
+
 		h2 {
 			@extend .body-l-sb;
 		}
 
-		color: var(--black);
-		&:hover {
-			color: var(--yellow-main);
+		@include mix.maxw(var.$w-mob) {
+			h2 {
+				font-family: var(--font-family-b);
+				font-size: 17px;
+				line-height: 22px;
+				font-weight: 600;
+				letter-spacing: 0;
+			}
 		}
 	}
+
 
 	&__meta {
 		align-items: center;
