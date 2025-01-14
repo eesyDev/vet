@@ -50,7 +50,7 @@
 
 	&__logo {
 		width: 123px;
-		height: 20px;
+		height: auto;
 		margin-right: 37px;
 
 		@include mix.maxw(var.$w-mob) {
