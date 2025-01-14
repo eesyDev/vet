@@ -1,4 +1,5 @@
 @use "../layout";
+@use "../utilities/variables" as var;
 @use "../utilities/mixins" as mix;
 .reviews {
 	background-color: var(--line-light);
@@ -28,6 +29,16 @@
 		padding: 6px 11px 100px 11px;
 		width: 823px;
 
+		@include mix.maxw(var.$w-mob) {
+			display: flex;
+			flex-direction: column;
+			float: unset;
+			padding: 32px 0 25px 0;
+			width: 100%;
+			margin-top: 0;
+			gap: 20px;
+		}
+
 		&:after {
 			content: '';
 			display: block;
@@ -45,6 +56,13 @@
 		clear: both;
 		z-index: 1;
 
+		@include mix.maxw(var.$w-mob) {
+			float: unset;
+			margin-top: 0;
+			max-width: 100%;
+			min-width: 100%;
+		}
+
 		&.margin-top-reset {
 			margin-top: 0 !important;
 		}
@@ -58,18 +76,32 @@
 			height: 26px;
 			background-image: url("data:image/svg+xml,%3Csvg%20width='40'%20height='26'%20viewBox='0%200%2040%2026'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3E%3Cpath%20d='M11.3529%2012C11.3529%2018.8%202.85287%2020.5%200.352867%2021C-2.14722%2022.5%209.35287%2025.8333%2012.3529%2025.5L39.3529%2019.5L31.3529%200C24.6862%201.16667%2011.3529%205.2%2011.3529%2012Z'%20fill='white'/%3E%3C/svg%3E%0A");
 			z-index: -1;
+
+			@include mix.maxw(var.$w-mob) {
+				display: none;
+			}
 		}
 
 		&.left {
 			float: left;
+			@include mix.maxw(var.$w-mob) {
+				float: unset;
+			}
 		}
 
 		&.right {
 			float: right;
+			@include mix.maxw(var.$w-mob) {
+				float: unset;
+			}
 		}
 
 		&:nth-child(odd):not(.right) {
 			float: left;
+
+			@include mix.maxw(var.$w-mob) {
+				float: unset;
+			}
 
 			&:after {
 				left: -11px;
@@ -78,6 +110,10 @@
 
 		&:nth-child(even):not(.left) {
 			float: right;
+
+			@include mix.maxw(var.$w-mob) {
+				float: unset;
+			}
 
 			&:after {
 				right: -11px;
