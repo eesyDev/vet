@@ -220,6 +220,31 @@
         }
     });
 
+    const articleRelatedSlider = new Swiper('.article-related .swiper-container', {
+        autoHeight: false,
+        autoplay: {
+            delay: 2000,
+        },
+        breakpoints: {
+        320: {
+            slidesPerView: 'auto',
+            spaceBetween: 20,
+            slidesOffsetBefore: 20,
+            slidesOffsetAfter: 20,
+        },
+        480: {
+            slidesPerView: 'auto',
+            spaceBetween: 20,
+            slidesOffsetBefore: 20,
+            slidesOffsetAfter: 20,
+        },
+        640: {
+            slidesPerView: 3,
+            spaceBetween: 30,
+        }
+    }
+    });
+
     function popupGallery(product) {
 
         const previewPopUpGallery = new Swiper(`.popup-gallery[data-gallery="product-${product}"] > .popup-gallery__preview`, {

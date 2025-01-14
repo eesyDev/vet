@@ -1,5 +1,7 @@
 @use "../layout";
 @use "../modules";
+@use "../utilities/variables" as var;
+@use "../utilities/mixins" as mix;
 .article-content {
 	> .section__wrapper {
 		width: 800px;
@@ -8,6 +10,11 @@
 		border-style: solid;
 		border-color: var(--line-light);
 
+		@include mix.maxw(var.$w-mob) {
+			width: 100%;
+			padding: 32px 20px 64px 20px;
+		}
+
 		> p {
 			@extend .body-s-reg;
 			margin-top: 24px;
@@ -15,8 +22,12 @@
 		}
 
 		h2 {
-			@extend .body-l-sb;
 			margin-top: 40px;
+			@extend .body-l-sb;
+
+			@include mix.maxw(var.$w-mob) {
+				margin-top: 32px;
+			}
 		}
 		h3 {
 			@extend .body-s-sb;
@@ -31,6 +42,11 @@
 			height: 520px;
 			margin-top: 40px;
 			overflow: hidden;
+
+			@include mix.maxw(var.$w-mob) {
+				margin-top: 32px;
+			}
+
 			&,
 			> svg {}
 			> img {}
@@ -52,6 +68,11 @@
 				gap: 30px;
 				> * {
 					flex: 0 0 calc(50% - 15px);
+
+					@include mix.maxw(var.$w-mob) {
+						flex: 1 1 auto;
+						gap: 20px;
+					}
 				}
 				.wp-block-image {
 					height: 385px;

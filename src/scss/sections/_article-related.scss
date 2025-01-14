@@ -1,8 +1,14 @@
 @use "../modules";
+@use "../utilities/variables" as var;
+@use "../utilities/mixins" as mix;
 .article-related {
 
 	> .section__wrapper {
-		padding-top: 64px;
+		padding: 64px 20px 0 20px;
+
+		@include mix.maxw(var.$w-mob) {
+			padding: 64px 0 0 0;
+		}
 
 		> .title {
 
@@ -11,26 +17,31 @@
 
 	&__blog-card {
 		padding-top: 32px;
-		gap: 30px;
 
-		&.grid {
-			> * {
+		.blog-card {
 
-				flex: 0 0 calc(33.334% - 20px); /* Учитываем gap для строк (30px / 1.5 на 3 блока) */
+			@include mix.maxw(var.$w-mob) {
+				width: 333px;
+			}
 
-				.blog-card {
+			&__photo {
+				height: 292px;
 
-					&__photo {
-						height: 292px;
-					}
+				@include mix.maxw(var.$w-mob) {
+					width: 325px;
+					height: 325px;
+				}
+			}
 
-					&__title {
-						h2 {
-							@extend .body-m-sb;
-						}
-					}
+			&__title {
+				h2 {
+					@extend .body-m-sb;
 				}
 			}
 		}
+	}
+
+	&.spacer--120 {
+		height: 100px;
 	}
 }
