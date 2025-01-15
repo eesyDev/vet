@@ -961,6 +961,12 @@ textarea {
 
 .about-link {
 	margin-top: 64px;
+
+	@include mix.maxw(var.$w-mob) {
+		padding: 0 40px;
+		text-align: center;
+	}
+
 	> p {
 		color: var(--black);
 		> a {

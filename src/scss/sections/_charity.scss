@@ -1,3 +1,4 @@
+@use "../utilities/variables" as var;
 @use "../utilities/mixins" as mix;
 .charity {
 
@@ -30,6 +31,12 @@
 		background-position: bottom;
 		background-repeat: no-repeat;
 		background-size: contain;
+
+		@include mix.maxw(var.$w-mob) {
+			height: auto;
+			padding: 64px 0;
+			background-image: unset !important;
+		}
 	}
 
 	&__reviews {
@@ -38,51 +45,6 @@
 			@include mix.flexbox(flex-start);
 			flex-direction: column;
 			background-color: transparent;
-
-			&__title {
-				text-align: center;
-				gap: 24px;
-
-				> p {
-					color: var(--black);
-					> span {
-						color: var(--gray);
-					}
-				}
-			}
-
-			> .swiper-container {
-				margin: 64px 0;
-				width: var(--w-content);
-				height: 540px;
-
-				> .swiper-wrapper {
-
-					cursor: grab;
-					&:active {
-						cursor: grabbing;
-					}
-				}
-			}
-
-			> .swiper-pagination-clickable {
-				gap: 8px;
-				> .swiper-pagination-bullet {
-					background: var(--gray-3);
-					opacity: 1;
-					transition: all ease-in-out .2s;
-
-					&.swiper-pagination-bullet-active {
-						background: var(--white);
-						border: 2px solid var(--yellow-main);
-						transition: none;
-					}
-
-					&:hover:not(.swiper-pagination-bullet-active) {
-						background: var(--gray);
-					}
-				}
-			}
 
 			&__card {
 				background-color: var(--bg-light);
@@ -99,6 +61,12 @@
 	&__cta {
 		> .cta {
 			background-color: transparent;
+		}
+	}
+
+	@include mix.maxw(var.$w-mob) {
+		.spacer--120 {
+			height: 100px;
 		}
 	}
 }

@@ -37,12 +37,4 @@
 		}
 	}
 
-	.cta {
-		&__wrapper {
-			@include mix.maxw(var.$w-mob) {
-				gap: 96px;
-			}
-		}
-	}
-
 }

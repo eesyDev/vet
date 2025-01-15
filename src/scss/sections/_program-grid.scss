@@ -1,3 +1,4 @@
+@use "../utilities/variables" as var;
 @use "../utilities/mixins" as mix;
 .program-grid {
 	@include mix.flexbox(flex-start);
@@ -6,14 +7,32 @@
 	&__description {
 		text-align: center;
 		gap: 24px;
+
+		@include mix.maxw(var.$w-mob) {
+			margin-top: 8px;
+			gap: 32px;
+
+			> h2 {
+				padding: 0 26px;
+			}
+		}
 	}
 
 	&__card {
 		margin-top: 64px;
 
 		&.grid {
+
+			@include mix.maxw(var.$w-mob) {
+				gap: 64px;
+			}
+
 			> * {
 				flex: 0 0 33.334%;
+
+				@include mix.maxw(var.$w-mob) {
+					flex: 1 1 auto;
+				}
 			}
 		}
 
@@ -24,6 +43,16 @@
 			position: relative;
 			z-index: 1;
 
+			@include mix.maxw(var.$w-mob) {
+				padding: 20px 56.5px;
+				border-radius: 24px;
+				border: 1px solid var(--line-light);
+				> .button {
+					border-radius: 24px;
+					padding: 14px 24px;
+				}
+			}
+
 			&:not(:last-child):after {
 				content: "";
 				position: absolute;
@@ -33,6 +62,10 @@
 				height: 1px;
 				background-color: var(--line-light);
 				z-index: -1;
+
+				@include mix.maxw(var.$w-mob) {
+					display: none;
+				}
 			}
 		}
 	}
@@ -59,6 +92,12 @@
 		padding-top: 16px;
 		text-align: center;
 		border-top: 1px solid var(--line-light);
+
+		@include mix.maxw(var.$w-mob) {
+			padding-top: 0;
+			border: 0;
+		}
+		
 		> p {
 			color: var(--gray-2);
 			> span {
@@ -70,6 +109,13 @@
 	&__ico {
 		&.flex {
 			gap: 10px;
+
+			@include mix.maxw(var.$w-mob) {
+				padding: 0;
+				border-radius: 0;
+				border: 0;
+			}
+
 			> svg {
 				width: 16px;
 				height: 16px;

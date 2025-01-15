@@ -212,11 +212,27 @@
     });
 
     const reviewsSlider = new Swiper('.reviews > .swiper-container', {
-        slidesPerView: 3,
-        spaceBetween: 30,
         pagination: {
             el: '.reviews > .swiper-pagination-clickable',
             clickable: true,
+        },
+        breakpoints: {
+            320: {
+                slidesPerView: 'auto',
+                spaceBetween: 20,
+                slidesOffsetBefore: 20,
+                slidesOffsetAfter: 20,
+            },
+            480: {
+                slidesPerView: 'auto',
+                spaceBetween: 20,
+                slidesOffsetBefore: 20,
+                slidesOffsetAfter: 20,
+            },
+            640: {
+                slidesPerView: 3,
+                spaceBetween: 30,
+            }
         }
     });
 
