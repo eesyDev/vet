@@ -1,3 +1,5 @@
+@use "../utilities/variables" as var;
+@use "../utilities/mixins" as mix;
 .lend-series-main {
 
 	&.article-header {
@@ -18,11 +20,20 @@
 					background-clip: text;
 					-webkit-background-clip: text;
 					-webkit-text-fill-color: transparent;
+
+					@include mix.maxw(var.$w-mob) {
+						font-size: 17px;
+						line-height: 22px;
+					}
 				}
 			}
 			> .button__wrapper {
 				margin-top: 24px;
 				z-index: 2;
+
+				@include mix.maxw(var.$w-mob) {
+					margin-top: 32px;
+				}
 			}
 
 			> .article-header__bg {
@@ -128,6 +139,12 @@
 					width: var(--w-content);
 				}
 			}
+		}
+	}
+
+	@include mix.maxw(var.$w-mob) {
+		.spacer--120 {
+			height: 100px;
 		}
 	}
 }
