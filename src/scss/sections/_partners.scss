@@ -1,3 +1,5 @@
+@use "../utilities/variables" as var;
+@use "../utilities/mixins" as mix;
 .partners {
 
 	&.grid {
@@ -5,6 +7,10 @@
 
 		> * {
 			flex: 0 0 calc(25% - 4.5px);
+
+			@include mix.maxw(var.$w-mob) {
+				flex: 0 0 calc(50% - 3px);
+			}
 		}
 	}
 
@@ -15,6 +21,10 @@
 		border: 1px solid var(--line-light);
 		background-color: var(--white);
 		z-index: 1;
+
+		@include mix.maxw(var.$w-mob) {
+			height: 119px;
+		}
 
 		> img {
 			display: block;

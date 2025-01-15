@@ -1,3 +1,5 @@
+@use "../utilities/variables" as var;
+@use "../utilities/mixins" as mix;
 .video-block {
 	gap: 36px;
 	> .title {
@@ -8,8 +10,18 @@
 		> p {
 			color: var(--gray);
 
+			@include mix.maxw(var.$w-mob) {
+				font-size: 17px;
+				line-height: 22px;
+			}
+
 			> span {
 				color: var(--black);
+				@include mix.maxw(var.$w-mob) {
+					> br {
+						display: none;
+					}
+				}
 			}
 		}
 	}
@@ -22,6 +34,11 @@
 		border-radius: 32px;
 		z-index: 1;
 
+		@include mix.maxw(var.$w-mob) {
+			width: 333px;
+			height: 520px;
+		}
+
 		> img,
 		> video,
 		> iframe {
@@ -29,6 +46,25 @@
 			height: 100%;
 			border-radius: 32px;
 			object-fit: cover;
+		}
+	}
+
+	&__one {
+		.video-block {
+			&__source {
+				@include mix.maxw(var.$w-mob) {
+					width: calc(100% + 40px);
+					border-radius: 0;
+				}
+
+				> img,
+				> video,
+				> iframe {
+					@include mix.maxw(var.$w-mob) {
+						border-radius: 0;
+					}
+				}
+			}
 		}
 	}
 
@@ -40,9 +76,34 @@
 		padding-right: 24px;
 		z-index: 3;
 
+		@include mix.maxw(var.$w-mob) {
+			padding-right: 69px;
+		}
+
 		> p,
 		> h3 {
 			color: var(--white);
+		}
+
+		> p {
+			@include mix.maxw(var.$w-mob) {
+				font-size: 13px;
+				line-height: 140%;
+
+				> br {
+					display: none;
+				}
+			}
+		}
+		> h3 {
+			@include mix.maxw(var.$w-mob) {
+				font-size: 26px;
+				line-height: 30px;
+
+				> br {
+					display: none;
+				}
+			}
 		}
 	}
 
@@ -94,7 +155,7 @@
 				transition: all ease-in-out .2s;
 
 				> use {
-					fill: var(--pro-grey-pro);
+					fill: var(--white);
 				}
 			}
 

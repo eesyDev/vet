@@ -1,3 +1,4 @@
+@use "../utilities/variables" as var;
 @use "../utilities/mixins" as mix;
 .benefits-card {
 	margin-top: 59px;
@@ -19,6 +20,11 @@
 		&.swiper-slide {
 			width: 460px;
 			height: 720px;
+
+			@include mix.maxw(var.$w-mob) {
+				width: 333px;
+				height: 520px;
+			}
 		}
 
 		> .video-block__source {

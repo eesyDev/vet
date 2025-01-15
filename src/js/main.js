@@ -202,13 +202,28 @@
     const benefitsCardSlider = new Swiper(".benefits-card__slider.swiper-container", {
         slidesPerView: 'auto',
         direction: 'horizontal',
-        slidesOffsetBefore: 240, // смещение слева в px
-        slidesOffsetAfter: 240, // смещение справа в px
         spaceBetween: 40,
         navigation: {
             nextEl: ".benefits-card__navigation .slider-nav__next",
             prevEl: ".benefits-card__navigation .slider-nav__prev",
         },
+        breakpoints: {
+            320: {
+                spaceBetween: 20,
+                slidesOffsetBefore: 20,
+                slidesOffsetAfter: 20,
+            },
+            480: {
+                spaceBetween: 20,
+                slidesOffsetBefore: 20,
+                slidesOffsetAfter: 20,
+            },
+            640: {
+                spaceBetween: 40,
+                slidesOffsetBefore: 240, // смещение слева в px
+                slidesOffsetAfter: 240, // смещение справа в px
+            }
+        }
     });
 
     const reviewsSlider = new Swiper('.reviews > .swiper-container', {
