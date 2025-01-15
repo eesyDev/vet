@@ -1,3 +1,5 @@
+@use "../utilities/variables" as var;
+@use "../utilities/mixins" as mix;
 .cloud {
 	position: relative;
 	width: 100%;
@@ -44,11 +46,21 @@
 		}
 
 		&--left {
+
+			@include mix.maxw(var.$w-mob) {
+				left: 7px !important;
+			}
+
 			svg {
 				left: -7px;
 			}
 		}
 		&--right {
+
+			@include mix.maxw(var.$w-mob) {
+				right: 7px !important;
+			}
+
 			svg {
 				right: -7px;
 				transform: scaleX(-1);

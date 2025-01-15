@@ -1,9 +1,16 @@
+@use "../utilities/variables" as var;
+@use "../utilities/mixins" as mix;
 .vacancies {
 
 	> .section__wrapper {
 		gap: 32px;
 		> .title {
 			width: 731px;
+
+			@include mix.maxw(var.$w-mob) {
+				width: 100%;
+			}
+
 			> h1 {
 				padding-top: 0;
 			}
@@ -20,6 +27,14 @@
 			margin-top: 64px;
 		}
 
+	}
+
+	@include mix.maxw(var.$w-mob) {
+		.spacer--72,
+		.spacer--120,
+		.spacer--184 {
+			height: 100px;
+		}
 	}
 
 }

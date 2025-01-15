@@ -1,4 +1,6 @@
 @use "../modules";
+@use "../utilities/variables" as var;
+@use "../utilities/mixins" as mix;
 .accordion {
 	width: 100%;
 	border-bottom: 1px solid var(--line-light);
@@ -7,6 +9,11 @@
 		padding: 23px 0;
 		border-top: 1px solid var(--line-light);
 		gap: 56px;
+
+		@include mix.maxw(var.$w-mob) {
+			padding: 20px 0;
+			gap: 32px;
+		}
 
 		&.align-left {
 			align-items: flex-start;
@@ -93,21 +100,44 @@
 	&__content {
 		display: none;
 		margin-top: 22px;
+
+		@include mix.maxw(var.$w-mob) {
+			margin-top: 20px;
+		}
+
 		> h4 {
 			margin-top: 24px;
+			@include mix.maxw(var.$w-mob) {
+				margin-top: 20px;
+			}
 			@extend .body-s-sb;
 		}
 		> p {
 			margin-top: 24px;
+			@include mix.maxw(var.$w-mob) {
+				margin-top: 20px;
+			}
 			@extend .body-s-reg;
 		}
 		> ul {
 			margin-top: 12px;
+			@include mix.maxw(var.$w-mob) {
+				margin-top: 10px;
+			}
 			@extend .list;
 		}
 
 		> .flex {
 			margin-top: 16px;
+
+			@include mix.maxw(var.$w-mob) {
+				margin-top: 20px;
+
+				.button {
+					border-radius: 24px;
+					padding: 14px 24px;
+				}
+			}
 		}
 	}
 

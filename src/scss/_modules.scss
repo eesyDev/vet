@@ -359,6 +359,7 @@ h1, h2,
 
 	@include mix.maxw(var.$w-mob) {
 		font-size: 38px;
+		line-height: 42px;
 	}
 }
 
