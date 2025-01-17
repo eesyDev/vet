@@ -74,14 +74,25 @@
 			width: 100%;
 			height: 170px;
 
-			> .swiper--no,
-			> .swiper-wrapper {
-				> .flex,
-				> .swiper-slide {
+			> .swiper--no {
+				> .flex {
+					width: 298px;
+					height: 170px;
 					flex-shrink: 0;
-					height: 100%;
 					position: relative;
 					transition-property: transform;
+
+					> img {
+						width: 100%;
+						height: 100%;
+						object-fit: scale-down;
+					}
+				}
+			}
+			> .swiper--no,
+			> .swiper-wrapper {
+				> .swiper-slide {
+					width: 298px;
 					> img {
 						width: 100%;
 						height: 100%;

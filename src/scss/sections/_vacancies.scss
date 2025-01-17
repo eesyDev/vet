@@ -25,6 +25,12 @@
 
 		> .accordion {
 			margin-top: 64px;
+			> h4 {
+				@include mix.maxw(var.$w-mob) {
+					font-size: 42px;
+					line-height: 120%;
+				}
+			}
 		}
 
 	}

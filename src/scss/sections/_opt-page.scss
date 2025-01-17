@@ -67,12 +67,18 @@
 	}
 
 	.offers-card__wrapper {
-		padding-top: 64px;
+		padding-top: 32px;
 	}
 
 	@include mix.maxw(var.$w-mob) {
 		.spacer--120 {
 			height: 100px;
+		}
+	}
+
+	.video-block {
+		@include mix.maxw(var.$w-mob) {
+			gap: 64px;
 		}
 	}
 

@@ -40,14 +40,13 @@
 	> .swiper-container {
 		margin: 64px 0;
 		width: var(--w-content);
-		height: 540px;
+		height: 560px;
 
 		@include mix.maxw(var.$w-mob) {
 			width: 100%;
 		}
 
 		> .swiper-wrapper {
-
 			cursor: grab;
 			&:active {
 				cursor: grabbing;
