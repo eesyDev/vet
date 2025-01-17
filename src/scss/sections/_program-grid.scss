@@ -15,6 +15,12 @@
 			> h2 {
 				padding: 0 26px;
 			}
+
+			> p {
+				font-size: 17px;
+				line-height: 22px;
+				padding: 0 26px;
+			}
 		}
 	}
 
@@ -46,14 +52,18 @@
 			@include mix.maxw(var.$w-mob) {
 				padding: 20px 56.5px;
 				border-radius: 24px;
+				height: 238px;
 				border: 1px solid var(--line-light);
+
 				> .button {
+					font-size: 15px;
+					line-height: 120%;
 					border-radius: 24px;
-					padding: 14px 24px;
+					padding: 15px 24px;
 				}
 			}
 
-			&:not(:last-child):after {
+			&:nth-child(1):after, &:nth-child(2):after {
 				content: "";
 				position: absolute;
 				top: 20px;
@@ -86,6 +96,22 @@
 		}
 	}
 
+	&__end {
+
+		@include mix.maxw(var.$w-mob) {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			flex-direction: column;
+			padding: 20px 56.5px;
+			border-radius: 24px;
+			height: 238px;
+			border: 1px solid var(--line-light);
+			text-align: center;
+			gap: 20px;
+		}
+	}
+
 	&__footer {
 		width: 100%;
 		margin-top: 64px;
@@ -115,6 +141,7 @@
 				padding: 0;
 				border-radius: 0;
 				border: 0;
+				height: auto;
 			}
 
 			> svg {

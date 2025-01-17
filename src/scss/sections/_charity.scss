@@ -47,17 +47,20 @@
 
 	&__program-image {
 		width: 100%;
-		height: 810px;
-		padding-top: 81px;
 		background-color: var(--bg-light);
-		background-position: bottom;
-		background-repeat: no-repeat;
-		background-size: contain;
 
-		@include mix.maxw(var.$w-mob) {
-			height: auto;
-			padding: 64px 0;
-			background-image: unset !important;
+		> .section__wrapper {
+			padding: 81px 0 0 0;
+			height: 810px;
+			background-position: bottom;
+			background-repeat: no-repeat;
+			background-size: cover;
+
+			@include mix.maxw(var.$w-mob) {
+				height: auto;
+				padding: 64px 20px;
+				background-image: unset !important;
+			}
 		}
 	}
 
@@ -68,6 +71,14 @@
 			flex-direction: column;
 			background-color: transparent;
 
+			&__title {
+				@include mix.maxw(var.$w-mob) {
+					> h2 {
+						padding: 0 20px;
+					}
+				}
+			}
+
 			&__card {
 				background-color: var(--bg-light);
 			}
@@ -77,12 +88,23 @@
 					color: var(--gray-2);
 				}
 			}
+
+			&__description {
+				@include mix.maxw(var.$w-mob) {
+					-webkit-line-clamp: 6;
+				}
+			}
 		}
 	}
 
 	&__cta {
 		> .cta {
 			background-color: transparent;
+			.cta__wrapper {
+				@include mix.maxw(var.$w-mob) {
+					gap: 110px;
+				}
+			}
 		}
 	}
 

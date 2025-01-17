@@ -67,6 +67,10 @@
 		margin-top: 17px;
 		@include mix.flexbox('flex-start');
 
+		@include mix.maxw(var.$w-mob-s) {
+			margin-top: 20px;
+		}
+
 		a {
 			font-weight: 600;
 			line-height: normal;
