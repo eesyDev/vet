@@ -17,7 +17,7 @@
 
 						@include mix.maxw(var.$w-mob) {
 							> br {
-								display: none;
+								display: inline;
 							}
 						}
 
@@ -180,7 +180,9 @@
 			}
 
 			&__actions {
+
 				> .product-card {
+
 					&__price {
 						> p {
 							color: var(--white);
@@ -202,19 +204,24 @@
 					}
 
 					&__option {
-						padding: 8px;
+						padding: 6px;
 						border-radius: 16px;
+						gap: 12px;
 						background-color: var(--black);
 
 						> .product-card__option {
 
 							&--title {
-								display: block;
+								display: flex;
+								align-items: center;
+								justify-content: center;
 								position: absolute;
-								top: -30px;
 								left: auto;
-								padding: 2px 4px;
+								top: calc(50% - 42px);
+								width: 48px;
+								height: 22px;
 								border-radius: 4px;
+								margin-left: 0;
 								color: var(--grey-pro);
 								background-color: var(--black-bg);
 							}
@@ -530,10 +537,6 @@
 					background-color: var(--black);
 
 					&--title {
-						top: -30px;
-						left: auto;
-						padding: 2px 4px;
-						border-radius: 4px;
 						color: var(--grey-pro);
 						background-color: var(--black-bg);
 					}
@@ -579,6 +582,16 @@
 	@include mix.maxw(var.$w-mob) {
 		.spacer--120 {
 			height: 100px;
+		}
+
+		.products-mobile__actions {
+
+			> .product-card__responsive {
+				margin-top: 48px;
+			}
+			> .product-card__buttons--clone {
+				margin-top: 20px;
+			}
 		}
 	}
 

@@ -174,18 +174,23 @@
 			}
 			> .product-card__option {
 				order: 2;
-				padding: 8px;
+				padding: 6px;
 				border-radius: 16px;
-				gap: 8px;
+				gap: 12px;
 				background-color: var(--line-light);
 
 				> .product-card__option {
 
 					&--title {
-						display: block;
+						display: flex;
+						align-items: center;
+						justify-content: center;
 						position: absolute;
-						top: calc(50% - 42px);
 						left: auto;
+						top: calc(50% - 42px);
+						width: 48px;
+						height: 22px;
+						border-radius: 4px;
 						margin-left: 0;
 						color: var(--grey-pro);
 					}
@@ -226,7 +231,7 @@
 		position: relative;
 		@include mix.flexbox;
 		width: max-content;
-		gap: 5px;
+		gap: 12px;
 		$this: &;
 
 		&--link	{
