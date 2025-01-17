@@ -74,6 +74,7 @@
 		}
 
 		// All
+		&.popup--characteristics,
 		&.popup--work-offer,
 		&.popup--consult {
 			@include mix.maxw(var.$w-mob) {

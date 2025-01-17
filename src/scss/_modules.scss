@@ -137,6 +137,10 @@
 		&:nth-child(1) {
 			margin-right: 99px;
 
+			@include mix.maxw(var.$w-tab) {
+				margin-right: 60px;
+			}
+
 			@include mix.maxw(var.$w-mob) {
 
 				ul {
@@ -158,9 +162,17 @@
 		}
 		&:nth-child(2) {
 			margin-right: 82px;
+
+			@include mix.maxw(var.$w-tab) {
+				margin-right: 30px;
+			}
+
 		}
 		&:nth-child(3) {
 			margin-right: 117px;
+			@include mix.maxw(var.$w-tab) {
+				margin-right: 30px;
+			}
 		}
 		&:nth-child(4) {
 			margin-right: auto;

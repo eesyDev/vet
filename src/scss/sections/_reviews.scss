@@ -42,6 +42,14 @@
 		width: var(--w-content);
 		height: 560px;
 
+		@include mix.maxw(var.$w-tab) {
+			width: 100%;
+
+			.swiper-slide {
+				width: 325px;
+			}
+		}
+
 		@include mix.maxw(var.$w-mob) {
 			width: 100%;
 		}
@@ -57,6 +65,9 @@
 	> .swiper-pagination-clickable {
 		gap: 8px;
 
+		@include mix.maxw(var.$w-tab) {
+			padding: 0 20px;
+		}
 		@include mix.maxw(var.$w-mob) {
 			padding: 0 20px;
 		}
@@ -102,6 +113,10 @@
 		margin: 0 auto;
 		padding: 6px 11px 100px 11px;
 		width: 823px;
+
+		@include mix.maxw(var.$w-tab) {
+			width: calc(100% - 20px);
+		}
 
 		@include mix.maxw(var.$w-mob) {
 			display: flex;

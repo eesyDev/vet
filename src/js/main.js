@@ -88,8 +88,8 @@
         });
     }
 
-    App.isMobileDevice = function(url) {
-        return /Android|iPhone|iPad|iPod|BlackBerry|Windows Phone/i.test(navigator.userAgent);
+    App.isMobileDevice = function(maxWidth = 768) {
+        return window.innerWidth < maxWidth;
     }
 
     $.fn.isInViewportImg = function () {
@@ -185,15 +185,11 @@
             prevEl: ".offers-card__navigation .slider-nav__prev",
         },
         breakpoints: {
-            320: {
+            319: {
                 slidesOffsetBefore: 20,
                 slidesOffsetAfter: 20,
             },
-            480: {
-                slidesOffsetBefore: 20,
-                slidesOffsetAfter: 20,
-            },
-            640: {
+            769: {
                 slidesOffsetBefore: 240,
                 slidesOffsetAfter: 240,
             }
@@ -209,17 +205,12 @@
             prevEl: ".benefits-card__navigation .slider-nav__prev",
         },
         breakpoints: {
-            320: {
+            319: {
                 spaceBetween: 20,
                 slidesOffsetBefore: 20,
                 slidesOffsetAfter: 20,
             },
-            480: {
-                spaceBetween: 20,
-                slidesOffsetBefore: 20,
-                slidesOffsetAfter: 20,
-            },
-            640: {
+            769: {
                 spaceBetween: 40,
                 slidesOffsetBefore: 240, // смещение слева в px
                 slidesOffsetAfter: 240, // смещение справа в px
@@ -233,19 +224,13 @@
             clickable: true,
         },
         breakpoints: {
-            320: {
+            319: {
                 slidesPerView: 'auto',
                 spaceBetween: 20,
                 slidesOffsetBefore: 20,
                 slidesOffsetAfter: 20,
             },
-            480: {
-                slidesPerView: 'auto',
-                spaceBetween: 20,
-                slidesOffsetBefore: 20,
-                slidesOffsetAfter: 20,
-            },
-            640: {
+            769: {
                 slidesPerView: 3,
                 spaceBetween: 30,
             }
@@ -258,19 +243,13 @@
             delay: 2000,
         },
         breakpoints: {
-            320: {
+            319: {
                 slidesPerView: 'auto',
                 spaceBetween: 20,
                 slidesOffsetBefore: 20,
                 slidesOffsetAfter: 20,
             },
-            480: {
-                slidesPerView: 'auto',
-                spaceBetween: 20,
-                slidesOffsetBefore: 20,
-                slidesOffsetAfter: 20,
-            },
-            640: {
+            769: {
                 slidesPerView: 3,
                 spaceBetween: 30,
             }

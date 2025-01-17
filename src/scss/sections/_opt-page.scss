@@ -51,6 +51,11 @@
 			width: auto;
 			height: 540px;
 
+			@include mix.maxw(var.$w-tab) {
+				width: 100%;
+				height: 100%;
+			}
+
 			@include mix.maxw(var.$w-mob) {
 				width: 100%;
 				height: 100%;

@@ -53,6 +53,10 @@
 					&:nth-child(1) {
 						margin-right: 130px;
 
+						@include mix.maxw(var.$w-tab) {
+							margin-right: 85px;
+						}
+
 						ul {
 							li {
 								a {
@@ -73,9 +77,18 @@
 					}
 					&:nth-child(2) {
 						margin-right: 162px;
+
+						@include mix.maxw(var.$w-tab) {
+							margin-right: 30px;
+						}
+
 					}
 					&:nth-child(3) {
 						margin-right: 37px;
+
+						@include mix.maxw(var.$w-tab) {
+							margin-right: 30px;
+						}
 					}
 				}
 			}

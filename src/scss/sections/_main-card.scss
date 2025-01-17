@@ -18,7 +18,7 @@
 		height: 700px;
 
 		@include mix.maxw(var.$w-mob) {
-			padding: 64px 0;
+			padding: 64px 20px;
 		}
 	}
 

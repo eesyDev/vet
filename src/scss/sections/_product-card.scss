@@ -5,6 +5,11 @@
 	padding-top: calc(var(--h-header)*2);
 	border-bottom: 1px solid var(--line-light);
 
+	@include mix.maxw(var.$w-tab) {
+		padding-top: calc(20px + var(--h-header));
+		padding-bottom: 68px;
+	}
+
 	@include mix.maxw(var.$w-mob) {
 		padding-top: calc(20px + var(--h-header));
 		padding-bottom: 68px;
@@ -14,6 +19,11 @@
 		@include mix.flexbox(flex-start, flex-start);
 		padding-left: 4px;
 		gap: 80px;
+
+		@include mix.maxw(var.$w-tab) {
+			flex-direction: column;
+			gap: 0;
+		}
 
 		@include mix.maxw(var.$w-mob) {
 			flex-direction: column;
@@ -52,10 +62,18 @@
 			height: 608px;
 			gap: 32px;
 
+			@include mix.maxw(var.$w-tab) {
+				position: static;
+				width: 100%;
+				height: 353px;
+				gap: 20px;
+			}
+
 			@include mix.maxw(var.$w-mob) {
 				position: static;
 				width: 100%;
 				height: 353px;
+				gap: 0;
 			}
 		}
 	}
@@ -70,6 +88,11 @@
 	&__description {
 		width: 400px;
 		height: auto;
+
+		@include mix.maxw(var.$w-tab) {
+			padding-top: 32px;
+			width: 100%;
+		}
 
 		@include mix.maxw(var.$w-mob) {
 			padding-top: 32px;

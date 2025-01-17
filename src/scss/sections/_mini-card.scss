@@ -37,6 +37,11 @@
 			max-height: 160px;
 			object-fit: scale-down;
 
+			@include mix.maxw(var.$w-tab) {
+				max-width: 100%;
+				max-height: 100%;
+			}
+
 			@include mix.maxw(var.$w-mob) {
 				max-width: 100%;
 				max-height: 100%;
