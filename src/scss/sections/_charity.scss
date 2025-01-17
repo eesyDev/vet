@@ -2,10 +2,32 @@
 @use "../utilities/mixins" as mix;
 .charity {
 
+	&.article-header {
+		.title {
+			> h1 {
+				@include mix.maxw(var.$w-mob) {
+					padding: 0 55px;
+				}
+			}
+
+			> p {
+				@include mix.maxw(var.$w-mob) {
+					font-size: 17px;
+					line-height: 22px;
+				}
+			}
+		}
+	}
+
 	> .section__wrapper {
 		gap: 32px;
 		> .title {
 			gap: 24px;
+
+			@include mix.maxw(var.$w-mob) {
+				gap: 8px;
+			}
+
 			> h1 {
 				padding-top: 0;
 			}

@@ -68,7 +68,8 @@
 		@include mix.flexbox('flex-start');
 
 		a {
-			font-weight: 500;
+			font-weight: 600;
+			line-height: normal;
 			font-size: 10px;
 			color: var(--gray);
 
@@ -83,7 +84,7 @@
 			margin: 0 10px;
 			width: 15px;
 			height: 1px;
-			background-color: var(--pro-pro-lines);
+			background-color: var(--lines-pro);
 			transform: rotate(107deg);
 		}
 	}
