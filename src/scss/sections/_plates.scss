@@ -2,7 +2,6 @@
 @use "../utilities/variables" as var;
 @use "../utilities/mixins" as mix;
 .plates {
-	padding-top: 40px;
 	gap: 16px;
 
 	@include mix.maxw(var.$w-mob) {

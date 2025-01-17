@@ -5,11 +5,11 @@
 	flex-direction: column;
 
 	&__description {
+		margin-top: 8px;
 		text-align: center;
 		gap: 24px;
 
 		@include mix.maxw(var.$w-mob) {
-			margin-top: 8px;
 			gap: 32px;
 
 			> h2 {
@@ -108,6 +108,7 @@
 
 	&__ico {
 		&.flex {
+			padding: 8px 0;
 			gap: 10px;
 
 			@include mix.maxw(var.$w-mob) {

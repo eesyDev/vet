@@ -2,19 +2,31 @@
 @use "../utilities/mixins" as mix;
 .cta {
 	width: 100%;
-	padding: 64px 0 84px 0;
+	padding: 64px 20px 64px 20px;
 	background-color: var(--bg-light);
 
 	@include mix.maxw(var.$w-mob) {
-		padding: 64px 0;
+		padding: 64px 20px;
 	}
 
 	&__wrapper {
 		gap: 32px;
 
 		@include mix.maxw(var.$w-mob) {
-			padding: 0 20px;
 			gap: 96px;
+		}
+
+		> .flex {
+			> .button {
+				font-family: var(--font-family);
+				font-size: 16px;
+				line-height: 22px;
+				font-weight: 400;
+				letter-spacing: 0;
+				padding: 16px 32px;
+				border-radius: 54px;
+				color: var(--dark);
+			}
 		}
 	}
 
@@ -33,5 +45,6 @@
 		> p {
 			color: var(--gray);
 		}
+
 	}
 }

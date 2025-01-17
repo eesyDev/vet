@@ -47,6 +47,10 @@
 	&__button {
 		@include mix.flexbox(flex-start, center);
 
+		@include mix.maxw(var.$w-tab) {
+			width: 100%;
+		}
+
 		@include mix.maxw(var.$w-mob) {
 			width: 100%;
 			.button {
@@ -60,6 +64,10 @@
 		@include mix.flexbox(flex-start, center);
 		width: 515px;
 		gap: 16px;
+
+		@include mix.maxw(var.$w-tab) {
+			width: 62%;
+		}
 
 		@include mix.maxw(var.$w-mob) {
 			width: 100%;

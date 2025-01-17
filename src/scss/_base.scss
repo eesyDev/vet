@@ -20,7 +20,7 @@ body, html {
 	padding: 0;
 	box-sizing: border-box;
 
-	&:first-child:not(.reviews__wrapper):not(.product-card__responsive):not(.product-card__gift) {
+	&:first-child:not(.reviews__wrapper):not(.product-card__responsive):not(.product-card__gift):not(.mini-card__img>img) {
 		margin-top: 0 !important;
 	}
 	& :last-child:not(.popup-cart)

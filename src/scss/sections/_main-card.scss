@@ -3,6 +3,8 @@
 .main-card {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
+	position: relative;
+	padding-top: 8px;
 	gap: 8px;
 	z-index: 1;
 
@@ -39,6 +41,12 @@
 
 			&__description {
 				margin-top: 8px;
+
+				@include mix.maxw(var.$w-mob) {
+					> br {
+						display: none;
+					}
+				}
 			}
 		}
 
