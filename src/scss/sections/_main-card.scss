@@ -18,7 +18,7 @@
 		height: 700px;
 
 		@include mix.maxw(var.$w-mob) {
-			padding: 64px 20px;
+			padding: 64px 0;
 		}
 	}
 
@@ -32,12 +32,16 @@
 		z-index: 3;
 
 		@include mix.maxw(var.$w-mob) {
-			padding: 8px 0;
+			padding: 0;
 		}
 
 		.title {
 			margin-bottom: 16px;
 			color: var(--black);
+
+			@include mix.maxw(var.$w-mob) {
+				margin-bottom: 32px;
+			}
 
 			&__description {
 				margin-top: 8px;
@@ -52,6 +56,10 @@
 
 		&--but {
 			justify-content: flex-end;
+
+			@include mix.maxw(var.$w-mob) {
+				padding: 0;
+			}
 		}
 	}
 
@@ -59,6 +67,15 @@
 		display: flex;
 		justify-content: center;
 		gap: 16px;
+
+		@include mix.maxw(var.$w-mob) {
+			> .button {
+				font-size: 15px;
+				line-height: 120%;
+				border-radius: 24px;
+				padding: 14px 24px;
+			}
+		}
 	}
 
 	&__img {

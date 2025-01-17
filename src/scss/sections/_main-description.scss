@@ -9,10 +9,16 @@
 		font-weight: 400;
 		height: auto;
 		max-height: 420px;
+		padding-right: 38px;
 		overflow-x: auto;
+
+		@include mix.maxw(var.$w-tab) {
+			padding: 0 20px;
+		}
 
 		@include mix.maxw(var.$w-mob) {
 			padding: 0 8px 0 20px;
+			max-height: 732px;
 		}
 	}
 }
