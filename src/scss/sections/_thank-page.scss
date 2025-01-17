@@ -121,20 +121,35 @@
 	}
 
 	&__text {
-		color: var(--black);
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: flex-start;
 		gap: 24px;
+		width: auto;
+		color: var(--black);
 		z-index: 1;
 
 		@include mix.maxw(var.$w-mob) {
 			align-items: center;
+			width: 100%;
 			gap: 32px;
 			.button {
-				width: max-content;
+				width: 100%;
 			}
 		}
 
 		.flex {
+			width: auto;
 			gap: 16px;
+
+			@include mix.maxw(var.$w-mob) {
+				width: 100%;
+				> .flex > * {
+					flex: unset;
+				}
+
+			}
 
 			>.flex {
 				> svg {

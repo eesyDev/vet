@@ -48,7 +48,7 @@
 				<div class="promo-links">
 					<div class="promo-links__item">
 						<h3 class="promo-links__item--directions desktop-plus-tablet">Напрямки</h3>
-						<ul class="promo-links__directions">
+						<ul>
 							<li><a href="lend-series-main.html">Kігтеточки Main-cерiя</a></li>
 							<li><a href="lend-series-pro.html">Kігтеточки Pro-cерiя</a></li>
 							<li><a href="lend-mouse-mp.html">Мишка містер Піклз</a></li>
@@ -218,8 +218,8 @@
 
 	<div class="spacer--120"></div>
 
-	<section class="section">
-		<div class="section__wrapper">
+	<section>
+		<div class="section section__wrapper">
 			<div class="title">
 				<h3 class="h3">Обрати кігтеточку для притулку</h3>
 			</div>
@@ -342,7 +342,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="section__wrapper">
+			<div class="section section__wrapper">
 				<div class="offers-card__navigation slider-nav">
 					<div class="slider-nav__next"></div>
 					<div class="slider-nav__prev"></div>
@@ -353,8 +353,8 @@
 
 	<div class="spacer--120"></div>
 
-	<section class="section charity__reviews">
-		<div class="section__wrapper">
+	<section class="charity__reviews">
+		<div class="section section__wrapper">
 			<div class="reviews">
 				<div class="reviews__title flex col">
 					<h2 class="h1h2">Погляньте на ці щасливі мордочки</h2>
@@ -457,8 +457,8 @@
 
 	<div class="spacer--120"></div>
 
-	<section class="section charity__program-image" style="background-image: url('/assets/img/charity/program-image-bg.png');">
-		<div class="section__wrapper">
+	<section class="charity__program-image" style="background-image: url('/assets/img/charity/program-image-bg.png');">
+		<div class="section section__wrapper">
 			<div class="program-image">
 				<div id="program-2" class="badge flex col center">
 					<span class="body-s-reg">Программа №2</span>
@@ -480,8 +480,8 @@
 		</div>
 	</section>
 
-	<section class="section charity">
-		<div class="section__wrapper">
+	<section class="charity">
+		<div class="section section__wrapper">
 			<div class="charity__cta">
 				<!--\ Призыв к действию -->
 				<div class="cta">
@@ -520,7 +520,7 @@
 			<div class="promo-links">
 				<div class="promo-links__item">
 					<h3 class="desktop-plus-tablet">Напрямки</h3>
-					<ul class="promo-links__directions">
+					<ul>
 						<li><a href="lend-series-main.html">Kігтеточки Main-cерiя</a></li>
 						<li><a href="lend-series-pro.html">Kігтеточки Pro-cерiя</a></li>
 						<li><a href="lend-mouse-mp.html">Мишка містер Піклз</a></li>
@@ -1177,15 +1177,13 @@
 								<label class="inp-wrp">
 									<input type="text" name="name[Мiсто]" data-required="true" placeholder="Мiсто *">
 								</label>
-								<div class="select-wrapper">
-									<label class="inp-wrp">
-										<select class="select" data-required="true" data-error="Please fill this Напрямок роботи">
-											<option value="">Напрямок роботи *</option>
-											<option value="1">Первая</option>
-											<option value="2">Вторая</option>
-										</select>
-									</label>
-								</div>
+								<label class="select-wrapper">
+									<select class="select" data-required="true" data-error="Please fill this Напрямок роботи">
+										<option value="">Напрямок роботи *</option>
+										<option value="1">Первая</option>
+										<option value="2">Вторая</option>
+									</select>
+								</label>
 								<label class="inp-wrp">
 									<textarea name="text[Чому Say Meow]" placeholder="Чому Say Meow?"></textarea>
 								</label>

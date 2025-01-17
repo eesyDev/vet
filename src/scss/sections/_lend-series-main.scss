@@ -50,6 +50,11 @@
 	&__price {
 		margin-top: 16px;
 		z-index: 2;
+
+		@include mix.maxw(var.$w-mob) {
+			margin-top: 20px;
+		}
+
 		> p {
 			color: var(--gray);
 		}
@@ -98,6 +103,10 @@
 			&__title {
 				> p {
 					padding: 0 82px;
+
+					@include mix.maxw(var.$w-mob) {
+						padding: 0;
+					}
 				}
 			}
 
@@ -145,6 +154,12 @@
 	@include mix.maxw(var.$w-mob) {
 		.spacer--120 {
 			height: 100px;
+		}
+
+		.title {
+			&--pro {
+				padding: 0 30px;
+			}
 		}
 	}
 }

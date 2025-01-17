@@ -281,6 +281,11 @@
         const swiper = document.querySelectorAll(swiperContainer);
         swiper.forEach((container) => {
             new Swiper(container, {
+                slidesPerView: 'auto',
+                autoHeight: container.dataset.autoHeight === "true" || false, // default false
+                spaceBetween: 20,
+                centeredSlides: true,
+                slideToClickedSlide: true,
                 pagination: {
                     el: container.nextElementSibling,
                     clickable: true,
@@ -1144,10 +1149,12 @@
                 const content = $(this).html();
                 $(this).remove();
                 $('.product-card__form .product-card__buttons--clone').html(content);
-                addToCart('.add_to_cart');
             });
 
+            addToCart('.add_to_cart');
+
             productsSlider('.products-mobile__slider.swiper-container');
+            productsSlider('.in-box .swiper-container');
         }
 
         $('.video-block__source').each(function () {

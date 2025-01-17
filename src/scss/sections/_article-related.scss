@@ -3,8 +3,12 @@
 @use "../utilities/mixins" as mix;
 .article-related {
 
+	&.section {
+		padding: 0;
+	}
+
 	> .section__wrapper {
-		padding: 64px 20px 0 20px;
+		padding: 64px 0 0 0;
 
 		@include mix.maxw(var.$w-mob) {
 			padding: 64px 0 0 0;

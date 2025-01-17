@@ -1,3 +1,5 @@
+@use "../utilities/variables" as var;
+@use "../utilities/mixins" as mix;
 .guarantee {
 	&__text {
 		gap: 12px;
@@ -13,6 +15,11 @@
 			background-clip: text;
 			-webkit-background-clip: text;
 			-webkit-text-fill-color: transparent;
+
+			@include mix.maxw(var.$w-mob) {
+				font-size: 64px;
+				line-height: 120%;
+			}
 		}
 
 		> p {
@@ -22,12 +29,22 @@
 			font-weight: 600;
 			letter-spacing: 0;
 			color: var(--black);
+
+			@include mix.maxw(var.$w-mob) {
+				font-size: 17px;
+				line-height: 22px;
+			}
 		}
 	}
 
 	> .section__wrapper {
 		margin-top: 54px;
 		gap: 36px;
+
+		@include mix.maxw(var.$w-mob) {
+			margin-top: 32px;
+			gap: 32px;
+		}
 	}
 
 	&__info {
@@ -37,11 +54,33 @@
 		padding: 50px 40px 47px 40px;
 		border-radius: 24px;
 		background: linear-gradient(90deg, rgba(255,223,101,0.25) 0%, rgba(255,193,101,0.25) 100%);
+
+		@include mix.maxw(var.$w-mob) {
+			flex-direction: column;
+			align-items: stretch;
+			padding: 32px;
+			gap: 0;
+		}
+
+		.button {
+			@include mix.maxw(var.$w-mob) {
+				width: 100%;
+				justify-content: center;
+			}
+		}
 	}
 
 	&__description {
 		gap: 45px;
 		width: calc(395px + 45px);
+
+		@include mix.maxw(var.$w-mob) {
+			width: 100%;
+			gap: 0;
+			padding-bottom: 20px;
+			margin-bottom: 20px;
+			border-bottom: 1px solid rgba(255, 203, 5, 0.25);
+		}
 
 		p {
 			color: var(--black);
@@ -52,12 +91,18 @@
 			content: "";
 			width: 1px;
 			height: auto;
-			background: #ffcb05;
-			opacity: 25%;
+			background: rgba(255, 203, 5, 0.25);
+
+			@include mix.maxw(var.$w-mob) {
+				display: none;
+			}
 		}
 	}
 
 	&__about {
+		@include mix.maxw(var.$w-mob) {
+			text-align: center;
+		}
 		> p {
 			color: var(--gray);
 		}

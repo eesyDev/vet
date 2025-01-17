@@ -1,3 +1,5 @@
+@use "../utilities/variables" as var;
+@use "../utilities/mixins" as mix;
 .lend-series-pro {
 	color: var(--white);
 	background-color: var(--dark);
@@ -13,6 +15,12 @@
 						padding-top: 0;
 						color: var(--white);
 
+						@include mix.maxw(var.$w-mob) {
+							> br {
+								display: none;
+							}
+						}
+
 						&.c-black {
 							color: var(--dark);
 						}
@@ -23,6 +31,14 @@
 						background-clip: text;
 						-webkit-background-clip: text;
 						-webkit-text-fill-color: transparent;
+
+						@include mix.maxw(var.$w-mob) {
+							font-size: 17px;
+							line-height: 22px;
+							> br {
+								display: none;
+							}
+						}
 
 						&.c-white {
 							background: transparent;
@@ -105,6 +121,10 @@
 			gap: 50px;
 			background-color: var(--dark);
 
+			@include mix.maxw(var.$w-mob) {
+				gap: 54px;
+			}
+
 			> .title {
 				> h2 {
 					color: var(--white);
@@ -113,8 +133,21 @@
 					padding: 0 80px;
 					color: var(--pro-grey-pro);
 
+					@include mix.maxw(var.$w-mob) {
+						padding: 0;
+						> br {
+							display: none;
+						}
+					}
+
 					> span {
 						color: var(--white);
+
+						@include mix.maxw(var.$w-mob) {
+							> br {
+								display: none;
+							}
+						}
 					}
 				}
 			}
@@ -244,7 +277,7 @@
 
 	}
 
-	> .section {
+	> section {
 
 		> .section__wrapper {
 
@@ -266,10 +299,28 @@
 					}
 				}
 
-				> .grid {
+				.grid {
 					> .in-box__item {
 						> h4 {
 							color: var(--white);
+						}
+					}
+				}
+			}
+
+			.in-box__pagination {
+
+				&.swiper-pagination-clickable {
+
+					> .swiper-pagination-bullet {
+						background: var(--black);
+
+						&.swiper-pagination-bullet-active {
+							background: var(--black);
+						}
+
+						&:hover:not(.swiper-pagination-bullet-active) {
+							background: var(--black);
 						}
 					}
 				}
@@ -287,6 +338,13 @@
 
 				> p {
 					padding: 0 82px;
+					@include mix.maxw(var.$w-mob) {
+						padding: 0;
+
+						> span {
+							color: var(--white);
+						}
+					}
 				}
 			}
 
@@ -321,6 +379,7 @@
 				}
 			}
 		}
+
 	}
 
 	&__accordion {
@@ -403,6 +462,118 @@
 			color: var(--grey-pro);
 		}
 
+	}
+
+	.products-mobile {
+
+		&__item {
+			> .title {
+				>  p {
+					color: var(--grey-pro);
+				}
+			}
+
+			> .product-slider__details {
+				border-color: var(--lines-pro);
+				> .flex {
+					> a {
+						color: var(--white);
+						> svg {
+							> use {
+								fill: var(--lines-pro);
+							}
+						}
+					}
+				}
+			}
+		}
+
+		&__line {
+			background-color: var(--black);
+		}
+
+		&__pagination {
+
+			&.swiper-pagination-clickable {
+
+				> .swiper-pagination-bullet {
+					background: var(--black);
+
+					&.swiper-pagination-bullet-active {
+						background: var(--black);
+					}
+
+					&:hover:not(.swiper-pagination-bullet-active) {
+						background: var(--black);
+					}
+				}
+			}
+		}
+
+		.product-card__responsive {
+
+			.product-card {
+
+				&__price {
+					> p {
+						color: var(--white);
+					}
+				}
+
+				&__option {
+					background-color: var(--black);
+
+					&--title {
+						top: -30px;
+						left: auto;
+						padding: 2px 4px;
+						border-radius: 4px;
+						color: var(--grey-pro);
+						background-color: var(--black-bg);
+					}
+
+
+					&--link {
+						&.active {
+							border-color: var(--white);
+						}
+
+						> span {
+							&.product-card__option {
+								&--white {
+
+								}
+								&--black {
+									background-color: var(--black-pro);
+								}
+							}
+						}
+					}
+				}
+
+				&__delivery {
+					&--icon {
+						&:after {
+							background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width='8'%20height='7'%20viewBox='0%200%208%207'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3E%3Cpath%20d='M2.53496%205.82187C2.53496%205.82187%200.407977%203.59613%200.255084%203.43651C-0.0850281%203.08075%20-0.0850281%202.50184%200.255084%202.14638C0.596063%201.78971%201.1475%201.78971%201.48848%202.14638L2.86547%203.58672C3.0367%203.76582%203.31458%203.76459%203.48436%203.58458L6.50782%200.376444C6.84764%200.0158296%207.40286%200.0133887%207.74557%200.37189C8.08306%200.724905%208.0851%201.30141%207.74992%201.65716C4.46659%205.14168%203.84307%205.82157%203.84307%205.82157C3.4826%206.19859%202.89571%206.19891%202.53496%205.82187Z'%20fill='%23000'/%3E%3C/svg%3E");
+						}
+					}
+				}
+			}
+		}
+
+		.button {
+			&--black {
+				color: var(--white);
+				border-color: var(--white);
+			}
+		}
+
+	}
+
+	@include mix.maxw(var.$w-mob) {
+		.spacer--120 {
+			height: 100px;
+		}
 	}
 
 }

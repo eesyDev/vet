@@ -1,23 +1,46 @@
+@use "../utilities/variables" as var;
+@use "../utilities/mixins" as mix;
 .in-box {
-	padding: 64px 0 55px 0;
+	padding: 64px 20px 55px 20px;
 	background-color: var(--line-light);
 
 	> .section__wrapper {
 		gap: 64px;
 
+		@include mix.maxw(var.$w-mob) {
+			gap: 0;
+		}
+
 		> .title {
 			> h3 {
 				color: var(--black);
+
+				@include mix.maxw(var.$w-mob) {
+					font-size: 26px;
+					line-height: 30px;
+				}
 			}
 		}
 
-		> .grid {
+		.grid {
 			justify-content: space-between;
 			align-items: flex-start;
 			text-align: center;
 
+			@include mix.maxw(var.$w-mob) {
+				padding: 64px 0 32px 0;
+				flex-wrap: nowrap;
+				gap: 0;
+				width: 240px;
+			}
+
 			> * {
 				flex: 0 0 25%;
+
+				@include mix.maxw(var.$w-mob) {
+					flex: 0 0 100%;
+					padding: 0;
+				}
 			}
 		}
 	}
@@ -40,6 +63,28 @@
 		> p {
 			padding: 0 20px;
 			color: var(--gray);
+		}
+	}
+
+	&__pagination {
+
+		&.swiper-pagination-clickable {
+			display: flex;
+			gap: 8px;
+
+			> .swiper-pagination-bullet {
+				background: var(--gray-3);
+				opacity: 1;
+
+				&.swiper-pagination-bullet-active {
+					background: var(--white);
+					border: 2px solid var(--yellow-main);
+				}
+
+				&:hover:not(.swiper-pagination-bullet-active) {
+					background: var(--gray-3);
+				}
+			}
 		}
 	}
 }

@@ -1,6 +1,21 @@
+@use "../utilities/variables" as var;
+@use "../utilities/mixins" as mix;
 .lend-micro-greens {
 	&.article-header {
 		background-color: var(--bg-light);
+
+		> .section__wrapper {
+			> .title {
+
+				> p {
+					@include mix.maxw(var.$w-mob) {
+						font-size: 17px;
+						line-height: 22px;
+					}
+
+				}
+			}
+		}
 	}
 
 	&__video-block {
@@ -60,6 +75,9 @@
 			&__title {
 				> p {
 					padding: 0 82px;
+					@include mix.maxw(var.$w-mob) {
+						padding: 0;
+					}
 				}
 			}
 
@@ -80,5 +98,11 @@
 			margin-top: 64px;
 		}
 
+	}
+
+	@include mix.maxw(var.$w-mob) {
+		.spacer--120 {
+			height: 100px;
+		}
 	}
 }

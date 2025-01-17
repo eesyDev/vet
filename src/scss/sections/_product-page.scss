@@ -1,0 +1,9 @@
+@use "../utilities/variables" as var;
+@use "../utilities/mixins" as mix;
+.product-page {
+	@include mix.maxw(var.$w-mob) {
+		.spacer--120 {
+			height: 100px;
+		}
+	}
+}

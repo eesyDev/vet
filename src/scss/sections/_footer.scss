@@ -2,11 +2,11 @@
 @use "../utilities/mixins" as mix;
 .footer {
 	width: 100%;
-	padding: 56px 0 12px;
+	padding: 56px 20px 12px 20px;
 	background: var(--black-bg);
 
 	@include mix.maxw(var.$w-mob) {
-		padding: 64px 0 20px;
+		padding: 64px 20px 20px 20px;
 	}
 
 	&__wrapper {
@@ -17,10 +17,6 @@
 		padding: 0;
 		box-sizing: border-box;
 		z-index: 2;
-
-		@include mix.maxw(var.$w-mob-s) {
-			padding: 0 20px;
-		}
 	}
 
 	.feedback {

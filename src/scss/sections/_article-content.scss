@@ -10,10 +10,15 @@
 		border-style: solid;
 		border-color: var(--line-light);
 
+		@include mix.maxw(var.$w-tab) {
+			width: 100%;
+		}
+
 		@include mix.maxw(var.$w-mob) {
 			width: 100%;
-			padding: 32px 20px 64px 20px;
+			padding: 32px 0 64px 0;
 		}
+
 
 		> p {
 			@extend .body-s-reg;

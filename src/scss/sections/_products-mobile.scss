@@ -3,10 +3,11 @@
 
 	&__item {
 		margin-top: 32px;
-		padding: 0 20px 31px 20px;
+		padding-bottom: 31px;
 		width: 100%;
 
 		> .title {
+			padding: 0 20px 0 20px;
 			gap: 8px;
 
 			>  h1 {}
@@ -17,11 +18,17 @@
 
 		> .product-slider__details {
 			margin-top: 20px;
+			padding: 0 20px 0 20px;
 			width: 100%;
 			> .flex {
 				padding-top: 20px;
 				&:first-child {
 					border: none;
+					align-items: flex-start;
+				}
+
+				&:last-child {
+					align-items: flex-end;
 				}
 
 				> a {
@@ -50,6 +57,7 @@
 
 			> .swiper-wrapper {
 				> .swiper-slide {
+					width: 298px;
 					> img {
 						width: 100%;
 						height: 100%;
@@ -67,6 +75,7 @@
 		margin-top: 8px;
 
 		&.swiper-pagination-clickable {
+			padding: 0 20px 0 20px;
 			gap: 8px;
 
 			> .swiper-pagination-bullet {
@@ -88,6 +97,8 @@
 	}
 
 	&__actions {
+		padding: 0 20px 0 20px;
+
 		> .product-card__responsive {
 			margin-top: 34px;
 		}

@@ -22,9 +22,16 @@
 .section {
 	width: 100%;
 	max-width: 100%;
-	//min-width: var.$w-min;
 	margin: 0 auto;
+	padding: 0 20px;
 	position: relative;
+
+	&__wrapper {
+		max-width: var(--w-content);
+		margin: 0 auto;
+		box-sizing: border-box;
+		z-index: 2;
+	}
 
 	&--first {
 		padding-top: calc(52px + var(--h-header));
@@ -43,18 +50,6 @@
 
 		@include mix.maxw(var.$w-mob) {
 			padding-top: calc(32px + var(--h-header));
-		}
-	}
-
-	&__wrapper {
-		max-width: var(--w-content);
-		margin: 0 auto;
-		padding: 0;
-		box-sizing: border-box;
-		z-index: 2;
-
-		@include mix.maxw(var.$w-mob) {
-			padding: 0 20px;
 		}
 	}
 

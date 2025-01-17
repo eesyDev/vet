@@ -114,10 +114,8 @@
 
 .promo-links {
 	display: flex;
-	justify-content: space-between;
-	flex-direction: row;
+	justify-content: flex-start;
 	width: 100%;
-	gap: 16px;
 	padding-top: 32px;
 
 	@include mix.maxw(var.$w-mob) {
@@ -126,8 +124,43 @@
 	}
 
 	&__item {
-		@include mix.flexbox('flex-start', 'flex-start');
+		display: flex;
+		justify-content: flex-start;
+		align-items: flex-start;
 		flex-direction: column;
+		width: auto;
+
+		&:nth-child(1) {
+			margin-right: 99px;
+
+			@include mix.maxw(var.$w-mob) {
+
+				ul {
+					> li {
+						margin-bottom: 12px;
+						a {
+							font-family: var(--font-family-b);
+							font-size: 22px;
+							line-height: 28px;
+							font-weight: 600;
+							letter-spacing: 0;
+						}
+					}
+
+				}
+
+			}
+
+		}
+		&:nth-child(2) {
+			margin-right: 82px;
+		}
+		&:nth-child(3) {
+			margin-right: 117px;
+		}
+		&:nth-child(4) {
+			margin-right: auto;
+		}
 
 		h3 {
 			font-weight: 600;
@@ -157,6 +190,10 @@
 						a {
 							color: var(--gray);
 
+							font-size: 15px;
+							line-height: 20px;
+							letter-spacing: 0;
+
 							&:hover {
 								color: var(--white);
 							}
@@ -166,9 +203,11 @@
 			}
 
 			li {
-				margin-bottom: 6px;
+				margin-bottom: 8px;
 				a {
-					@include mix.flexbox('flex-start', 'center');
+					display: flex;
+					justify-content: flex-start;
+					align-items: center;
 					color: var(--white);
 
 					.tag {
@@ -185,25 +224,6 @@
 					}
 				}
 			}
-		}
-
-		@include mix.maxw(var.$w-mob) {
-
-			.promo-links__directions {
-				> li {
-					margin-bottom: 12px;
-
-					a {
-						font-family: var(--font-family-b);
-						font-size: 22px;
-						line-height: 28px;
-						font-weight: 600;
-						letter-spacing: 0;
-					}
-				}
-
-			}
-
 		}
 	}
 
@@ -273,6 +293,7 @@
 @include mix.maxw(var.$w-mob) {
 	.menu-dropdown {
 		padding: 20px 0;
+		width: 100%;
 
 		&.b {
 
@@ -360,6 +381,10 @@ h1, h2,
 	@include mix.maxw(var.$w-mob) {
 		font-size: 38px;
 		line-height: 42px;
+
+		> br {
+			display: none;
+		}
 	}
 }
 
@@ -660,10 +685,9 @@ input {
 
 .select-wrapper {
 	position: relative;
-	display: inline-block;
+	display: flex;
 	width: 100%;
-	height: 27px;
-	border-bottom: 1px solid var(--gray-3);
+	height: auto;
 
 	.select {
 		outline: none;
@@ -674,8 +698,10 @@ input {
 		background-color: transparent;
 		font-weight: 600;
 		font-size: 13px;
-		line-height: 140%;
+		line-height: normal;
+		padding-bottom: 10px;
 		color: var(--gray);
+		border-bottom: 1px solid var(--gray-3);
 		border-radius: unset;
 		appearance: none;
 		-webkit-appearance: none;
@@ -697,8 +723,8 @@ input {
 	&::after {
 		content: '';
 		position: absolute;
-		right: 4px;
-		top: 50%;
+		right: 0;
+		top: calc(50% - 5px);
 		transform: translateY(-50%);
 		width: 6px;
 		height: 4px;
@@ -736,6 +762,8 @@ textarea {
 
 .title {
 	text-align: center;
+
+	&--pro {}
 }
 
 // --- SPACING GENERATOR ---
@@ -744,6 +772,7 @@ textarea {
 	width: 100%;
 	&--40    { height: 40px }
 	&--72    { height: 72px }
+	&--80    { height: 80px }
 	&--120   { height: 120px }
 	&--184   { height: 184px }
 
@@ -965,6 +994,20 @@ textarea {
 	@include mix.maxw(var.$w-mob) {
 		padding: 0 40px;
 		text-align: center;
+	}
+
+	&.about-link--pro {
+		@include mix.maxw(var.$w-mob) {
+			text-align: left;
+			padding: 0;
+
+			> p {
+				> a {
+					display: block;
+					width: max-content;
+				}
+			}
+		}
 	}
 
 	> p {
