@@ -1,9 +1,20 @@
 @use "../utilities/variables" as var;
 @use "../utilities/mixins" as mix;
 .order {
+
+	&.section--shop {
+		@include mix.maxw(var.$w-tab) {
+			padding-top: calc(var(--h-header) + 20px);
+		}
+	}
 	&__wrapper {
 		@include mix.flexbox(flex-start, flex-start);
 		gap: 160px;
+
+		@include mix.maxw(var.$w-tab) {
+			gap: 32px;
+			flex-direction: column;
+		}
 
 		@include mix.maxw(var.$w-mob) {
 			gap: 32px;
@@ -14,6 +25,9 @@
 	&__item {
 		&:last-child {
 			flex: 1;
+			@include mix.maxw(var.$w-tab) {
+				width: 100%;
+			}
 		}
 	}
 
@@ -21,6 +35,11 @@
 		position: sticky;
 		top: calc(var(--h-header) + 24px);
 		left: 0;
+
+		@include mix.maxw(var.$w-tab) {
+			position: static;
+			top: auto;
+		}
 
 		@include mix.maxw(var.$w-mob) {
 			position: static;

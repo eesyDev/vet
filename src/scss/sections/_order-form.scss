@@ -10,6 +10,10 @@
 		gap: 44px;
 		width: 100%;
 
+		@include mix.maxw(var.$w-tab) {
+			gap: 32px;
+		}
+
 		@include mix.maxw(var.$w-mob) {
 			gap: 32px;
 		}
@@ -28,6 +32,23 @@
 	}
 
 	&__res {
+		@include mix.maxw(var.$w-tab) {
+			width: 64% !important;
+			gap: 32px !important;
+
+			.form-description {
+				> br {
+					display: none;
+				}
+			}
+
+			.button {
+				width: 100%;
+				align-items: center;
+				justify-content: center;
+			}
+		}
+
 		@include mix.maxw(var.$w-mob) {
 			flex-direction: column !important;
 			gap: 32px !important;
@@ -48,6 +69,12 @@
 				align-items: center;
 				justify-content: center;
 			}
+		}
+	}
+
+	.button {
+		@include mix.maxw(var.$w-tab) {
+			width: auto;
 		}
 	}
 
