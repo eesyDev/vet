@@ -1,0 +1,48 @@
+.header-mobile {
+	display: none;
+	align-items: center;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 48px;
+	padding: 0 20px;
+	backdrop-filter: blur(20px);
+	background: rgba(24, 24, 24, 0.85);
+	z-index: 11;
+
+	&.active {
+		display: flex;
+	}
+
+	&__title {
+		> p {
+			line-height: 20px;
+			color: var(--white);
+		}
+	}
+
+	&__arrow {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin-left: auto;
+		margin-right: 20px;
+		width: 24px;
+		height: 24px;
+
+		> svg {
+			width: 18px;
+			height: 10px;
+
+			> use {
+				fill: var(--gray-2);
+			}
+		}
+	}
+	&__button {
+		> .button {
+			padding: 6px 12px;
+		}
+	}
+}

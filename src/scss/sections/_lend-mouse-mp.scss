@@ -150,6 +150,12 @@
 
 	}
 
+	@include mix.maxw(var.$w-tab) {
+		.benefits-card__navigation {
+			padding: 0 20px;
+		}
+	}
+
 	@include mix.maxw(var.$w-mob) {
 		.spacer--120 {
 			height: 100px;

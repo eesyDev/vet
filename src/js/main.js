@@ -7,6 +7,8 @@
     App.$htmlBody        = $('html, body');
     App.$modelsMenu      = $('.slider-menu .models-menu');
     App.$productsMobile  = $('.products-mobile');
+    App.$currentProduct  = null;
+    App.$nextProduct     = null;
 
     /**
      * Animate scroll top to element
@@ -70,7 +72,7 @@
 
             $(textSelector).text(fileName);
         });
-    }
+    };
 
     // lazy load for images
     App.lazyLoadImages = function () {
@@ -86,10 +88,79 @@
                 $img.hide().fadeIn(400);
             }
         });
-    }
+    };
 
     App.isMobileDevice = function(maxWidth = 768) {
         return window.innerWidth < maxWidth;
+    }
+
+    App.headerMobileClick = function(el, indent = 48) {
+        $(el).on('click touch', function (e) {
+            e.preventDefault();
+            if (App.$nextProduct) {
+                App.scrollTopBody(App.$nextProduct, indent);
+            } else {
+                App.scrollTopBody($('.products-mobile__item').first(), indent);
+            }
+        });
+    }
+
+    App.updateHeaderOnScroll = function () {
+        const $headerMobile = $('.header-mobile');
+        const $headerTitle = $headerMobile.find('.header-mobile__title > p');
+        const $headerArrow = $headerMobile.find('.header-mobile__arrow');
+        const $items = $('.products-mobile__item');
+        const threshold = 48;
+        const scrollTop = $(window).scrollTop();
+        const windowHeight = $(window).height();
+
+        let anyVisible = false;
+        let allItemsScrolledPast = true;
+
+        App.$currentProduct = null;
+        App.$nextProduct = null;
+
+        $items.each(function (index) {
+            const $item = $(this);
+            const itemTop = $item.offset().top;
+            const itemBottom = itemTop + $item.outerHeight();
+
+            if (itemTop < scrollTop + windowHeight && itemBottom > scrollTop) {
+                anyVisible = true;
+
+                if (itemTop <= scrollTop + threshold && itemBottom > scrollTop + threshold) {
+                    App.$currentProduct = $item;
+                    App.$nextProduct = $items.eq(index + 1);
+                }
+            }
+
+            if (itemBottom >= scrollTop) {
+                allItemsScrolledPast = false;
+            }
+        });
+
+        if (scrollTop > threshold && !allItemsScrolledPast) {
+            if (!$headerMobile.is(':visible')) {
+                $('.header').css('visibility', 'hidden');
+                $headerMobile.css('display', 'flex');
+            }
+        } else {
+            if ($headerMobile.is(':visible')) {
+                $headerMobile.fadeOut();
+                $('.header').css('visibility', 'visible');
+            }
+        }
+
+        if (App.$currentProduct) {
+            const newTitle = App.$currentProduct.find('h2').text();
+            const newAnchor = App.$nextProduct ? App.$nextProduct.data('product-anchor') : '#';
+
+            if ($headerTitle.text() !== newTitle) {
+                $headerTitle.text(newTitle);
+            }
+
+            $headerArrow.attr('href', newAnchor);
+        }
     }
 
     $.fn.isInViewportImg = function () {
@@ -638,7 +709,8 @@
     // Купить продукт
     function addToCart(btnSelector) {
         const $btnSelector = $(btnSelector);
-        $btnSelector.on('click touch', function () {
+        $btnSelector.on('click touch', function (e) {
+            e.preventDefault();
             const $button = $(this);
             const upSell  = $button.data('up-sell');  // post_ID
             const product = $button.data('product'); // post_ID
@@ -658,6 +730,14 @@
             let newCount = currentCount + 1;
 
             if (!upSell) {
+
+                if (App.isMobileDevice()) {
+                    $('.header').css({
+                        'visibility': 'visible',
+                        'z-index': 12,
+                    });
+                }
+
                 // Используем естественные размеры изображения
                 const imageWidth = $productImage.prop('naturalWidth');
                 const imageHeight = $productImage.prop('naturalHeight');
@@ -787,6 +867,15 @@
                 setTimeout(() => {
                     $flyImage.remove();
                     $cartCount.show();
+
+                    setTimeout(() => {
+                        if (App.isMobileDevice()) {
+                            $('.header').css({
+                                'visibility': 'hidden',
+                                'z-index': 10,
+                            });
+                        }
+                    }, 300);
 
                     // тут записываем в куки, что корзина не пуста для дальнейшей реализации на PHP
                 }, 1000);
@@ -1106,7 +1195,7 @@
     }
 
     function toggleDropdownMenu(open) {
-        $(open).on('click', function () {
+        $(open).on('click touch', function () {
             const $this = $(this);
             const $item = $this.next('.menu-dropdown__item');
             const $svg = $this.find('svg');
