@@ -73,6 +73,12 @@
 		.reviews {
 
 			&__title {
+				gap: 39px;
+
+				@include mix.maxw(var.$w-mob) {
+					gap: 24px;
+				}
+
 				> p {
 					padding: 0 82px;
 					@include mix.maxw(var.$w-mob) {
