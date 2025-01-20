@@ -7,6 +7,7 @@
     App.$htmlBody        = $('html, body');
     App.$modelsMenu      = $('.slider-menu .models-menu');
     App.$productsMobile  = $('.products-mobile');
+    App.$headerMobile    = $('.header-mobile');
     App.$currentProduct  = null;
     App.$nextProduct     = null;
 
@@ -92,7 +93,7 @@
 
     App.isMobileDevice = function(maxWidth = 768) {
         return window.innerWidth < maxWidth;
-    }
+    };
 
     App.headerMobileClick = function(el, indent = 48) {
         $(el).on('click touch', function (e) {
@@ -103,18 +104,16 @@
                 App.scrollTopBody($('.products-mobile__item').first(), indent);
             }
         });
-    }
+    };
 
     App.updateHeaderOnScroll = function () {
-        const $headerMobile = $('.header-mobile');
-        const $headerTitle = $headerMobile.find('.header-mobile__title > p');
-        const $headerArrow = $headerMobile.find('.header-mobile__arrow');
+        const $headerTitle  = App.$headerMobile.find('.header-mobile__title > p');
+        const $headerArrow  = App.$headerMobile.find('.header-mobile__arrow');
+        const $headerButton = App.$headerMobile.find('.header-mobile__button > .button');
         const $items = $('.products-mobile__item');
-        const threshold = 48;
-        const scrollTop = $(window).scrollTop();
-        const windowHeight = $(window).height();
 
-        let anyVisible = false;
+        const scrollTop = $(window).scrollTop();
+        let isCurrentProductFound = false;
         let allItemsScrolledPast = true;
 
         App.$currentProduct = null;
@@ -125,43 +124,43 @@
             const itemTop = $item.offset().top;
             const itemBottom = itemTop + $item.outerHeight();
 
-            if (itemTop < scrollTop + windowHeight && itemBottom > scrollTop) {
-                anyVisible = true;
-
-                if (itemTop <= scrollTop + threshold && itemBottom > scrollTop + threshold) {
-                    App.$currentProduct = $item;
-                    App.$nextProduct = $items.eq(index + 1);
-                }
+            if (!isCurrentProductFound && itemTop <= scrollTop + 148 && itemBottom > scrollTop + 48) {
+                App.$currentProduct = $item;
+                App.$nextProduct = $items.eq(index + 1);
+                isCurrentProductFound = true;
             }
 
             if (itemBottom >= scrollTop) {
                 allItemsScrolledPast = false;
             }
         });
-
-        if (scrollTop > threshold && !allItemsScrolledPast) {
-            if (!$headerMobile.is(':visible')) {
-                $('.header').css('visibility', 'hidden');
-                $headerMobile.css('display', 'flex');
-            }
-        } else {
-            if ($headerMobile.is(':visible')) {
-                $headerMobile.fadeOut();
-                $('.header').css('visibility', 'visible');
-            }
-        }
-
         if (App.$currentProduct) {
+            if (!App.$headerMobile.is(':visible')) {
+                $('.header').css('visibility', 'hidden');
+                App.$headerMobile.css('display', 'flex');
+            }
+
             const newTitle = App.$currentProduct.find('h2').text();
+            const newProduct = App.$currentProduct ? App.$currentProduct.find('.products-mobile__actions .add_to_cart').data('product') : 0;
             const newAnchor = App.$nextProduct ? App.$nextProduct.data('product-anchor') : '#';
 
             if ($headerTitle.text() !== newTitle) {
                 $headerTitle.text(newTitle);
             }
 
+            if (newProduct > 0) {
+                $headerButton.attr('data-product', newProduct)
+            }
+
             $headerArrow.attr('href', newAnchor);
+
+        } else {
+            if (App.$headerMobile.is(':visible')) {
+                App.$headerMobile.fadeOut();
+                $('.header').css('visibility', 'visible');
+            }
         }
-    }
+    };
 
     $.fn.isInViewportImg = function () {
         let elementTop = $(this).offset().top;
@@ -731,7 +730,7 @@
 
             if (!upSell) {
 
-                if (App.isMobileDevice()) {
+                if (App.isMobileDevice() && App.$body.hasClass('lend-series-pro')) {
                     $('.header').css({
                         'visibility': 'visible',
                         'z-index': 12,
@@ -868,14 +867,14 @@
                     $flyImage.remove();
                     $cartCount.show();
 
-                    setTimeout(() => {
-                        if (App.isMobileDevice()) {
+                    if (App.isMobileDevice() && App.$body.hasClass('lend-series-pro')) {
+                        setTimeout(() => {
                             $('.header').css({
                                 'visibility': 'hidden',
                                 'z-index': 10,
                             });
-                        }
-                    }, 300);
+                        }, 300);
+                    }
 
                     // тут записываем в куки, что корзина не пуста для дальнейшей реализации на PHP
                 }, 1000);
@@ -1223,6 +1222,11 @@
 
             productsSlider('.products-mobile__slider.swiper-container');
             productsSlider('.in-box .swiper-container');
+
+            if (App.$body.hasClass('lend-series-pro')) {
+                App.headerMobileClick('.header-mobile__arrow');
+                $(window).on('scroll', App.updateHeaderOnScroll);
+            }
         }
 
         $('.video-block__source').each(function () {

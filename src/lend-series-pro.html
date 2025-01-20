@@ -177,17 +177,5 @@
 	//= sections/dialogs.html
 	//= utilities/scripts.html
 
-	<script>
-		(function ($) {
-			$(function() {
-				if (App.isMobileDevice()) {
-					App.headerMobileClick('.header-mobile__arrow');
-					$(window).on('scroll', App.updateHeaderOnScroll);
-				}
-			});
-		})(jQuery);
-
-	</script>
-
 </body>
 </html>
