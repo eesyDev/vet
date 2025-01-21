@@ -30,6 +30,10 @@
             }
         }
         &__images {
+            img {
+                max-width: 100%;
+                max-height: 100%;
+            }
             .image {
                 position: absolute;
                 &.bottom-0 {
@@ -122,6 +126,43 @@
                 &.size--120 {
                     width: 120px;
                     height: 120px;
+                }
+            }
+            .like-1 {
+                left: 27.66%;
+                bottom: 36.44%;
+                width: 23px;
+                height: 23px;
+                img {
+                    opacity: .5;
+                }
+            }
+            .like-2 {
+                left: 41.76%;
+                bottom: 44.29%;
+                width: 13px;
+                height: 13px;
+                img {
+                    opacity: .25;
+                }
+            }
+            .like-3 {
+                left: 57.84%;
+                bottom: 39.72%;
+                width: 32px;
+                height: 32px;
+                img {
+                    opacity: .85;
+                }
+            }
+            .like-4 {
+                left: auto;
+                right: 23.46%;
+                bottom: 39.74%;
+                width: 13px;
+                height: 13px;
+                img {
+                    opacity: .5;
                 }
             }
         }
