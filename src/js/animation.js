@@ -375,4 +375,45 @@ $(document).ready(function () {
 //     ease: "back.out(1.7)",
 //   }, 0.5);
 // });
+
+
+        const textG = document.querySelector('#textClip text');
+        const video = document.querySelector('.cover');
+        const clipPath = document.querySelector('#textClip');
+
+        if(textG) {
+            
+            const containerHeight = window.innerHeight;
+            const initialScale = containerHeight / 150;
+            
+            gsap.set(clipPath, {
+                scale: 300, 
+                transformOrigin: "44% 50%"
+            });
+            gsap.set(video, {
+                clipPath: 'url(#textClip)'
+            });
+
+            // Анимация уменьшения текста
+            const tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: ".video-mask-container",
+                    start: "top top",
+                    end: "+=100%",
+                    scrub: 1,
+                    pin: true,
+                }
+            });
+
+            tl.to(clipPath, {
+                scale: 1,
+                duration: 1
+            })
+            tl.to(':root', {
+                '--color-opacity': 1, 
+                duration: 1.2,
+                delay: .3
+              }, 0);
+        }
+
 })

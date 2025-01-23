@@ -1,21 +1,50 @@
-<div class="video-box">
+<div class="video-box custom-transition">
 	<div class="section section__wrapper">
 		<div class="title flex col">
 			<h3 class="h1h2">Коробка – iгровий будиночок</h3>
 			<p class="body-l-sb">Коробка – це не просто коробка для кiгтеточки, а iгровий будиночок. Вона не лише доїде в будь-яку точку в цілості та безпеці, а ще й стане ще однією іграшкою котика</p>
 		</div>
 	</div>
-	<div class="video-block__source">
-
-		<video class="cover" poster="assets/img/lend-series-main/video-box-video-cover.jpg">
-			<source src="assets/video/thank-page.mp4" type="video/mp4">
-		</video>
-
+	<div class="video-block__source video-mask-container">
+		<div class="mask-wrapper">
+			<video class="cover" poster="assets/img/lend-series-main/video-box-video-cover.jpg">
+				<source src="assets/video/thank-page.mp4" type="video/mp4">
+			</video>
+			<div class="video-gradient-overlay" style="clip-path: url(#textClip)"></div>
+		</div>
 		<button class="video-block__button video-block__button--mp4 flex col center">
 			<svg class="ico-video-button">
 				<use xlink:href="assets/img/sprite.svg#ico-play"></use>
 			</svg>
 		</button>
-
+	</div>
+	<div class="after-video">
+		<div class="mask-text">
+			<svg viewBox="0 0 1920 1240">
+				  <clipPath id="textClip" style="opacity: 1; --scale: 250;">
+					<text x="44%" y="50%" text-anchor="middle" dominant-baseline="middle" font-size="140px" font-weight="bold" id="clipTextContent" fill="url(#textGradient)">
+					  12 місяців
+					</text>
+				  </clipPath>
+			  </svg>
+		</div>
+		<div class="guarantee">
+			<div class="guarantee__text flex col center block-animated-scale">
+				<p>Гарантія повернення протягом року!</p>
+			</div>
+			<div class="section__wrapper flex col center">
+				<div class="guarantee__info grid">
+					<div class="guarantee__description flex block-animated-scale">
+						<p class="body-m-sb">Ми так впевнені, що ваш котик полюбить кігтеточку, що готові повернути вам гроші, якщо через 12 місяців ваша котоособистість так і не почне її використовувати.</p>
+					</div>
+					<div class="flex">
+						<a href="#" class="button button--yellow button--big">Обрати ідеальну кігтеточку</a>
+					</div>
+				</div>
+				<div class="guarantee__about">
+					<p class="body-m-sb">P.S.: відправка кігтеточки назад на наш рахунок</p>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
