@@ -21,10 +21,10 @@ $mail->SMTPSecure = 'ssl';                            // Enable encryption, 'ssl
 
 $mail->CharSet = 'UTF-8';
 //Set who the message is to be sent from
-$mail->setFrom('tacticlead@gmail.com', 'Заявка с сайта');
+$mail->setFrom('lead@gmail.com', 'Заявка с сайта');
 
 //Set an alternative reply-to address
-$mail->addAddress('tacticlead@gmail.com', ''); // email для приема заявок
+$mail->addAddress('lead@gmail.com', ''); // email для приема заявок
 // $mail->AddBCC('sergey.gamal@gmail.com');
 // $mail->AddBCC('');
 
